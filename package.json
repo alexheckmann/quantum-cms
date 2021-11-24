@@ -34,7 +34,7 @@
     "type": "git",
     "url": "git://github.com/anonymous node/sails user/quantum-cms.git"
   },
-  "author": "anonymous node/sails user",
+  "author": "Alexander Aichholz, Alexander Heckmann",
   "license": "",
   "engines": {
     "node": "^14.17"
