@@ -165,6 +165,13 @@ without necessarily having a billing card.`
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     // n/a
 
+    organisation: {
+      model: 'organisation'
+    },
+
+    admin: {
+      model: 'organisation'
+    }
   },
 
 
