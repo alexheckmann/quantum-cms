@@ -171,6 +171,16 @@ without necessarily having a billing card.`
 
     admin: {
       model: 'organisation'
+    },
+
+    workingGroups: {
+      collection: 'workingGroup',
+      via: 'workers'
+    },
+
+    adminOf: {
+      collection: 'workingGroup',
+      via: 'admins'
     }
   },
 
