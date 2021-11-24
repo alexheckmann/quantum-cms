@@ -1,10 +1,10 @@
 const menuSlide = () => {
-  const burger = document.querySelector(".nav-burger");
-  const menu = document.querySelector(".menu-wrapper");
+  const burger = document.querySelector('.nav-burger');
+  const menu = document.querySelector('.menu-wrapper');
   // const backgroundShadow = window.getComputedStyle(document.querySelector(".body-wrapper"), "after");
   let menuToggled = false;
 
-  burger.addEventListener("click", () => {
+  burger.addEventListener('click', () => {
     if (!menuToggled) {
       menuToggled = true;
     } else {
@@ -12,11 +12,11 @@ const menuSlide = () => {
     }
 
     // menu animation
-    menu.classList.toggle("menu-active");
+    menu.classList.toggle('menu-active');
 
     // burger animation
-    burger.classList.toggle("navbar-burger-toggle");
+    burger.classList.toggle('navbar-burger-toggle');
   });
-}
+};
 
 menuSlide();
