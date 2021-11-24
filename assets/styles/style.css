@@ -262,10 +262,6 @@ body {
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
-
-  background-image: url("../images/blue-violet-hero.svg");
-  background-repeat: no-repeat;
-  background-position: 0% 60%;
 }
 
 .eye-catcher-headline {
@@ -390,9 +386,6 @@ body {
 .feature-item-graphic {
   position: relative;
   width: auto;
-  flex-grow: 1;
-  flex-shrink: 1;
-
 }
 
 .feature-item-graphic-reverse {
@@ -419,14 +412,11 @@ body {
   align-items: center;
   align-content: center;
   max-width: clamp(432px, 1vw, 560px);
-  margin-right: clamp(50px, 1.1vw, 82px);
-  margin-left: var(--feature-item-margin);
+  margin: 0px var(--feature-item-margin);
 }
 
 .feature-item-text-reverse {
 
-  margin-right: var(--feature-item-margin);
-  margin-left: clamp(50px, 1.1vw, 82px);
 }
 
 .feature-item-text-title {
