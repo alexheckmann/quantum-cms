@@ -1,6 +1,6 @@
 const menuSlide = () => {
-  const burger = document.querySelector('.nav-burger');
-  const menu = document.querySelector('.menu-wrapper');
+  const burger = document.querySelector('.qntm-nav-burger');
+  const menu = document.querySelector('.qntm-menu-wrapper');
   // const backgroundShadow = window.getComputedStyle(document.querySelector(".body-wrapper"), "after");
   let menuToggled = false;
 
