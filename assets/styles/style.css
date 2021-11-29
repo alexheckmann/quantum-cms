@@ -54,6 +54,7 @@ a:hover {
   height: auto;
   width: 130px;
   padding: 1em 15px 1em 0.5rem;
+  color: rgb(255,255,255);
 }
 
 body {
@@ -68,15 +69,15 @@ body {
   will-change: opacity;
   width: 100%;
   height: 100vh;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   position: absolute;
   background-color: black;
 }
 
 .qntm-navbar-sticky {
   position: sticky;
-  top: 0px;
+  top: 0;
   z-index: 9999;
   width: 100%;
 
@@ -88,8 +89,8 @@ body {
   min-width: 300px;
   width: 100%;
   position: relative;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   z-index: 1;
 
   color: white;
@@ -115,8 +116,8 @@ body {
 
 .qntm-navbar-link-container {
   box-sizing: border-box;
-  margin: 0px;
-  min-width: 0px;
+  margin: 0;
+  min-width: 0;
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
@@ -126,7 +127,7 @@ body {
 }
 
 .qntm-navbar-left-links {
-  margin: 0px 0px 0px 16px;
+  margin: 0 0 0 16px;
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
@@ -134,7 +135,7 @@ body {
   align-items: center;
   height: var(--nav-height-big);
   list-style: none;
-  padding: 0px;
+  padding: 0;
   opacity: 1;
   pointer-events: initial;
   will-change: opacity;
@@ -207,7 +208,7 @@ body {
 
 .qntm-menu-wrapper {
   display: none;
-  min-width: 0px;
+  min-width: 0;
   min-height: calc(100% - var(--nav-height-small));
   height: calc(100vh - var(--nav-height-small));
   background-color: var(--color-dark-blue);
@@ -215,7 +216,7 @@ body {
   max-width: 99vw;
   position: absolute;
   top: var(--nav-height-small);
-  left: 0px;
+  left: 0;
   will-change: left;
   z-index: 1;
   flex-direction: column;
@@ -240,9 +241,9 @@ body {
 
 .qntm-menu-separator {
   box-sizing: border-box;
-  min-width: 0px;
+  min-width: 0;
   margin: 2px 0;
-  border-width: 0px 0px 1px;
+  border-width: 0 0 1px;
   border-top-style: initial;
   border-right-style: initial;
   border-left-style: initial;
@@ -280,9 +281,8 @@ body {
 }
 
 .qntm-eye-catcher-headline {
-  padding-bottom: 20px;
   text-align: center;
-  padding-top: 10px;
+  padding: 20px 0;
   margin: auto;
   max-width: 500px;
 }
@@ -300,18 +300,14 @@ body {
 .qntm-eye-catcher-button {
   text-align: center;
   padding: 0;
-  margin: auto;
-  margin-top: 3px;
-  margin-bottom: 0;
+  margin: 3px auto 0;
   max-width: 370px;
 }
 
 .qntm-eye-catcher-content-small {
   text-align: center;
-  padding: 10px 0;
-  margin: auto;
-  padding-bottom: 0;
-  margin-bottom: 0;
+  padding: 10px 0 0;
+  margin: auto auto 0;
   max-width: 370px;
 }
 
@@ -360,7 +356,7 @@ body {
 }
 
 .qntm-feature-intro-title-width-container {
-  margin: 0px auto;
+  margin: 0 auto;
   max-width: 450px;
 }
 
@@ -401,9 +397,13 @@ body {
 .qntm-feature-item-graphic {
   position: relative;
   width: auto;
+  display: flex;
+  justify-content: center;
+  order: 1;
 }
 
 .qntm-feature-item-graphic-reverse {
+  order: 0;
 }
 
 .qntm-feature-item-graphic img {
@@ -411,12 +411,12 @@ body {
   width: 370px;
   height: auto;
   float: right;
-  margin: 0px var(--feature-item-margin);
+  margin: 0 var(--feature-item-margin);
 }
 
 .qntm-feature-item-graphic-reverse img {
   float: left;
-  margin: 0px var(--feature-item-margin);
+  margin: 0 var(--feature-item-margin);
 }
 
 .qntm-feature-item-text {
@@ -427,7 +427,7 @@ body {
   align-items: center;
   align-content: center;
   max-width: clamp(432px, 1vw, 560px);
-  margin: 0px var(--feature-item-margin);
+  margin: 0 var(--feature-item-margin);
 }
 
 .qntm-feature-item-text-reverse {
@@ -435,7 +435,7 @@ body {
 }
 
 .qntm-feature-item-text-title {
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .qntm-feature-item-text-title h3 {
@@ -453,7 +453,7 @@ body {
 
 .qntm-why-container {
   width: clamp(20ch, 90%, 160ch);
-  padding: clamp(20px, 50px, 80px) clamp(20px, 40px, 40px) clamp(20px, 50px, 80px);
+  padding: clamp(20px, 40px, 80px);
   margin: 0 20px;
 }
 
@@ -468,11 +468,11 @@ body {
   display: block;
   float: left;
   width: 70%;
-  padding: 0px 10px;
+  padding: 10px;
 }
 
 .qntm-why-title-question {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .qntm-why-title {
@@ -621,29 +621,6 @@ footer a:hover {
   padding: 0;
 }
 
-@media screen and (max-width: 850px) {
-  /* displays the links in the footer in column */
-  .qntm-footer-link-container {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin: auto;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: center;
-    font-size: 18px;
-  }
-
-  .qntm-footer-link-container .qntm-link-footer {
-    padding: 0.75em;
-    margin: 0;
-  }
-
-  .qntm-pricing-box {
-    margin: 10px 25px;
-  }
-}
-
 /* Screen resolution for tablets */
 @media screen and (max-width: 1078px) {
 
@@ -684,7 +661,7 @@ footer a:hover {
   /* Increases font size for links when the menu is open */
   .qntm-navbar-list-item {
     line-height: 1em;
-    flex: 1 1 0%;
+    flex: 1 1 0;
     text-align: left;
     padding: 1.5em 0;
   }
@@ -701,7 +678,7 @@ footer a:hover {
 
   .qntm-menu-button-section div {
     display: inline-block;
-    flex: 1 1 0%;
+    flex: 1 1 0;
     text-align: center;
   }
 
@@ -725,4 +702,76 @@ footer a:hover {
   .qntm-pricing-middle-box {
     order: -1;
   }
+
+  /* increases width so that title uses full space */
+  .qntm-why-parent-text {
+    width: 100%;
+  }
+
+  /* changes flex behavior of the why section for better responsiveness */
+  .qntm-why-box-container {
+    flex-direction: column;
+  }
+
+  /* changes flex behavior of the why section for better responsiveness */
+  .qntm-why-box {
+    flex: 0 1 0;
+    margin: var(--feature-item-margin) 0;
+  }
 }
+
+@media screen and (max-width: 850px) {
+  /* displays the links in the footer in column */
+  .qntm-footer-link-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: auto;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    font-size: 18px;
+  }
+
+  .qntm-footer-link-container .qntm-link-footer {
+    padding: 0.75em;
+    margin: 0;
+  }
+
+  .qntm-pricing-box {
+    margin: 10px 25px;
+  }
+}
+
+/* Media query for small tablets / big smartphones */
+@media screen and (max-width: 621px) {
+
+  /* centers items & text */
+  .qntm-feature-item-section {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* switches position of picture with feature description */
+  .qntm-feature-item-graphic-reverse {
+    order: 1;
+  }
+
+  /* increases bottom margin for a better look when switched */
+  .qntm-feature-item-text {
+    margin-bottom: var(--feature-item-margin);
+  }
+
+  /* changes flex behavior for small display size */
+  .qntm-getting-started-container {
+    flex-direction: column;
+  }
+
+  .getting-started-text-container {
+    margin: 20px 0;
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+
+}
+
