@@ -46,7 +46,7 @@ a:hover {
 
 .qntm-button:hover {
   background-color: var(--color-light-blue);
-  color: rgb(255,255,255);
+  color: rgb(255, 255, 255);
 }
 
 #qntm-logo {
@@ -165,6 +165,10 @@ body {
   --right-space: 36px;
   padding: 1.5em var(--right-space) 1.5em 1.5em;
   margin-right: calc(var(--right-space) - 16px);
+}
+
+.qntm-navbar-right-links div .qntm-navbar-link:hover {
+  color: var(--color-dark-blue);
 }
 
 .qntm-navbar-link {
@@ -509,6 +513,61 @@ body {
   line-height: 40px;
 }
 
+/* Pricing page */
+.qntm-pricing-section {
+  padding: 40px 0;
+  width: 100%;
+}
+
+.qntm-pricing-container {
+  justify-content: space-around;
+  margin: auto;
+  max-width: 1100px;
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.qntm-pricing-box {
+  display: flex;
+  flex-direction: column;
+  order: 0;
+  margin: 10px;
+}
+
+.qntm-pricing-content {
+  width: 300px;
+  margin: 20px;
+}
+
+.qntm-pricing-content p {
+  margin: 16px 0;
+}
+
+.qntm-pricing-title {
+  margin: 7px 0;
+}
+
+.qntm-pricing-price-tag {
+  margin-top: 0;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.qntm-pricing-separator-line {
+  border-bottom: 1px solid lightgray;
+  padding-top: 30px;
+}
+
+.qntm-pricing-list {
+  padding-top: 10px;
+  padding-inline-start: 30px;
+}
+
+.qntm-pricing-list-item {
+  padding-top: 10px;
+}
+
 /* separators */
 .qntm-separator-line {
   margin: auto;
@@ -580,13 +639,13 @@ footer a:hover {
     margin: 0;
   }
 
-  .qntm-eye-catcher-section {
-    background: none;
+  .qntm-pricing-box {
+    margin: 10px 25px;
   }
 }
 
 /* Screen resolution for tablets */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1078px) {
 
   /* Smaller navbar for smaller resolutions*/
   .qntm-navbar-container {
@@ -656,63 +715,14 @@ footer a:hover {
   .qntm-menu-button-section a {
     font-size: 18px;
   }
-}
 
-/* Pricing page */
-.qntm-pricing-section {
-  display: flex;
-  justify-content: center;
-}
+  /* adjusts container width so that only pricing cards are displayed beautifully */
+  .qntm-pricing-container {
+    width: 75%;
+  }
 
-.qntm-pricing-container {
-  width: clamp(20ch, 65%, 160ch);
-  padding: clamp(20px, 50px, 80px) clamp(20px, 40px, 40px) clamp(20px, 50px, 80px);
-}
-
-.qntm-pricing-parent {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.qntm-pricing-box-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.qntm-pricing-box {
-  flex: 0 1 320px;
-  padding: 0 10px;
-  margin-top: 50px;
-  vertical-align: top;
-}
-
-.qntm-pricing-content {
-  padding: 20px 12px;
-  width: calc(100% - 30px);
-}
-
-.qntm-pricing-title {
-  margin: 7px 0;
-}
-
-.qntm-pricing-price-tag {
-  margin-top: 0;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-}
-
-.qntm-pricing-separator-line {
-  border-bottom: 1px solid lightgray;
-  padding-top: 30px;
-}
-
-.qntm-pricing-list {
-  padding-top: 10px;
-  padding-inline-start: 30px;
-}
-
-.qntm-pricing-list-item {
-  padding-top: 10px;
+  /* changes order so that the middle container is displayed first */
+  .qntm-pricing-middle-box {
+    order: -1;
+  }
 }
