@@ -2,6 +2,12 @@
   "generators": {
     "modules": {}
   },
+  "paths": {
+    "public": "assets"
+  },
+  "hooks": {
+    "grunt": false
+  },
   "_generatedWith": {
     "sails": "1.5.0",
     "sails-generate": "2.0.4"
