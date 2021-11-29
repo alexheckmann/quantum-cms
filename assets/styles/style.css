@@ -586,8 +586,7 @@ body {
 }
 
 .qntm-separator-line-short {
-  margin: auto;
-  margin-bottom: 6rem;
+  margin: auto auto 6rem;
   border-bottom: 1px solid lightgray;
   width: 50%;
 }
