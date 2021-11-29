@@ -381,7 +381,7 @@ body {
   margin: auto;
 }
 
-.qntm-feature-item-section {
+.qntm-slalom-section {
   max-width: 1025px;
   padding: 80px 0;
   margin: 30px auto;
@@ -393,10 +393,10 @@ body {
   --feature-item-margin: clamp(30px, 1.1vw, 50px);
 }
 
-.qntm-feature-item-section-reverse {
+.qntm-section-reverse {
 }
 
-.qntm-feature-item-graphic {
+.qntm-slalom-graphic {
   position: relative;
   width: auto;
   display: flex;
@@ -404,11 +404,11 @@ body {
   order: 1;
 }
 
-.qntm-feature-item-graphic-reverse {
+.qntm-slalom-reverse {
   order: 0;
 }
 
-.qntm-feature-item-graphic img {
+.qntm-slalom-graphic img {
   max-width: 80%;
   width: 370px;
   height: auto;
@@ -416,12 +416,12 @@ body {
   margin: 0 var(--feature-item-margin);
 }
 
-.qntm-feature-item-graphic-reverse img {
+.qntm-slalom-reverse img {
   float: left;
   margin: 0 var(--feature-item-margin);
 }
 
-.qntm-feature-item-text {
+.qntm-slalom-text {
   width: 100%;
   flex: 1;
   display: block;
@@ -432,19 +432,19 @@ body {
   margin: 0 var(--feature-item-margin);
 }
 
-.qntm-feature-item-text-reverse {
+.qntm-slalom-text-reverse {
 
 }
 
-.qntm-feature-item-text-title {
+.qntm-slalom-text-title {
   margin-top: 0;
 }
 
-.qntm-feature-item-text-title h3 {
+.qntm-slalom-text-title h3 {
   display: inline;
 }
 
-.qntm-feature-item-text-descripion {
+.qntm-slalom-text-descripion {
   margin-top: 16px;
 }
 
@@ -750,18 +750,18 @@ footer a:hover {
 @media screen and (max-width: 621px) {
 
   /* centers items & text */
-  .qntm-feature-item-section, .qntm-getting-started-section {
+  .qntm-slalom-section, .qntm-getting-started-section {
     justify-content: center;
     text-align: center;
   }
 
   /* switches position of picture with feature description */
-  .qntm-feature-item-graphic-reverse {
+  .qntm-slalom-reverse {
     order: 1;
   }
 
   /* increases bottom margin for a better look when switched */
-  .qntm-feature-item-text {
+  .qntm-slalom-text {
     margin-bottom: var(--feature-item-margin);
   }
 
