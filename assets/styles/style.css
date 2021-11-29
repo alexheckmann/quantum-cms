@@ -335,6 +335,10 @@ body {
   flex: 1;
 }
 
+.qntm-terms-of-use-text-container h4 {
+  padding-top: 20px;
+}
+
 
 .qntm-feature-intro-section {
   padding: 25px;
@@ -603,7 +607,8 @@ body {
 .qntm-link-footer {
   text-decoration: none;
   color: var(--color-dark-blue);
-  padding: 1.5em;
+  padding: 1em;
+  margin: 0.5em;
   white-space: nowrap
 }
 

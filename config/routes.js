@@ -47,8 +47,8 @@ module.exports.routes = {
   //  action: 'newuser'
   //},
   'GET /pricing': {view: 'pages/pricing', locals: {layout: 'layouts/layout'}},
-  'GET /privacy': {view: 'privacy'},
-  //'GET /termsofuse': {view: 'pages/termsofuse'},
+  'GET /privacy': {view: 'pages/privacy', locals: {layout: 'layouts/layout'}},
+  'GET /terms': {view: 'pages/terms', locals: {layout: 'layouts/layout'}},
 
   //  ╔╦╗╦╔═╗╔═╗  ╦═╗╔═╗╔╦╗╦╦═╗╔═╗╔═╗╔╦╗╔═╗   ┬   ╔╦╗╔═╗╦ ╦╔╗╔╦  ╔═╗╔═╗╔╦╗╔═╗
   //  ║║║║╚═╗║    ╠╦╝║╣  ║║║╠╦╝║╣ ║   ║ ╚═╗  ┌┼─   ║║║ ║║║║║║║║  ║ ║╠═╣ ║║╚═╗
