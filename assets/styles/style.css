@@ -54,7 +54,6 @@ a:hover {
   height: auto;
   width: 130px;
   padding: 1em 15px 1em 0.5rem;
-  color: rgb(255,255,255);
 }
 
 body {
@@ -86,7 +85,6 @@ body {
 }
 
 .qntm-navbar {
-  min-width: 300px;
   width: 100%;
   position: relative;
   top: 0;
@@ -536,7 +534,7 @@ body {
 }
 
 .qntm-pricing-content {
-  width: 300px;
+  max-width: 300px;
   margin: 20px;
 }
 
@@ -747,7 +745,7 @@ footer a:hover {
 @media screen and (max-width: 621px) {
 
   /* centers items & text */
-  .qntm-feature-item-section {
+  .qntm-feature-item-section, .qntm-getting-started-section {
     justify-content: center;
     text-align: center;
   }
@@ -762,16 +760,20 @@ footer a:hover {
     margin-bottom: var(--feature-item-margin);
   }
 
+  /* increasing width to 100% again for a better look */
+  .qntm-pricing-container {
+    width: 100%;
+  }
+
   /* changes flex behavior for small display size */
   .qntm-getting-started-container {
     flex-direction: column;
   }
 
-  .getting-started-text-container {
-    margin: 20px 0;
-    align-items: flex-start;
-    align-content: flex-start;
+  /* increasing bottom margin when the button layout was moved */
+  .qntm-getting-started-text-container {
+    margin-right: 0;
+    margin-bottom: 20px;
   }
-
 }
 
