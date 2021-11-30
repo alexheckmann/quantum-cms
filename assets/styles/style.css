@@ -573,6 +573,7 @@ body {
 /* about us page */
 .qntm-about-us-eye-catcher-section {
   padding: 25px;
+  padding-bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -700,6 +701,12 @@ body {
 
 .qntm-separator-line-short {
   margin: auto auto 6rem;
+  border-bottom: 1px solid lightgray;
+  width: 50%;
+}
+
+.qntm-separator-line-about-us {
+  margin: 6rem auto 6rem;
   border-bottom: 1px solid lightgray;
   width: 50%;
 }
