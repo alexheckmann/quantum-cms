@@ -886,6 +886,9 @@ footer a:hover {
 
 /* Media query for small tablets / big smartphones */
 @media screen and (max-width: 621px) {
+  section.qntm-feature-intro-section.background-image-left-side {
+    background-image: none;
+  }
 
   /* increasing width to 100% again for a better look */
   .qntm-pricing-container {
