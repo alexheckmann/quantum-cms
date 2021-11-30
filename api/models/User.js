@@ -181,6 +181,16 @@ without necessarily having a billing card.`
     adminOf: {
       collection: 'workingGroup',
       via: 'admins'
+    },
+
+    authorOf: {
+      collection: 'TextContent',
+      via: 'author'
+    },
+
+    updated: {
+      collection: 'TextContent',
+      via: 'updatedFrom'
     }
   },
 

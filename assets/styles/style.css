@@ -570,6 +570,120 @@ body {
   padding-top: 10px;
 }
 
+/* about us page */
+.qntm-about-us-eye-catcher-section {
+  padding: 25px;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.qntm-statement-item-section {
+  max-width: 1025px;
+  padding: 0px 0px;
+  margin: 30px auto;
+  align-items: left;
+  justify-content: start;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.qntm-statement-item-section-reverse {
+  align-items: right;
+  justify-content: end;
+}
+
+
+.qntm-statement-item-text {
+  width: 100%;
+  flex: 1;
+  display: block;
+  justify-content: left;
+  align-items: left;
+  align-content: center;
+  max-width: clamp(432px, 1vw, 660px);
+  margin-right: clamp(50px, 1.1vw, 82px);
+  margin-left: clamp(30px, 1.1vw, 50px);
+}
+
+.qntm-statement-item-text-reverse {
+  margin-right: var(--feature-item-margin);
+  margin-left: clamp(50px, 1.1vw, 82px);
+}
+
+.qntm-statement-item-text-description {
+  margin-top: 10px;
+}
+
+/* about us/meet the team section */
+.qntm-team-section {
+  display: flex;
+  justify-content: center;
+}
+
+.qntm-team-container {
+  width: clamp(20ch, 90%, 160ch);
+  padding: clamp(20px, 50px, 80px) clamp(20px, 40px, 40px) clamp(20px, 50px, 80px);
+  margin: 0 20px;
+}
+
+.qntm-team-parent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  color: white;
+}
+
+.qntm-team-parent-text {
+  display: block;
+  float: left;
+  width: 70%;
+  padding: 0px 10px;
+}
+
+.qntm-team-title {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.qntm-team-box-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  color: white;
+  padding-top: 20px;
+}
+
+.qntm-team-box {
+  flex: 0 1 320px;
+  padding: 0 10px;
+}
+
+.qntm-team-box h4 {
+  padding-top: 20px;
+}
+
+.qntm-team-graphic {
+  position: relative;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.qntm-team-graphic img {
+  max-width: 80%;
+  width: 370px;
+  height: auto;
+  float: left;
+  margin: 0px var(--feature-item-margin);
+}
+
+.qntm-team-graphic figure figcaption {
+  padding-top: 20px;
+}
+
 /* about page */
 .qntm-team-section {
   padding-top: 0;
@@ -597,6 +711,12 @@ body {
 
 .qntm-separator-line-short {
   margin: auto auto 6rem;
+  border-bottom: 1px solid lightgray;
+  width: 50%;
+}
+
+.qntm-separator-line-about-us {
+  margin: 6rem auto 6rem;
   border-bottom: 1px solid lightgray;
   width: 50%;
 }
