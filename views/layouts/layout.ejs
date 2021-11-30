@@ -3,7 +3,7 @@
     // we make sure `me` exists.  This ensures we don't have to do `typeof` checks below.
     var me = undefined;
 } %><!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Quantum CMS</title>
 
@@ -50,30 +50,17 @@
     <nav role="navigation" class="qntm-navbar">
         <div class="qntm-navbar-container blue-background">
             <a href="/">
-                <svg id="qntm-logo" version="1.1" viewBox="0 0 113.01 35.854" xmlns="http://www.w3.org/2000/svg">
+                <svg id="qntm-logo" width="113.01mm" height="35.854mm" version="1.1" viewBox="0 0 113.01 35.854" xmlns="http://www.w3.org/2000/svg">
                     <g transform="translate(-29.073 -124.98)">
                         <g transform="translate(72.288 3.428)">
-                            <path d="m-41.628 136.69-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z"
-                                  fill="#0399da"/>
-                            <path d="m-41.628 140.6-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z"
-                                  fill="#0f73d8"/>
-                            <path d="m-41.628 144.51-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z"
-                                  fill="#2a3aba"/>
-                            <path d="m-27.229 125.58-15.697 7.8486 15.594 8.2098 16.213-8.0036zm0.03566 1.4066 13.391 6.6952-13.477 6.6528-12.961-6.8244z"
-                                  fill="#fec33a"/>
+                            <path d="m-41.628 136.69-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z" fill="#0399da"/>
+                            <path d="m-41.628 140.6-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z" fill="#0f73d8"/>
+                            <path d="m-41.628 144.51-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z" fill="#2a3aba"/>
+                            <path d="m-27.229 125.58-15.697 7.8486 15.594 8.2098 16.213-8.0036zm0.03566 1.4066 13.391 6.6952-13.477 6.6528-12.961-6.8244z" fill="#fec33a"/>
                         </g>
                         <path d="m67.29 160.83v-35.854z" fill="#e6e6e6" stroke="#e6e6e6" stroke-width="1.274"/>
-                        <text x="71.986778" y="150.72281" fill="#e6e6e6" font-family="sans-serif" font-size="24px"
-                              stroke-width=".60614" style="line-height:1.25" xml:space="preserve"><tspan x="71.986778"
-                                                                                                         y="150.72281"
-                                                                                                         fill="#e6e6e6"
-                                                                                                         font-family="'Bebas Neue'"
-                                                                                                         stroke-width=".60614">
-                                QUANTUM
-                            </tspan></text>
-                        <text transform="scale(.26458)" fill="#000000" font-family="sans-serif" font-size="40px"
-                              style="line-height:1.25;shape-inside:url(#rect14263);white-space:pre"
-                              xml:space="preserve"/>
+                        <text x="71.986778" y="150.72281" fill="#e6e6e6" font-family="sans-serif" font-size="24.245px" stroke-width=".60614" style="line-height:1.25" xml:space="preserve"><tspan x="71.986778" y="150.72281" fill="#e6e6e6" font-family="'Bebas Neue'" stroke-width=".60614">QUANTUM</tspan></text>
+                        <text transform="scale(.26458)" fill="#000000" font-family="sans-serif" font-size="40px" style="line-height:1.25;shape-inside:url(#rect14263);white-space:pre" xml:space="preserve"/>
                     </g>
                 </svg>
             </a>
@@ -90,7 +77,7 @@
                         <a href="/resources" class="qntm-navbar-link font-special-text">Resources</a>
                     </li>
                     <li class="qntm-navbar-list-item">
-                        <a href="/about" class="qntm-navbar-link font-special-text">Company</a>
+                        <a href="/about" class="qntm-navbar-link font-special-text">About Us</a>
                     </li>
 
                 </ul>
@@ -100,14 +87,16 @@
                         <div>
                             <a href="" class="qntm-navbar-link font-special-text">Sign In</a>
                         </div>
-                        <a class="qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small" href="#">Try
+                        <a class="qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small"
+                           href="#">Try
                             Free</a>
                     <% } else { %>
                         <!-- logged in navbar -->
                         <div>
                             <a href="" class="qntm-navbar-link font-special-text">Sign In</a>
                         </div>
-                        <a class="qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small" href="#">Try
+                        <a class="qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small"
+                           href="#">Try
                             Free</a>
                     <% } %>
                 </div>
@@ -178,19 +167,14 @@
     <section class="qntm-section-footer">
         <div class="qntm-footer-link-container">
 
+            <a href="/" class="qntm-link-footer font-special-text">Overview</a>
             <a href="/features" class="qntm-link-footer font-special-text">Features</a>
             <a href="/pricing" class="qntm-link-footer font-special-text">Pricing</a>
             <a href="/resources" class="qntm-link-footer font-special-text">Resources</a>
-            <a href="/about" class="qntm-link-footer font-special-text">Company</a>
+            <a href="/about" class="qntm-link-footer font-special-text">About Us</a>
+            <a href="/terms" class="qntm-link-footer font-special-text">Terms of Use</a>
             <a href="/privacy" class="qntm-link-footer font-special-text">Privacy</a>
-            <a href="/security" class="qntm-link-footer font-special-text">Security</a>
-            <% if(me) { %>
-                <!-- logged in footer -->
-                <a href="/logout" class="qntm-link-footer font-special-text">Sign Out</a>
-            <% } else { %>
-                <!-- logged out footer -->
-                <a href="/login" class="qntm-link-footer font-special-text">Sign In</a>
-            <% } %>
+
         </div>
         <div class="qntm-footer-copyright-container">
             <p class="font-small-text">© Double A, Inc. 2021. We love our users!</p>

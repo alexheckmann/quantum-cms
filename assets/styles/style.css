@@ -23,6 +23,14 @@ body {
   margin: 0;
 }
 
+a {
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: inherit;
+}
+
 .qntm-button {
   padding: 10px 32px;
   font-size: 16px;
@@ -38,6 +46,7 @@ body {
 
 .qntm-button:hover {
   background-color: var(--color-light-blue);
+  color: rgb(255, 255, 255);
 }
 
 #qntm-logo {
@@ -59,15 +68,15 @@ body {
   will-change: opacity;
   width: 100%;
   height: 100vh;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   position: absolute;
   background-color: black;
 }
 
 .qntm-navbar-sticky {
   position: sticky;
-  top: 0px;
+  top: 0;
   z-index: 9999;
   width: 100%;
 
@@ -76,11 +85,10 @@ body {
 }
 
 .qntm-navbar {
-  min-width: 300px;
   width: 100%;
   position: relative;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   z-index: 1;
 
   color: white;
@@ -106,8 +114,8 @@ body {
 
 .qntm-navbar-link-container {
   box-sizing: border-box;
-  margin: 0px;
-  min-width: 0px;
+  margin: 0;
+  min-width: 0;
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
@@ -117,7 +125,7 @@ body {
 }
 
 .qntm-navbar-left-links {
-  margin: 0px 0px 0px 16px;
+  margin: 0 0 0 16px;
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
@@ -125,7 +133,7 @@ body {
   align-items: center;
   height: var(--nav-height-big);
   list-style: none;
-  padding: 0px;
+  padding: 0;
   opacity: 1;
   pointer-events: initial;
   will-change: opacity;
@@ -158,8 +166,12 @@ body {
   margin-right: calc(var(--right-space) - 16px);
 }
 
+.qntm-navbar-right-links div .qntm-navbar-link:hover {
+  color: var(--color-dark-blue);
+}
+
 .qntm-navbar-link {
-  text-decoration: none;
+  text-decoration: none !important;
   color: white;
 }
 
@@ -194,7 +206,7 @@ body {
 
 .qntm-menu-wrapper {
   display: none;
-  min-width: 0px;
+  min-width: 0;
   min-height: calc(100% - var(--nav-height-small));
   height: calc(100vh - var(--nav-height-small));
   background-color: var(--color-dark-blue);
@@ -202,7 +214,7 @@ body {
   max-width: 99vw;
   position: absolute;
   top: var(--nav-height-small);
-  left: 0px;
+  left: 0;
   will-change: left;
   z-index: 1;
   flex-direction: column;
@@ -227,9 +239,9 @@ body {
 
 .qntm-menu-separator {
   box-sizing: border-box;
-  min-width: 0px;
+  min-width: 0;
   margin: 2px 0;
-  border-width: 0px 0px 1px;
+  border-width: 0 0 1px;
   border-top-style: initial;
   border-right-style: initial;
   border-left-style: initial;
@@ -252,7 +264,7 @@ body {
 }
 
 .qntm-navbar-button:hover {
-  background-color: var(--color-light-blue);
+  background-color: var(--color-dark-blue);
   color: white;
 }
 
@@ -267,9 +279,8 @@ body {
 }
 
 .qntm-eye-catcher-headline {
-  padding-bottom: 20px;
   text-align: center;
-  padding-top: 10px;
+  padding: 20px 0;
   margin: auto;
   max-width: 500px;
 }
@@ -287,18 +298,14 @@ body {
 .qntm-eye-catcher-button {
   text-align: center;
   padding: 0;
-  margin: auto;
-  margin-top: 3px;
-  margin-bottom: 0;
+  margin: 3px auto 0;
   max-width: 370px;
 }
 
 .qntm-eye-catcher-content-small {
   text-align: center;
-  padding: 10px 0;
-  margin: auto;
-  padding-bottom: 0;
-  margin-bottom: 0;
+  padding: 10px 0 0;
+  margin: auto auto 0;
   max-width: 370px;
 }
 
@@ -328,6 +335,10 @@ body {
   flex: 1;
 }
 
+.qntm-terms-of-use-text-container h4 {
+  padding-top: 20px;
+}
+
 
 .qntm-feature-intro-section {
   padding: 25px;
@@ -347,7 +358,7 @@ body {
 }
 
 .qntm-feature-intro-title-width-container {
-  margin: 0px auto;
+  margin: 0 auto;
   max-width: 450px;
 }
 
@@ -370,7 +381,7 @@ body {
   margin: auto;
 }
 
-.qntm-feature-item-section {
+.qntm-slalom-section {
   max-width: 1025px;
   padding: 80px 0;
   margin: 30px auto;
@@ -382,31 +393,35 @@ body {
   --feature-item-margin: clamp(30px, 1.1vw, 50px);
 }
 
-.qntm-feature-item-section-reverse {
+.qntm-section-reverse {
 }
 
-.qntm-feature-item-graphic {
+.qntm-slalom-graphic {
   position: relative;
   width: auto;
+  display: flex;
+  justify-content: center;
+  order: 1;
 }
 
-.qntm-feature-item-graphic-reverse {
+.qntm-slalom-reverse {
+  order: 0;
 }
 
-.qntm-feature-item-graphic img {
+.qntm-slalom-graphic img {
   max-width: 80%;
   width: 370px;
   height: auto;
   float: right;
-  margin: 0px var(--feature-item-margin);
+  margin: 0 var(--feature-item-margin);
 }
 
-.qntm-feature-item-graphic-reverse img {
+.qntm-slalom-reverse img {
   float: left;
-  margin: 0px var(--feature-item-margin);
+  margin: 0 var(--feature-item-margin);
 }
 
-.qntm-feature-item-text {
+.qntm-slalom-text {
   width: 100%;
   flex: 1;
   display: block;
@@ -414,22 +429,22 @@ body {
   align-items: center;
   align-content: center;
   max-width: clamp(432px, 1vw, 560px);
-  margin: 0px var(--feature-item-margin);
+  margin: 0 var(--feature-item-margin);
 }
 
-.qntm-feature-item-text-reverse {
+.qntm-slalom-text-reverse {
 
 }
 
-.qntm-feature-item-text-title {
-  margin-top: 0px;
+.qntm-slalom-text-title {
+  margin-top: 0;
 }
 
-.qntm-feature-item-text-title h3 {
+.qntm-slalom-text-title h3 {
   display: inline;
 }
 
-.qntm-feature-item-text-descripion {
+.qntm-slalom-text-descripion {
   margin-top: 16px;
 }
 
@@ -440,7 +455,7 @@ body {
 
 .qntm-why-container {
   width: clamp(20ch, 90%, 160ch);
-  padding: clamp(20px, 50px, 80px) clamp(20px, 40px, 40px) clamp(20px, 50px, 80px);
+  padding: clamp(20px, 40px, 80px);
   margin: 0 20px;
 }
 
@@ -455,11 +470,11 @@ body {
   display: block;
   float: left;
   width: 70%;
-  padding: 0px 10px;
+  padding: 10px;
 }
 
 .qntm-why-title-question {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .qntm-why-title {
@@ -500,6 +515,61 @@ body {
   line-height: 40px;
 }
 
+/* Pricing page */
+.qntm-pricing-section {
+  padding: 40px 0;
+  width: 100%;
+}
+
+.qntm-pricing-container {
+  justify-content: space-around;
+  margin: auto;
+  max-width: 1100px;
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.qntm-pricing-box {
+  display: flex;
+  flex-direction: column;
+  order: 0;
+  margin: 10px;
+}
+
+.qntm-pricing-content {
+  max-width: 300px;
+  margin: 20px;
+}
+
+.qntm-pricing-content p {
+  margin: 16px 0;
+}
+
+.qntm-pricing-title {
+  margin: 7px 0;
+}
+
+.qntm-pricing-price-tag {
+  margin-top: 0;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.qntm-pricing-separator-line {
+  border-bottom: 1px solid lightgray;
+  padding-top: 30px;
+}
+
+.qntm-pricing-list {
+  padding-top: 10px;
+  padding-inline-start: 30px;
+}
+
+.qntm-pricing-list-item {
+  padding-top: 10px;
+}
+
 /* separators */
 .qntm-separator-line {
   margin: auto;
@@ -516,8 +586,7 @@ body {
 }
 
 .qntm-separator-line-short {
-  margin: auto;
-  margin-bottom: 6rem;
+  margin: auto auto 6rem;
   border-bottom: 1px solid lightgray;
   width: 50%;
 }
@@ -537,7 +606,8 @@ body {
 .qntm-link-footer {
   text-decoration: none;
   color: var(--color-dark-blue);
-  padding: 1.5em;
+  padding: 1em;
+  margin: 0.5em;
   white-space: nowrap
 }
 
@@ -553,31 +623,8 @@ footer a:hover {
   padding: 0;
 }
 
-@media screen and (max-width: 850px) {
-  /* displays the links in the footer in column */
-  .qntm-footer-link-container {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin: auto;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: center;
-    font-size: 18px;
-  }
-
-  .qntm-footer-link-container .qntm-link-footer {
-    padding: 0.75em;
-    margin: 0;
-  }
-
-  .qntm-eye-catcher-section {
-    background: none;
-  }
-}
-
 /* Screen resolution for tablets */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1078px) {
 
   /* Smaller navbar for smaller resolutions*/
   .qntm-navbar-container {
@@ -616,7 +663,7 @@ footer a:hover {
   /* Increases font size for links when the menu is open */
   .qntm-navbar-list-item {
     line-height: 1em;
-    flex: 1 1 0%;
+    flex: 1 1 0;
     text-align: left;
     padding: 1.5em 0;
   }
@@ -633,7 +680,7 @@ footer a:hover {
 
   .qntm-menu-button-section div {
     display: inline-block;
-    flex: 1 1 0%;
+    flex: 1 1 0;
     text-align: center;
   }
 
@@ -647,63 +694,90 @@ footer a:hover {
   .qntm-menu-button-section a {
     font-size: 18px;
   }
+
+  /* adjusts container width so that only pricing cards are displayed beautifully */
+  .qntm-pricing-container {
+    width: 75%;
+  }
+
+  /* changes order so that the middle container is displayed first */
+  .qntm-pricing-middle-box {
+    order: -1;
+  }
+
+  /* increases width so that title uses full space */
+  .qntm-why-parent-text {
+    width: 100%;
+  }
+
+  /* changes flex behavior of the why section for better responsiveness */
+  .qntm-why-box-container {
+    flex-direction: column;
+  }
+
+  /* changes flex behavior of the why section for better responsiveness */
+  .qntm-why-box {
+    flex: 0 1 0;
+    margin: var(--feature-item-margin) 0;
+  }
 }
 
-/* Pricing page */
-.qntm-pricing-section {
-  display: flex;
-  justify-content: center;
+@media screen and (max-width: 850px) {
+  /* displays the links in the footer in column */
+  .qntm-footer-link-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: auto;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    font-size: 18px;
+  }
+
+  .qntm-footer-link-container .qntm-link-footer {
+    padding: 0.75em;
+    margin: 0;
+  }
+
+  .qntm-pricing-box {
+    margin: 10px 25px;
+  }
 }
 
-.qntm-pricing-container {
-  width: clamp(20ch, 65%, 160ch);
-  padding: clamp(20px, 50px, 80px) clamp(20px, 40px, 40px) clamp(20px, 50px, 80px);
+/* Media query for small tablets / big smartphones */
+@media screen and (max-width: 621px) {
+
+  /* centers items & text */
+  .qntm-slalom-section, .qntm-getting-started-section {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* switches position of picture with feature description */
+  .qntm-slalom-reverse {
+    order: 1;
+  }
+
+  /* increases bottom margin for a better look when switched */
+  .qntm-slalom-text {
+    margin-bottom: var(--feature-item-margin);
+  }
+
+  /* increasing width to 100% again for a better look */
+  .qntm-pricing-container {
+    width: 100%;
+  }
+
+  /* changes flex behavior for small display size */
+  .qntm-getting-started-container {
+    flex-direction: column;
+  }
+
+  /* increasing bottom margin when the button layout was moved */
+  .qntm-getting-started-text-container {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 }
 
-.qntm-pricing-parent {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.qntm-pricing-box-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.qntm-pricing-box {
-  flex: 0 1 320px;
-  padding: 0 10px;
-  margin-top: 50px;
-  vertical-align: top;
-}
-
-.qntm-pricing-content {
-  padding: 20px 12px;
-  width: calc(100% - 30px);
-}
-
-.qntm-pricing-title {
-  margin: 7px 0;
-}
-
-.qntm-pricing-price-tag {
-  margin-top: 0;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-}
-
-.qntm-pricing-separator-line {
-  border-bottom: 1px solid lightgray;
-  padding-top: 30px;
-}
-
-.qntm-pricing-list {
-  padding-top: 10px;
-  padding-inline-start: 30px;
-}
-
-.qntm-pricing-list-item {
-  padding-top: 10px;
-}

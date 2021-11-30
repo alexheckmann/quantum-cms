@@ -34,12 +34,7 @@ module.exports.routes = {
   'GET /account/profile': {action: 'account/view-edit-profile'},
 
   // our routes
-  '/': {
-    view: 'pages/homepage',
-    locals: {
-      layout: 'layouts/layout'
-    }
-  },
+  '/': {view: 'pages/homepage', locals: {layout: 'layouts/layout'}},
   //'GET /register': {
   //  view: 'register'
   //},
@@ -47,8 +42,9 @@ module.exports.routes = {
   //  action: 'newuser'
   //},
   'GET /pricing': {view: 'pages/pricing', locals: {layout: 'layouts/layout'}},
-  'GET /privacy': {view: 'privacy'},
-  //'GET /termsofuse': {view: 'pages/termsofuse'},
+  'GET /privacy': {view: 'pages/privacy', locals: {layout: 'layouts/layout'}},
+  'GET /terms': {view: 'pages/terms', locals: {layout: 'layouts/layout'}},
+  'GET /about': {view: 'pages/about', locals: {layout: 'layouts/layout'}},
 
   //  ╔╦╗╦╔═╗╔═╗  ╦═╗╔═╗╔╦╗╦╦═╗╔═╗╔═╗╔╦╗╔═╗   ┬   ╔╦╗╔═╗╦ ╦╔╗╔╦  ╔═╗╔═╗╔╦╗╔═╗
   //  ║║║║╚═╗║    ╠╦╝║╣  ║║║╠╦╝║╣ ║   ║ ╚═╗  ┌┼─   ║║║ ║║║║║║║║  ║ ║╠═╣ ║║╚═╗
