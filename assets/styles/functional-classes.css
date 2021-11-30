@@ -150,6 +150,13 @@
   background-size: contain;
 }
 
+.background-image-right-side {
+  background-image: url("../images/background_side_right.svg");
+  background-repeat: no-repeat;
+  background-position: 100% 60%;
+  background-size: contain;
+}
+
 .display-flex {
     display: flex;
 }
