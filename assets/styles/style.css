@@ -402,6 +402,9 @@ body {
   --feature-item-margin: clamp(30px, 1.1vw, 50px);
 }
 
+.qntm-section-reverse {
+}
+
 .qntm-slalom-graphic {
   position: relative;
   width: auto;
@@ -436,6 +439,10 @@ body {
   align-content: center;
   max-width: clamp(432px, 1vw, 560px);
   margin: 0 var(--feature-item-margin);
+}
+
+.qntm-slalom-text-reverse {
+
 }
 
 .qntm-slalom-text-title {
@@ -573,6 +580,11 @@ body {
   padding-top: 10px;
 }
 
+/* signup page */
+.qntm-signup-checkbox-item {
+  margin-top: 0.35rem;
+}
+
 /* about us page */
 .qntm-about-us-eye-catcher-section {
   padding: 25px;
@@ -586,16 +598,16 @@ body {
 
 .qntm-statement-item-section {
   max-width: 1025px;
-  padding: 0px 50px;
+  padding: 0px 0px;
   margin: 30px auto;
-  align-items: flex-start;
+  align-items: left;
   justify-content: start;
   flex-wrap: wrap;
   display: flex;
 }
 
 .qntm-statement-item-section-reverse {
-  align-items: flex-end;
+  align-items: right;
   justify-content: end;
 }
 
@@ -605,10 +617,16 @@ body {
   flex: 1;
   display: block;
   justify-content: left;
-  align-items: flex-start;
+  align-items: left;
   align-content: center;
   max-width: clamp(432px, 1vw, 660px);
-  margin: 0 var(--feature-item-margin);
+  margin-right: clamp(50px, 1.1vw, 82px);
+  margin-left: clamp(30px, 1.1vw, 50px);
+}
+
+.qntm-statement-item-text-reverse {
+  margin-right: var(--feature-item-margin);
+  margin-left: clamp(50px, 1.1vw, 82px);
 }
 
 .qntm-statement-item-text-description {
@@ -675,6 +693,10 @@ body {
   height: auto;
   float: left;
   margin: 0px var(--feature-item-margin);
+}
+
+.qntm-team-graphic figure figcaption {
+  padding-top: 20px;
 }
 
 /* about page */
@@ -851,7 +873,7 @@ footer a:hover {
   }
 
   /* centers items & text */
-  .qntm-slalom-section, .qntm-statement-item-section {
+  .qntm-slalom-section, .qntm-getting-started-section {
     justify-content: center;
     text-align: center;
   }
@@ -893,12 +915,6 @@ footer a:hover {
   /* increasing width to 100% again for a better look */
   .qntm-pricing-container {
     width: 100%;
-  }
-
-  /* centers items & text */
-  .qntm-getting-started-section {
-    justify-content: center;
-    text-align: center;
   }
 
   /* changes flex behavior for small display size */
