@@ -570,6 +570,11 @@ body {
   padding-top: 10px;
 }
 
+/* signup page */
+.qntm-signup-checkbox-item {
+  margin-top: 0.35rem;
+}
+
 /* about us page */
 .qntm-about-us-eye-catcher-section {
   padding: 25px;

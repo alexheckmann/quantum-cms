@@ -85,7 +85,7 @@
                     <% if (me) { %>
                         <!-- logged in navbar -->
                         <div>
-                            <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
+                            <a href="/logout" class="qntm-navbar-link font-special-text">Sign Out</a>
                         </div>
                         <a class="qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small"
                            href="/signup">Try
@@ -127,13 +127,13 @@
                         <a class="qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small"
                            href="/signup">Try Free</a>
                         <div>
-                            <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
+                            <a href="/logout" class="qntm-navbar-link font-special-text">Sign Out</a>
                         </div>
                     <% } else { %>
                         <a class="qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small"
                            href="/signup">Try Free</a>
                         <div>
-                            <a href="/login" class="qntm-navbar-link font-special-text">Sign Out</a>
+                            <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
                         </div>
                     <% } %>
                 </div>
@@ -192,7 +192,7 @@
     */ %>
 
 <% /* Own JavaScript */ %>
-<script src="/js/navbar-animation.js"></script>
+<!-- <script src="/js/navbar-animation.js"></script> -->
 
 <% /* Stripe.js */ %>
 <script src="https://js.stripe.com/v3/"></script>
