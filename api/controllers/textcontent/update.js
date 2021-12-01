@@ -1,10 +1,10 @@
 module.exports = {
 
 
-    friendlyName: 'Create',
+    friendlyName: 'Update',
   
   
-    description: 'Create text content.',
+    description: 'Update text content.',
   
   
     inputs: {
