@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>Text content</h1>
+
+    <form action="/textcontent">
+        <label>Search</label>
+        <input type="text" value="" length="20" name="q">
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Content</th>
+                  <th scope="col">Show</th>
+                  <th scope="col">Change</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+            <tbody>
+                <% textcontents.forEach(function(textcontent){ %>
+                    <tr class="">
+                        <td class="">
+                            <%= textcontent.id %>
+                        </td>
+                        <td class="">
+                            <%= textcontent.title %>
+                        </td>
+                        <td class="">
+                            <%= textcontent.content %>
+                        </td>
+                        <td class=""> <a href="/textcontent/<%= textcontent.id %>">show</a></td>
+                        <td class=""> <a href="/textcontent/<%= textcontent.id %>/edit">edit</a></td>
+                        <td class=""> <a href="/textcontent/<%= textcontent.id %>/destroy">delete</a></td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+        <a class="btn btn-info mb-4" href="/textcontent/new">Add</a>
+    </div>
+</div>
+</div>

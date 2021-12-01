@@ -1,0 +1,16 @@
+<div class="container">
+    <form action="/textcontent" method="post">
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+        <div>
+            <div>
+                <label>Title</label>
+            </div>
+            <textarea name="title" type="text" maxlength="80" id="" cols="30" rows="1"></textarea>
+            <div>
+                <label>Content</label>
+            </div>
+            <textarea name="content" type="text" maxlength="1024" id="" cols="30" rows="10"></textarea>
+        </div>
+        <button type="submit">Hinzufügen</button>
+    </form>
+</div>

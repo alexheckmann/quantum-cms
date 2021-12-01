@@ -1,0 +1,23 @@
+<div class="container">
+    <form action="/textcontent/<%= textcontent.id %>/update" method="post">
+        <div>
+            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+            <input type="hidden" name="id" value="<%= textcontent.id %>">
+            <div>
+                <label>Title</label>
+            </div>
+            <div>
+                <input type="text" maxlength="80" name="title" value="<%= textcontent.title %>">
+            </div>
+            <div>
+                <label>Content</label>
+            </div>
+            <div>
+                <input type="text" name="content" value="<%= textcontent.content %>">
+            </div>
+        </div>
+        <button class="btn btn-info mt-4 mb-4" type="submit">
+            Aktualisieren
+        </button>
+    </form>
+</div>

@@ -75,4 +75,20 @@ module.exports.routes = {
   'POST  /api/v1/deliver-contact-form-message': {action: 'deliver-contact-form-message'},
   'POST  /api/v1/observe-my-session': {action: 'observe-my-session', hasSocketFeatures: true},
 
+  //
+  // textcontent
+  //
+
+  'GET /textcontent/new': { view: 'pages/textcontent/new' },
+  'POST /textcontent': { action: 'textcontent/create' },
+
+  'GET /textcontent/:id/edit': { action: 'textcontent/edit' },
+  'POST /textcontent/:id/update': { action: 'textcontent/update' }, 
+
+  'GET /textcontent/:id/destroy': { action: 'textcontent/destroy' },
+
+  'GET /textcontent/:id': { action:'textcontent/find-one' },
+
+  'GET /textcontent': { action: 'textcontent/find' } 
+
 };
