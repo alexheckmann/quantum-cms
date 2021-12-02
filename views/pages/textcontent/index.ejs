@@ -10,31 +10,12 @@
 
     <div class="container">
         <table class="table">
-            <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Content</th>
-                  <th scope="col">Show</th>
-                  <th scope="col">Change</th>
-                  <th scope="col">Delete</th>
-                </tr>
-              </thead>
             <tbody>
                 <% textcontents.forEach(function(textcontent){ %>
                     <tr class="">
-                        <td class="">
-                            <%= textcontent.id %>
-                        </td>
-                        <td class="">
-                            <%= textcontent.title %>
-                        </td>
-                        <td class="">
-                            <%= textcontent.content %>
-                        </td>
-                        <td class=""> <a href="/textcontent/<%= textcontent.id %>">show</a></td>
-                        <td class=""> <a href="/textcontent/<%= textcontent.id %>/edit">edit</a></td>
-                        <td class=""> <a href="/textcontent/<%= textcontent.id %>/destroy">delete</a></td>
+                        <!--td class=""> <a href="/textcontent/<%= textcontent.id %>"><%= textcontent.title %></a></td-->
+                        <td class=""> <a href="/textcontent/<%= textcontent.id %>/edit"><%= textcontent.title %></a></td>
+                        <!-- td class=""> <a href="/textcontent/<%= textcontent.id %>/destroy">delete</a></td-->
                     </tr>
                     <% }); %>
             </tbody>
