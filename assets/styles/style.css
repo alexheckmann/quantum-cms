@@ -873,7 +873,7 @@ footer a:hover {
   }
 
   /* centers items & text */
-  .qntm-slalom-section, .qntm-getting-started-section {
+  .qntm-slalom-section {
     justify-content: center;
     text-align: center;
   }
@@ -912,7 +912,7 @@ footer a:hover {
     background-image: none;
   }
 
-  .qntm-statement-item-section {
+  .qntm-statement-item-section, .qntm-getting-started-section {
     justify-content: center;
     text-align: center;
   }
