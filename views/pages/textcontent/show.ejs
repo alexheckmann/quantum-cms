@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="m-4">
+        <h1 class="text-4xl font-sans text-gray-500 font-light ml-2 mt-4">Show content entry.</h1>
+
+        <div class="">
+            <%= message ? message : "" %>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Content</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>
+                        <%= textcontent.title %>
+                    </td>
+                    <td>
+                        <%= textcontent.content %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-info" href="/textcontent">Show content</a>
+
+    </div>
+</div>

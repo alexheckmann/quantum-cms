@@ -199,16 +199,25 @@ without necessarily having a billing card.`
       via: 'admins'
     },
 
-    authorOf: {
+    authorOfText: {
       collection: 'TextContent',
       via: 'author'
     },
 
-    updated: {
+    hasUpdatedText: {
       collection: 'TextContent',
+      via: 'updatedFrom'
+    },
+
+    authorOfImage: {
+      collection: 'ImageContent',
+      via: 'author'
+    },
+
+    hasUpdatedImage: {
+      collection: 'ImageContent',
       via: 'updatedFrom'
     }
   },
-
 
 };
