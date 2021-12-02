@@ -5,6 +5,7 @@
   --color-grey: #4B4B4B;
   --color-light-blue: #029BDE;
   --color-dark-blue: #173361;
+  --slalom-item-margin: clamp(30px, 1.1vw, 50px);
 }
 
 html {
@@ -29,6 +30,15 @@ a {
 
 a:hover {
   color: inherit;
+}
+
+/* makes images not draggable */
+img, svg {
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+
 }
 
 .qntm-button {
@@ -390,7 +400,7 @@ body {
   flex-wrap: wrap;
   display: flex;
 
-  --feature-item-margin: clamp(30px, 1.1vw, 50px);
+  --slalom-item-margin: clamp(30px, 1.1vw, 50px);
 }
 
 .qntm-section-reverse {
@@ -413,12 +423,12 @@ body {
   width: 370px;
   height: auto;
   float: right;
-  margin: 0 var(--feature-item-margin);
+  margin: 0 var(--slalom-item-margin);
 }
 
 .qntm-slalom-reverse img {
   float: left;
-  margin: 0 var(--feature-item-margin);
+  margin: 0 var(--slalom-item-margin);
 }
 
 .qntm-slalom-text {
@@ -429,7 +439,7 @@ body {
   align-items: center;
   align-content: center;
   max-width: clamp(432px, 1vw, 560px);
-  margin: 0 var(--feature-item-margin);
+  margin: 0 var(--slalom-item-margin);
 }
 
 .qntm-slalom-text-reverse {
@@ -535,6 +545,7 @@ body {
   flex-direction: column;
   order: 0;
   margin: 10px;
+  background-color: rgb(255, 255, 255);
 }
 
 .qntm-pricing-content {
@@ -588,16 +599,16 @@ body {
 
 .qntm-statement-item-section {
   max-width: 1025px;
-  padding: 0px 0px;
+  padding: 0 0;
   margin: 30px auto;
-  align-items: left;
+  align-items: flex-start;
   justify-content: start;
   flex-wrap: wrap;
   display: flex;
 }
 
 .qntm-statement-item-section-reverse {
-  align-items: right;
+  align-items: flex-end;
   justify-content: end;
 }
 
@@ -607,15 +618,14 @@ body {
   flex: 1;
   display: block;
   justify-content: left;
-  align-items: left;
+  align-items: flex-start;
   align-content: center;
   max-width: clamp(432px, 1vw, 660px);
-  margin-right: clamp(50px, 1.1vw, 82px);
-  margin-left: clamp(30px, 1.1vw, 50px);
+  margin: 0 var(--slalom-item-margin);
 }
 
 .qntm-statement-item-text-reverse {
-  margin-right: var(--feature-item-margin);
+  margin-right: var(--slalom-item-margin);
   margin-left: clamp(50px, 1.1vw, 82px);
 }
 
@@ -646,7 +656,7 @@ body {
   display: block;
   float: left;
   width: 70%;
-  padding: 0px 10px;
+  padding: 0 10px;
 }
 
 .qntm-team-title {
@@ -682,7 +692,7 @@ body {
   width: 370px;
   height: auto;
   float: left;
-  margin: 0px var(--feature-item-margin);
+  margin: 0 var(--slalom-item-margin);
 }
 
 .qntm-team-graphic figure figcaption {
@@ -853,7 +863,7 @@ footer a:hover {
   /* changes flex behavior of the why section for better responsiveness */
   .qntm-why-box {
     flex: 0 1 0;
-    margin: var(--feature-item-margin) 0;
+    margin: var(--slalom-item-margin) 0;
   }
 }
 
@@ -875,7 +885,7 @@ footer a:hover {
 
   /* increases bottom margin for a better look when switched */
   .qntm-slalom-text {
-    margin-bottom: var(--feature-item-margin);
+    margin-bottom: var(--slalom-item-margin);
   }
 
   /* displays the links in the footer in column */
@@ -898,6 +908,14 @@ footer a:hover {
 
 /* Media query for small tablets / big smartphones */
 @media screen and (max-width: 621px) {
+  section.qntm-feature-intro-section.background-image-left-side {
+    background-image: none;
+  }
+
+  .qntm-statement-item-section {
+    justify-content: center;
+    text-align: center;
+  }
 
   /* increasing width to 100% again for a better look */
   .qntm-pricing-container {
