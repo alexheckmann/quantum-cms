@@ -31,8 +31,16 @@ module.exports = {
   
     fn: async function (inputs) {
       sails.log.debug("Create new text content.")
-      let textcontent = await TextContent.create(inputs).fetch();
-      sails.log.debug("New text content....")
+      let textcontent = {
+        author: this.req.session.userId,
+        status: 'active',
+        endpoint: 'https://qntm-cms.herokuapp.com/textcontent/'+inputs.id+'/'+inputs.title,
+        title: inputs.title,
+        content: inputs.content
+      };
+
+      textcontent = await TextContent.create(textcontent).fetch();
+      
       sails.log.debug(textcontent)
       if (!textcontent) { throw 'notFound'; }
       return {
