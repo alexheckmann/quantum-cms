@@ -1,0 +1,15 @@
+<div class="container">
+    <form action="/organisation/<%= org.id %>/update" method="post">
+        <div>
+            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+            <input type="hidden" name="id" value="<%= org.id %>">
+            <div>
+                <label>Name</label>
+            </div>
+            <textarea name="name" type="text" maxlength="80" id="" cols="30" rows="1"><%= org.name %></textarea>
+        </div>
+        <button class="btn btn-info mt-4 mb-4" type="submit">
+            Aktualisieren
+        </button>
+    </form>
+</div>

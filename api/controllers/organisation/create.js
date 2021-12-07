@@ -4,7 +4,7 @@ module.exports = {
     friendlyName: 'Create organisation',
 
 
-    description: 'Create organisation.',
+    description: 'Create a new organisation.',
 
 
     inputs: {
@@ -27,27 +27,26 @@ module.exports = {
     fn: async function (inputs) {
         // create new organisation
         sails.log.debug("Create new organisation.")
-        let organisation = {
+        let org = {
             name: inputs.name,
         };
-        organisation = await Organisation.create(organisation).fetch();
+        org = await Organisation.create(org).fetch();
         sails.log.debug('Created Organisation:')
-        sails.log.debug(organisation)
+        sails.log.debug(org)
 
-        // Add creating user to organisation and give admin rights
-        let user = await User.findOne({
-            id: this.req.session.userId,
-        }).update({
-            organisation: organisation.id,
-            admin: organisation.id
+        // adds the user who created the organisation to it and gives him admin rights.
+        let user = await User.updateOne({id: this.req.me.id }).set({
+            organisation: org.id,
+            admin: org.id
         });
+
         sails.log.debug('User:')
         sails.log.debug(user)
 
-        if (!textcontent) { throw 'notFound'; }
+        if (!org) { throw 'notFound'; }
         return {
             message: "Organisation successfully created.",
-            organisation: organisation
+            org: org
         };
     }
 

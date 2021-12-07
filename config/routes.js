@@ -89,6 +89,20 @@ module.exports.routes = {
 
   'GET /textcontent/:id': { action:'textcontent/find-one' },
 
-  'GET /textcontent': { action: 'textcontent/find' } 
+  'GET /textcontent': { action: 'textcontent/find' },
 
+
+  //
+  // organisation
+  //
+
+  'GET /organisation/new': { view: 'pages/organisation/new' },
+  'POST /organisation': { action: 'organisation/create' },
+
+  'GET /organisation/:id/edit': { action: 'organisation/edit' },
+  'POST /organisation/:id/update': { action: 'organisation/update' }, 
+
+  'GET /organisation/:id/destroy': { action: 'organisation/destroy' },
+
+  'GET /organisation': { action: 'organisation/find' },
 };
