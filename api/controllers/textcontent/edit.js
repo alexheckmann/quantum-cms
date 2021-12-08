@@ -29,7 +29,7 @@ module.exports = {
 
     fn: async function ({id}) {
 
-      let textcontent = await TextContent.findOne({ id: id }).populate('author');
+      let textcontent = await TextContent.findOne({ id: id }).populate('author').populate('updatedFrom');
       if (!textcontent) { throw 'notFound'; }
       return {
         textcontent: textcontent

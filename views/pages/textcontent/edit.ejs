@@ -56,8 +56,11 @@
                             </div>
                             <div class="d-flex justify-content-between text-left">
                                 <span>Last update by:</span>
+                                <% if (textcontent.updatedFrom != null) {%>
                                 <span><%=textcontent.updatedFrom.fullName%></span>
+                                <%}%>
                             </div>
+
                         </div>
                     </div>
                     <div class="bg-white shape-rounded-corners-big d-flex shape-drop-shadow-straight justify-content-center">
