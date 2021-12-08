@@ -12,7 +12,8 @@ module.exports = {
     success: {
       statusCode: 200,
       description: 'Requesting user is a guest, so show the public landing page.',
-      viewTemplatePath: 'pages/homepage'
+      // TODO change to pages/dashboard
+      viewTemplatePath: 'pages/textcontent/show'
     },
 
     redirect: {

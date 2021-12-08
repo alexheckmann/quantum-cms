@@ -89,6 +89,7 @@ module.exports.routes = {
 
   'GET /textcontent/:id': { action:'textcontent/find-one' },
 
-  'GET /textcontent': { action: 'textcontent/find', locals: {layout: 'layouts/layout'}}
+  'GET /textcontent': { action: 'textcontent/find', locals: {layout: 'layouts/layout'}},
 
+  'GET /dashboard': { view: 'pages/dashboard', locals: {layout: 'layouts/app-layout'}}
 };

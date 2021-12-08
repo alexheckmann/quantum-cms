@@ -1,54 +1,75 @@
-<div class="d-flex flex-column">
-    <div>
-        <h1>
-            <%= textcontent.title %>
-        </h1>
-    </div>
-    <div class="d-flex justify-content-around">
-        <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big">
-            <div class="container">
-                <form action="/textcontent/<%= textcontent.id %>/update" method="post">
+<div class="dashboard-wrapper">
+    <form action="/textcontent/<%= textcontent.id %>/update" method="post">
+        <div class="d-flex flex-column">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="justify-content-start">
                     <div>
-                        <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-                        <input type="hidden" name="id" value="<%= textcontent.id %>">
-                        <div>
-                            <label>Title</label>
+                        <h1>
+                            <%= textcontent.title %>
+                        </h1>
+                    </div>
+                    <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big">
+                        <div class="container">
+                            <div>
+                                <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                                <input type="hidden" name="id" value="<%= textcontent.id %>">
+                                <div>
+                                    <label>Title</label>
+                                </div>
+                                <textarea name="title" type="text" maxlength="80" id="" cols="30"
+                                          rows="1"><%= textcontent.title %></textarea>
+                                <div>
+                                    <label>Content</label>
+                                </div>
+                                <textarea name="content" type="text" maxlength="1024" id="" cols="30"
+                                          rows="10"><%= textcontent.content %></textarea>
+                            </div>
                         </div>
-                        <textarea name="title" type="text" maxlength="80" id="" cols="30"
-                                  rows="1"><%= textcontent.title %></textarea>
+                    </div>
+                </div>
+                <div class="justify-content-center">
+                    <div class="d-flex justify-content-around align-content-center align-items-center">
                         <div>
-                            <label>Content</label>
+                            <button class="qntm-button shape-rounded-corners-small mt-4 mb-4 font-special-text border-0"
+                                    type="submit">
+                                Save
+                            </button>
                         </div>
-                        <textarea name="content" type="text" maxlength="1024" id="" cols="30"
-                                  rows="10"><%= textcontent.content %></textarea>
+                        <div>
+                            <span class="qntm-button shape-rounded-corners-small font-special-text">Cancel</span>
+                        </div>
                     </div>
-                    <button class="btn btn-info mt-4 mb-4" type="submit">
-                        Save
-                    </button>
-                </form>
-            </div>
-        </div>
-        <div>
-            <div class="bg-white shape-rounded-corners-big d-flex shape-drop-shadow-straight">
-                <div class="qntm-pricing-content d-flex flex-column">
-                    <h2>Information</h2>
-                    <div class="d-flex justify-content-between">
-                        <span>Last Updated:</span>
-                        <span><%= textcontent.updatedAt %></span>
+                    <div class="bg-white shape-rounded-corners-big d-flex shape-drop-shadow-straight justify-content-center">
+                        <div class="qntm-pricing-content d-flex flex-column">
+                            <h2>Information</h2>
+                            <div class="d-flex justify-content-between text-left">
+                                <span>Last Updated:</span>
+                                <span><%= textcontent.updatedAt %></span>
+                            </div>
+                            <div class="d-flex justify-content-between text-left">
+                                <span>Created At:</span>
+                                <span><%= textcontent.createdAt %></span>
+                            </div>
+                            <div class="d-flex justify-content-between text-left">
+                                <span>Author:</span>
+                                <span><!--%= textcontent.author %-->Alexander Heckmann</span>
+                            </div>
+                            <div class="d-flex justify-content-between text-left">
+                                <span>Last update by:</span>
+                                <span><!--%= textcontent.updatedFrom %-->Alexander Aichholz</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <span>Created At:</span>
-                        <span><%= textcontent.createdAt %></span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <span>Author:</span>
-                        <span><%= textcontent.author %></span>
+                    <div class="bg-white shape-rounded-corners-big d-flex shape-drop-shadow-straight justify-content-center">
+                        <div class="qntm-pricing-content">
+                            <div>
+                                <a href="/textcontent/<%= textcontent.id %>/destroy"
+                                   class="qntm-button shape-rounded-corners-small font-special-text">Delete</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div>
-
-            </div>
         </div>
-    </div>
+    </form>
 </div>

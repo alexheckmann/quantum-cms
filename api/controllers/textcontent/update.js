@@ -2,11 +2,11 @@ module.exports = {
 
 
     friendlyName: 'Update',
-  
-  
+
+
     description: 'Update text content.',
-  
-  
+
+
     inputs: {
       id: {
         description: 'The id of the text content.',
@@ -24,16 +24,16 @@ module.exports = {
         required: true
       },
     },
-  
-  
+
+
     exits: {
       success: {
         responseType: 'view',
-        viewTemplatePath: 'pages/textcontent/show'
+        viewTemplatePath: 'pages/textcontent/'
       },
     },
-  
-  
+
+
     fn: async function (inputs) {
       sails.log.debug("Update text content.")
       sails.log(inputs);
@@ -46,7 +46,6 @@ module.exports = {
         textcontent: textcontent
       };
     }
-  
-  
+
+
   };
-  
