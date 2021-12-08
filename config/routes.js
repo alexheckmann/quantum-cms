@@ -92,4 +92,17 @@ module.exports.routes = {
   'GET /textcontent': { action: 'textcontent/find', locals: {layout: 'layouts/layout'}},
 
   'GET /dashboard': { view: 'pages/dashboard', locals: {layout: 'layouts/app-layout'}}
+  //
+  // organisation
+  //
+
+  'GET /organisation/new': { view: 'pages/organisation/new' },
+  'POST /organisation': { action: 'organisation/create' },
+
+  'GET /organisation/:id/edit': { action: 'organisation/edit' },
+  'POST /organisation/:id/update': { action: 'organisation/update' },
+
+  'GET /organisation/:id/destroy': { action: 'organisation/destroy' },
+
+  'GET /organisation': { action: 'organisation/find' },
 };

@@ -1,0 +1,12 @@
+<div class="container">
+    <form action="/organisation" method="post">
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+        <div>
+            <div>
+                <label>Name</label>
+            </div>
+            <textarea name="name" type="text" maxlength="80" id="" cols="30" rows="1"></textarea>
+        </div>
+        <button type="submit">Hinzufügen</button>
+    </form>
+</div>
