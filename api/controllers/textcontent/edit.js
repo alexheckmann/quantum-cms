@@ -2,11 +2,11 @@ module.exports = {
 
 
     friendlyName: 'Edit',
-  
-  
+
+
     description: '',
-  
-  
+
+
     inputs: {
       id: {
         description: 'The text content of the user to look up.',
@@ -14,8 +14,8 @@ module.exports = {
         required: true
       }
     },
-  
-  
+
+
     exits: {
       success: {
         responseType: 'view',
@@ -26,14 +26,13 @@ module.exports = {
         responseType: 'notFound'
       }
     },
-  
+
     fn: async function ({id}) {
-  
-      let textcontent = await TextContent.findOne({ id: id });
+
+      let textcontent = await TextContent.findOne({ id: id }).populate('author');
       if (!textcontent) { throw 'notFound'; }
       return {
         textcontent: textcontent
       };
     }
   };
-  
