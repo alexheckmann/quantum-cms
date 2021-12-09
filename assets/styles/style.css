@@ -249,15 +249,15 @@ body {
   transition: all 0.3s ease;
 }
 
-.qntm-navbar-burger-toggle .qntm-line1 {
+.navbar-burger-toggle .line1 {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
 
-.qntm-navbar-burger-toggle .qntm-line2 {
+.navbar-burger-toggle .line2 {
   opacity: 0;
 }
 
-.qntm-navbar-burger-toggle .qntm-line3 {
+.navbar-burger-toggle .line3 {
   transform: rotate(45deg) translate(-5px, -5px);
 }
 
@@ -284,7 +284,7 @@ body {
   transition: transform 300ms ease-in;
 }
 
-.qntm-menu-active {
+.menu-active {
   transform: translateX(0%);
 }
 
