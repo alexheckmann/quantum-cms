@@ -169,21 +169,32 @@
                     <a href="" class="qntm-navbar-link font-special-text">Company</a>
                 </li>
                 <hr class="qntm-menu-separator">
-                <div class="qntm-menu-button-section">
                     <% if (me) { %>
-                        <a class="qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small"
-                           href="/signup">Try Free</a>
-                        <div>
+                          <!--logged in mobile -->
+                          <li class="qntm-navbar-list-item">
+                            <a href="/organisation" class="qntm-navbar-link font-special-text">Organisation</a>
+                          </li>
+                          <li class="qntm-navbar-list-item">
+                            <a href="/account/profile" class="qntm-navbar-link font-special-text">Profile</a>
+                          </li>
+                          <li class="qntm-navbar-list-item">
+                            <a href="#" class="qntm-navbar-link font-special-text">Documentation</a>
+                          </li>
+                          <hr class="qntm-menu-separator">
+
+                          <div class="qntm-menu-button-section">
                             <a href="/logout" class="qntm-navbar-link font-special-text">Sign Out</a>
-                        </div>
+                          </div>
                     <% } else { %>
-                        <a class="qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small"
-                           href="/signup">Try Free</a>
-                        <div>
-                            <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
-                        </div>
+                          <!--logged out mobile -->
+                          <div class="qntm-menu-button-section">
+                            <a class="qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small"
+                               href="/signup">Try Free</a>
+                            <div>
+                                <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
+                            </div>
+                          </div>
                     <% } %>
-                </div>
             </ul>
         </div>
     </nav>

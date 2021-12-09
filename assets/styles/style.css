@@ -981,3 +981,13 @@ footer a:hover {
   }
 }
 
+.qntm-mobile-menu {
+  line-height: 1em;
+  flex: 1 1 0;
+  text-align: center;
+  padding: 1.5em 0;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
