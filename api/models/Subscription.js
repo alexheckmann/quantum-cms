@@ -1,9 +1,15 @@
 module.exports = {
     attributes: {
-        status: { type: 'string', columnType: 'varchar(80)', required: true },
+        status: {
+            type: 'string',
+            columnType: 'varchar(80)',
+            required: true,
+            maxLength: 80
+        },
 
         subType: {
-            model: 'subType'
+            model: 'subType',
+            required: true
         },
 
         invoices: {
@@ -12,7 +18,8 @@ module.exports = {
         },
 
         organisation: {
-            model: 'organisation'
+            model: 'organisation',
+            required: true
         }
     },
 };
