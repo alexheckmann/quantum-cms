@@ -11,12 +11,13 @@ module.exports = {
       title: {
         description: 'The description of the content.',
         type: 'string',
+        maxLength: 80,
         required: true
       },
       content: {
         description: 'The text content.',
         type: 'string',
-        required: true
+        maxLength: 1024,
       },
     },
   
