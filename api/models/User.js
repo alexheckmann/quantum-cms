@@ -56,22 +56,6 @@ email status until they click the link in the confirmation email.`
       example: 'Mary Sue van der McHenst'
     },
 
-    /* firstName: {
-      type: 'string',
-      required: true,
-      description: 'Full representation of the user\'s first name.',
-      maxLength: 120,
-      example: 'Peter'
-    },
-    
-    lastName: {
-      type: 'string',
-      required: true,
-      description: 'Full representation of the user\'s last name.',
-      maxLength: 120,
-      example: 'Parker'
-    }, */
-
     isSuperAdmin: {
       type: 'boolean',
       description: 'Whether this user is a "super admin" with extra permissions, etc.',
