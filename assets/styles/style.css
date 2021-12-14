@@ -2,6 +2,7 @@
 
 :root {
   /* Variables with color palette */
+  --color-white: #ffffff; 
   --color-grey: #4B4B4B;
   --color-light-blue: #029BDE;
   --color-dark-blue: #173361;
@@ -991,3 +992,8 @@ footer a:hover {
   z-index: 1;
 }
 
+.qntm-org-left {
+  min-width: 250px;
+  min-height: calc(100% - var(--nav-height-small));
+  height: calc(100vh - var(--nav-height-small));
+}

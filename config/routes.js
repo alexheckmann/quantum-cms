@@ -100,9 +100,12 @@ module.exports.routes = {
   'POST /organisation': { action: 'organisation/create' },
 
   'GET /organisation/:id/edit': { action: 'organisation/edit' },
-  'POST /organisation/:id/update': { action: 'organisation/update' }, 
+  'POST /organisation/:id/update': { action: 'organisation/update' },
+
+  'GET /organisation/:id/updateadmin': { action: 'organisation/updateadmin' }, 
 
   'GET /organisation/:id/destroy': { action: 'organisation/destroy' },
+  'GET /organisation/:id/delete': { action: 'organisation/delete' },
 
   'GET /organisation': { action: 'organisation/find' },
 };

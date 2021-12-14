@@ -1,32 +1,25 @@
-<div class="container">
-    <div class="m-4">
-        <h1 class="text-4xl font-sans text-gray-500 font-light ml-2 mt-4">Show organisation.</h1>
-
-        <div class="">
-            <%= message ? message : "" %>
-        </div>
-
+<div class="container mt-4 mb-4">
+    <div class="border rounded mt-2 p-2">
+        <!-- Your organisation -->
         <div class="container">
-            <table class="table">
-                <thead>
-                    <tr>
-                      <th scope="col">ID</th>
-                      <th scope="col">Name</th>
-                    </tr>
-                  </thead>
-                <tbody>
-                        <tr class="">
-                            <td class="">
-                                <%= org.id %>
-                            </td>
-                            <td class="">
-                                <%= org.name %>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-            <a class="btn btn-info mb-4" href="/welcome">Welcome page</a>
+            <div class="row">
+                <h1>Your organisation.</h1>
+            </div>
+            <div class="">
+                <%= message ? message : "" %>
+            </div>
+            <div class="d-flex justify-content-between">
+                    <div class="font-weight-bold">
+                        Name:
+                    </div>
+                    <% if(org){ %>
+                        <div class="">
+                            <%= org.name %>
+                        </div>
+                        <% } else { %>
+                            <p>You have no organisation.</p>
+                            <% } %>
+                            <a class="qntm-button font-special-text shape-rounded-corners-small" href="/organisation">Organisation</a>
+            </div>
         </div>
-
     </div>
-</div>

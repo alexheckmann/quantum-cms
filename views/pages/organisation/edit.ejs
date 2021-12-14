@@ -1,15 +1,24 @@
-<div class="container">
-    <form action="/organisation/<%= org.id %>/update" method="post">
-        <div>
-            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-            <input type="hidden" name="id" value="<%= org.id %>">
-            <div>
-                <label>Name</label>
+<div class="container mt-4 mb-4">
+    <div class="border rounded mt-2 p-2">
+        <!-- Edit organisation -->
+        <div class="container">
+            <div class="row">
+                <h3>Update your organisation</h3>
             </div>
-            <textarea name="name" type="text" maxlength="80" id="" cols="30" rows="1"><%= org.name %></textarea>
+
+            <form action="/organisation/<%= org.id %>/update" method="post">
+                <div>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                    <input type="hidden" name="id" value="<%= org.id %>">
+                    <div>
+                        <label>Name</label>
+                    </div>
+                    <textarea name="name" type="text" maxlength="80" id="" cols="30" rows="1"><%= org.name %></textarea>
+                </div>
+                <button class="qntm-button font-special-text shape-rounded-corners-small" type="submit">
+                    Update
+                </button>
+            </form>
         </div>
-        <button class="btn btn-info mt-4 mb-4" type="submit">
-            Aktualisieren
-        </button>
-    </form>
+    </div>
 </div>
