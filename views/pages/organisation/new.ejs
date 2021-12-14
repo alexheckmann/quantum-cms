@@ -1,12 +1,23 @@
-<div class="container">
-    <form action="/organisation" method="post">
-        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-        <div>
-            <div>
-                <label>Name</label>
+<div class="container mt-4 mb-4">
+    <div class="border rounded mt-2 p-2">
+        <!-- New organisation -->
+        <div class="container">
+            <div class="row">
+                <h3>New organisation</h3>
             </div>
-            <textarea name="name" type="text" maxlength="80" id="" cols="30" rows="1"></textarea>
+            <form action="/organisation" method="post">
+                <div>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                    <div class="">
+                        <div class="">
+                            <label for="">Name:</label>
+                        </div>
+                        <textarea name="name" type="text" maxlength="80" id="" cols="30" rows="1"></textarea>
+                    </div>
+                    <button class="qntm-button font-special-text shape-rounded-corners-small"
+                        type="submit">Hinzufügen</button>
+                </div>
+            </form>
         </div>
-        <button type="submit">Hinzufügen</button>
-    </form>
+    </div>
 </div>
