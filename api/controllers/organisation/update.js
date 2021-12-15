@@ -41,7 +41,7 @@ module.exports = {
 
         if (!org) { throw 'notFound'; }
         return {
-            message: "Successfully updated organisation: "+inputs.id,
+            message: "Successfully updated your organisation.",
             org: org
         };
     }
