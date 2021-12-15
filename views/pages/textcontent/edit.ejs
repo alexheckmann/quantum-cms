@@ -1,78 +1,97 @@
-<div class="dashboard-wrapper">
-    <form action="/textcontent/<%= textcontent.id %>/update" method="post">
-        <div class="d-flex flex-column">
-            <div class="d-flex justify-content-between flex-wrap">
-                <div class="justify-content-start">
-                    <div>
-                        <h1>
-                            <%= textcontent.title %>
-                        </h1>
+<div class="d-flex align-items-start justify-content-between min-height h-100">
+    <div class="qntm-navbar-link-container w-25 border-right">
+        <ul class="qntm-navbar-left-links qntm-app-navbar-links">
+            <li class="qntm-navbar-list-item qntm-app-navbar-list-item">
+                <!-- TODO placeholder links -->
+                <a href="/features" class="qntm-navbar-link font-special-text blue-font">Features</a>
+            </li>
+            <li class="qntm-navbar-list-item qntm-app-navbar-list-item">
+                <a href="/pricing" class="qntm-navbar-link font-special-text blue-font">Pricing</a>
+            </li>
+            <li class="qntm-navbar-list-item qntm-app-navbar-list-item">
+                <a href="/resources" class="qntm-navbar-link font-special-text blue-font">Resources</a>
+            </li>
+            <li class="qntm-navbar-list-item qntm-app-navbar-list-item">
+                <a href="/about" class="qntm-navbar-link font-special-text blue-font">About Us</a>
+            </li>
+        </ul>
+    </div>
+    <div class="dashboard-wrapper grey-background">
+        <form action="/textcontent/<%= textcontent.id %>/update" method="post">
+            <div class="d-flex flex-column">
+                <div class="d-flex justify-content-between flex-wrap">
+                    <div class="justify-content-start">
+                        <div>
+                            <h1>
+                                <%= textcontent.title %>
+                            </h1>
+                        </div>
+                        <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big">
+                            <div class="container">
+                                <div>
+                                    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                                    <input type="hidden" name="id" value="<%= textcontent.id %>">
+                                    <div>
+                                        <label>Title</label>
+                                    </div>
+                                    <textarea name="title" type="text" minlength="1" maxlength="80" id="" cols="30"
+                                              rows="1"><%= textcontent.title %></textarea>
+                                    <div>
+                                        <label>Content</label>
+                                    </div>
+                                    <textarea name="content" type="text" minlength="2" maxlength="1024" id="" cols="30"
+                                              rows="10"><%= textcontent.content %></textarea>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big">
-                        <div class="container">
+                    <div class="justify-content-center">
+                        <div class="d-flex justify-content-around align-content-center align-items-center">
                             <div>
-                                <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-                                <input type="hidden" name="id" value="<%= textcontent.id %>">
-                                <div>
-                                    <label>Title</label>
+                                <button class="qntm-button shape-rounded-corners-small mt-4 mb-4 font-special-text border-0"
+                                        type="submit">
+                                    Save
+                                </button>
+                            </div>
+                            <div>
+                                <span class="qntm-button shape-rounded-corners-small font-special-text">Cancel</span>
+                            </div>
+                        </div>
+                        <div class="bg-white shape-rounded-corners-big d-flex shape-drop-shadow-straight justify-content-center">
+                            <div class="qntm-pricing-content d-flex flex-column">
+                                <h2>Information</h2>
+                                <div class="d-flex justify-content-between text-left">
+                                    <span>Last Updated:</span>
+                                    <span><%= textcontent.updatedAt %></span>
                                 </div>
-                                <textarea name="title" type="text" maxlength="80" id="" cols="30"
-                                          rows="1"><%= textcontent.title %></textarea>
-                                <div>
-                                    <label>Content</label>
+                                <div class="d-flex justify-content-between text-left">
+                                    <span>Created At:</span>
+                                    <span><%= textcontent.createdAt %></span>
                                 </div>
-                                <textarea name="content" type="text" maxlength="1024" id="" cols="30"
-                                          rows="10"><%= textcontent.content %></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="justify-content-center">
-                    <div class="d-flex justify-content-around align-content-center align-items-center">
-                        <div>
-                            <button class="qntm-button shape-rounded-corners-small mt-4 mb-4 font-special-text border-0"
-                                    type="submit">
-                                Save
-                            </button>
-                        </div>
-                        <div>
-                            <span class="qntm-button shape-rounded-corners-small font-special-text">Cancel</span>
-                        </div>
-                    </div>
-                    <div class="bg-white shape-rounded-corners-big d-flex shape-drop-shadow-straight justify-content-center">
-                        <div class="qntm-pricing-content d-flex flex-column">
-                            <h2>Information</h2>
-                            <div class="d-flex justify-content-between text-left">
-                                <span>Last Updated:</span>
-                                <span><%= textcontent.updatedAt %></span>
-                            </div>
-                            <div class="d-flex justify-content-between text-left">
-                                <span>Created At:</span>
-                                <span><%= textcontent.createdAt %></span>
-                            </div>
-                            <div class="d-flex justify-content-between text-left">
-                                <span>Author:</span>
-                                <span><%= textcontent.author.fullName %></span>
-                            </div>
-                            <div class="d-flex justify-content-between text-left">
-                                <span>Last update by:</span>
-                                <% if (textcontent.updatedFrom != null) {%>
-                                <span><%=textcontent.updatedFrom.fullName%></span>
-                                <%}%>
-                            </div>
+                                <div class="d-flex justify-content-between text-left">
+                                    <span>Author:</span>
+                                    <span><%= textcontent.author.fullName %></span>
+                                </div>
+                                <div class="d-flex justify-content-between text-left">
+                                    <span>Last update by:</span>
+                                    <% if (textcontent.updatedFrom != null) { %>
+                                    <span><%= textcontent.updatedFrom.fullName %></span>
+                                    <% } %>
+                                </div>
 
+                            </div>
                         </div>
-                    </div>
-                    <div class="bg-white shape-rounded-corners-big d-flex shape-drop-shadow-straight justify-content-center">
-                        <div class="qntm-pricing-content">
-                            <div>
-                                <a href="/textcontent/<%= textcontent.id %>/destroy"
-                                   class="qntm-button shape-rounded-corners-small font-special-text">Delete</a>
+                        <div class="bg-white shape-rounded-corners-big d-flex shape-drop-shadow-straight justify-content-center">
+                            <div class="qntm-pricing-content">
+                                <div>
+                                    <a href="/textcontent/<%= textcontent.id %>/destroy"
+                                       class="qntm-button shape-rounded-corners-small font-special-text">Delete</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

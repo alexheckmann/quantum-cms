@@ -17,8 +17,8 @@ module.exports.routes = {
   'GET /welcome/:unused?': {action: 'dashboard/view-welcome'},
 
   'GET /faq': {action: 'view-faq'},
-  'GET /legal/terms': {action: 'legal/view-terms'},
-  'GET /legal/privacy': {action: 'legal/view-privacy'},
+  'GET /terms': {action: 'legal/view-terms'},
+  'GET /privacy': {action: 'legal/view-privacy'},
   'GET /contact': {action: 'view-contact'},
 
   'GET /signup': {action: 'entrance/view-signup'},
@@ -35,15 +35,7 @@ module.exports.routes = {
 
   // our routes
   '/': {view: 'pages/homepage', locals: {layout: 'layouts/layout'}},
-  //'GET /register': {
-  //  view: 'register'
-  //},
-  //'POST /newuser': {
-  //  action: 'newuser'
-  //},
   'GET /pricing': {view: 'pages/pricing', locals: {layout: 'layouts/layout'}},
-  'GET /privacy': {view: 'pages/privacy', locals: {layout: 'layouts/layout'}},
-  'GET /terms': {view: 'pages/terms', locals: {layout: 'layouts/layout'}},
   'GET /about': {view: 'pages/about', locals: {layout: 'layouts/layout'}},
 
   //  ╔╦╗╦╔═╗╔═╗  ╦═╗╔═╗╔╦╗╦╦═╗╔═╗╔═╗╔╦╗╔═╗   ┬   ╔╦╗╔═╗╦ ╦╔╗╔╦  ╔═╗╔═╗╔╦╗╔═╗

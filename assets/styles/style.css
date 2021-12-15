@@ -2,17 +2,23 @@
 
 :root {
   /* Variables with color palette */
-  --color-grey: #4B4B4B;
+  --color-dark-grey: #4B4B4B;
+  --color-medium-grey: #C4C4C4;
+  --color-light-grey: #F6F6F9;
   --color-light-blue: #029BDE;
   --color-dark-blue: #173361;
   --slalom-item-margin: clamp(30px, 1.1vw, 50px);
+}
+
+* {
+  color: var(--color-dark-grey)
 }
 
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   font-family: "Noto Sans", sans-serif;
-  color: var(--color-grey);
+  color: var(--color-dark-grey);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -41,11 +47,21 @@ img, svg {
 
 }
 
+textarea {
+  resize: none;
+  border-radius: 5px;
+  padding: 5px 8px;
+  font-family: "Noto Sans", sans-serif;
+  border-color: var(--color-medium-grey);
+}
+
 .qntm-button {
-  padding: 10px 32px;
+  padding: 10px;
   font-size: 16px;
   font-weight: 300;
   line-height: 16px;
+  text-align: center;
+  width: calc(2 * 32px + 47px);
   text-decoration: none;
   display: inline-block;
   transition: all 0.2s ease 0s;
@@ -88,9 +104,9 @@ body {
   transform: translate3d(-60px, 38px, 0px);
   overflow: auto;
   list-style: none;
-  margin-block: 0px;
-  padding-inline-start: 0px;
-  padding: 0px;
+  margin-block: 0;
+  padding-inline-start: 0;
+  padding: 0;
 }
 
 /*
@@ -114,7 +130,7 @@ body {
   flex-direction: column;
   -webkit-box-align: center;
   align-items: center;
-  background-color: #173361;
+  background-color: var(--color-dark-blue);
   color: rgb(255, 255, 255);
   max-width: 100%;
 }
@@ -123,7 +139,7 @@ body {
   font-size: 16px;
   font-weight: bold;
   line-height: 22px;
-  margin: 0px;
+  margin: 0;
   max-width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -156,12 +172,12 @@ body {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: #173361;
+  background-color: var(--color-dark-blue);
   -webkit-box-align: center;
   align-items: center;
   align-content: center;
   border-style: solid;
-  border-color: #4B4B4B;
+  border-color: var(--color-dark-grey);
   border-image: initial;
   border-width: 0 0 1px;
   font-weight: 300;
@@ -277,7 +293,7 @@ body {
   flex-direction: column;
   overflow-y: auto;
   border-style: solid;
-  border-color: var(--color-grey);
+  border-color: var(--color-dark-grey);
   border-image: initial;
   border-width: 0 1px 0 0;
   transform: translateX(-100%);
@@ -305,7 +321,7 @@ body {
   border-color: initial;
   border-image: initial;
   border-bottom-style: solid;
-  color: rgb(61, 79, 88);
+  color: var(--color-dark-blue);
 }
 
 .qntm-menu-button-section {
@@ -325,6 +341,24 @@ body {
   color: white;
 }
 
+.qntm-app-navbar-links {
+  padding: 16px 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.qntm-app-navbar-list-item {
+  line-height: 1em;
+  flex: 1 1 0;
+  text-align: left;
+  padding: 0.75em 0;
+
+}
+
+.qntm-app-navbar-list-item + .qntm-navbar-link {
+  text-align: left;
+}
+
 /* style for eye catcher section */
 .qntm-eye-catcher-section {
   padding: 25px;
@@ -336,7 +370,6 @@ body {
 }
 
 .qntm-eye-catcher-headline {
-  text-align: center;
   padding: 20px 0;
   margin: auto;
   max-width: 500px;
@@ -345,22 +378,16 @@ body {
 .qntm-eye-catcher-content {
   display: flex;
   flex-direction: column;
-  text-align: center;
   padding: 10px 0;
-  margin: auto;
-  max-width: 700px;
   flex: 1;
 }
 
 .qntm-eye-catcher-button {
-  text-align: center;
   padding: 0;
   margin: 3px auto 0;
-  max-width: 370px;
 }
 
 .qntm-eye-catcher-content-small {
-  text-align: center;
   padding: 10px 0 0;
   margin: auto auto 0;
   max-width: 370px;
@@ -375,7 +402,7 @@ body {
 
 .qntm-eye-catcher-forms input {
   border-radius: 5px;
-  border: 1px solid #a1a1a1;
+  border: 1px solid var(--color-medium-grey);
   min-width: 300px;
   padding: 12px;
   margin: 8px;
@@ -414,9 +441,9 @@ body {
   align-items: center;
 }
 
-.qntm-feature-intro-title-width-container {
+.qntm-width-container {
   margin: 0 auto;
-  max-width: 450px;
+  max-width: 700px;
 }
 
 .qntm-feature-intro-headline-teaser {
@@ -615,7 +642,7 @@ body {
 }
 
 .qntm-pricing-separator-line {
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--color-light-grey);
   padding-top: 30px;
 }
 
@@ -635,8 +662,7 @@ body {
 
 /* about us page */
 .qntm-about-us-eye-catcher-section {
-  padding: 25px;
-  padding-bottom: 0;
+  padding: 25px 25px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -759,13 +785,13 @@ body {
 /* separators */
 .qntm-separator-line {
   margin: auto;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--color-light-grey);
   width: calc(100% - 40px);
 }
 
 .qntm-separator-line-700px {
   margin: auto;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--color-light-grey);
   width: calc(100% - 40px);
   max-width: 700px;
   flex: 1;
@@ -779,7 +805,7 @@ body {
 
 .qntm-separator-line-about-us {
   margin: 6rem auto 6rem;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--color-light-grey);
   width: 50%;
 }
 
@@ -849,7 +875,6 @@ footer a:hover {
   /* Default is display: none, shows button when screen size is reached*/
   .qntm-menu-wrapper {
     display: flex;
-    overflow: hidden;
   }
 
   /* Increases font size for links when the menu is open */

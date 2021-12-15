@@ -31,6 +31,8 @@ module.exports = {
 
       let textcontent = await TextContent.findOne({ id: id }).populate('author').populate('updatedFrom');
       if (!textcontent) { throw 'notFound'; }
+      textcontent.createdAt = new Date(textcontent.createdAt).toISOString();
+      textcontent.updatedAt = new Date(textcontent.updatedAt).toISOString();
       return {
         textcontent: textcontent
       };
