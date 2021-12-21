@@ -42,10 +42,10 @@
         <cloud-error v-if="cloudError==='emailAlreadyInUse'">It looks like there's already an account with your email address. If you forgot your password, you can recover it <a href="password/forgot">here</a>.</cloud-error>
         <cloud-error v-else-if="cloudError"></cloud-error>
         <div class="form-group">
-          <ajax-button type="submit" :syncing="syncing" class="btn-dark btn-lg btn-block qntm-button font-special-text shape-rounded-corners-small">Create account</ajax-button>
+          <ajax-button type="submit" :syncing="syncing" class="btn-dark btn-lg btn-block qntm-button font-special-text shape-rounded-corners-small">Sign up</ajax-button>
         </div>
       </ajax-form>
-      <p class="text-center">Have an account? <a href="/login">Sign in</a></p>
+      <p class="text-center">Already have an account? <a href="/login">Sign in</a></p>
     </div>
   </div>
   <div class="container-fluid pt-5 pb-5" v-if="cloudSuccess">

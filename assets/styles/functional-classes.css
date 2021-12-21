@@ -7,8 +7,7 @@
 }
 
 .min-height {
-  /* TODO adjust for every screen size */
-  min-height: 69vh;
+  flex: 1 1 0;
 }
 
 /* Functional classes for fonts */

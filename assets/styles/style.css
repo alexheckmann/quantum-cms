@@ -9,6 +9,7 @@
   --color-grey: #4B4B4B;
   --color-light-blue: #029BDE;
   --color-dark-blue: #173361;
+  --color-transparent-blue: #E8F0FE;
   --slalom-item-margin: clamp(30px, 1.1vw, 50px);
 }
 
@@ -27,9 +28,12 @@ html {
 }
 
 body {
-  padding-top: 100px;
-  padding-bottom: 20px;
+  padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Noto Sans", sans-serif;
+  height: 100vh;
 }
 
 a {
@@ -55,6 +59,81 @@ textarea {
   padding: 5px 8px;
   font-family: "Noto Sans", sans-serif;
   border-color: var(--color-medium-grey);
+  width: 100%;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--color-dark-grey) !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-light-grey);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-medium-grey);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-blue);
+}
+
+.material-switch > input[type="checkbox"] {
+  display: none;
+}
+
+.material-switch > label {
+  cursor: pointer;
+  height: 0px;
+  position: relative;
+  width: 40px;
+}
+
+.material-switch > label::before {
+  background: rgb(0, 0, 0);
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  content: '';
+  height: 16px;
+  margin-top: -8px;
+  position: absolute;
+  opacity: 0.3;
+  transition: all 0.4s ease-in-out;
+  width: 40px;
+}
+
+.material-switch > label::after {
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  content: '';
+  height: 24px;
+  left: -4px;
+  margin-top: -8px;
+  position: absolute;
+  top: -4px;
+  transition: all 0.3s ease-in-out;
+  width: 24px;
+}
+
+.material-switch > input[type="checkbox"]:checked + label::before {
+  background: inherit;
+  opacity: 0.5;
+}
+
+.material-switch > input[type="checkbox"]:checked + label::after {
+  background: inherit;
+  left: 20px;
 }
 
 .qntm-button {
@@ -82,11 +161,6 @@ textarea {
   height: auto;
   width: 130px;
   padding: 1em 15px 1em 0.5rem;
-}
-
-body {
-  padding: 0;
-  margin: 0;
 }
 
 .qntm-body-wrapper::after {
@@ -335,18 +409,48 @@ body {
 
 .qntm-navbar-button {
   background-color: white;
+  border: 1px var(--color-dark-grey) !important;
   color: var(--color-dark-blue);
 }
 
 .qntm-navbar-button:hover {
-  background-color: var(--color-dark-blue);
-  color: white;
+  background-color: var(--color-transparent-blue);
+  color: var(--color-dark-blue);
+}
+
+.app-dashboard-wrapper {
+  flex: 1;
+}
+
+.qntm-app-navbar-container {
+  --height-nav: 88px;
+  --height-footer: 183px;
+
+  max-width: 20%;
+  overflow-y: auto;
+  max-height: calc(100vh - var(--height-nav) - var(--height-footer));
+}
+
+.qntm-app-navbar-link-container {
+  width: 20%;
 }
 
 .qntm-app-navbar-links {
   padding: 16px 0;
   flex-direction: column;
   align-items: flex-start;
+  margin: 0 0 0 16px;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  height: var(--nav-height-big);
+  list-style: none;
+  opacity: 1;
+  pointer-events: initial;
+  will-change: opacity;
+  transition: opacity 250ms ease 0s;
+  position: relative;
 }
 
 .qntm-app-navbar-list-item {
@@ -361,10 +465,34 @@ body {
   text-align: left;
 }
 
-/* style for eye catcher section */
+#app-search-button-icon {
+  width: 34px;
+}
+
+#app-copy-button-icon {
+  fill: var(--color-medium-grey);
+  width: 0.75em;
+  height: 0.75em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.app-info-column {
+  max-width: 287px;
+}
+
+.app-info-text {
+  width: 256px;
+}
+
+/* style for eye catcher section
+TODO change to Bootstrap
+*/
 .qntm-eye-catcher-section {
   padding: 25px;
-  display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -378,15 +506,8 @@ body {
 }
 
 .qntm-eye-catcher-content {
-  display: flex;
-  flex-direction: column;
   padding: 10px 0;
   flex: 1;
-}
-
-.qntm-eye-catcher-button {
-  padding: 0;
-  margin: 3px auto 0;
 }
 
 .qntm-eye-catcher-content-small {

@@ -31,11 +31,15 @@ module.exports = {
 
 
     fn: async function (inputs) {
-      sails.log.debug("Create new text content.")
+      // load navbar items
+      let textcontents = await TextContent.find({
+        author: this.req.session.userId
+      }).sort('title ASC');
+
       let textcontent = {
         author: this.req.session.userId,
         status: 'active',
-        endpoint: 'https://qntm-cms.herokuapp.com/textcontent/api/'+inputs.id+'/'+inputs.title,
+        endpoint: 'https://qntm-cms.herokuapp.com/textcontent/api/'+inputs.id,
         title: inputs.title,
         content: inputs.content
       };
@@ -46,6 +50,7 @@ module.exports = {
       if (!textcontent) { throw 'notFound'; }
       return {
         message: "Successfully created.",
+        textcontents: textcontents,
         textcontent: textcontent
       };
     }

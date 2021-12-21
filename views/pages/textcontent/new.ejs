@@ -1,16 +1,123 @@
-<div class="container">
-    <form action="/textcontent" method="post">
-        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-        <div>
-            <div>
-                <label>Title</label>
+<div class="d-flex flex-grow-1 flex-shrink-1">
+    <div class="qntm-app-navbar-container flex-fill border-right" role="menubar">
+        <ul class="qntm-app-navbar-links" role="menu">
+            <div class="d-flex flex-nowrap mb-3">
+                <form action="/textcontent">
+                    <input type="text" value="" length="20" name="q" placeholder="Search in title" class="w-75">
+                    <button type="submit" id="app-search-button-icon" class="shape-rounded-corners-small">
+                        <img src="/images/icon_search.svg" alt="Search Icon">
+                    </button>
+                </form>
+                <form action="/textcontent/new">
+                    <button class="shape-rounded-corners-small">
+                        <svg id="app-copy-button-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
+                             data-testid="AddIcon" tabindex="-1" title="Add">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                        </svg>
+                    </button>
+                </form>
             </div>
-            <textarea name="title" type="text" maxlength="80" id="" cols="30" rows="1"></textarea>
-            <div>
-                <label>Content</label>
+            <% textcontents.forEach(function(entry){ %>
+                <li class="qntm-navbar-list-item qntm-app-navbar-list-item">
+                    <a href="/textcontent/<%= entry.id %>/edit"
+                       class="qntm-navbar-link font-special-text blue-font"><%= entry.title %></a>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+    <div class="flex-fill grey-background d-flex flex-row">
+        <form action="/textcontent/" method="post" class="flex-fill">
+            <div class="ml-4 mt-3">
+                <h1>
+                    Create a new entry
+                </h1>
             </div>
-            <textarea name="content" type="text" maxlength="1024" id="" cols="30" rows="10"></textarea>
-        </div>
-        <button type="submit">Hinzufügen</button>
-    </form>
+            <div class="d-flex flex-wrap">
+                <div class="flex-fill m-3 ml-4">
+                    <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big p-3 flex-grow-1">
+                        <div>
+                            <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                            <div class="font-weight-bold font-extra-small-text">
+                                <label for="entry_title">Title:</label>
+                            </div>
+                            <textarea name="title" type="text" minlength="1" maxlength="80" id="entry_title" cols="30"
+                                      rows="1" class="flex-grow-1"></textarea>
+                            <div class="mt-4 font-weight-bold font-extra-small-text">
+                                <label for="entry_content">Content:</label>
+                            </div>
+                            <textarea name="content" type="text" minlength="2" maxlength="1024" id="entry_content"
+                                      cols="30"
+                                      rows="10" class="flex-grow-1"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-fill m-3 mr-4 app-info-column">
+                    <div class="bg-white shape-rounded-corners-big d-flex shape-drop-shadow-straight justify-content-center mb-4">
+                        <div class="d-flex flex-column p-3">
+                            <div class="mb-2">
+                                <h4>Information</h4>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
+                                <span class="mr-5 font-extra-small-text font-weight-bold">Created:</span>
+                                <span> – </span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
+                                <span class="mr-5 font-extra-small-text font-weight-bold">Updated:</span>
+                                <span> – </span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
+                                <span class="mr-5 font-extra-small-text font-weight-bold">Author:</span>
+                                <span> – </span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
+                                <span class="mr-5 font-extra-small-text font-weight-bold">Editor:</span>
+                                <span> – </span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="bg-white shape-rounded-corners-big d-flex flex-column shape-drop-shadow-straight p-3">
+                        <div class="ml-1 font-extra-small-text font-weight-bold float-left">
+                            <label for="entry_endpoint" class="mb-1">Endpoint:</label>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <div class="mb-2 d-flex align-items-center grey-background border shape-rounded-corners-small">
+                                <textarea name="title" type="text" minlength="1" maxlength="80" id="entry_endpoint"
+                                          cols="30"
+                                          rows="1" class="text-truncate font-extra-small-text border-0 mr-2"
+                                          disabled></textarea>
+                                <img src="/images/icon-copy.svg" alt="Copy to clipboard"
+                                     id="app-copy-button-icon" class="mr-1">
+                            </div>
+                            <div class="d-flex align-items-center align-content-center mt-2">
+                                <div class="d-flex align-items-center">
+                                    <span class="font-extra-small-text font-weight-bold ml-2 mr-3">Delete?</span>
+                                    <div class="material-switch pull-right mr-4">
+                                        <input id="someSwitchOptionDanger" name="someSwitchOption001" type="checkbox"/>
+                                        <label for="someSwitchOptionDanger" class="label-danger"></label>
+                                    </div>
+                                </div>
+                                <div class="ml-3 mr-1">
+                                    <span aria-disabled="true"
+                                          class="qntm-button shape-rounded-corners-small font-special-text">Delete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around align-content-center align-items-center">
+                        <div>
+                            <span class="qntm-button qntm-navbar-button shape-rounded-corners-small font-special-text">Revert</span>
+                        </div>
+                        <div>
+                            <button class="qntm-button shape-rounded-corners-small my-3 font-special-text border-0"
+                                    type="submit">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+
