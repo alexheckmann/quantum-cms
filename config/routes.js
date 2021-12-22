@@ -17,8 +17,8 @@ module.exports.routes = {
   'GET /welcome/:unused?': {action: 'dashboard/view-welcome'},
 
   'GET /faq': {action: 'view-faq'},
-  'GET /legal/terms': {action: 'legal/view-terms'},
-  'GET /legal/privacy': {action: 'legal/view-privacy'},
+  'GET /terms': {action: 'legal/view-terms'},
+  'GET /privacy': {action: 'legal/view-privacy'},
   'GET /contact': {action: 'view-contact'},
 
   'GET /signup': {action: 'entrance/view-signup'},
@@ -35,15 +35,7 @@ module.exports.routes = {
 
   // our routes
   '/': {view: 'pages/homepage', locals: {layout: 'layouts/layout'}},
-  //'GET /register': {
-  //  view: 'register'
-  //},
-  //'POST /newuser': {
-  //  action: 'newuser'
-  //},
   'GET /pricing': {view: 'pages/pricing', locals: {layout: 'layouts/layout'}},
-  'GET /privacy': {view: 'pages/privacy', locals: {layout: 'layouts/layout'}},
-  'GET /terms': {view: 'pages/terms', locals: {layout: 'layouts/layout'}},
   'GET /about': {view: 'pages/about', locals: {layout: 'layouts/layout'}},
 
   //  ╔╦╗╦╔═╗╔═╗  ╦═╗╔═╗╔╦╗╦╦═╗╔═╗╔═╗╔╦╗╔═╗   ┬   ╔╦╗╔═╗╦ ╦╔╗╔╦  ╔═╗╔═╗╔╦╗╔═╗
@@ -79,18 +71,19 @@ module.exports.routes = {
   // textcontent
   //
 
-  'GET /textcontent/new': { view: 'pages/textcontent/new' },
+  'GET /textcontent/new': { action: 'textcontent/new'},
   'POST /textcontent': { action: 'textcontent/create' },
 
   'GET /textcontent/:id/edit': { action: 'textcontent/edit' },
-  'POST /textcontent/:id/update': { action: 'textcontent/update' }, 
+  'POST /textcontent/:id/update': { action: 'textcontent/update' },
 
   'GET /textcontent/:id/destroy': { action: 'textcontent/destroy' },
 
   'GET /textcontent/:id': { action:'textcontent/find-one' },
 
-  'GET /textcontent': { action: 'textcontent/find' },
+  'GET /textcontent': { action: 'textcontent/find', locals: {layout: 'layouts/layout'}},
 
+  'GET /dashboard': { view: 'pages/dashboard', locals: {layout: 'layouts/app-layout'}},
 
   //
   // organisation
@@ -102,7 +95,7 @@ module.exports.routes = {
   'GET /organisation/:id/edit': { action: 'organisation/edit' },
   'POST /organisation/:id/update': { action: 'organisation/update' },
 
-  'GET /organisation/:id/updateadmin': { action: 'organisation/updateadmin' }, 
+  'GET /organisation/:id/updateadmin': { action: 'organisation/updateadmin' },
 
   'GET /organisation/:id/destroy': { action: 'organisation/destroy' },
   'GET /organisation/:id/delete': { action: 'organisation/delete' },

@@ -17,18 +17,18 @@
                         <% }); %>
                         <div class="d-flex">
                             <div class="mr-1">
-                                <a class="qntm-button font-special-text shape-rounded-corners-small"
+                                <a class="qntm-primary-button font-special-text shape-rounded-corners-small"
                                     href="/organisation/<%= user.id %>/edit">Edit</a>
                             </div>
                             <div class="">
-                                <a class="qntm-button font-special-text shape-rounded-corners-small"
+                                <a class="qntm-primary-button font-special-text shape-rounded-corners-small"
                                     href="/organisation/<%= user.id %>/delete">Resign</a>
                         </div>
                             </div>
                             <% } else { %>
                                 <p>You have no organisation.</p>
                                 <div class="">
-                                    <a class="qntm-button font-special-text shape-rounded-corners-small mt-1"
+                                    <a class="qntm-primary-button font-special-text shape-rounded-corners-small mt-1"
                                         href="/organisation/new">Add</a>
                                 </div>
                                 <% } %>
@@ -66,13 +66,13 @@
                                                 <% if(user.admin){ %>
                                                     <% if(!users.admin && users.id !=user.id){ %>
                                                         <td class=""><a
-                                                                class="qntm-button font-special-text shape-rounded-corners-small"
+                                                                class="qntm-primary-button font-special-text shape-rounded-corners-small"
                                                                 href="/organisation/<%= users.id %>/updateAdmin">Appoint
                                                                 as
                                                                 admin</a></td>
 
                                                         <td class=""> <a
-                                                                class="qntm-button font-special-text shape-rounded-corners-small"
+                                                                class="qntm-primary-button font-special-text shape-rounded-corners-small"
                                                                 href="/organisation/<%= users.id %>/delete">Delete</a>
                                                         </td>
                                                         <% } %>

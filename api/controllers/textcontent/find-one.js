@@ -18,8 +18,6 @@ module.exports = {
 
   exits: {
     success: {
-      responseType: 'view',
-      viewTemplatePath: 'pages/textcontent/show'
     },
     notFound: {
       description: 'No text content with the specified ID was found in the database.',
@@ -28,11 +26,12 @@ module.exports = {
   },
 
   fn: async function ({ id }) {
-
-    let textcontent = await TextContent.findOne({ id: id });
+    // TODO select only fullName of author
+    let textcontent = await TextContent.findOne({ where: {id: id}, select: ['title', 'content']}).populate('author');
+    // TODO change textcontent.content to Value not found when an error occurs instead of throwing error?
     if (!textcontent) { throw 'notFound'; }
     return {
-      message: "",
+      message: '',
       textcontent: textcontent
     };
   }

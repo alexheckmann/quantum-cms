@@ -1,7 +1,7 @@
 <div id="login" v-cloak>
   <div class="container-fluid pt-5 pb-5">
     <h1 class="font-headline-text text-center">Sign in to your account</h1>
-    <div style="max-width: 450px;" class="mx-auto font-normal-text">
+    <div style="max-width: 450px;" class="mx-auto font-normal-text align-items-center">
       <hr/>
       <ajax-form action="login" :syncing.sync="syncing" :cloud-error.sync="cloudError" :form-data="formData" :form-rules="formRules" :form-errors.sync="formErrors" @submitted="submittedForm()">
         <div class="form-group">
@@ -19,10 +19,10 @@
         <cloud-error v-if="cloudError==='badCombo'">The credentials you entered are not associated with an account. Please check your email and/or password and try again.</cloud-error>
         <cloud-error v-else-if="cloudError"></cloud-error>
         <div class="form-group">
-          <ajax-button :syncing="syncing" class="btn-dark btn-lg btn-block qntm-button font-special-text shape-rounded-corners-small">Sign in</ajax-button>
+          <ajax-button :syncing="syncing" class="qntm-primary-button font-special-text shape-rounded-corners-small">Sign in</ajax-button>
         </div>
       </ajax-form>
-      <p class="text-center"><a href="/password/forgot">Forgot your password?</a></p>
+      <p class="text-center font-extra-small-text"><a href="/password/forgot">Forgot your password?</a></p>
     </div>
   </div>
 </div>
