@@ -67,6 +67,11 @@ textarea:focus {
   border-color: var(--color-dark-grey) !important;
 }
 
+button {
+  border: none !important;
+}
+
+
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
@@ -85,7 +90,7 @@ textarea:focus {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-dark-blue);
+  background: var(--color-dark-grey);
 }
 
 .material-switch > input[type="checkbox"] {
@@ -136,7 +141,7 @@ textarea:focus {
   left: 20px;
 }
 
-.qntm-button {
+.qntm-primary-button {
   padding: 10px;
   font-size: 16px;
   font-weight: 300;
@@ -151,9 +156,37 @@ textarea:focus {
   letter-spacing: unset;
 }
 
-.qntm-button:hover {
+.qntm-primary-button:hover {
   background-color: var(--color-light-blue);
   color: rgb(255, 255, 255);
+}
+
+.qntm-primary-button:focus {
+
+}
+
+.qntm-primary-button:active {
+
+}
+
+.qntm-secondary-button {
+  background-color: white;
+  border: 1px var(--color-dark-grey) !important;
+  color: var(--color-dark-blue);
+}
+
+.qntm-secondary-button:hover {
+  background-color: var(--color-transparent-blue);
+  color: var(--color-dark-blue);
+}
+
+.qntm-secondary-button:focus {
+  box-shadow: 0 0 0 0.2rem rgb(var(--color-dark-grey) / 50%);
+}
+
+.qntm-secondary-button:active {
+  background-color: var(--color-dark-grey);
+  border-color: var(--color-medium-grey);
 }
 
 #qntm-logo {
@@ -407,17 +440,6 @@ textarea:focus {
   align-items: center;
 }
 
-.qntm-navbar-button {
-  background-color: white;
-  border: 1px var(--color-dark-grey) !important;
-  color: var(--color-dark-blue);
-}
-
-.qntm-navbar-button:hover {
-  background-color: var(--color-transparent-blue);
-  color: var(--color-dark-blue);
-}
-
 .app-dashboard-wrapper {
   flex: 1;
 }
@@ -470,14 +492,22 @@ textarea:focus {
 }
 
 #app-copy-button-icon {
-  fill: var(--color-medium-grey);
+  fill: var(--color-dark-grey);
   width: 0.75em;
-  height: 0.75em;
-  display: inline-block;
   font-size: 1.5rem;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  flex-shrink: 0;
   user-select: none;
+}
+
+#app-new-button-icon {
+  height: 34px;
+  width: 21px;
+}
+
+.qntm-icon-button {
+  fill: var(--color-dark-grey);
+  user-select: none;
+  max-width: 34px;
 }
 
 .app-info-column {
@@ -485,7 +515,7 @@ textarea:focus {
 }
 
 .app-info-text {
-  width: 256px;
+  max-width: 256px;
 }
 
 /* style for eye catcher section

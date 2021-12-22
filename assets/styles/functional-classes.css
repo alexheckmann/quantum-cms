@@ -63,7 +63,7 @@
 }
 
 .grey-background {
-  background-color: #F6F6F9;
+  background-color: #F6F6F9 !important;
 }
 
 .background-image {

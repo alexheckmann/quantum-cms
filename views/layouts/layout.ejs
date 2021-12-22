@@ -84,16 +84,16 @@
                         <!-- logged in navbar -->
                         <div class="dropdown">
                           <button
-                            class="btn btn-secondary dropdown-toggle qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small"
+                            class="btn btn-secondary dropdown-toggle qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
                             type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
                             Account
                           </button>
                           <div class="dropdown-menu qntm-navbar-dropdown">
                             <div class="qntm-navbar-dropdown-head">
-                              <h3 class="qntm-navbar-dropdown-head-h3">
+                              <h3 class="qntm-navbar-dropdown-head-h3 white-font">
                                 <%= me.fullName %>
                               </h3>
-                              <p class="">
+                              <p class="white-font">
                                 <%= me.emailAddress %>
                               </p>
                             </div>
@@ -110,7 +110,7 @@
                         <div>
                             <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
                         </div>
-                        <a class="qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small"
+                        <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
                            href="signup">Try
                             Free</a>
                     <% } %>
@@ -156,7 +156,7 @@
                     <% } else { %>
                           <!--logged out mobile -->
                           <div class="qntm-menu-button-section">
-                            <a class="qntm-navbar-button qntm-button font-special-text shape-rounded-corners-small"
+                            <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
                                href="/signup">Try Free</a>
                             <div>
                                 <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
