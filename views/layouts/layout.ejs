@@ -50,19 +50,7 @@
     <nav role="navigation" class="qntm-navbar">
         <div class="qntm-navbar-container blue-background">
             <a href="/">
-                <svg id="qntm-logo" width="113.01mm" height="35.854mm" version="1.1" viewBox="0 0 113.01 35.854" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(-29.073 -124.98)">
-                        <g transform="translate(72.288 3.428)">
-                            <path d="m-41.628 136.69-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z" fill="#0399da"/>
-                            <path d="m-41.628 140.6-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z" fill="#0f73d8"/>
-                            <path d="m-41.628 144.51-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z" fill="#2a3aba"/>
-                            <path d="m-27.229 125.58-15.697 7.8486 15.594 8.2098 16.213-8.0036zm0.03566 1.4066 13.391 6.6952-13.477 6.6528-12.961-6.8244z" fill="#fec33a"/>
-                        </g>
-                        <path d="m67.29 160.83v-35.854z" fill="#e6e6e6" stroke="#e6e6e6" stroke-width="1.274"/>
-                        <text x="71.986778" y="150.72281" fill="#e6e6e6" font-family="sans-serif" font-size="24.245px" stroke-width=".60614" style="line-height:1.25" xml:space="preserve"><tspan x="71.986778" y="150.72281" fill="#e6e6e6" font-family="'Bebas Neue'" stroke-width=".60614">QUANTUM</tspan></text>
-                        <text transform="scale(.26458)" fill="#000000" font-family="sans-serif" font-size="40px" style="line-height:1.25;shape-inside:url(#rect14263);white-space:pre" xml:space="preserve"/>
-                    </g>
-                </svg>
+                <%- partial('../partials/logo.ejs') %>
             </a>
             <div class="qntm-navbar-link-container">
                 <ul class="qntm-navbar-left-links">
@@ -80,40 +68,7 @@
                     </li>
                 </ul>
                 <div class="qntm-navbar-right-links">
-                    <% if (me) { %>
-                        <!-- logged in navbar -->
-                        <div class="dropdown">
-                          <button
-                            class="btn btn-secondary dropdown-toggle qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                            type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                            Account
-                          </button>
-                          <div class="dropdown-menu qntm-navbar-dropdown">
-                            <div class="qntm-navbar-dropdown-head">
-                              <h3 class="qntm-navbar-dropdown-head-h3 white-font">
-                                <%= me.fullName %>
-                              </h3>
-                              <p class="white-font">
-                                <%= me.emailAddress %>
-                              </p>
-                            </div>
-                            <a class="dropdown-item" href="/account/profile">Profile</a>
-                            <a class="dropdown-item" href="/organisation">Organisation</a>
-                            <a class="dropdown-item" href="#">Documentation</a>
-                            <div class="qntm-navbar-dropdown-separator-line"></div>
-                            <a class="dropdown-item" href="/logout">Sign Out</a>
-                          </div>
-                        </div>
-
-                    <% } else { %>
-                        <!-- logged out navbar -->
-                        <div>
-                            <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
-                        </div>
-                        <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                           href="signup">Try
-                            Free</a>
-                    <% } %>
+                    <%- partial('../partials/navbar/nav-account-section.ejs') %>
                 </div>
                 <div class="qntm-nav-burger">
                     <div class="line1"></div>

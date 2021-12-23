@@ -1,0 +1,34 @@
+<% if (me) { %>
+    <!-- logged in navbar -->
+    <div class="dropdown">
+        <button
+                class="btn btn-secondary dropdown-toggle qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+            Account
+        </button>
+        <div class="dropdown-menu qntm-navbar-dropdown">
+            <div class="qntm-navbar-dropdown-head">
+                <h3 class="qntm-navbar-dropdown-head-h3 white-font">
+                    <%= me.fullName %>
+                </h3>
+                <p class="white-font">
+                    <%= me.emailAddress %>
+                </p>
+            </div>
+            <a class="dropdown-item" href="/account">Profile</a>
+            <a class="dropdown-item" href="/organisation">Organisation</a>
+            <a class="dropdown-item" href="#">Documentation</a>
+            <div class="qntm-navbar-dropdown-separator-line"></div>
+            <a class="dropdown-item" href="/logout">Sign Out</a>
+        </div>
+    </div>
+
+<% } else { %>
+    <!-- logged out navbar -->
+    <div>
+        <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
+    </div>
+    <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
+       href="/signup">Try
+        Free</a>
+<% } %>
