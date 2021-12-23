@@ -1,20 +1,54 @@
-<div id="welcome">
-  <account-notification-banner></account-notification-banner>
-  <div class="container pt-5 pb-5">
-    <h1 class="font-headline-text">Welcome to Quantum!</h1>
-    <hr />
-    <p>This is a page that only logged-in people can visit. Don't you feel special? Try clicking on a button below to do
-      some things you can't do when you're logged out.</p>
+<div class="d-flex flex-grow-1 flex-shrink-1" id="welcome">
+    <div class="qntm-app-navbar-container flex-fill border-right" role="menubar">
+        <ul class="qntm-app-navbar-links" role="menu">
+            <div class="d-flex flex-nowrap mb-3">
+                <form action="/textcontent"
+                      class=" d-flex grey-background border shape-rounded-corners-small w-75 ml-3 mr-2">
+                    <textarea name="searchbar" type="text" minlength="1" maxlength="20" placeholder="Search for entries"
+                              cols="20" rows="1" class="border-0"></textarea>
+                    <button type="submit" id="app-search-button-icon"
+                            class="bg-transparent shape-rounded-corners-small d-inline-block flex-shrink-0 border-left qntm-icon-button">
+                        <img src="/images/icon_search.svg" alt="Search Icon">
+                    </button>
+                </form>
 
-    <section>
-      <% if (req.me.isSuperAdmin) { %>
-        <h2>Admin</h2>
+                <form action="/textcontent/new" class="ml-0" style="height: 38px">
+                    <button class="shape-rounded-corners-small border d-flex align-items-center qntm-icon-button flex-shrink-0 grey-background">
+                        <svg id="app-new-button-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
+                             data-testid="AddIcon" tabindex="-1" title="Add">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            <% textcontents.forEach(function(entry){ %>
+                <li class="qntm-navbar-list-item qntm-app-navbar-list-item">
+                    <a href="/textcontent/<%= entry.id %>/edit"
+                       class="qntm-navbar-link font-special-text blue-font"><%= entry.title %></a>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+    <div class="flex-fill grey-background d-flex flex-row justify-content-center align-items-center" ROLE="dialog">
+        <account-notification-banner></account-notification-banner>
+        <div class="container pt-5 pb-5">
 
-        <% } else { %>
-          <a class="btn btn-info" href="/textcontent">Show content</a>
-          <% } %>
-    </section>
-  </div>
-  <router-view></router-view>
+            <router-view></router-view>
+        <h1 class="font-headline-text">Welcome to Quantum!</h1>
+        <hr />
+        <p>This is a page that only logged-in people can visit. Don't you feel special? Try clicking on a button below to do
+            some things you can't do when you're logged out.</p>
+
+        <section>
+            <% if (req.me.isSuperAdmin) { %>
+                <h2>Admin</h2>
+
+            <% } else { %>
+                <a class="btn btn-info" href="/textcontent">Show content</a>
+            <% } %>
+        </section>
+    </div>
 </div>
+
+
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
