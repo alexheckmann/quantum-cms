@@ -14,17 +14,12 @@ module.exports.routes = {
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
   'GET /': {action: 'view-homepage-or-redirect'},
-  'GET /dashboard/:unused?': {action: 'dashboard/textcontent/find'},
+  'GET /welcome/:unused?': {action: 'dashboard/view-welcome'},
 
-  'GET /pricing': {action: 'public/view-pricing'},
-  'GET /resources': {action: 'public/view-resources'},
-  'GET /features': {action: 'public/view-features'},
-  'Get /about': {action: 'public/view-about'},
-  'GET /faq': {action: 'public/view-faq'},
-  'GET /contact': {action: 'public/view-contact'},
-
+  'GET /faq': {action: 'view-faq'},
   'GET /terms': {action: 'legal/view-terms'},
   'GET /privacy': {action: 'legal/view-privacy'},
+  'GET /contact': {action: 'view-contact'},
 
   'GET /signup': {action: 'entrance/view-signup'},
   'GET /email/confirm': {action: 'entrance/confirm-email'},
@@ -39,6 +34,9 @@ module.exports.routes = {
   'GET /account/profile': {action: 'account/view-edit-profile'},
 
   // our routes
+  '/': {view: 'pages/homepage', locals: {layout: 'layouts/layout'}},
+  'GET /pricing': {view: 'pages/pricing', locals: {layout: 'layouts/layout'}},
+  'GET /about': {view: 'pages/about', locals: {layout: 'layouts/layout'}},
 
   //  ╔╦╗╦╔═╗╔═╗  ╦═╗╔═╗╔╦╗╦╦═╗╔═╗╔═╗╔╦╗╔═╗   ┬   ╔╦╗╔═╗╦ ╦╔╗╔╦  ╔═╗╔═╗╔╦╗╔═╗
   //  ║║║║╚═╗║    ╠╦╝║╣  ║║║╠╦╝║╣ ║   ║ ╚═╗  ┌┼─   ║║║ ║║║║║║║║  ║ ║╠═╣ ║║╚═╗
@@ -73,17 +71,19 @@ module.exports.routes = {
   // textcontent
   //
 
-  'GET /textcontent/new': { action: 'dashboard/textcontent/new'},
-  'POST /textcontent': { action: 'dashboard/textcontent/create' },
+  'GET /textcontent/new': { action: 'textcontent/new'},
+  'POST /textcontent': { action: 'textcontent/create' },
 
-  'GET /textcontent/:id/edit': { action: 'dashboard/textcontent/edit' },
-  'POST /textcontent/:id/update': { action: 'dashboard/textcontent/update' },
+  'GET /textcontent/:id/edit': { action: 'textcontent/edit' },
+  'POST /textcontent/:id/update': { action: 'textcontent/update' },
 
-  'GET /textcontent/:id/destroy': { action: 'dashboard/textcontent/destroy' },
+  'GET /textcontent/:id/destroy': { action: 'textcontent/destroy' },
 
-  'GET /textcontent/:id': { action:'dashboard/textcontent/find-one' },
+  'GET /textcontent/:id': { action:'textcontent/find-one' },
 
-  'GET /textcontent': { action: 'dashboard/textcontent/find', locals: {layout: 'layouts/layout'}},
+  'GET /textcontent': { action: 'textcontent/find', locals: {layout: 'layouts/layout'}},
+
+  'GET /dashboard': { view: 'pages/dashboard', locals: {layout: 'layouts/app-layout'}},
 
   //
   // organisation

@@ -4,9 +4,8 @@
             <div class="d-flex flex-nowrap mb-3">
                 <form action="/textcontent"
                       class=" d-flex grey-background border shape-rounded-corners-small w-75 ml-3 mr-2">
-                    <!-- TODO change on @input via Vue -->
-                    <input name="q" type="text" minlength="1" maxlength="20" placeholder="Search for entries"
-                           cols="20" rows="1" class="border-0 w-75">
+                    <textarea name="searchbar" type="text" minlength="1" maxlength="20" placeholder="Search for entries"
+                              cols="20" rows="1" class="border-0"></textarea>
                     <button type="submit" id="app-search-button-icon"
                             class="bg-transparent shape-rounded-corners-small d-inline-block flex-shrink-0 border-left qntm-icon-button">
                         <img src="/images/icon_search.svg" alt="Search Icon">
@@ -48,13 +47,13 @@
                                 <label for="entry_title">Title:</label>
                             </div>
                             <textarea name="title" type="text" minlength="1" maxlength="80" id="entry_title" cols="30"
-                                      rows="1" class="flex-grow-1" required><%= textcontent.title; %></textarea>
+                                      rows="1" class="flex-grow-1"><%= textcontent.title; %></textarea>
                             <div class="mt-4 font-weight-bold font-extra-small-text">
                                 <label for="entry_content">Content:</label>
                             </div>
                             <textarea name="content" type="text" minlength="2" maxlength="1024" id="entry_content"
-                                      cols="30" rows="10" class="flex-grow-1"
-                                      required><%= textcontent.content; %></textarea>
+                                      cols="30"
+                                      rows="10" class="flex-grow-1"><%= textcontent.content; %></textarea>
                         </div>
                     </div>
                 </div>
@@ -139,10 +138,10 @@
         </form>
     </div>
 </div>
-<!-- TODO Vue script -->
+<!-- TODO Vue -->
 <script>
   let app = new Vue({
-    el: 'app',
+    el: "app",
     data: {
       btnDisabled: true
     },

@@ -50,8 +50,6 @@
     <nav role="navigation" class="qntm-navbar">
         <div class="qntm-navbar-container blue-background">
             <a href="/">
-                <!-- SVG as html instead of img tag, so that the font can be loaded, not
-                 possible with img as src images must be self-contained -->
                 <svg id="qntm-logo" width="113.01mm" height="35.854mm" version="1.1" viewBox="0 0 113.01 35.854" xmlns="http://www.w3.org/2000/svg">
                     <g transform="translate(-29.073 -124.98)">
                         <g transform="translate(72.288 3.428)">
@@ -66,42 +64,14 @@
                     </g>
                 </svg>
             </a>
-            <div class="qntm-navbar-link-container">
+            <div class="qntm-navbar-link-container justify-content-end">
                 <div class="qntm-navbar-right-links">
-                    <% if (me) { %>
-                        <!-- logged in navbar -->
-                        <div class="dropdown">
-                            <button
-                                    class="btn btn-secondary dropdown-toggle qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                                Account
-                            </button>
-                            <div class="dropdown-menu qntm-navbar-dropdown">
-                                <div class="qntm-navbar-dropdown-head">
-                                    <h3 class="qntm-navbar-dropdown-head-h3 white-font">
-                                        <%= me.fullName %>
-                                    </h3>
-                                    <p class="white-font">
-                                        <%= me.emailAddress %>
-                                    </p>
-                                </div>
-                                <a class="dropdown-item" href="/account">Profile</a>
-                                <a class="dropdown-item" href="/organisation">Organisation</a>
-                                <a class="dropdown-item" href="#">Documentation</a>
-                                <div class="qntm-navbar-dropdown-separator-line"></div>
-                                <a class="dropdown-item" href="/logout">Sign Out</a>
-                            </div>
-                        </div>
-
-                    <% } else { %>
-                        <!-- logged out navbar -->
                         <div>
-                            <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
+                            <a href="/logout" class="qntm-navbar-link font-special-text">Sign Out</a>
                         </div>
                         <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                           href="signup">Try
+                           href="/signup">Try
                             Free</a>
-                    <% } %>
                 </div>
                 <div class="qntm-nav-burger">
                     <div class="line1"></div>
@@ -125,32 +95,21 @@
                     <a href="" class="qntm-navbar-link font-special-text">Company</a>
                 </li>
                 <hr class="qntm-menu-separator">
-                <% if (me) { %>
-                    <!--logged in mobile -->
-                    <li class="qntm-navbar-list-item">
-                        <a href="/organisation" class="qntm-navbar-link font-special-text">Organisation</a>
-                    </li>
-                    <li class="qntm-navbar-list-item">
-                        <a href="/account/profile" class="qntm-navbar-link font-special-text">Profile</a>
-                    </li>
-                    <li class="qntm-navbar-list-item">
-                        <a href="#" class="qntm-navbar-link font-special-text">Documentation</a>
-                    </li>
-                    <hr class="qntm-menu-separator">
-
-                    <div class="qntm-menu-button-section">
-                        <a href="/logout" class="qntm-navbar-link font-special-text">Sign Out</a>
-                    </div>
-                <% } else { %>
-                    <!--logged out mobile -->
-                    <div class="qntm-menu-button-section">
+                <div class="qntm-menu-button-section">
+                    <% if (me) { %>
+                        <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                           href="/signup">Try Free</a>
+                        <div>
+                            <a href="/logout" class="qntm-navbar-link font-special-text">Sign Out</a>
+                        </div>
+                    <% } else { %>
                         <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
                            href="/signup">Try Free</a>
                         <div>
                             <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
                         </div>
-                    </div>
-                <% } %>
+                    <% } %>
+                </div>
             </ul>
         </div>
     </nav>
