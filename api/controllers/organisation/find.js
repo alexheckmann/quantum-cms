@@ -45,8 +45,9 @@ module.exports = {
 
     } else {
       sails.log.debug('User has no organisation.')
-
+      
       return {
+        // TODO
         message: "User has no organisation.",
         user: user,
         org: org,

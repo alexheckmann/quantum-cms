@@ -15,15 +15,15 @@
                             <%= org.name %>
                         </div>
                         <% }); %>
-                        <div class="d-flex">
-                            <div class="mr-1">
-                                <a class="qntm-button font-special-text shape-rounded-corners-small"
-                                    href="/organisation/<%= user.id %>/edit">Edit</a>
-                            </div>
-                            <div class="">
-                                <a class="qntm-button font-special-text shape-rounded-corners-small"
-                                    href="/organisation/<%= user.id %>/delete">Resign</a>
-                        </div>
+                            <div class="d-flex">
+                                <div class="mr-1">
+                                    <a class="qntm-button font-special-text shape-rounded-corners-small"
+                                        href="/organisation/<%= user.id %>/edit">Edit</a>
+                                </div>
+                                <div class="">
+                                    <a class="qntm-button font-special-text shape-rounded-corners-small"
+                                        href="/organisation/<%= user.id %>/delete">Resign</a>
+                                </div>
                             </div>
                             <% } else { %>
                                 <p>You have no organisation.</p>
@@ -42,48 +42,51 @@
                 <h3>Members</h3>
             </div>
             <% if(!!users){ %>
-                <div class="">
-                    <table class="table table-hover">
+                <div class="mb-2">
+                    <table id="dataTable" data-toggle="table" class="table table-hover" data-click-to-select="true"
+                        data-toolbar="#toolbar">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Option-1</th>
-                                <th scope="col">Option-2</th>
+                                <th data-field="state" data-checkbox="true"></th>
+                                <th data-field="id" data-visible="false"></th>
+                                <th data-field="name" scope="col" data-sortable="true">Name</th>
+                                <th data-field="role" scope="col" data-sortable="true">Role</th>
                             </tr>
                         </thead>
                         <tbody>
                             <% users.forEach(function(users){ %>
-                                <tr class="">
-                                    <td class="">
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <%= users.id %>
+                                    </td>
+                                    <td>
                                         <%= users.fullName %>
                                     </td>
                                     <% if(users.admin){ %>
-                                        <td>Admin</td>
+                                        <td id="dataTable_stateRow_adminCheck">Admin</td>
                                         <% } else { %>
                                             <td>Worker</td>
                                             <% }; %>
-                                                <% if(user.admin){ %>
-                                                    <% if(!users.admin && users.id !=user.id){ %>
-                                                        <td class=""><a
-                                                                class="qntm-button font-special-text shape-rounded-corners-small"
-                                                                href="/organisation/<%= users.id %>/updateAdmin">Appoint
-                                                                as
-                                                                admin</a></td>
-
-                                                        <td class=""> <a
-                                                                class="qntm-button font-special-text shape-rounded-corners-small"
-                                                                href="/organisation/<%= users.id %>/delete">Delete</a>
-                                                        </td>
-                                                        <% } %>
-                                                            <% }; %>
                                 </tr>
                                 <% }); %>
                         </tbody>
                     </table>
-                    <% } else { %>
-                        <p>You have no organisation.</p>
-                        <% } %>
                 </div>
+                <div id="toolbar">
+                    <button id="adminBtn" class="qntm-button font-special-text shape-rounded-corners-small">Appoint as
+                        admin</button>
+
+                    <button id="deleteBtn"
+                        class="qntm-button font-special-text shape-rounded-corners-small">Delete</button>
+                </div>
+                <% } else { %>
+                    <p>You have no organisation.</p>
+                    <% } %>
         </div>
     </div>
+
+    <%- exposeLocalsToBrowser() %>
+        <script>
+            // window.onload = () => createTable();
+        </script>
