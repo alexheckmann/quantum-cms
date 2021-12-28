@@ -27,13 +27,13 @@ module.exports = {
           'contains': inputs.q
         },
         author: this.req.session.userId
-      })
+      }).sort('title ASC');
     } else {
       textcontents = await TextContent.find({
         author: this.req.session.userId
-      });
+      }).sort('title ASC');
     }
-    sails.log.debug(textcontents)
+    sails.log.debug(textcontents);
     return ({ textcontents: textcontents });
   }
 };

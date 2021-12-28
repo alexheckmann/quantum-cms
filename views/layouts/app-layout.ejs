@@ -5,7 +5,7 @@
 } %><!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Quantum CMS</title>
+    <title>Dashboard – Quantum CMS</title>
 
     <% /* Viewport tag for sensible mobile support */ %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -41,10 +41,8 @@
     <link rel="stylesheet" href="/dependencies/bootstrap-4/bootstrap-4.css">
     <link rel="stylesheet" href="/dependencies/fontawesome.css">
     <link rel="stylesheet" href="/styles/functional-classes.css">
-    <!-- TODO fails to load <link rel="stylesheet" href="/styles/importer.css"> -->
+    <link rel="stylesheet" href="/styles/importer.css">
     <link rel="stylesheet" href="/styles/style.css">
-    <!-- TODO LINK for bootstrap table -->
-    <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
     <!--STYLES END-->
 </head>
 <body>
@@ -66,56 +64,14 @@
                     </g>
                 </svg>
             </a>
-            <div class="qntm-navbar-link-container">
-                <ul class="qntm-navbar-left-links">
-                    <li class="qntm-navbar-list-item">
-                        <a href="/features" class="qntm-navbar-link font-special-text">Features</a>
-                    </li>
-                    <li class="qntm-navbar-list-item">
-                        <a href="/pricing" class="qntm-navbar-link font-special-text">Pricing</a>
-                    </li>
-                    <li class="qntm-navbar-list-item">
-                        <a href="/resources" class="qntm-navbar-link font-special-text">Resources</a>
-                    </li>
-                    <li class="qntm-navbar-list-item">
-                        <a href="/about" class="qntm-navbar-link font-special-text">About Us</a>
-                    </li>
-                </ul>
+            <div class="qntm-navbar-link-container justify-content-end">
                 <div class="qntm-navbar-right-links">
-                    <% if (me) { %>
-                        <!-- logged in navbar -->
-                        <div class="dropdown">
-                          <button
-                            class="btn btn-secondary dropdown-toggle qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                            type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                            Account
-                          </button>
-                          <div class="dropdown-menu qntm-navbar-dropdown">
-                            <div class="qntm-navbar-dropdown-head">
-                              <h3 class="qntm-navbar-dropdown-head-h3 white-font">
-                                <%= me.fullName %>
-                              </h3>
-                              <p class="white-font">
-                                <%= me.emailAddress %>
-                              </p>
-                            </div>
-                            <a class="dropdown-item" href="/account/profile">Profile</a>
-                            <a class="dropdown-item" href="/organisation">Organisation</a>
-                            <a class="dropdown-item" href="#">Documentation</a>
-                            <div class="qntm-navbar-dropdown-separator-line"></div>
-                            <a class="dropdown-item" href="/logout">Sign Out</a>
-                          </div>
-                        </div>
-
-                    <% } else { %>
-                        <!-- logged out navbar -->
                         <div>
-                            <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
+                            <a href="/logout" class="qntm-navbar-link font-special-text">Sign Out</a>
                         </div>
                         <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                           href="signup">Try
+                           href="/signup">Try
                             Free</a>
-                    <% } %>
                 </div>
                 <div class="qntm-nav-burger">
                     <div class="line1"></div>
@@ -139,32 +95,21 @@
                     <a href="" class="qntm-navbar-link font-special-text">Company</a>
                 </li>
                 <hr class="qntm-menu-separator">
+                <div class="qntm-menu-button-section">
                     <% if (me) { %>
-                          <!--logged in mobile -->
-                          <li class="qntm-navbar-list-item">
-                            <a href="/organisation" class="qntm-navbar-link font-special-text">Organisation</a>
-                          </li>
-                          <li class="qntm-navbar-list-item">
-                            <a href="/account/profile" class="qntm-navbar-link font-special-text">Profile</a>
-                          </li>
-                          <li class="qntm-navbar-list-item">
-                            <a href="#" class="qntm-navbar-link font-special-text">Documentation</a>
-                          </li>
-                          <hr class="qntm-menu-separator">
-
-                          <div class="qntm-menu-button-section">
+                        <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                           href="/signup">Try Free</a>
+                        <div>
                             <a href="/logout" class="qntm-navbar-link font-special-text">Sign Out</a>
-                          </div>
+                        </div>
                     <% } else { %>
-                          <!--logged out mobile -->
-                          <div class="qntm-menu-button-section">
-                            <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                               href="/signup">Try Free</a>
-                            <div>
-                                <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
-                            </div>
-                          </div>
+                        <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                           href="/signup">Try Free</a>
+                        <div>
+                            <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
+                        </div>
                     <% } %>
+                </div>
             </ul>
         </div>
     </nav>
@@ -190,9 +135,9 @@
 
 <%- body; %>
 
-<footer class="footer">
-  <section class="qntm-section-footer">
-      <div class="qntm-separator-line"></div>
+<footer>
+    <div class="qntm-separator-line"></div>
+    <section class="qntm-section-footer">
         <div class="qntm-footer-link-container">
 
             <a href="/" class="qntm-link-footer font-special-text">Overview</a>
@@ -688,9 +633,6 @@
 <script src="/js/pages/homepage.page.js"></script>
 <script src="/js/pages/legal/privacy.page.js"></script>
 <script src="/js/pages/legal/terms.page.js"></script>
-<script src="/js/organisation.js"></script>
-<!-- TODO LINK for bootstrap table -->
-<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
 <!--SCRIPTS END-->
 
 <% /* Display an overlay if the current browser is not supported.
