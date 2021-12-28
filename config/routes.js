@@ -101,4 +101,11 @@ module.exports.routes = {
   'GET /organisation/:id/delete': { action: 'organisation/delete' },
 
   'GET /organisation': { action: 'organisation/find' },
+
+  //
+  // API
+  //
+  'POST /api/v1/organisation/appointadmin': {action: 'api/organisation/appointadmin'},
+  'POST /api/v1/organisation/deletemembers': {action: 'api/organisation/deletemembers'}
+
 };
