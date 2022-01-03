@@ -10,7 +10,7 @@ module.exports = {
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/public/resources'
+      viewTemplatePath: 'pages/public/contact'
     }
 
   },
