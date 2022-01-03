@@ -61,7 +61,7 @@
 .background-image {
   background-image: url("../images/blue-violet-hero.svg");
   background-repeat: no-repeat;
-  background-position: 0% 60%;
+  background-position: 0 60%;
   background-size: contain;
 }
 

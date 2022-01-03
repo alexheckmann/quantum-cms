@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans:ital,wght@0,400;0,700;1,700&family=Oswald&display=swap');
+@import "functional-classes.css";
 
 :root {
   /* Variables with color palette */
@@ -740,6 +741,14 @@ footer a:hover {
   justify-content: space-evenly;
 }
 
+/* Screen resolution for extremely large displays */
+@media screen and (min-width: 2340px) {
+  /* Changes to 'cover' at the breakpoint since 'background-size: contain' is broken for size >= 2340px */
+  .background-image {
+    background-size: cover;
+  }
+}
+
 /* Screen resolution for tablets */
 @media screen and (max-width: 1078px) {
 
@@ -879,6 +888,10 @@ footer a:hover {
 
 /* Media query for small tablets / big smartphones */
 @media screen and (max-width: 621px) {
+  .qntm-eye-catcher-section.background-image {
+    background-position-y: 70%;
+  }
+
   section.qntm-feature-intro-section.background-image-left-side {
     background-image: none;
   }
