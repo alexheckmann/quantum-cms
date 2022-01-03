@@ -675,13 +675,6 @@ button {
 }
 
 /* about us/meet the team section */
-
-.qntm-team-container {
-  width: clamp(20ch, 90%, 160ch);
-  padding: clamp(20px, 50px, 80px) clamp(20px, 40px, 40px) clamp(20px, 50px, 80px);
-  margin: 0 20px;
-}
-
 .qntm-team-title {
   margin-bottom: 10px;
   margin-top: 10px;
@@ -697,11 +690,6 @@ button {
 }
 
 /* about page */
-
-.qntm-team-container {
-  width: clamp(20ch, 80%, 160ch);
-  padding: clamp(20px, 10px, 80px);
-}
 
 /* separators */
 .qntm-separator-line {
@@ -780,7 +768,7 @@ footer a:hover {
 
   /* So that burger in navbar is moved to the right end */
   .qntm-navbar-link-container {
-    justify-content: flex-end;
+    justify-content: flex-end !important;
   }
 
   /* Default is display: none, shows button when screen size is reached*/
@@ -792,7 +780,7 @@ footer a:hover {
   .qntm-navbar-list-item {
     line-height: 1em;
     flex: 1 1 0;
-    text-align: left;
+    text-align: left !important;
     padding: 1.5em 0;
   }
 
@@ -808,8 +796,8 @@ footer a:hover {
 
   .qntm-menu-button-section div {
     display: inline-block !important;
-    flex: 1 1 0;
-    text-align: center;
+    flex: 1 1 0 !important;
+    text-align: center !important;
   }
 
   .qntm-menu-button-section div .qntm-navbar-link {
@@ -840,12 +828,12 @@ footer a:hover {
 
   /* changes flex behavior of the why section for better responsiveness */
   .qntm-why-box-container {
-    flex-direction: column;
+    flex-direction: column !important;
   }
 
   /* changes flex behavior of the why section for better responsiveness */
   .qntm-why-box {
-    flex: 0 1 0;
+    flex: 0 1 0 !important;
     margin: var(--slalom-item-margin) 0;
   }
 }
@@ -857,8 +845,8 @@ footer a:hover {
 
   /* centers items & text */
   .qntm-slalom-section {
-    justify-content: center;
-    text-align: center;
+    justify-content: center !important;
+    text-align: center !important;
   }
 
   /* switches position of picture with feature description */
@@ -874,12 +862,12 @@ footer a:hover {
   /* displays the links in the footer in column */
   .qntm-footer-link-container {
     display: flex !important;
-    flex-direction: column;
-    position: relative;
-    margin: auto;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: center;
+    flex-direction: column !important;
+    position: relative !important;
+    margin: auto !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    align-content: center !important;
     font-size: 18px;
   }
 
@@ -907,7 +895,7 @@ footer a:hover {
 
   /* changes flex behavior for small display size */
   .qntm-getting-started-container {
-    flex-direction: column;
+    flex-direction: column !important;
   }
 
   /* increasing bottom margin when the button layout was moved */
