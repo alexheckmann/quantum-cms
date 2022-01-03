@@ -14,7 +14,7 @@
 }
 
 * {
-  color: var(--color-dark-grey)
+  color: var(--color-dark-grey);
 }
 
 html {
@@ -542,7 +542,7 @@ TODO change to Bootstrap
 
 .qntm-eye-catcher-content-small {
   padding: 10px 0 0;
-  margin: auto auto 0;
+  margin-inline: auto;
   max-width: 370px;
 }
 
@@ -594,8 +594,12 @@ TODO change to Bootstrap
   align-items: center;
 }
 
+.qntm-small-width-container {
+  max-width: 450px;
+}
+
 .qntm-width-container {
-  margin: 0 auto;
+  margin-inline: auto;
   max-width: 700px;
 }
 
@@ -693,7 +697,7 @@ TODO change to Bootstrap
 .qntm-why-container {
   width: clamp(20ch, 90%, 160ch);
   padding: clamp(20px, 40px, 80px);
-  margin: 0 20px;
+  margin-inline: 20px;
 }
 
 .qntm-why-parent {
@@ -781,16 +785,15 @@ TODO change to Bootstrap
 }
 
 .qntm-pricing-content p {
-  margin: 16px 0;
+  margin-block: 16px;
 }
 
 .qntm-pricing-title {
-  margin: 7px 0;
+  margin-block: 7px;
 }
 
 .qntm-pricing-price-tag {
-  margin-top: 0;
-  margin-bottom: 20px;
+  margin-block: 0 20px;
   letter-spacing: 1px;
 }
 
@@ -809,18 +812,8 @@ TODO change to Bootstrap
 }
 
 /* signup page */
-.qntm-signup-checkbox-item {
-  margin-top: 0.35rem;
-}
-
-/* about us page */
-.qntm-about-us-eye-catcher-section {
-  padding: 25px 25px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
+.qntm-checkbox {
+  margin-top: 0.45rem;
 }
 
 .qntm-statement-item-section {
