@@ -16,10 +16,16 @@ module.exports.routes = {
   'GET /': {action: 'view-homepage-or-redirect'},
   'GET /welcome/:unused?': {action: 'dashboard/view-welcome'},
 
-  'GET /faq': {action: 'view-faq'},
-  'GET /terms': {action: 'legal/view-terms'},
-  'GET /privacy': {action: 'legal/view-privacy'},
-  'GET /contact': {action: 'view-contact'},
+  'GET /pricing': {action: 'public/view-pricing'},
+
+  'GET /resources': {action: 'public/view-resources'},
+  'GET /features': {action: 'public/view-features'},
+  'Get /about': {action: 'public/view-about'},
+  'GET /faq': {action: 'public/view-faq'},
+  'GET /contact': {action: 'public/view-contact'},
+
+  'GET /terms': {action: 'public/legal/view-terms'},
+  'GET /privacy': {action: 'public/legal/view-privacy'},
 
   'GET /signup': {action: 'entrance/view-signup'},
   'GET /email/confirm': {action: 'entrance/confirm-email'},
@@ -32,11 +38,6 @@ module.exports.routes = {
   'GET /account': {action: 'account/view-account-overview'},
   'GET /account/password': {action: 'account/view-edit-password'},
   'GET /account/profile': {action: 'account/view-edit-profile'},
-
-  // our routes
-  '/': {view: 'pages/homepage', locals: {layout: 'layouts/layout'}},
-  'GET /pricing': {view: 'pages/pricing', locals: {layout: 'layouts/layout'}},
-  'GET /about': {view: 'pages/about', locals: {layout: 'layouts/layout'}},
 
   //  ╔╦╗╦╔═╗╔═╗  ╦═╗╔═╗╔╦╗╦╦═╗╔═╗╔═╗╔╦╗╔═╗   ┬   ╔╦╗╔═╗╦ ╦╔╗╔╦  ╔═╗╔═╗╔╦╗╔═╗
   //  ║║║║╚═╗║    ╠╦╝║╣  ║║║╠╦╝║╣ ║   ║ ╚═╗  ┌┼─   ║║║ ║║║║║║║║  ║ ║╠═╣ ║║╚═╗
