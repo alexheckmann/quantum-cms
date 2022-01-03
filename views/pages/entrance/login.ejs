@@ -19,7 +19,7 @@
         <cloud-error v-if="cloudError==='badCombo'">The credentials you entered are not associated with an account. Please check your email and/or password and try again.</cloud-error>
         <cloud-error v-else-if="cloudError"></cloud-error>
         <div class="form-group">
-          <ajax-button :syncing="syncing" class="qntm-primary-button font-special-text shape-rounded-corners-small">Sign in</ajax-button>
+          <ajax-button :syncing="syncing">Sign in</ajax-button>
         </div>
       </ajax-form>
       <p class="text-center font-extra-small-text"><a href="/password/forgot">Forgot your password?</a></p>

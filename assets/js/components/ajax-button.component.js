@@ -20,7 +20,7 @@ parasails.registerComponent('ajaxButton', {
   //  ╦╔╗╔╦╔╦╗╦╔═╗╦    ╔═╗╔╦╗╔═╗╔╦╗╔═╗
   //  ║║║║║ ║ ║╠═╣║    ╚═╗ ║ ╠═╣ ║ ║╣
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
-  data: function (){
+  data: function () {
     return {
       //…
     };
@@ -30,8 +30,8 @@ parasails.registerComponent('ajaxButton', {
   //  ╠═╣ ║ ║║║║
   //  ╩ ╩ ╩ ╩ ╩╩═╝
   template: `
-  <button @click="click()" type="submit" class="btn ajax-button" :class="[syncing ? 'syncing' : '']">
-    <span class="button-text" v-if="!syncing"><slot name="default">Submit</slot></span>
+  <button @click="click()" type="submit" class="ajax-button qntm-primary-button font-special-text shape-rounded-corners-small" :class="[syncing ? 'syncing' : '']">
+    <span class="button-text text-white" v-if="!syncing"><slot name="default">Submit</slot></span>
     <span class="button-loader clearfix" v-if="syncing">
       <slot name="syncing-state">
         <span style="top: -4px; font-size: 12px; margin: 0 2px;" class="loading-dot dot1 position-relative"><small><span class="fa fa-circle"></span></small></span>
@@ -46,13 +46,13 @@ parasails.registerComponent('ajaxButton', {
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
   //  ║  ║╠╣ ║╣ ║  ╚╦╝║  ║  ║╣
   //  ╩═╝╩╚  ╚═╝╚═╝ ╩ ╚═╝╩═╝╚═╝
-  beforeMount: function() {
+  beforeMount: function () {
     //…
   },
-  mounted: async function(){
+  mounted: async function () {
     //…
   },
-  beforeDestroy: function() {
+  beforeDestroy: function () {
     //…
   },
 
@@ -61,7 +61,7 @@ parasails.registerComponent('ajaxButton', {
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
 
-    click: async function(){
+    click: async function () {
       this.$emit('click');
     },
 
