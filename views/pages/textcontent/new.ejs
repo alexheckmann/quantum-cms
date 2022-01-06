@@ -23,8 +23,8 @@
             </div>
             <% textcontents.forEach(function(entry){ %>
                 <li class="qntm-navbar-list-item qntm-app-navbar-list-item">
-                    <a href="/textcontent/<%= entry.id %>/edit"
-                       class="qntm-navbar-link font-special-text blue-font"><%= entry.title %></a>
+                    <a href="/textcontent/<%= entry.id; %>/edit"
+                       class="qntm-navbar-link font-special-text blue-font"><%= entry.title; %></a>
                 </li>
             <% }); %>
         </ul>
@@ -40,18 +40,19 @@
                 <div class="flex-fill p-3">
                     <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big p-3 flex-grow-1">
                         <div>
-                            <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                            <input type="hidden" name="_csrf" value="<%= _csrf; %>"/>
                             <div class="font-weight-bold font-extra-small-text">
                                 <label for="entry_title">Title:</label>
                             </div>
-                            <textarea name="title" type="text" minlength="1" maxlength="80" id="entry_title" cols="30"
-                                      rows="1" class="flex-grow-1"></textarea>
+                            <textarea class="form-control flex-grow-1" name="title" type="text" minlength="1"
+                                      maxlength="80" id="entry_title" cols="30" rows="1" required></textarea>
+                            <div class="invalid-feedback">Please enter a title.</div>
                             <div class="mt-4 font-weight-bold font-extra-small-text">
                                 <label for="entry_content">Content:</label>
                             </div>
-                            <textarea name="content" type="text" minlength="2" maxlength="1024" id="entry_content"
-                                      cols="30"
-                                      rows="10" class="flex-grow-1"></textarea>
+                            <textarea class="form-control flex-grow-1" name="content" type="text" minlength="2"
+                                      maxlength="1024" id="entry_content" cols="30" rows="14" required></textarea>
+                            <div class="invalid-feedback">Please enter your content.</div>
                         </div>
                     </div>
                 </div>
@@ -87,10 +88,10 @@
                         </div>
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             <div class="mb-2 d-flex align-items-center grey-background border shape-rounded-corners-small">
-                                <textarea name="title" type="text" minlength="1" maxlength="80" id="entry_endpoint"
-                                          cols="30"
-                                          rows="1" class="text-truncate font-extra-small-text border-0 mr-2"
-                                          disabled></textarea>
+                                <textarea name="title" type="text" id="entry_endpoint"
+                                          cols="30" rows="1"
+                                          class="text-truncate font-extra-small-text border-0 mr-2 grey-background"
+                                          readonly><%= textcontent.endpoint; %></textarea>
                                 <img src="/images/icon-copy.svg" alt="Copy to clipboard"
                                      id="app-copy-button-icon"
                                      class="d-inline-block flex-shrink-0 mr-1 qntm-icon-button">

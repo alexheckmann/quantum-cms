@@ -6,10 +6,6 @@
     padding-bottom: 5px;
 }
 
-.min-height {
-  flex: 1 1 0;
-}
-
 /* Functional classes for fonts */
 
 .font-special-text {
@@ -51,11 +47,7 @@
 
 /* Functional class for blue text color */
 .blue-font {
-    color: #173361;
-}
-
-.white-font {
-    color: white;
+    color: #173361 !important;
 }
 
 .blue-background {
@@ -69,8 +61,9 @@
 .background-image {
   background-image: url("../images/blue-violet-hero.svg");
   background-repeat: no-repeat;
-  background-position: 0% 60%;
+  background-position: 0 60%;
   background-size: contain;
+
 }
 
 .background-image-right-side {
@@ -85,16 +78,4 @@
   background-repeat: no-repeat;
   background-position: -1% 60%;
   background-size: contain;
-}
-
-.display-flex {
-    display: flex;
-}
-
-.display-inline-block {
-    display: inline-block;
-}
-
-.display-inline {
-    display: inline;
 }

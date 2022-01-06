@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans:ital,wght@0,400;0,700;1,700&family=Oswald&display=swap');
+@import "functional-classes.css";
 
 :root {
   /* Variables with color palette */
@@ -14,7 +15,7 @@
 }
 
 * {
-  color: var(--color-dark-grey)
+  color: var(--color-dark-grey);
 }
 
 html {
@@ -33,7 +34,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Noto Sans", sans-serif;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 a {
@@ -190,8 +191,6 @@ button {
 }
 
 #qntm-logo {
-  display: block;
-  height: auto;
   width: 130px;
   padding: 1em 15px 1em 0.5rem;
 }
@@ -218,38 +217,18 @@ button {
   padding: 0;
 }
 
-/*
-  top: calc(100% + 10px);
-  right: 0px;
-  transform-origin: right top;
-  opacity: 1;
-  position: absolute;
-  pointer-events: initial;
-*/
-
 .qntm-navbar-dropdown-separator-line {
-  margin: auto;
   border-bottom: 1px solid lightgray;
-  width: 100%;
 }
 
 .qntm-navbar-dropdown-head {
   padding: 24px 10px;
-  display: flex;
-  flex-direction: column;
-  -webkit-box-align: center;
-  align-items: center;
   background-color: var(--color-dark-blue);
-  color: rgb(255, 255, 255);
-  max-width: 100%;
 }
 
 .qntm-navbar-dropdown-head-h3 {
   font-size: 16px;
-  font-weight: bold;
   line-height: 22px;
-  margin: 0;
-  max-width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -257,34 +236,23 @@ button {
 
 
 .qntm-navbar-sticky {
-  position: sticky;
   top: 0;
   z-index: 9999;
-  width: 100%;
 
   --nav-height-big: 88px;
   --nav-height-small: 56px;
 }
 
 .qntm-navbar {
-  width: 100%;
-  position: relative;
   top: 0;
   left: 0;
   z-index: 1;
-
-  color: white;
 }
 
 .qntm-navbar-container {
-  display: flex;
   box-sizing: border-box;
-  margin: 0;
   min-width: 0;
   background-color: var(--color-dark-blue);
-  -webkit-box-align: center;
-  align-items: center;
-  align-content: center;
   border-style: solid;
   border-color: var(--color-dark-grey);
   border-image: initial;
@@ -296,23 +264,11 @@ button {
 
 .qntm-navbar-link-container {
   box-sizing: border-box;
-  margin: 0;
   min-width: 0;
-  display: flex;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  align-items: center;
-  width: 100%;
 }
 
 .qntm-navbar-left-links {
   margin: 0 0 0 16px;
-  display: flex;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  align-items: center;
   height: var(--nav-height-big);
   list-style: none;
   padding: 0;
@@ -320,7 +276,6 @@ button {
   pointer-events: initial;
   will-change: opacity;
   transition: opacity 250ms ease 0s;
-  position: relative;
 }
 
 .qntm-navbar-list-item {
@@ -336,10 +291,6 @@ button {
 
 .qntm-navbar-right-links {
   padding-right: 36px;
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: space-between;
 }
 
 .qntm-navbar-right-links div .qntm-navbar-link {
@@ -359,10 +310,6 @@ button {
 
 .qntm-navbar-link:hover {
   color: var(--color-light-blue);
-}
-
-.qntm-nav-burger {
-  display: none;
 }
 
 .qntm-nav-burger div {
@@ -387,14 +334,12 @@ button {
 }
 
 .qntm-menu-wrapper {
-  display: none;
   min-width: 0;
   min-height: calc(100% - var(--nav-height-small));
   height: calc(100vh - var(--nav-height-small));
   background-color: var(--color-dark-blue);
   width: 350px;
   max-width: 99vw;
-  position: absolute;
   top: var(--nav-height-small);
   left: 0;
   will-change: left;
@@ -413,12 +358,6 @@ button {
   transform: translateX(0%);
 }
 
-.qntm-menu-items {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-}
-
 .qntm-menu-separator {
   box-sizing: border-box;
   min-width: 0;
@@ -434,14 +373,7 @@ button {
 }
 
 .qntm-menu-button-section {
-  display: flex;
   padding: 1.5em 1.5em 104px;
-  align-content: center;
-  align-items: center;
-}
-
-.app-dashboard-wrapper {
-  flex: 1;
 }
 
 .qntm-app-navbar-container {
@@ -518,37 +450,26 @@ button {
   max-width: 256px;
 }
 
-/* style for eye catcher section
-TODO change to Bootstrap
-*/
+/* style for eye catcher section */
 .qntm-eye-catcher-section {
   padding: 25px;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
 }
 
 .qntm-eye-catcher-headline {
   padding: 20px 0;
-  margin: auto;
   max-width: 500px;
 }
 
 .qntm-eye-catcher-content {
   padding: 10px 0;
-  flex: 1;
 }
 
 .qntm-eye-catcher-content-small {
   padding: 10px 0 0;
-  margin: auto auto 0;
   max-width: 370px;
 }
 
 .qntm-eye-catcher-img {
-  max-width: 100%;
-  align-items: center;
   margin-top: 4rem;
   margin-bottom: 6rem;
 }
@@ -579,65 +500,33 @@ TODO change to Bootstrap
 
 .qntm-feature-intro-section {
   padding: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
 }
 
 .qntm-feature-intro-title-container {
   width: min(100%, 1200px);
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
+}
+
+.qntm-small-width-container {
+  max-width: 450px;
 }
 
 .qntm-width-container {
-  margin: 0 auto;
   max-width: 700px;
 }
 
-.qntm-feature-intro-headline-teaser {
-  display: block;
-  text-align: center;
-}
-
-.qntm-feature-intro-headline {
-  padding-bottom: 20px;
-  text-align: center;
-  padding-top: 10px;
-  margin: auto;
-  max-width: 500px;
-}
-
 .qntm-feature-intro-content {
-  text-align: center;
   padding: 10px 0;
-  margin: auto;
 }
 
 .qntm-slalom-section {
   max-width: 1025px;
   padding: 80px 0;
   margin: 30px auto;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  display: flex;
 
   --slalom-item-margin: clamp(30px, 1.1vw, 50px);
 }
 
-.qntm-section-reverse {
-}
-
 .qntm-slalom-graphic {
-  position: relative;
-  width: auto;
-  display: flex;
-  justify-content: center;
   order: 1;
 }
 
@@ -659,18 +548,8 @@ TODO change to Bootstrap
 }
 
 .qntm-slalom-text {
-  width: 100%;
-  flex: 1;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
   max-width: clamp(432px, 1vw, 560px);
   margin: 0 var(--slalom-item-margin);
-}
-
-.qntm-slalom-text-reverse {
-
 }
 
 .qntm-slalom-text-title {
@@ -685,27 +564,13 @@ TODO change to Bootstrap
   margin-top: 16px;
 }
 
-.qntm-why-section {
-  display: flex;
-  justify-content: center;
-}
-
 .qntm-why-container {
   width: clamp(20ch, 90%, 160ch);
   padding: clamp(20px, 40px, 80px);
-  margin: 0 20px;
-}
-
-.qntm-why-parent {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  color: white;
+  margin-inline: 20px;
 }
 
 .qntm-why-parent-text {
-  display: block;
-  float: left;
   width: 70%;
   padding: 10px;
 }
@@ -719,12 +584,6 @@ TODO change to Bootstrap
   margin-top: 10px;
 }
 
-.qntm-why-box-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  color: white;
-}
 
 .qntm-why-box {
   flex: 0 1 320px;
@@ -734,42 +593,27 @@ TODO change to Bootstrap
 
 .qntm-getting-started-container {
   padding: 35px 20px;
-  margin: auto;
-  position: relative;
   max-width: 1160px;
-  display: flex;
-  align-items: center;
-  -webkit-box-align: center;
 }
 
 .qntm-getting-started-text-container {
   margin-right: 40px;
-  flex: 1;
 }
 
 .qntm-getting-started-title {
-  margin: 0;
   line-height: 40px;
 }
 
 /* Pricing page */
 .qntm-pricing-section {
   padding: 40px 0;
-  width: 100%;
 }
 
 .qntm-pricing-container {
-  justify-content: space-around;
-  margin: auto;
   max-width: 1100px;
-  width: 100%;
-  flex-wrap: wrap;
-  display: flex;
 }
 
 .qntm-pricing-box {
-  display: flex;
-  flex-direction: column;
   order: 0;
   margin: 10px;
   background-color: rgb(255, 255, 255);
@@ -781,16 +625,15 @@ TODO change to Bootstrap
 }
 
 .qntm-pricing-content p {
-  margin: 16px 0;
+  margin-block: 16px;
 }
 
 .qntm-pricing-title {
-  margin: 7px 0;
+  margin-block: 7px;
 }
 
 .qntm-pricing-price-tag {
-  margin-top: 0;
-  margin-bottom: 20px;
+  margin-block: 0 20px;
   letter-spacing: 1px;
 }
 
@@ -809,43 +652,16 @@ TODO change to Bootstrap
 }
 
 /* signup page */
-.qntm-signup-checkbox-item {
-  margin-top: 0.35rem;
-}
-
-/* about us page */
-.qntm-about-us-eye-catcher-section {
-  padding: 25px 25px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
+.qntm-checkbox {
+  margin-top: 0.45rem;
 }
 
 .qntm-statement-item-section {
   max-width: 1025px;
-  padding: 0 0;
   margin: 30px auto;
-  align-items: flex-start;
-  justify-content: start;
-  flex-wrap: wrap;
-  display: flex;
 }
-
-.qntm-statement-item-section-reverse {
-  align-items: flex-end;
-  justify-content: end;
-}
-
 
 .qntm-statement-item-text {
-  width: 100%;
-  flex: 1;
-  display: block;
-  justify-content: left;
-  align-items: flex-start;
-  align-content: center;
   max-width: clamp(432px, 1vw, 660px);
   margin: 0 var(--slalom-item-margin);
 }
@@ -860,42 +676,9 @@ TODO change to Bootstrap
 }
 
 /* about us/meet the team section */
-.qntm-team-section {
-  display: flex;
-  justify-content: center;
-}
-
-.qntm-team-container {
-  width: clamp(20ch, 90%, 160ch);
-  padding: clamp(20px, 50px, 80px) clamp(20px, 40px, 40px) clamp(20px, 50px, 80px);
-  margin: 0 20px;
-}
-
-.qntm-team-parent {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  color: white;
-}
-
-.qntm-team-parent-text {
-  display: block;
-  float: left;
-  width: 70%;
-  padding: 0 10px;
-}
-
 .qntm-team-title {
   margin-bottom: 10px;
   margin-top: 10px;
-}
-
-.qntm-team-box-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  color: white;
-  padding-top: 20px;
 }
 
 .qntm-team-box {
@@ -907,37 +690,10 @@ TODO change to Bootstrap
   padding-top: 20px;
 }
 
-.qntm-team-graphic {
-  position: relative;
-  flex-grow: 1;
-  flex-shrink: 1;
-}
-
-.qntm-team-graphic img {
-  max-width: 80%;
-  width: 370px;
-  height: auto;
-  float: left;
-  margin: 0 var(--slalom-item-margin);
-}
-
-.qntm-team-graphic figure figcaption {
-  padding-top: 20px;
-}
-
 /* about page */
-.qntm-team-section {
-  padding-top: 0;
-}
-
-.qntm-team-container {
-  width: clamp(20ch, 80%, 160ch);
-  padding: clamp(20px, 10px, 80px);
-}
 
 /* separators */
 .qntm-separator-line {
-  margin: auto;
   border-bottom: 1px solid var(--color-light-grey);
   width: calc(100% - 40px);
 }
@@ -951,9 +707,8 @@ TODO change to Bootstrap
 }
 
 .qntm-separator-line-short {
-  margin: auto auto 6rem;
+  margin: 6rem auto;
   border-bottom: 1px solid lightgray;
-  width: 50%;
 }
 
 .qntm-separator-line-about-us {
@@ -967,10 +722,6 @@ TODO change to Bootstrap
 }
 
 .qntm-footer-link-container {
-  display: flex;
-  position: relative;
-  margin: auto;
-  justify-content: center;
   padding: 35px 20px;
 }
 
@@ -987,11 +738,15 @@ footer a:hover {
 }
 
 .qntm-footer-copyright-container {
-  display: flex;
-  position: relative;
   justify-content: space-evenly;
-  margin: 0;
-  padding: 0;
+}
+
+/* Screen resolution for extremely large displays */
+@media screen and (min-width: 2340px) {
+  /* Changes to 'cover' at the breakpoint since 'background-size: contain' is broken for size >= 2340px */
+  .background-image {
+    background-size: cover;
+  }
 }
 
 /* Screen resolution for tablets */
@@ -1004,7 +759,7 @@ footer a:hover {
 
   /* Displays the burger menu */
   .qntm-nav-burger {
-    display: block;
+    display: block !important;
     direction: rtl;
     cursor: pointer;
     padding: 16px 2rem 16px 2rem;
@@ -1017,24 +772,24 @@ footer a:hover {
 
   /* Removes all links from the navbar at the screen size */
   .qntm-navbar-left-links, .qntm-navbar-right-links {
-    display: none;
+    display: none !important;
   }
 
   /* So that burger in navbar is moved to the right end */
   .qntm-navbar-link-container {
-    justify-content: flex-end;
+    justify-content: flex-end !important;
   }
 
   /* Default is display: none, shows button when screen size is reached*/
   .qntm-menu-wrapper {
-    display: flex;
+    display: flex !important;
   }
 
   /* Increases font size for links when the menu is open */
   .qntm-navbar-list-item {
     line-height: 1em;
     flex: 1 1 0;
-    text-align: left;
+    text-align: left !important;
     padding: 1.5em 0;
   }
 
@@ -1049,9 +804,9 @@ footer a:hover {
 
 
   .qntm-menu-button-section div {
-    display: inline-block;
-    flex: 1 1 0;
-    text-align: center;
+    display: inline-block !important;
+    flex: 1 1 0 !important;
+    text-align: center !important;
   }
 
   .qntm-menu-button-section div .qntm-navbar-link {
@@ -1082,12 +837,12 @@ footer a:hover {
 
   /* changes flex behavior of the why section for better responsiveness */
   .qntm-why-box-container {
-    flex-direction: column;
+    flex-direction: column !important;
   }
 
   /* changes flex behavior of the why section for better responsiveness */
   .qntm-why-box {
-    flex: 0 1 0;
+    flex: 0 1 0 !important;
     margin: var(--slalom-item-margin) 0;
   }
 }
@@ -1099,8 +854,8 @@ footer a:hover {
 
   /* centers items & text */
   .qntm-slalom-section {
-    justify-content: center;
-    text-align: center;
+    justify-content: center !important;
+    text-align: center !important;
   }
 
   /* switches position of picture with feature description */
@@ -1115,13 +870,13 @@ footer a:hover {
 
   /* displays the links in the footer in column */
   .qntm-footer-link-container {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin: auto;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: center;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    margin: auto !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    align-content: center !important;
     font-size: 18px;
   }
 
@@ -1133,6 +888,10 @@ footer a:hover {
 
 /* Media query for small tablets / big smartphones */
 @media screen and (max-width: 621px) {
+  .qntm-eye-catcher-section.background-image {
+    background-position-y: 70%;
+  }
+
   section.qntm-feature-intro-section.background-image-left-side {
     background-image: none;
   }
@@ -1149,7 +908,7 @@ footer a:hover {
 
   /* changes flex behavior for small display size */
   .qntm-getting-started-container {
-    flex-direction: column;
+    flex-direction: column !important;
   }
 
   /* increasing bottom margin when the button layout was moved */
