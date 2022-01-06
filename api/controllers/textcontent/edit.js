@@ -33,7 +33,7 @@ module.exports = {
       author: this.req.session.userId
     }).sort('title ASC');
     if (!textcontents) {throw 'notFound'; }
-      // load individual record
+    // load individual record
     let textcontent = await TextContent.findOne({ id: id }).populate('author').populate('updatedFrom');
     if (!textcontent) { throw 'notFound'; }
     textcontent.createdAt = convertDate(textcontent.createdAt);

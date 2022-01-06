@@ -47,7 +47,7 @@
 
 /* Functional class for blue text color */
 .blue-font {
-    color: #173361;
+    color: #173361 !important;
 }
 
 .blue-background {
