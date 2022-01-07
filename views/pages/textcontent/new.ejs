@@ -91,7 +91,7 @@
                                 <textarea name="title" type="text" id="entry_endpoint"
                                           cols="30" rows="1"
                                           class="text-truncate font-extra-small-text border-0 mr-2 grey-background"
-                                          readonly><%= textcontent.endpoint; %></textarea>
+                                          readonly></textarea>
                                 <img src="/images/icon-copy.svg" alt="Copy to clipboard"
                                      id="app-copy-button-icon"
                                      class="d-inline-block flex-shrink-0 mr-1 qntm-icon-button">
@@ -117,13 +117,13 @@
                     <div class="d-flex justify-content-around align-content-center align-items-center my-4">
                         <div>
                             <button class="qntm-primary-button shape-rounded-corners-small font-special-text border-0"
-                                    type="submit">
+                                    type="submit" onclick="save()">
                                 Save
                             </button>
                         </div>
                         <div>
                             <button class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text border-0"
-                                    disabled>
+                                    onclick="resetEditor()">
                                 Revert
                             </button>
                         </div>
