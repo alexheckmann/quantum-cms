@@ -131,7 +131,8 @@
                             </button>
                         </div>
                         <div>
-                            <button class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text border-0">
+                            <button class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text border-0"
+                                    type="reset">
                                 Revert
                             </button>
                         </div>
@@ -141,18 +142,3 @@
         </form>
     </div>
 </div>
-<!-- TODO Vue -->
-<script>
-  let app = new Vue({
-    el: "app",
-    data: {
-      btnDisabled: true
-    },
-    methods: {
-      add(event) {
-        this.btnDisabled = false; // mutate data and let vue disable the element
-      }
-    }
-  });
-</script>
-

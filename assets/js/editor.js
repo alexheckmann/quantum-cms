@@ -53,9 +53,3 @@ function save() {
       window.location = '/textcontent/'+id+'/edit';
     });
 }
-
-function resetEditor() {
-  $('#entry_title').empty();
-  $('#entry_content').empty();
-
-}
