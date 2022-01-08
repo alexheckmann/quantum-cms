@@ -1,7 +1,7 @@
 <div class="d-flex flex-grow-1 flex-shrink-1">
     <%- partial('../../partials/textcontent/app-nav.ejs'); %>
     <div class="flex-fill grey-background d-flex flex-row" role="dialog">
-        <form action="/textcontent/" method="post" class="flex-fill">
+        <form action="/dashboard/text" method="post" class="flex-fill">
             <div class="d-flex flex-row align-items-center justify-content-between">
                 <div class="pl-4 pt-3">
                     <h1>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             <div class="mb-2 d-flex align-items-center grey-background border shape-rounded-corners-small">
-                                <textarea name="title" type="text" id="entry_endpoint"
+                                <textarea name="endpoint" type="text" id="entry_endpoint"
                                           cols="30" rows="1"
                                           class="text-truncate font-extra-small-text border-0 mr-2 grey-background"
                                           readonly></textarea>
