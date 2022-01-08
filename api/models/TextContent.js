@@ -4,19 +4,21 @@ module.exports = {
       type: 'string',
       columnType: 'varchar(80)',
       maxLength: 80,
-      required: true,
-      description: 'The description of the content.'
+      description: 'The description of the content.',
+      required: true
     },
     content: {
       type: 'string',
       columnType: 'varchar(1024)',
       maxLength: 1024,
-      description: 'The text content.'
+      description: 'The text content.',
+      required: true
     },
     endpoint: {
       type: 'string',
       columnType: 'varchar(80)',
-      required: true,
+      maxLength: 80,
+      required: true
     },
     status: {
       type: 'string',
