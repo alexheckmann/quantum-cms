@@ -379,7 +379,7 @@ button {
 .qntm-app-navbar-container {
   --height-nav: 88px;
   --height-footer: 183px;
-  --height-app-footer: 56px;
+  --height-app-footer: 51px;
 
   max-width: 20%;
   overflow-y: auto;
