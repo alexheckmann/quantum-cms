@@ -82,6 +82,7 @@ module.exports.routes = {
 
   'GET /dashboard/text/:id': { action:'textcontent/find-one' },
 
+  'GET /dashboard/text': { action: 'textcontent/find', locals: {layout: 'layouts/layout'}},
   'GET /dashboard': { action: 'textcontent/find', locals: {layout: 'layouts/layout'}},
 
   //
