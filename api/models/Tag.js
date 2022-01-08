@@ -3,7 +3,7 @@ module.exports = {
     colour: {
       type: 'string',
       columnType: 'varchar(80)',
-      maxLength: 80,
+      isIn: ['lightskyblue', 'lightgreen', 'lightcoral', 'lightsteelblue', 'lightseagreen', 'lightpink', 'lightsalmon'],
       required: true
     },
     name: {

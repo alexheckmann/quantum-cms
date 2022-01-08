@@ -1,7 +1,7 @@
 <div class="qntm-app-navbar-container flex-fill border-right" role="menubar">
     <ul class="qntm-app-navbar-links" role="menu">
         <div class="d-flex flex-nowrap mb-3">
-            <form action="/textcontent"
+            <form action="/dashboard/text"
                   class="d-flex justify-content-between border shape-rounded-corners-small w-75 ml-3 mr-1">
                 <input name="q" type="search" autocomplete="off" minlength="1" maxlength="20" placeholder="Search for entries"
                        class="border-0 w-100 pl-2">
@@ -11,7 +11,7 @@
                 </button>
             </form>
 
-            <form action="/textcontent/new" class="ml-0" style="height: 38px">
+            <form action="/dashboard/text/new" class="ml-0" style="height: 38px">
                 <button class="shape-rounded-corners-small border d-flex align-items-center qntm-icon-button flex-shrink-0 grey-background">
                     <svg id="app-new-button-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
                          data-testid="AddIcon" tabindex="-1" title="Add">
@@ -22,7 +22,7 @@
         </div>
         <% textcontents.forEach(function(entry){ %>
             <li class="qntm-navbar-list-item qntm-app-navbar-list-item">
-                <a href="/textcontent/<%= entry.id; %>/edit"
+                <a href="/dashboard/text/<%= entry.id; %>/edit"
                    class="qntm-navbar-link font-special-text blue-font"><%= entry.title; %></a>
             </li>
         <% }); %>
