@@ -209,7 +209,7 @@ button {
 }
 
 .qntm-navbar-dropdown {
-  transform: translate3d(-60px, 38px, 0px);
+  transform: translate(-60px, 38px);
   overflow: auto;
   list-style: none;
   margin-block: 0;
@@ -309,7 +309,7 @@ button {
 }
 
 .qntm-navbar-link:hover {
-  color: var(--color-light-blue);
+  color: var(--color-light-blue) !important;
 }
 
 .qntm-nav-burger div {

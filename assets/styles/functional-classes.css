@@ -50,12 +50,20 @@
     color: #173361 !important;
 }
 
+.grey-font {
+  color: var(--color-dark-grey) !important;
+}
+
 .blue-background {
     background-image: linear-gradient(90deg, var(--color-dark-blue), var(--color-light-blue));
 }
 
 .grey-background {
-  background-color: #F6F6F9 !important;
+  background-color: var(--color-light-grey) !important;
+}
+
+.editor-status-saved {
+  background-color: var(--color-transparent-blue);
 }
 
 .background-image {
