@@ -50,54 +50,77 @@
 <header class="qntm-navbar-sticky position-sticky w-100">
     <nav role="navigation" class="qntm-navbar text-white position-relative w-100">
         <div class="qntm-navbar-container blue-background d-flex align-items-center align-content-center m-0">
-            <a href="/dashboard">
-                <svg class="d-block h-auto" id="qntm-logo" width="113.01mm" height="35.854mm" version="1.1" viewBox="0 0 113.01 35.854" xmlns="http://www.w3.org/2000/svg">
+            <a href="/">
+                <svg class="d-block h-auto" id="qntm-logo" width="113.01mm" height="35.854mm" version="1.1"
+                     viewBox="0 0 113.01 35.854" xmlns="http://www.w3.org/2000/svg">
                     <g transform="translate(-29.073 -124.98)">
                         <g transform="translate(72.288 3.428)">
-                            <path d="m-41.628 136.69-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z" fill="#0399da"/>
-                            <path d="m-41.628 140.6-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z" fill="#0f73d8"/>
-                            <path d="m-41.628 144.51-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z" fill="#2a3aba"/>
-                            <path d="m-27.229 125.58-15.697 7.8486 15.594 8.2098 16.213-8.0036zm0.03566 1.4066 13.391 6.6952-13.477 6.6528-12.961-6.8244z" fill="#fec33a"/>
+                            <path d="m-41.628 136.69-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z"
+                                  fill="#0399da"/>
+                            <path d="m-41.628 140.6-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z"
+                                  fill="#0f73d8"/>
+                            <path d="m-41.628 144.51-1.2971 0.64854 15.594 8.2098 16.213-8.0036-1.2857-0.64286-1.3978 0.68988-13.477 6.6528z"
+                                  fill="#2a3aba"/>
+                            <path d="m-27.229 125.58-15.697 7.8486 15.594 8.2098 16.213-8.0036zm0.03566 1.4066 13.391 6.6952-13.477 6.6528-12.961-6.8244z"
+                                  fill="#fec33a"/>
                         </g>
                         <path d="m67.29 160.83v-35.854z" fill="#e6e6e6" stroke="#e6e6e6" stroke-width="1.274"/>
-                        <text x="71.986778" y="150.72281" fill="#e6e6e6" font-family="sans-serif" font-size="24.245px" stroke-width=".60614" style="line-height:1.25" xml:space="preserve"><tspan x="71.986778" y="150.72281" fill="#e6e6e6" font-family="'Bebas Neue'" stroke-width=".60614">QUANTUM</tspan></text>
-                        <text transform="scale(.26458)" fill="#000000" font-family="sans-serif" font-size="40px" style="line-height:1.25;shape-inside:url(#rect14263);white-space:pre" xml:space="preserve"/>
+                        <text x="71.986778" y="150.72281" fill="#e6e6e6" font-family="sans-serif" font-size="24.245px"
+                              stroke-width=".60614" style="line-height:1.25" xml:space="preserve"><tspan x="71.986778"
+                                                                                                         y="150.72281"
+                                                                                                         fill="#e6e6e6"
+                                                                                                         font-family="'Bebas Neue'"
+                                                                                                         stroke-width=".60614">
+                                QUANTUM
+                            </tspan></text>
+                        <text transform="scale(.26458)" fill="#000000" font-family="sans-serif" font-size="40px"
+                              style="line-height:1.25;shape-inside:url(#rect14263);white-space:pre"
+                              xml:space="preserve"/>
                     </g>
                 </svg>
             </a>
             <div class="qntm-navbar-link-container d-flex justify-content-between align-items-center w-100 m-0">
                 <ul class="qntm-navbar-left-links d-flex justify-content-between align-items-center position-relative">
                     <li class="qntm-navbar-list-item">
-                        <a href="/features" class="qntm-navbar-link font-special-text">Getting Started</a>
+                        <a href="/features" class="qntm-navbar-link font-special-text">Features</a>
+                    </li>
+                    <li class="qntm-navbar-list-item">
+                        <a href="/pricing" class="qntm-navbar-link font-special-text">Pricing</a>
                     </li>
                     <li class="qntm-navbar-list-item">
                         <a href="/resources" class="qntm-navbar-link font-special-text">Resources</a>
                     </li>
+                    <li class="qntm-navbar-list-item">
+                        <a href="/about" class="qntm-navbar-link font-special-text">About Us</a>
+                    </li>
                 </ul>
                 <div class="qntm-navbar-right-links d-flex align-items-center align-content-center justify-content-between">
                     <% if (me) { %>
+                        <div>
+                            <a href="/dashboard" class="qntm-navbar-link font-special-text">Access Dashboard</a>
+                        </div>
                         <!-- logged in navbar -->
                         <div class="dropdown">
-                          <button
-                            class="btn btn-secondary dropdown-toggle qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                            type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                            Account
-                          </button>
-                          <div class="dropdown-menu qntm-navbar-dropdown">
-                            <div class="qntm-navbar-dropdown-head d-flex flex-column align-items-center mw-100 text-white">
-                              <h3 class="qntm-navbar-dropdown-head-h3 mw-100 m-0 font-weight-bold text-white">
-                                <%= me.fullName %>
-                              </h3>
-                              <p class="text-white">
-                                <%= me.emailAddress %>
-                              </p>
+                            <button
+                                    class="btn btn-secondary dropdown-toggle qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </button>
+                            <div class="dropdown-menu qntm-navbar-dropdown">
+                                <div class="qntm-navbar-dropdown-head d-flex flex-column align-items-center mw-100 text-white">
+                                    <h3 class="qntm-navbar-dropdown-head-h3 mw-100 m-0 font-weight-bold text-white">
+                                        <%= me.fullName ;%>
+                                    </h3>
+                                    <p class="text-white">
+                                        <%= me.emailAddress ;%>
+                                    </p>
+                                </div>
+                                <a class="dropdown-item" href="/account/profile">Profile</a>
+                                <a class="dropdown-item" href="/organisation">Organisation</a>
+                                <a class="dropdown-item" href="#">Documentation</a>
+                                <div class="qntm-navbar-dropdown-separator-line m-auto w-100"></div>
+                                <a class="dropdown-item" href="/logout">Sign Out</a>
                             </div>
-                            <a class="dropdown-item" href="/account/profile">Profile</a>
-                            <a class="dropdown-item" href="/organisation">Organisation</a>
-                            <a class="dropdown-item" href="#">Documentation</a>
-                            <div class="qntm-navbar-dropdown-separator-line m-auto w-100"></div>
-                            <a class="dropdown-item" href="/logout">Sign Out</a>
-                          </div>
                         </div>
 
                     <% } else { %>
@@ -120,38 +143,44 @@
         <div class="qntm-menu-wrapper d-none position-absolute">
             <ul class="d-flex flex-column p-0">
                 <li class="qntm-navbar-list-item">
-                    <a href="" class="qntm-navbar-link font-special-text">Getting Started</a>
+                    <a href="" class="qntm-navbar-link font-special-text">Features</a>
+                </li>
+                <li class="qntm-navbar-list-item">
+                    <a href="" class="qntm-navbar-link font-special-text">Pricing</a>
                 </li>
                 <li class="qntm-navbar-list-item">
                     <a href="" class="qntm-navbar-link font-special-text">Resources</a>
                 </li>
+                <li class="qntm-navbar-list-item">
+                    <a href="" class="qntm-navbar-link font-special-text">Company</a>
+                </li>
                 <hr class="qntm-menu-separator">
-                    <% if (me) { %>
-                          <!--logged in mobile -->
-                          <li class="qntm-navbar-list-item">
-                            <a href="/organisation" class="qntm-navbar-link font-special-text">Organisation</a>
-                          </li>
-                          <li class="qntm-navbar-list-item">
-                            <a href="/account/profile" class="qntm-navbar-link font-special-text">Profile</a>
-                          </li>
-                          <li class="qntm-navbar-list-item">
-                            <a href="#" class="qntm-navbar-link font-special-text">Documentation</a>
-                          </li>
-                          <hr class="qntm-menu-separator">
+                <% if (me) { %>
+                    <!--logged in mobile -->
+                    <li class="qntm-navbar-list-item">
+                        <a href="/organisation" class="qntm-navbar-link font-special-text">Organisation</a>
+                    </li>
+                    <li class="qntm-navbar-list-item">
+                        <a href="/account/profile" class="qntm-navbar-link font-special-text">Profile</a>
+                    </li>
+                    <li class="qntm-navbar-list-item">
+                        <a href="#" class="qntm-navbar-link font-special-text">Documentation</a>
+                    </li>
+                    <hr class="qntm-menu-separator">
 
-                          <div class="qntm-menu-button-section d-flex align-content-center align-items-center">
-                            <a href="/logout" class="qntm-navbar-link font-special-text">Sign Out</a>
-                          </div>
-                    <% } else { %>
-                          <!--logged out mobile -->
-                          <div class="qntm-menu-button-section d-flex align-content-center align-items-center">
-                            <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                               href="/signup">Try Free</a>
-                            <div>
-                                <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
-                            </div>
-                          </div>
-                    <% } %>
+                    <div class="qntm-menu-button-section d-flex align-content-center align-items-center">
+                        <a href="/logout" class="qntm-navbar-link font-special-text">Sign Out</a>
+                    </div>
+                <% } else { %>
+                    <!--logged out mobile -->
+                    <div class="qntm-menu-button-section d-flex align-content-center align-items-center">
+                        <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                           href="/signup">Try Free</a>
+                        <div>
+                            <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
+                        </div>
+                    </div>
+                <% } %>
             </ul>
         </div>
     </nav>
@@ -178,9 +207,20 @@
 <%- body; %>
 
 <footer class="footer">
-  <section class="qntm-section-footer">
-      <div class="qntm-separator-line m-auto"></div>
-        <div class="qntm-footer-copyright-container d-flex position-relative m-0 p-0 pt-3">
+    <section class="qntm-section-footer">
+        <div class="qntm-separator-line m-auto"></div>
+        <div class="qntm-footer-link-container d-flex position-relative m-auto justify-content-center">
+
+            <a href="/" class="qntm-link-footer font-special-text">Overview</a>
+            <a href="/features" class="qntm-link-footer font-special-text">Features</a>
+            <a href="/pricing" class="qntm-link-footer font-special-text">Pricing</a>
+            <a href="/resources" class="qntm-link-footer font-special-text">Resources</a>
+            <a href="/about" class="qntm-link-footer font-special-text">About Us</a>
+            <a href="/terms" class="qntm-link-footer font-special-text">Terms of Use</a>
+            <a href="/privacy" class="qntm-link-footer font-special-text">Privacy</a>
+
+        </div>
+        <div class="qntm-footer-copyright-container d-flex position-relative m-0 p-0">
             <p class="font-small-text">© Double A, Inc. 2021. We love our users!</p>
         </div>
     </section>
