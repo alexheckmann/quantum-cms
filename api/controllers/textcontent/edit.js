@@ -34,7 +34,7 @@ module.exports = {
     }).sort('title ASC');
     if (!textcontents) {throw 'notFound'; }
     // load individual record
-    let textcontent = await TextContent.findOne({ id: id }).populate('author').populate('updatedFrom').populate('tags');
+    let textcontent = await TextContent.findOne({ id: id }).populate('author').populate('updatedFrom').populate('tags').populate('oldversions');
     if (!textcontent) { throw 'notFound'; }
     textcontent.createdAt = convertDate(textcontent.createdAt);
     textcontent.updatedAt = convertDate(textcontent.updatedAt);
