@@ -48,8 +48,8 @@ module.exports = {
         newestVersion: oldTextContent.id,
       };
       textcontentarchive = await TextContentArchive.create(textcontentarchive).fetch();
-      sails.log.debug("Archive textcontent:")
-      sails.log.debug(textcontentarchive)
+      sails.log.debug('Archive textcontent:');
+      sails.log.debug(textcontentarchive);
     }
 
     // update TextContent
@@ -60,12 +60,12 @@ module.exports = {
       endpoint: 'https://qntm-cms.herokuapp.com/textcontent/' + inputs.id + '/' + inputs.title
     };
     textcontent = await TextContent.updateOne({ id: inputs.id }).set(textcontent);
-    sails.log.debug("Updated textcontent:")
-    sails.log.debug(textcontent)
+    sails.log.debug('Updated textcontent:');
+    sails.log.debug(textcontent);
 
     if (!textcontent) { throw 'notFound TextContent with ID: ' + textcontent.id; }
     return {
-      message: "Successfully created.",
+      message: 'Successfully created.',
       textcontent: textcontent
     };
   }

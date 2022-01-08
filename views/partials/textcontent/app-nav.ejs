@@ -1,0 +1,30 @@
+<div class="qntm-app-navbar-container flex-fill border-right" role="menubar">
+    <ul class="qntm-app-navbar-links" role="menu">
+        <div class="d-flex flex-nowrap mb-3">
+            <form action="/textcontent"
+                  class="d-flex justify-content-between border shape-rounded-corners-small w-75 ml-3 mr-1">
+                <input name="q" type="search" autocomplete="off" minlength="1" maxlength="20" placeholder="Search for entries"
+                       class="border-0 w-100 pl-2">
+                <button type="submit" id="app-search-button-icon"
+                        class="bg-transparent grey-background shape-rounded-corners-small d-inline-block flex-shrink-0 border-left qntm-icon-button">
+                    <img src="/images/icon_search.svg" alt="Search Icon">
+                </button>
+            </form>
+
+            <form action="/textcontent/new" class="ml-0" style="height: 38px">
+                <button class="shape-rounded-corners-small border d-flex align-items-center qntm-icon-button flex-shrink-0 grey-background">
+                    <svg id="app-new-button-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
+                         data-testid="AddIcon" tabindex="-1" title="Add">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+        <% textcontents.forEach(function(entry){ %>
+            <li class="qntm-navbar-list-item qntm-app-navbar-list-item">
+                <a href="/textcontent/<%= entry.id; %>/edit"
+                   class="qntm-navbar-link font-special-text blue-font"><%= entry.title; %></a>
+            </li>
+        <% }); %>
+    </ul>
+</div>
