@@ -10,9 +10,16 @@
                     </h1>
                 </div>
                 <!-- TODO change when content is editted via Vue -->
-                <div class="mr-4 px-3 py-2 editor-status-saved shape-rounded-corners-small">
-                    saved
-                </div>
+                <% if (textcontent.status === 'active') { %>
+                    <div class="mr-4 px-3 py-2 editor-status-saved shape-rounded-corners-small font-small-text">
+                        saved
+                    </div>
+                <% } else { %>
+                    <div class="mr-4 px-3 py-2 editor-status-saved shape-rounded-corners-small font-small-text">
+                        inactive
+                    </div>
+                <% } %>
+
             </div>
             <div class="d-flex flex-wrap pt-3">
                 <div class="flex-fill px-3">
@@ -72,7 +79,9 @@
                     <div class="bg-white shape-rounded-corners-big d-flex flex-column shape-drop-shadow-straight p-3">
                         <!-- TODO QNTM-69 Text Versioning -->
                         <div class="dropdown mb-3">
-                            <button class="qntm-primary-button grey-background w-100 shape-rounded-corners-small dropdown-toggle font-special-text font-extra-small-text grey-font" disabled type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="qntm-primary-button grey-background w-100 shape-rounded-corners-small dropdown-toggle font-special-text font-extra-small-text grey-font"
+                                    disabled type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
                                 Retrieve older versions
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
