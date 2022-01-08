@@ -24,14 +24,14 @@ module.exports = {
 
 
   fn: async function ({ id }) {
-    sails.log.debug("Destroy textcontent: " + id)
+    sails.log.debug('Destroy textcontent: ' + id);
     let textcontent = await TextContent.destroyOne({ id: id });
     if (textcontent) {
-      sails.log("Destroyed textcontent: " + textcontent.id);
-      return "/textcontent";
+      sails.log('Destroyed textcontent: ' + textcontent.id);
+      return '/textcontent';
     } else {
-      sails.log("Can not destroy textcontent: " + textcontent.id);
-      return "/textcontent";
-    };
+      sails.log('Can not destroy textcontent: ' + textcontent.id);
+      return '/textcontent';
+    }
   }
 };

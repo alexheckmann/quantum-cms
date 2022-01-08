@@ -72,19 +72,17 @@ module.exports.routes = {
   // textcontent
   //
 
-  'GET /textcontent/new': { action: 'textcontent/new'},
-  'POST /textcontent': { action: 'textcontent/create' },
+  'GET /dashboard/text/new': { action: 'textcontent/new'},
+  'POST /dashboard/text': { action: 'textcontent/create' },
 
-  'GET /textcontent/:id/edit': { action: 'textcontent/edit' },
-  'POST /textcontent/:id/update': { action: 'textcontent/update' },
+  'GET /dashboard/text/:id/edit': { action: 'textcontent/edit' },
+  'POST /dashboard/text/:id/update': { action: 'textcontent/update' },
 
-  'GET /textcontent/:id/destroy': { action: 'textcontent/destroy' },
+  'GET /dashboard/text/:id/destroy': { action: 'textcontent/destroy' },
 
-  'GET /textcontent/:id': { action:'textcontent/find-one' },
+  'GET /dashboard/text/:id': { action:'textcontent/find-one' },
 
-  'GET /textcontent': { action: 'textcontent/find', locals: {layout: 'layouts/layout'}},
-
-  'GET /dashboard': { view: 'pages/dashboard', locals: {layout: 'layouts/app-layout'}},
+  'GET /dashboard': { action: 'textcontent/find', locals: {layout: 'layouts/layout'}},
 
   //
   // organisation
