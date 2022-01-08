@@ -379,10 +379,11 @@ button {
 .qntm-app-navbar-container {
   --height-nav: 88px;
   --height-footer: 183px;
+  --height-app-footer: 56px;
 
   max-width: 20%;
   overflow-y: auto;
-  max-height: calc(100vh - var(--height-nav) - var(--height-footer));
+  max-height: calc(100vh - var(--height-nav) - var(--height-app-footer));
 }
 
 .qntm-app-navbar-link-container {
