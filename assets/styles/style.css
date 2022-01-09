@@ -133,12 +133,12 @@ button {
 }
 
 .material-switch > input[type="checkbox"]:checked + label::before {
-  background: inherit;
+  background: lightsalmon;
   opacity: 0.5;
 }
 
 .material-switch > input[type="checkbox"]:checked + label::after {
-  background: inherit;
+  background: lightsalmon;
   left: 20px;
 }
 
@@ -449,6 +449,39 @@ button {
 
 .app-info-text {
   max-width: 256px;
+}
+
+.app-tag-container, #app-tag-add-container {
+  height: 24px;
+}
+
+.app-tag-container:hover > .app-tag-close-button:after {
+  content: "×";
+  padding-inline: 6px;
+  animation: fadeIn 150ms;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.app-tag-container:hover {
+  padding-right: 2px !important;
+  width: 120px;
+  transition: width 2s;
+}
+
+.app-tag-close-button:hover, #app-tag-add-container:hover {
+  background-color: var(--color-transparent-blue);
+}
+
+#entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div {
+  cursor: pointer;
 }
 
 /* style for eye catcher section */

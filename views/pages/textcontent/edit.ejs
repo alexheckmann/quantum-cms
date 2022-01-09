@@ -37,7 +37,7 @@
                                 <label for="entry_content">Content:</label>
                             </div>
                             <textarea class="form-control flex-grow-1" name="content" type="text" minlength="2"
-                                      maxlength="1024" id="entry_content" cols="30" rows="14"
+                                      maxlength="1024" id="entry_content" cols="30" rows="15"
                                       required><%= textcontent.content; %></textarea>
                             <div class="invalid-feedback">Please enter your content.</div>
                         </div>
@@ -77,39 +77,19 @@
                     </div>
                     <div class="bg-white shape-rounded-corners-big d-flex flex-column shape-drop-shadow-straight p-3">
                         <!-- TODO QTNM-40 tags -->
-                        <div class="d-flex flex-row flex-wrap w-100">
-                            <a href="/dashboard/tag/car"
-                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big justify-content-center flex-nowrap">
-                                <span class="font-extra-small-text font-weight-bold" style="color: lightskyblue">●</span>
-                                <span class="pl-1 font-extra-small-text font-weight-bold">Car</span>
-                            </a>
-                            <a href="/dashboard/tag/strategy"
-                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big justify-content-center flex-nowrap">
-                                <span class="font-extra-small-text font-weight-bold" style="color: lightgreen">●</span>
-                                <span class="pl-1 font-extra-small-text font-weight-bold">Strategy</span>
-                            </a>
-                            <a href="/dashboard/tag/strategy" class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big justify-content-center flex-nowrap">
-                                <span class="font-extra-small-text font-weight-bold" style="color: orangered">●</span>
-                                <span class="pl-1 font-extra-small-text font-weight-bold">Concept</span>
-                            </a>
-                            <a href="/dashboard/tag/strategy" class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big justify-content-center flex-nowrap">
-                                <span class="font-extra-small-text font-weight-bold" style="color: lightsteelblue">●</span>
-                                <span class="pl-1 font-extra-small-text font-weight-bold">IAA</span>
-                            </a>
-                            <a href="/dashboard/tag/strategy" class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big justify-content-center flex-nowrap">
-                                <span class="font-extra-small-text font-weight-bold" style="color: lightseagreen">●</span>
+                        <div class="ml-1 font-extra-small-text font-weight-bold float-left">
+                            <label class="mb-1">Tags:</label>
+                        </div>
+                        <div class="d-flex flex-row flex-wrap w-100" style="height: 90px">
+                            <a href="/dashboard/tag/motorsports"
+                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container">
+                                <span class="font-extra-small-text font-weight-bold"
+                                      style="color: lightseagreen">●</span>
                                 <span class="px-1 font-extra-small-text font-weight-bold">Motorsports</span>
-                                <span class="font-extra-small-text font-weight-bold">×</span>
+                                <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"></span>
                             </a>
-                            <a href="/dashboard/tag/strategy" class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big justify-content-center flex-nowrap">
-                                <span class="font-extra-small-text font-weight-bold" style="color: lightpink">●</span>
-                                <span class="pl-1 font-extra-small-text font-weight-bold">EV</span>
-                            </a>
-                            <a href="/dashboard/tag/strategy" class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big justify-content-center flex-nowrap">
-                                <span class="font-extra-small-text font-weight-bold" style="color: orange">●</span>
-                                <span class="pl-1 font-extra-small-text font-weight-bold">Showcase</span>
-                            </a>
-                            <a href="/dashboard/tag/new" class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big justify-content-center flex-nowrap">
+                            <a href="/dashboard/tag/new" id="app-tag-add-container"
+                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap">
                                 <span class="font-extra-small-text font-weight-bold">+</span>
                             </a>
                         </div>
@@ -130,7 +110,8 @@
                             <label for="entry_endpoint" class="mb-1">Endpoint:</label>
                         </div>
                         <div class="d-flex flex-column justify-content-center align-items-center">
-                            <div class="mb-2 d-flex align-items-center grey-background border shape-rounded-corners-small">
+                            <div class="mb-2 d-flex align-items-center grey-background border shape-rounded-corners-small"
+                                 id="entry_endpoint_container">
                                 <textarea name="endpoint" type="text" id="entry_endpoint"
                                           cols="30" rows="1"
                                           class="text-truncate font-extra-small-text border-0 mr-2 grey-background"
@@ -149,7 +130,7 @@
                                     </div>
                                 </div>
                                 <div class="ml-3 mr-1">
-                                    <a href="/textcontent/<%= textcontent.id; %>/destroy" id="app-delete-button"
+                                    <a href="/dashboard/text/<%= textcontent.id; %>/destroy" id="app-delete-button"
                                        :class="{disabled: btnDisabled}"
                                        class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text border-0">Delete</a>
                                 </div>
