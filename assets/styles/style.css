@@ -476,7 +476,7 @@ button {
   background-color: var(--color-transparent-blue);
 }
 
-#entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div, #app-search-button-icon, #app-new-button-icon {
+#entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div, #app-search-button-icon, #app-new-button-icon, #dropdownMenuButton {
   cursor: pointer;
 }
 
