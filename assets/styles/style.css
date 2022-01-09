@@ -382,7 +382,7 @@ button {
   --height-app-footer: 51px;
 
   max-width: 20%;
-  overflow-y: auto;
+  overflow: auto;
   max-height: calc(100vh - var(--height-nav) - var(--height-app-footer));
 }
 
@@ -476,7 +476,7 @@ button {
   background-color: var(--color-transparent-blue);
 }
 
-#entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div {
+#entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div, #app-search-button-icon, #app-new-button-icon {
   cursor: pointer;
 }
 
