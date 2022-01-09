@@ -461,14 +461,7 @@ button {
   animation: fadeIn 150ms;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+
 
 .app-tag-container:hover {
   padding-right: 2px !important;
@@ -949,6 +942,15 @@ footer a:hover {
   .qntm-getting-started-text-container {
     margin-right: 0;
     margin-bottom: 20px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
