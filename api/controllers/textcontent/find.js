@@ -23,17 +23,21 @@ module.exports = {
     let textcontents;
     if (inputs.q && inputs.q.length > 0) {
       textcontents = await TextContent.find({
-        title: {
-          'contains': inputs.q
+        where: {
+          title: {
+            'contains': inputs.q
+          },
+          author: this.req.session.userId
         },
-        author: this.req.session.userId
+        select: ['title']
       }).sort('title ASC');
     } else {
       textcontents = await TextContent.find({
-        author: this.req.session.userId
+        where: {author: this.req.session.userId},
+        select: ['title']
       }).sort('title ASC');
     }
     sails.log.debug(textcontents);
-    return ({ textcontents: textcontents });
+    return ({textcontents: textcontents});
   }
 };
