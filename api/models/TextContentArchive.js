@@ -12,7 +12,7 @@ module.exports = {
       maxLength: 1024,
       required: true,
     },
-    
+
     newestVersion: {
       model: 'textcontent',
       required: true

@@ -133,12 +133,12 @@ button {
 }
 
 .material-switch > input[type="checkbox"]:checked + label::before {
-  background: inherit;
+  background: lightsalmon;
   opacity: 0.5;
 }
 
 .material-switch > input[type="checkbox"]:checked + label::after {
-  background: inherit;
+  background: lightsalmon;
   left: 20px;
 }
 
@@ -382,7 +382,7 @@ button {
   --height-app-footer: 51px;
 
   max-width: 20%;
-  overflow-y: auto;
+  overflow: auto;
   max-height: calc(100vh - var(--height-nav) - var(--height-app-footer));
 }
 
@@ -449,6 +449,35 @@ button {
 
 .app-info-text {
   max-width: 256px;
+}
+
+.app-tag-container, #app-tag-add-container {
+  height: 24px;
+}
+
+.app-tag-container {
+  max-width: 110px;
+  transition: max-width 900ms ease-in-out;
+}
+
+.app-tag-container:hover > .app-tag-close-button:after {
+  content: "×";
+  padding-inline: 6px;
+  animation: fadeIn 350ms;
+}
+
+
+.app-tag-container:hover {
+  padding-right: 2px !important;
+  max-width: calc(100% + 10px);
+}
+
+.app-tag-close-button:hover, #app-tag-add-container:hover {
+  background-color: var(--color-transparent-blue);
+}
+
+#entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div, #app-search-button-icon, #app-new-button-icon, #dropdownMenuButton {
+  cursor: pointer;
 }
 
 /* style for eye catcher section */
@@ -853,6 +882,12 @@ footer a:hover {
     margin: 10px 25px;
   }
 
+  .qntm-app-navbar-container {
+    max-width: 100%;
+    max-height: 100%;
+    order: 1;
+  }
+
   /* centers items & text */
   .qntm-slalom-section {
     justify-content: center !important;
@@ -916,6 +951,15 @@ footer a:hover {
   .qntm-getting-started-text-container {
     margin-right: 0;
     margin-bottom: 20px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
