@@ -63,9 +63,14 @@ textarea {
   width: 100%;
 }
 
-textarea:focus {
-  outline: none;
-  border-color: var(--color-dark-grey) !important;
+textarea:focus, input:focus {
+  border-color: var(--color-medium-grey) !important;
+  background-color: white;
+}
+
+textarea:hover, input:hover {
+  border-color: var(--color-medium-grey) !important;
+  background-color: #fcfcfc;
 }
 
 button {
