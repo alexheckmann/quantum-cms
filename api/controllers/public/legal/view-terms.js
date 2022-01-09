@@ -16,10 +16,10 @@ module.exports = {
   },
 
 
-  fn: async function () {
+  fn: async function (inputs, exits) {
 
-    // All done.
-    return;
+    // Respond with view.
+    return exits.success({layout: 'layouts/public-layout'});
 
   }
 
