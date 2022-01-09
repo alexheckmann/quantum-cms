@@ -61,6 +61,7 @@ textarea {
   font-family: "Noto Sans", sans-serif;
   border-color: var(--color-medium-grey);
   width: 100%;
+
 }
 
 textarea:focus, input:focus {

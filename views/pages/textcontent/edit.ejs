@@ -86,7 +86,7 @@
                                    class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container">
                                 <span class="font-extra-small-text font-weight-bold"
                                       style="color: <%= entry.colour %>">●</span>
-                                    <span class="px-1 font-extra-small-text font-weight-bold"><%= entry.name%>></span>
+                                    <span class="px-1 font-extra-small-text font-weight-bold"><%= entry.name %>></span>
                                     <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"></span>
                                 </a>
                             <% }); %>
@@ -110,12 +110,16 @@
                                 Retrieve older versions
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <% textcontent.oldversions.forEach(function(entry){ %>
-                                    <a href="#" class="my-2 py-3 pl-2 grey-font">
-                                    <%= // TODO QNTM-69 Text Versioning: convert date into readable format
-                                        entry.updatedAt; %>
-                                    </a>
-                                <% }); %>
+                                <% if (textcontent.oldversions.length > 0) { %>
+                                    <% textcontent.oldversions.forEach(function(entry){ %>
+                                        <!-- TODO QNTM-69 Text Versioning: convert date into readable format -->
+                                        <a href="#" class="my-2 py-3 pl-2 grey-font">
+                                            <%= entry.updatedAt; %>
+                                        </a>
+                                    <% }); %>
+                                <% } else { %>
+                                    <span class="my-2 py-3 px-2 grey-font font-extra-small-text font-weight-bold">No other versions available</span>
+                                <% } %>
                             </div>
                         </div>
                         <div class="ml-1 font-extra-small-text font-weight-bold float-left">
