@@ -28,10 +28,10 @@ module.exports = {
     let textcontent = await TextContent.destroyOne({ id: id });
     if (textcontent) {
       sails.log('Destroyed textcontent: ' + textcontent.id);
-      return '/textcontent';
+      return '/dashboard/text';
     } else {
       sails.log('Can not destroy textcontent: ' + textcontent.id);
-      return '/textcontent';
+      return '/dashboard/text';
     }
   }
 };
