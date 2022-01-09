@@ -1,4 +1,4 @@
-<div class="d-flex flex-grow-1 flex-shrink-1">
+<div class="d-flex flex-grow-1 flex-shrink-1 flex-wrap">
     <%- partial('../../partials/textcontent/app-nav.ejs'); %>
     <!-- TODO QNTM-63 -->
     <div class="flex-fill grey-background d-flex flex-row" role="dialog">
@@ -9,15 +9,15 @@
                         <%= textcontent.title; %>
                     </h1>
                 </div>
-                <!-- TODO change when content is editted via Vue -->
+                <!-- TODO change to 'unpublished changes' when content is editted via Vue -->
                 <% if (textcontent.status === 'active') { %>
-                    <div class="mr-4 px-3 py-2 editor-status-saved shape-rounded-corners-small font-small-text">
-                        saved
-                    </div>
+                    <label class="mr-4 mb-0 px-3 py-2 editor-status-saved shape-rounded-corners-small font-extra-small-text font-weight-bold">
+                        ✓ published
+                    </label>
                 <% } else { %>
-                    <div class="mr-4 px-3 py-2 editor-status-saved shape-rounded-corners-small font-small-text">
+                    <label class="mr-4 mb-0 px-3 py-2 editor-status-saved shape-rounded-corners-small font-small-text">
                         inactive
-                    </div>
+                    </label>
                 <% } %>
 
             </div>

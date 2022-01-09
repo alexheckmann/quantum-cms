@@ -455,18 +455,21 @@ button {
   height: 24px;
 }
 
+.app-tag-container {
+  max-width: 110px;
+  transition: max-width 900ms ease-in-out;
+}
+
 .app-tag-container:hover > .app-tag-close-button:after {
   content: "×";
   padding-inline: 6px;
-  animation: fadeIn 150ms;
+  animation: fadeIn 350ms;
 }
-
 
 
 .app-tag-container:hover {
   padding-right: 2px !important;
-  width: 120px;
-  transition: width 2s;
+  max-width: calc(100% + 10px);
 }
 
 .app-tag-close-button:hover, #app-tag-add-container:hover {
@@ -877,6 +880,12 @@ footer a:hover {
 @media screen and (max-width: 850px) {
   .qntm-pricing-box {
     margin: 10px 25px;
+  }
+
+  .qntm-app-navbar-container {
+    max-width: 100%;
+    max-height: 100%;
+    order: 1;
   }
 
   /* centers items & text */
