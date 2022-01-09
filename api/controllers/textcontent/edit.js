@@ -30,9 +30,14 @@ module.exports = {
   fn: async function ({id}) {
     // load navbar items
     let textcontents = await TextContent.find({
-      author: this.req.session.userId
+      where: {author: this.req.session.userId},
+      select: ['title']
     }).sort('title ASC');
-    if (!textcontents) {throw 'notFound'; }
+    if (!textcontents) {
+      throw 'notFound';
+    }
+    sails.log(textcontents);
+
     // load individual record
     let textcontent = await TextContent.findOne({ id: id }).populate('author').populate('updatedFrom').populate('tags').populate('oldversions');
     if (!textcontent) { throw 'notFound'; }
@@ -46,6 +51,7 @@ module.exports = {
 };
 
 /* Converts a JS timestamp from milliseconds to readable time format */
+
 /* TODO move to own file? */
 function convertDate(date) {
   let ISODate = new Date(date);
