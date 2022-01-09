@@ -36,7 +36,6 @@ module.exports = {
     if (!textcontents) {
       throw 'notFound';
     }
-    sails.log(textcontents);
 
     // load individual record
     let textcontent = await TextContent.findOne({ id: id }).populate('author').populate('updatedFrom').populate('tags').populate('oldversions');

@@ -28,9 +28,9 @@ module.exports = {
 
 
   exits: {
-    success: {
-      responseType: 'view',
-      viewTemplatePath: 'pages/textcontent/show'
+    redirect: {
+      description: 'The update was successful.',
+      responseType: 'redirect'
     },
   },
 
@@ -64,10 +64,7 @@ module.exports = {
     sails.log.debug(textcontent);
 
     if (!textcontent) { throw 'notFound TextContent with ID: ' + textcontent.id; }
-    return {
-      message: 'Successfully created.',
-      textcontent: textcontent
-    };
+    throw {redirect: '/dashboard/text/' + textcontent.id + '/edit'};
   }
 
 };
