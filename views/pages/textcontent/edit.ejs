@@ -112,7 +112,8 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <% textcontent.oldversions.forEach(function(entry){ %>
                                     <a href="#" class="my-2 py-3 pl-2 grey-font">
-                                    <%= entry.updatedAt; %>
+                                    <%= // TODO QNTM-69 Text Versioning: convert date into readable format
+                                        entry.updatedAt; %>
                                     </a>
                                 <% }); %>
                             </div>
