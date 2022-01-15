@@ -173,6 +173,25 @@
           },
         });
 
+        /* Converts a JS timestamp from milliseconds to readable time format */
+        const convertDate = (date) => {
+          let ISODate = new Date(date);
+
+          let day = ISODate.getDate();
+          let month = ISODate.getMonth() + 1;
+          let year = ISODate.getFullYear();
+          let hour = ISODate.getHours();
+          let min = ISODate.getMinutes();
+
+          // adds leading zero
+          month = (month < 10 ? '0' : '') + month;
+          day = (day < 10 ? '0' : '') + day;
+          hour = (hour < 10 ? '0' : '') + hour;
+          min = (min < 10 ? '0' : '') + min;
+
+          return day + '/' + month + '/' + year + ' ' + hour + ':' + min;
+        };
+
         let app = new Vue({
           el: '#editor',
           data: {
