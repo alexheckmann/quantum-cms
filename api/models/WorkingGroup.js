@@ -2,8 +2,8 @@ module.exports = {
     attributes: {
         description: {
             type: 'string',
-            columnType: 'varchar(256)',
-            maxLength: 256
+            columnType: 'varchar(512)',
+            maxLength: 512
         },
         name: {
             type: 'string',

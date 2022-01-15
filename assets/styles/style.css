@@ -168,6 +168,7 @@ button {
   color: rgb(255, 255, 255);
 }
 
+/* TODO delete*/
 .qntm-primary-button:focus {
 
 }
@@ -983,4 +984,47 @@ footer a:hover {
   min-width: 250px;
   min-height: calc(100% - var(--nav-height-small));
   height: calc(100vh - var(--nav-height-small));
+}
+
+/* groups/index table for group members*/
+.membersTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.membersTable tr:hover {
+  background: #029BDE;
+}
+
+.highlight_row {
+  background: #029BDE;
+}
+
+.toolbar-btn {
+  color: var(--color-dark-grey);
+}
+
+.grpTextDescKK {
+  background-color: var(--color-white);
+}
+
+.form-control[readonly] {
+background-color: white !important;
+}
+
+/* checkbox column in table has content width */
+.qntm-tr td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+#btnHint {
+  display: none;
+  color: #029BDE;
+}
+
+#noGrpsSection {
+  text-align: center;
+  margin-top: 20%;
+  margin-bottom: 20%;
 }
