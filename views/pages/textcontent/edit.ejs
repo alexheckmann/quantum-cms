@@ -5,12 +5,12 @@
         <form action="/dashboard/text/<%= textcontent.id; %>/update" method="post" class="flex-fill">
             <div class="d-flex flex-row align-items-center justify-content-between">
                 <div class="pl-4 pt-3">
-                    <h1>
+                    <h1 v-cloak>
                         {{ title }}
                     </h1>
                 </div>
                 <label class="mr-4 mb-0 px-3 py-2 shape-rounded-corners-small font-extra-small-text font-weight-bold"
-                       v-bind:class="state.COLOR">
+                       v-bind:class="state.COLOR" v-cloak>
                     {{ state.TEXT }}
                 </label>
             </div>
@@ -44,20 +44,20 @@
                             <div class="qntm-pricing-separator-line mb-2 pt-1"></div>
                             <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
                                 <span class="mr-2 font-extra-small-text font-weight-bold">Created:</span>
-                                <span>{{ createdAt }}</span>
+                                <span v-cloak>{{ createdAt }}</span>
                             </div>
                             <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
                                 <span class="mr-2 font-extra-small-text font-weight-bold">Updated:</span>
-                                <span>{{ updatedAt }}</span>
+                                <span v-cloak>{{ updatedAt }}</span>
                             </div>
                             <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
                                 <span class="mr-2 font-extra-small-text font-weight-bold">Author:</span>
-                                <span class="text-truncate">{{ author }}</span>
+                                <span class="text-truncate" v-cloak>{{ author }}</span>
                             </div>
                             <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
                                 <span class="mr-2 font-extra-small-text font-weight-bold">Editor:</span>
 
-                                <span class="text-truncate">
+                                <span class="text-truncate" v-cloak>
                                     {{ updatedFrom }}
                                 </span>
                             </div>
@@ -120,7 +120,7 @@
                                 <textarea name="endpoint" type="text" id="entry_endpoint"
                                           cols="30" rows="1"
                                           class="text-truncate font-extra-small-text border-0 mr-2 grey-background"
-                                          readonly><%= textcontent.endpoint; %></textarea>
+                                          readonly v-model="endpoint" v-cloak></textarea>
                                 <img src="/images/icon-copy.svg" alt="Copy to clipboard"
                                      id="app-copy-button-icon"
                                      class="d-inline-block flex-shrink-0 mr-1 qntm-icon-button">
@@ -190,14 +190,6 @@
             contentStatus: '✓ published',
             statusColor: 'editor-status-saved',
           },
-          computed: {
-            statusText: function (){
-              return State.ACTIVE.TEXT;
-            },
-            statusColor: function (){
-              return State.ACTIVE.COLOR;
-            },
-          },
           methods: {
             update: function () {
               contentStatus = '✓ published';
@@ -244,4 +236,3 @@
       };
     </script>
 </div>
-<%- exposeLocalsToBrowser() %>

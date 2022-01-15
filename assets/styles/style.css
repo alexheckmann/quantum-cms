@@ -61,7 +61,6 @@ textarea {
   font-family: "Noto Sans", sans-serif;
   border-color: var(--color-medium-grey);
   width: 100%;
-
 }
 
 textarea:focus, input:focus {
@@ -78,6 +77,9 @@ button {
   border: none !important;
 }
 
+[v-cloak] {
+  display: none;
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -463,7 +465,7 @@ button {
 }
 
 .app-tag-container {
-  max-width: 110px;
+  max-width: fit-content;
   transition: max-width 900ms ease-in-out;
 }
 
