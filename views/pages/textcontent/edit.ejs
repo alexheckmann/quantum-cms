@@ -2,8 +2,8 @@
     <%- partial('../../partials/textcontent/app-nav.ejs'); %>
     <!-- TODO QNTM-63 -->
     <div class="flex-fill grey-background d-flex flex-row" role="dialog" id="editor">
-        <form action="/dashboard/text/<%= textcontent.id; %>/update" method="post" class="flex-fill">
-            <div class="d-flex flex-row align-items-center justify-content-between">
+        <form class="flex-fill">
+            <div class="d-flex flex-row align-items-center justify-content-between" style="height: 72px">
                 <div class="pl-4 pt-3">
                     <h1 v-cloak>
                         {{ title }}
@@ -18,7 +18,6 @@
                 <div class="flex-fill px-3">
                     <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big p-3 flex-grow-1 mb-4">
                         <div>
-                            <input type="hidden" name="_csrf" value="<%= _csrf; %>"/>
                             <div class="font-weight-bold font-extra-small-text">
                                 <label for="entryTitle">Title:</label>
                             </div>
@@ -144,7 +143,7 @@
                     <div class="d-flex justify-content-around align-content-center align-items-center my-4">
                         <div>
                             <button class="qntm-primary-button shape-rounded-corners-small font-special-text border-0"
-                                    type="submit" @click="update">
+                                    type="button" @click="update">
                                 Save
                             </button>
                         </div>
@@ -159,6 +158,7 @@
             </div>
         </form>
     </div>
+    <%- exposeLocalsToBrowser() %>
     <script>
       window.onload = () => {
         /* creating an enum for text state */
@@ -195,6 +195,7 @@
         let app = new Vue({
           el: '#editor',
           data: {
+            csrf: window.SAILS_LOCALS.csrf,
             id: '<%= textcontent.id; %>',
             title: '<%= textcontent.title; %>',
             originalTitle: '<%= textcontent.title; %>',
@@ -205,14 +206,34 @@
             updatedAt: '<%= textcontent.updatedAt; %>',
             author: '<%= textcontent.author.fullName; %>',
             updatedFrom: "<% if (textcontent.updatedFrom != null) { %><%= textcontent.updatedFrom.fullName; %><% } else { %>–<% } %>",
-            archivedTitle: '<%= textcontent.oldversions; %>',
-            contentStatus: '✓ published',
-            statusColor: 'editor-status-saved',
+            endpoint: "<%= textcontent.endpoint; %>",
           },
           methods: {
             update: function () {
-              contentStatus = '✓ published';
-              statusColor = 'editor-status-saved';
+              const formData = {
+                id: this.id,
+                title: this.title,
+                content: this.content
+              };
+              const body = JSON.stringify(formData);
+              const postForm = (body) => {
+                let url = window.location.origin;
+                return fetch(url + '/api/v1/textcontent/update', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': window.SAILS_LOCALS._csrf
+                  },
+                  body
+                });
+              };
+              postForm(body)
+                .then(res => res.json())
+                .then(data => {
+                  this.updatedAt = convertDate(data.updatedAt);
+                  this.updatedFrom = data.updatedFrom;
+                  this.state = State.ACTIVE;
+                });
             },
             reset: function () {
               this.title = this.originalTitle;
@@ -229,25 +250,6 @@
           },
           /* executes this function when Vue if fully loaded */
           mounted() {
-            /* Converts a JS timestamp from milliseconds to readable time format */
-            const convertDate = (date) => {
-              let ISODate = new Date(date);
-
-              let day = ISODate.getDate();
-              let month = ISODate.getMonth() + 1;
-              let year = ISODate.getFullYear();
-              let hour = ISODate.getHours();
-              let min = ISODate.getMinutes();
-
-              // adds leading zero
-              month = (month < 10 ? '0' : '') + month;
-              day = (day < 10 ? '0' : '') + day;
-              hour = (hour < 10 ? '0' : '') + hour;
-              min = (min < 10 ? '0' : '') + min;
-
-              return day + '/' + month + '/' + year + ' ' + hour + ':' + min;
-            };
-
             this.createdAt = convertDate(parseInt(this.createdAt));
             this.updatedAt = convertDate(parseInt(this.updatedAt));
           }
