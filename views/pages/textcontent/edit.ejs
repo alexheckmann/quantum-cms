@@ -44,25 +44,21 @@
                             <div class="qntm-pricing-separator-line mb-2 pt-1"></div>
                             <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
                                 <span class="mr-2 font-extra-small-text font-weight-bold">Created:</span>
-                                <span><%= textcontent.createdAt; %></span>
+                                <span>{{ createdAt }}</span>
                             </div>
                             <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
                                 <span class="mr-2 font-extra-small-text font-weight-bold">Updated:</span>
-                                <span><%= textcontent.updatedAt; %></span>
+                                <span>{{ updatedAt }}</span>
                             </div>
                             <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
                                 <span class="mr-2 font-extra-small-text font-weight-bold">Author:</span>
-                                <span class="text-truncate"><%= textcontent.author.fullName; %></span>
+                                <span class="text-truncate">{{ author }}</span>
                             </div>
                             <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
                                 <span class="mr-2 font-extra-small-text font-weight-bold">Editor:</span>
 
                                 <span class="text-truncate">
-                                    <% if (textcontent.updatedFrom != null) { %>
-                                        <%= textcontent.updatedFrom.fullName; %>
-                                    <% } else { %>
-                                        –
-                                    <% } %>
+                                    {{ updatedFrom }}
                                 </span>
                             </div>
                         </div>
@@ -181,6 +177,11 @@
             originalTitle: '<%= textcontent.title; %>',
             content: '<%= textcontent.content; %>',
             originalContent: '<%= textcontent.content; %>',
+            createdAt: '<%= textcontent.createdAt; %>',
+            updatedAt: '<%= textcontent.updatedAt; %>',
+            author: '<%= textcontent.author.fullName; %>',
+            updatedFrom: "<% if (textcontent.updatedFrom != null) { %><%= textcontent.updatedFrom.fullName; %><% } else { %>–<% } %>",
+            archivedTitle: '<%= textcontent.oldversions; %>',
             contentStatus: '✓ published',
             statusColor: 'editor-status-saved',
           },
@@ -196,8 +197,33 @@
                 this.contentStatus = '✓ published';
               }
             }
+          },
+          /* executes this function when Vue if fully loaded */
+          mounted() {
+            /* Converts a JS timestamp from milliseconds to readable time format */
+            const convertDate = (date) => {
+              let ISODate = new Date(date);
+
+              let day = ISODate.getDate();
+              let month = ISODate.getMonth() + 1;
+              let year = ISODate.getFullYear();
+              let hour = ISODate.getHours();
+              let min = ISODate.getMinutes();
+
+              // adds leading zero
+              month = (month < 10 ? '0' : '') + month;
+              day = (day < 10 ? '0' : '') + day;
+              hour = (hour < 10 ? '0' : '') + hour;
+              min = (min < 10 ? '0' : '') + min;
+
+              return day + '/' + month + '/' + year + ' ' + hour + ':' + min;
+            };
+
+            this.createdAt = convertDate(parseInt(this.createdAt));
+            this.updatedAt = convertDate(parseInt(this.updatedAt));
           }
         });
-      };
+      }
+      ;
     </script>
 </div>
