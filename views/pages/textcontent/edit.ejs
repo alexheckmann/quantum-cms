@@ -11,7 +11,7 @@
                 </div>
                 <label class="mr-4 mb-0 px-3 py-2 shape-rounded-corners-small font-extra-small-text font-weight-bold"
                        v-bind:class="statusColor">
-                    {{ contentStatus }}
+                    {{ statusText }}
                 </label>
             </div>
             <div class="d-flex flex-wrap pt-3">
@@ -78,14 +78,6 @@
                                     <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"></span>
                                 </a>
                             <% }); %>
-                            <a href="/dashboard/tag/motorsports"
-                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container">
-                                <span class="font-extra-small-text font-weight-bold"
-                                      style="color: lightseagreen">●</span>
-                                <span class="px-1 font-extra-small-text font-weight-bold text-truncate"
-                                      style="max-width: 100px">Motorsports</span>
-                                <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"></span>
-                            </a>
                             <a href="/dashboard/tag/motorsports"
                                class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container">
                                 <span class="font-extra-small-text font-weight-bold"
@@ -169,6 +161,18 @@
     </div>
     <script>
       window.onload = () => {
+        /* creating an enum for text state */
+        const State = Object.freeze({
+          ACTIVE: {
+            TEXT: '✓ published',
+            COLOR: 'editor-status-saved'
+          },
+          UNPUBLISHED: {
+            TEXT: '⚠ unpublished changes',
+            COLOR: 'editor-status-unpublished'
+          },
+        });
+
         let app = new Vue({
           el: '#editor',
           data: {
@@ -185,6 +189,14 @@
             contentStatus: '✓ published',
             statusColor: 'editor-status-saved',
           },
+          computed: {
+            statusText: function (){
+              return State.ACTIVE.TEXT;
+            },
+            statusColor: function (){
+              return State.ACTIVE.COLOR;
+            },
+          },
           methods: {
             update: function () {
               contentStatus = '✓ published';
@@ -196,9 +208,11 @@
             },
             changeStatus: function () {
               if (this.title !== this.originalTitle || this.content !== this.originalContent) {
-                this.contentStatus = '⚠ unpublished changes';
+                this.statusText = State.UNPUBLISHED.TEXT;
+                this.statusColor = State.UNPUBLISHED.COLOR;
               } else {
-                this.contentStatus = '✓ published';
+                this.statusText = State.ACTIVE.TEXT;
+                this.statusColor = State.ACTIVE.COLOR;
               }
             }
           },
@@ -227,7 +241,7 @@
             this.updatedAt = convertDate(parseInt(this.updatedAt));
           }
         });
-      }
-      ;
+      };
     </script>
 </div>
+<%- exposeLocalsToBrowser() %>
