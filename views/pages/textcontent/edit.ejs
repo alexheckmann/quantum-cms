@@ -119,7 +119,7 @@
                                 <textarea name="endpoint" type="text" id="entry_endpoint"
                                           cols="30" rows="1"
                                           class="text-truncate font-extra-small-text border-0 mr-2 grey-background"
-                                          readonly v-model="endpoint" v-cloak></textarea>
+                                          readonly v-model="endpoint"></textarea>
                                 <img src="/images/icon-copy.svg" alt="Copy to clipboard"
                                      id="app-copy-button-icon"
                                      class="d-inline-block flex-shrink-0 mr-1 qntm-icon-button">
@@ -128,14 +128,16 @@
                                 <div class="d-flex align-items-center">
                                     <span class="font-extra-small-text font-weight-bold ml-2 mr-3">Delete?</span>
                                     <div class="material-switch pull-right">
-                                        <input id="app-delete-confirmation" name="delete-switch" type="checkbox"
-                                        />
+                                        <input id="app-delete-confirmation" name="delete-switch" type="checkbox"/>
                                         <label for="app-delete-confirmation" class="label-danger"></label>
                                     </div>
                                 </div>
                                 <div class="ml-3 mr-1">
-                                    <a href="/dashboard/text/<%= textcontent.id; %>/destroy" id="app-delete-button"
-                                       class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text border-0">Delete</a>
+                                    <button id="app-delete-button"
+                                            class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text border-0"
+                                    type="button" @click="destroy">
+                                        Delete
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -234,6 +236,15 @@
                   this.updatedFrom = data.updatedFrom;
                   this.state = State.ACTIVE;
                 });
+            },
+            destroy: function () {
+              let id = this.id;
+              let url = new URL(window.location.origin + '/api/textcontent/destroy');
+              url.searchParams.append('id', id);
+
+              fetch(url).then(() => {
+                window.location = '/dashboard/text';
+              });
             },
             reset: function () {
               this.title = this.originalTitle;

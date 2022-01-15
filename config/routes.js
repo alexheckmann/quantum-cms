@@ -127,7 +127,8 @@ module.exports.routes = {
   'GET /groups/edit': { action: 'groups/edit' },
   'POST /groups/:id/update': { action: 'groups/update' },
 
-  'GET /api/v1/textcontent/findone': {action: 'api/textcontent/find-one'},
-  'POST /api/v1/textcontent/update': {action: 'api/textcontent/update'},
+  'GET /api/textcontent/findone': {action: 'api/textcontent/find-one'},
+  'GET /api/textcontent/destroy': {action: 'textcontent/destroy'},
+  'POST /api/textcontent/update': {action: 'api/textcontent/update'},
 
 };
