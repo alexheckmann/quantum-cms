@@ -116,7 +116,7 @@
                                class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap">
                                 <span class="font-extra-small-text font-weight-bold mr-1">●</span>
                                 <input class="font-extra-small-text font-weight-bold border-0" v-model="newTagName"
-                                       @keyup.enter="createTag" required>
+                                       @change="createTag" required>
                             </a>
                         </div>
                         <div class="app-dropdown my-3">
@@ -377,6 +377,7 @@
           postForm(body)
             .then(res => res.json())
             .then(data => {
+              this.loadTags();
             });
         },
         retrieveOldVersion: function (itemId) {
