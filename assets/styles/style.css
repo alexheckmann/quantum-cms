@@ -1012,7 +1012,12 @@ background-color: white !important;
   white-space: nowrap;
 }
 
-#btnHint {
+#btnTableHint {
+  display: none;
+  color: #029BDE;
+}
+
+#btnMemberSelectHint {
   display: none;
   color: #029BDE;
 }
@@ -1021,4 +1026,8 @@ background-color: white !important;
   text-align: center;
   margin-top: 20%;
   margin-bottom: 20%;
+}
+
+.membersSelect {
+  /* display: none!important; */
 }

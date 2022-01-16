@@ -1,13 +1,13 @@
-var deleteFromGrpButton = $('#deleteFromGrpBtn');
-
 var userIsAdmin;
 
+// resets the table and initiates the creation of a new one
 function resetTable() {
     console.log("resetTable()");
     $('#membersTable').empty();
     createMemberTable();
 }
 
+// fetches the description of the selected group
 function createGrpDesc(grp) {
     console.log("createGrpDesc()");
 
@@ -22,54 +22,62 @@ function createGrpDesc(grp) {
         })
 }
 
+/* 
+- creates a new table
+- fetches a new group description
+- checks if the current user is admin of the selected group
+- updates the members to add */
 function createMemberTable() {
     console.log("createMemberTable()");
     let grp = $("#grpSelect").val();
     if (grp) {
         createGrpDesc(grp);
         checkAdminCurrentUser(grp);
-        findGrp(grp);
+        findGrpMembers(grp);
+        findMembersToAdd(grp);
     } else {
         console.log("User has no group.")
     }
 
 }
 
+/*
+Checks whether the current user is the admin of the selected group
+and shows/hides the toolbar options accordingly.
+*/
 function checkAdminCurrentUser(grp) {
     console.log("checkAdminCurrentUser()");
-
-    let origin = window.location.origin;
-    let url = new URL(origin + '/api/groups/checkadmin');
-    url.searchParams.append("id", grp);
-
-    fetch(url)
+    fetch(createFetchURL('/api/groups/checkadmin', "id", grp))
         .then(res => res.json())
         .then(data => {
             userIsAdmin = data;
             console.log("data: " + data);
             if (data) {
-                $("#toolbarAdmin").show();
-                $("#toolbarGrpsAdmin").show();
-                $("#toolbarMember").hide();
-                $("#toolbarGrpsMember").hide();
-
+                showAdminTools();
             } else {
-                $("#toolbarAdmin").hide();
-                $("#toolbarGrpsAdmin").hide();
-                $("#toolbarMember").show();
-                $("#toolbarGrpsMember").show();
+                showMemberTools();
             }
         })
 }
 
-function findGrp(grp) {
-    console.log("findGrp()");
+function showAdminTools() {
+    $("#toolbarAdmin").show();
+    $("#toolbarGrpsAdmin").show();
+    $("#toolbarMember").hide();
+    $("#toolbarGrpsMember").hide();
+}
 
-    let origin = window.location.origin;
-    let url = new URL(origin + '/api/groups/find');
-    url.searchParams.append("id", grp);
+function showMemberTools() {
+    $("#toolbarAdmin").hide();
+    $("#toolbarGrpsAdmin").hide();
+    $("#toolbarMember").show();
+    $("#toolbarGrpsMember").show();
+}
 
-    fetch(url)
+// fetches the members of the selected group
+function findGrpMembers(grp) {
+    console.log("findGrpMembers()");
+    fetch(createFetchURL('/api/groups/find', "id", grp))
         .then(res => res.json())
         .then(data => {
             if (userIsAdmin) {
@@ -79,102 +87,164 @@ function findGrp(grp) {
             }
         })
 }
+// TODO
+function findGrps() {
+    console.log("findGrps()");
+    let origin = window.location.origin;
+    let url = new URL(origin + '/api/groups/findgrps');
 
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            if (data.length > 0) {
+                createOptions(data);
+            }
+        })
+}
+
+// TODO
+function createOptions(data) {
+    let select = $('#selectGrp');
+    select.empty();
+
+    data.forEach(element => {
+        let option = $('<option>').text(element.name);
+        option.attr("value", element.id);
+        select.append(option);
+    })
+}
+
+// Creates a table with checkboxes
 function createGroupTableChk(data) {
     let i = 0;
-    var table = $('#membersTable');
-    var thead = $('<thead>').addClass("thead-light");
-    thead.append($('<th id="id">').hide())
-    appendToElement(thead, 'th', 'name', "Name", '');
-    appendToElement(thead, 'th', 'role', 'Role', '');
-    thead.append($('<th>').html('<input type="checkbox" id="selectAll" class="checkbox" onclick="selectAll()" />'));
-    table.append(thead);
-
-    var tbody = $('<tbody>');
+    let table = $('#membersTable');
+    let tbody = $('<tbody>');
+    // thead element
+    table.append(createChkThead(true));
+    // tbody element
     table.append(tbody);
-
     data.forEach((element) => {
-        var tr = $('<tr>').addClass("checkable qntm-tr");
-        tr.append($('<td>').text(element.id).hide());
-        appendTdToRow(tr, element.name, i);
-        appendTdToRow(tr, element.role, i)
-        tr.append($('<td>').html('<input type="checkbox" class="checkbox"/>'));
-
-        if (element.role === "Admin") {
-            tr.find('td input:checkbox').prop('disabled', true);
-        }
+        tbody.append(createChkTR(element, i));
         i = i + 1;
-        tbody.append(tr);
     })
 }
 
+// creates a thead for a member table with a checkbox
+function createChkThead(idAdmin) {
+    let thead = $('<thead>').addClass("thead-light");
+    thead.append($('<th id="id">').hide())
+    appendToElement(thead, 'th', 'name', "Name", '');
+    appendToElement(thead, 'th', 'role', 'Role', '');
+    if (idAdmin) {
+        thead.append($('<th>').html('<input type="checkbox" id="selectAll" class="checkbox" onclick="selectAll()" />'));
+    }
+    return thead;
+}
+
+// creates a TR for a member table with checkbox
+function createChkTR(element, i) {
+    let tr = $('<tr>').addClass("checkable qntm-tr");
+    tr.append($('<td>').text(element.id).hide());
+    appendTdToRow(tr, element.name, i);
+    appendTdToRow(tr, element.role, i)
+    tr.append($('<td>').html('<input type="checkbox" class="checkbox"/>'));
+    // if tr is admin, set disabled
+    if (element.role === "Admin") {
+        tr.find('td input:checkbox').prop('disabled', true);
+    }
+    return tr;
+}
+
+// Creates a table without checkboxes
 function createGroupTable(data) {
     let i = 0;
-    var table = $('#membersTable');
-    var thead = $('<thead>').addClass("thead-light");
-    var tbody = $('<tbody>');
-    thead.append($('<th id="id">').hide())
-    appendToElement(thead, 'th', 'name', "Name", '');
-    appendToElement(thead, 'th', 'role', 'Role', '');
-    table.append(thead);
+    let table = $('#membersTable');
+    let tbody = $('<tbody>');
+    // thead element
+    table.append(createChkThead(false));
+    // tbody element
     table.append(tbody);
-
     data.forEach((element) => {
-        var tr = $('<tr>');
-        tr.append($('<td id="id">').text(element.id).hide());
-        appendTdToRow(tr, element.name, i);
-        appendTdToRow(tr, element.role, i)
+        tbody.append(createTR(element));
         i = i + 1;
-        tbody.append(tr);
     })
 }
 
+// creates a TR for a member table without checkbox
+function createTR(element) {
+    let tr = $('<tr>');
+    tr.append($('<td id="id">').text(element.id).hide());
+    appendTdToRow(tr, element.name, i);
+    appendTdToRow(tr, element.role, i);
+    return tr;
+}
+
+// helper to create table
 function appendToElement(element, type, dataField, value, i) {
     let id = `${value}${i}`;
     element.append(`<${type} id='${id}' data-field='${dataField}'>${value}</${type}>`);
 }
 
+// creates a td element and appends it to a tr
 function appendTdToRow(row, value, i) {
     let id = `${value}${i}`;
     row.append(`<td id='${id}'>${value}</td>`);
 }
 
-$(() => {
-    deleteFromGrpButton.click(function (e) {
-        $('#btnHint').hide();
+// generates a list of the ids of the selected tr elements to be deleted
+$(document).ready(function () {
+    $('#deleteFromGrpBtn').click(function (e) {
+        $('#btnTableHint').hide();
         e.preventDefault();
-        var rows = [];
-
+        let rows = [];
         // Enumerate over each checked checkbox
-        $('input:checked').each(function () {
-            var row = [];
-
-            // Enumerate over all td elements in the parent tr,
-            // skipping the first one (which contains just the
-            // checkbox).
-            $(this).closest('tr').find('td:first-child').each(function () {
-                // Gather the text into row
-                row.push($(this).text());
-            });
-
-            // Add this row to our list of rows
-            rows.push(row);
-        });
+        getCheckedTrText(rows);
 
         if (rows.length > 0) {
             deleteFromGrp(rows);
         } else {
-            $('#btnHint').show();
+            $('#btnTableHint').show();
         }
     });
 });
 
-function deleteFromGrp(ids) {
+$(document).ready(function () {
+    $('#appointAdminGrpBtn').click(function (e) {
+        $('#btnTableHint').hide();
+        e.preventDefault();
+        let rows = [];
+        // Enumerate over each checked checkbox
+        getCheckedTrText(rows);
+
+        if (rows.length > 0) {
+            appointAsAdmin(rows);
+        } else {
+            $('#btnTableHint').show();
+        }
+    });
+});
+
+// get the text of the first td (id) of all checked tr elements
+function getCheckedTrText(rows) {
+    $('input:checked').each(function () {
+        $(this).closest('tr').find('td:first-child').each(function () {
+            // gather the text into rows
+            if (!isEmpty($(this).text())) {
+                rows.push($(this).text());
+            }
+        });
+    });
+}
+
+// checks whether a string is empty
+function isEmpty(str) {
+    return (!str || str.length === 0);
+}
+
+// appoints the selected members as admin of the current group
+function appointAsAdmin(ids) {
     let members = Array.from(ids);
     let grp = $("#grpSelect").val();
-    let origin = window.location.origin;
-    let url = new URL(origin + '/api/groups/deletemembers');
-    url.searchParams.append("id", grp);
 
     const formData = {
         members: members,
@@ -182,7 +252,7 @@ function deleteFromGrp(ids) {
     };
     const body = JSON.stringify(formData);
     const postForm = (body) => {
-        return fetch(url, {
+        return fetch(createFetchURL('/api/groups/appointadmin', "id", grp), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -190,9 +260,43 @@ function deleteFromGrp(ids) {
             body
         });
     };
-    postForm(body);
-    // TODO return true...
-    resetTable();
+    postForm(body)
+        .then(res => res.json())
+        .then(data => {
+            if (data) {
+                // update table
+                resetTable();
+            }
+        })
+}
+
+// delete selected IDs from the current group
+function deleteFromGrp(ids) {
+    let members = Array.from(ids);
+    let grp = $("#grpSelect").val();
+
+    const formData = {
+        members: members,
+        _csrf: window.SAILS_LOCALS._csrf
+    };
+    const body = JSON.stringify(formData);
+    const postForm = (body) => {
+        return fetch(createFetchURL('/api/groups/deletemembers', "id", grp), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body
+        });
+    };
+    postForm(body)
+        .then(res => res.json())
+        .then(data => {
+            if (data) {
+                // update table
+                resetTable();
+            }
+        })
 }
 
 $(document).ready(function () {
@@ -215,20 +319,22 @@ $(document).ready(function () {
 
 // opens an edit window with the currently selected group
 function editGrp() {
-    var grpId = $('#grpSelect').find(":selected").val();
-    let origin = window.location.origin;
-    let url = new URL(origin + '/groups/edit');
-    url.searchParams.append("id", grpId);
-    window.location = url;
+    let grpId = $('#grpSelect').find(":selected").val();
+    window.location = createFetchURL('/groups/edit', "id", grpId);
 }
 
-// activates a controller that removes the current user from the current group
+// removes the current user from the selected group
 function leaveGrp() {
-    var grpId = $('#grpSelect').find(":selected").val();
-    let origin = window.location.origin;
-    let url = new URL(origin + '/groups/leave');
-    url.searchParams.append("id", grpId);
-    window.location = url;
+    let grpId = $('#grpSelect').find(":selected").val();
+    fetch(createFetchURL('/groups/leave', "id", grpId))
+        .then(res => res.json())
+        .then(data => {
+            console.log("data: " + data);
+            if (data) {
+                // TODO findGrps();
+                window.location = '/groups';
+            }
+        })
 }
 
 // select or deselect all checkboxes that are not disabled
@@ -243,6 +349,7 @@ function selectAll() {
         console.log(userCheckBox);
         userCheckBox.checked = isAllBoxChecked;
     }
+    // TODO if all tr are checked, the th must also be checked
 }
 
 // disabling A-Z and arrows
@@ -257,11 +364,82 @@ function ignoreKeys(e) {
     }
 }
 
-function checkData(grps) {
-    alert(grps.length)
-    if (grps.length < 1) {
-        $('#noGrpsSection').show();
-        $('#grpsSection').hide();
+// holt alle Mitglieder aus der Organisation, die derzeit nicht in der ausgewählten Gruppe sind
+function findMembersToAdd(grp) {
+    $('#memberSelect').empty();
 
+    let origin = window.location.origin;
+    let url = new URL(origin + '/api/groups/findusers');
+    url.searchParams.append("id", grp);
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            createMembersOptions(data);
+        })
+    //}
+}
+
+// creates the options with the members that can be added to the group
+function createMembersOptions(data) {
+    let select = $('#memberSelect');
+    data.forEach(element => {
+        select.append($('<option></option>').val(element.id).text(element.name).attr("id", element.id));
+    })
+}
+
+// select2 for multi member selection to add
+$(document).ready(function () {
+    $('.js-example-basic-multiple').select2({
+        placeholder: 'Select members',
+        allowClear: true
+    });
+});
+
+// adds the selected members to the group
+function addToGrp() {
+    $('#btnMemberSelectHint').hide();
+    var ids = [];
+    // Enumerate over each checked checkbox
+    $('#memberSelect option:selected').each(function () {
+        ids.push($(this).val());
+    });
+
+    if (ids.length > 0) {
+        let members = Array.from(ids);
+        let grp = $("#grpSelect").val();
+
+        const formData = {
+            members: members,
+            _csrf: window.SAILS_LOCALS._csrf
+        };
+        const body = JSON.stringify(formData);
+        const postForm = (body) => {
+            return fetch(createFetchURL('/api/groups/addtogroup', "id", grp), {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body
+            });
+        };
+        postForm(body)
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    resetTable();
+                }
+            })
+    } else {
+        $('#btnMemberSelectHint').show();
+        // TODO hint "select members fist."
     }
+}
+
+// help function for creating a fetch URL
+function createFetchURL(route, searchParam, searchParamName) {
+    let origin = window.location.origin;
+    let url = new URL(origin + route);
+    url.searchParams.append(searchParam, searchParamName);
+    return url;
 }
