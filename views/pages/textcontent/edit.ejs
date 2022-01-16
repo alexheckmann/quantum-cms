@@ -98,23 +98,15 @@
                             <label class="mb-1">Tags:</label>
                         </div>
                         <div class="d-flex flex-row flex-wrap w-100" style="height: 90px">
-                            <a :href="'/dashboard/tag/' + entry.id"
-                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center
-                                   flex-nowrap app-tag-container"
-                               v-for="entry in tags">
-                                        <span class="font-extra-small-text font-weight-bold"
-                                              :style="{color: entry.colour}">●</span>
-                                <span class="px-1 font-extra-small-text font-weight-bold">{{ entry.name }}</span>
-                                <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"></span>
-                            </a>
-                            <a href="/dashboard/tag/motorsports"
-                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container">
+                            <div :href="'/dashboard/tag/' + entry.id"
+                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container"
+                               v-for="entry in tags" :key="entry.id" v-cloak>
                                 <span class="font-extra-small-text font-weight-bold"
-                                      style="color: lightseagreen">●</span>
-                                <span class="px-1 font-extra-small-text font-weight-bold text-truncate"
-                                      style="max-width: 100px">Motorsports</span>
-                                <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"></span>
-                            </a>
+                                      :style="{color: entry.colour}" v-cloak>●</span>
+                                <span class="px-1 font-extra-small-text font-weight-bold" v-cloak>{{ entry.name }}</span>
+                                <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"
+                                @click="removeTag(entry.id)"></span>
+                            </div>
                             <a href="/dashboard/tag/new" id="app-tag-add-container"
                                class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap">
                                 <span class="font-extra-small-text font-weight-bold">+</span>
@@ -345,6 +337,16 @@
                 });
               });
             });
+        },
+        removeTag: function (tagId) {
+          let id = this.id;
+          let url = new URL(window.location.origin + '/api/textcontent/removetag');
+          url.searchParams.append('id', id);
+          url.searchParams.append('tagId', tagId);
+
+          fetch(url).then(() => {
+            this.loadTags();
+          });
         },
         listOldVersions: function () {
           let x = document.getElementById('dropdownList');
