@@ -98,15 +98,15 @@
                             <label class="mb-1">Tags:</label>
                         </div>
                         <div class="d-flex flex-row flex-wrap w-100" style="height: 90px">
-                            <% textcontent.tags.forEach(function(entry){ %>
-                                <a href="/dashboard/tag/motorsports"
-                                   class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container">
+                            <a :href="'/dashboard/tag/' + entry.id"
+                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center
+                                   flex-nowrap app-tag-container"
+                               v-for="entry in tags">
                                         <span class="font-extra-small-text font-weight-bold"
-                                              style="color: <%= entry.colour %>">●</span>
-                                    <span class="px-1 font-extra-small-text font-weight-bold"><%= entry.name %></span>
-                                    <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"></span>
-                                </a>
-                            <% }); %>
+                                              :style="{color: entry.colour}">●</span>
+                                <span class="px-1 font-extra-small-text font-weight-bold">{{ entry.name }}</span>
+                                <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"></span>
+                            </a>
                             <a href="/dashboard/tag/motorsports"
                                class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container">
                                 <span class="font-extra-small-text font-weight-bold"
@@ -252,6 +252,7 @@
         endpoint: '<%= textcontent.endpoint; %>',
         oldVersions: [],
         newTagName: '',
+        tags: [],
       },
       methods: {
         loadAllEntries: function () {
@@ -327,6 +328,21 @@
               });
             });
         },
+        loadTags: function () {
+          this.tags = [];
+          // loads old versions
+          let id = this.id;
+          let url = new URL(window.location.origin + '/api/textcontent/findtags');
+          url.searchParams.append('id', id);
+
+          fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+              data.forEach(entry => {
+                this.oldVersions.push(entry);
+              });
+            });
+        },
         listOldVersions: function () {
           let x = document.getElementById('dropdownList');
           if (x.className.indexOf('d-block') === -1) {
@@ -397,6 +413,7 @@
       created() {
         this.loadAllEntries();
         this.loadOldVersions();
+        this.loadTags();
         this.createdAt = convertDate(parseInt(this.createdAt));
         this.updatedAt = convertDate(parseInt(this.updatedAt));
       }
