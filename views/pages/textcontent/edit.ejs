@@ -378,6 +378,7 @@
             .then(res => res.json())
             .then(data => {
               this.loadTags();
+              this.newTagName = '';
             });
         },
         retrieveOldVersion: function (itemId) {
