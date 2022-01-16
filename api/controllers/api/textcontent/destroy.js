@@ -17,21 +17,13 @@ module.exports = {
 
 
   exits: {
-    success: {
-      responseType: 'redirect',
-    },
+
   },
 
 
   fn: async function ({ id }) {
-    sails.log.debug('Destroy textcontent: ' + id);
+    let textContentArchive = await TextContentArchive.destroy({newestVersion: id});
+    sails.log.debug('Deleted associated entries');
     let textcontent = await TextContent.destroyOne({ id: id });
-    if (textcontent) {
-      sails.log('Destroyed textcontent: ' + textcontent.id);
-      return '/dashboard/text';
-    } else {
-      sails.log('Can not destroy textcontent: ' + textcontent.id);
-      return '/dashboard/text';
-    }
   }
 };

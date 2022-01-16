@@ -13,10 +13,6 @@ module.exports = {
   },
 
   exits: {
-    success: {
-      responseType: 'view',
-      viewTemplatePath: 'pages/textcontent/index'
-    }
   },
 
   fn: async function (inputs) {
@@ -37,6 +33,6 @@ module.exports = {
         select: ['title']
       }).sort('title ASC');
     }
-    return ({textcontents: textcontents});
+    return textcontents;
   }
 };

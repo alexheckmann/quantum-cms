@@ -63,15 +63,23 @@ textarea {
   width: 100%;
 }
 
-textarea:focus {
-  outline: none;
-  border-color: var(--color-dark-grey) !important;
+textarea:focus, input:focus {
+  border-color: var(--color-medium-grey) !important;
+  background-color: white;
+}
+
+textarea:hover, input:hover {
+  border-color: var(--color-medium-grey) !important;
+  background-color: #fcfcfc;
 }
 
 button {
   border: none !important;
 }
 
+[v-cloak] {
+  display: none;
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -307,6 +315,7 @@ button {
 .qntm-navbar-link {
   text-decoration: none !important;
   color: white;
+  cursor: pointer;
 }
 
 .qntm-navbar-link:hover {
@@ -444,12 +453,25 @@ button {
   max-width: 34px;
 }
 
+.editor-status-saved {
+  background-color: rgb(239, 250, 239);
+}
+
+.editor-status-unpublished {
+  background-color: rgb(250, 239, 239);
+}
+
+.editor-status-old {
+  background-color: var(--color-transparent-blue);
+}
+
 .app-info-column {
   max-width: 287px;
 }
 
 .app-info-text {
   max-width: 256px;
+  height: 24px;
 }
 
 .app-tag-container, #app-tag-add-container {
@@ -457,7 +479,7 @@ button {
 }
 
 .app-tag-container {
-  max-width: 110px;
+  max-width: fit-content;
   transition: max-width 900ms ease-in-out;
 }
 
@@ -465,6 +487,7 @@ button {
   content: "×";
   padding-inline: 6px;
   animation: fadeIn 350ms;
+  transition: height 350ms;
 }
 
 
@@ -473,11 +496,39 @@ button {
   max-width: calc(100% + 10px);
 }
 
+.app-tag-container:active {
+  height: 22px;
+}
+
 .app-tag-close-button:hover, #app-tag-add-container:hover {
   background-color: var(--color-transparent-blue);
 }
 
-#entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div, #app-search-button-icon, #app-new-button-icon, #dropdownMenuButton {
+.app-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.app-dropdown-content {
+  width: 223px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  max-height: 170px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.app-dropdown-item {
+  width: 223px;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+
+.app-dropdown-item:hover {
+  background-color: var(--color-transparent-blue) !important;
+}
+
+#entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div, #app-search-button-icon, #app-new-button-icon, #app-dropdown-button {
   cursor: pointer;
 }
 
@@ -1003,7 +1054,7 @@ footer a:hover {
 }
 
 .form-control[readonly] {
-background-color: white !important;
+  background-color: white !important;
 }
 
 /* checkbox column in table has content width */

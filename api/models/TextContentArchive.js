@@ -15,7 +15,6 @@ module.exports = {
 
     newestVersion: {
       model: 'textcontent',
-      required: false
     }
   },
 };
