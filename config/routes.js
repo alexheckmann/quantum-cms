@@ -109,9 +109,13 @@ module.exports.routes = {
   'POST /api/v1/organisation/deletemembers': {action: 'api/organisation/deletemembers'},
 
   'GET /api/groups/find': { action: 'api/groups/find' },
+  'GET /api/groups/findusers': { action: 'api/groups/findusers' },
   'GET /api/groups/checkadmin': { action: 'api/groups/checkadmin' },
   'GET /api/groups/description': { action: 'api/groups/description' },
+  'GET /api/groups/findgrps': { action: 'api/groups/findgrps' },
   'POST /api/groups/deletemembers': {action: 'api/groups/deletemembers'},
+  'POST /api/groups/appointadmin': {action: 'api/groups/appointadmin'},
+  'POST /api/groups/addtogroup': {action: 'api/groups/addtogroup'},
 
   //
   // Groups

@@ -20,13 +20,15 @@ module.exports = {
 
 
     fn: async function (inputs) {
-        console.log("inputs.members: " + inputs.members)
-
         let ids = inputs.members.map(i=>Number(i));
         console.log("ids: " + ids);        
 
-        await WorkingGroup.removeFromCollection(inputs.id, 'workers').members(ids);
+        let workingGrp = await WorkingGroup.removeFromCollection(inputs.id, 'workers').members(ids);
 
-        // TODO Fehlerbehandlung und aufräumen
+        if (workingGrp) {
+            return true;
+        } else {
+            throw("Error in deletemembers controller -> check 'api/controllers/api/groups/deletemembers.js'.");
+        }
     }
 };

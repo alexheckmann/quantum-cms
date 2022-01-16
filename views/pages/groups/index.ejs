@@ -1,5 +1,11 @@
 <%- exposeLocalsToBrowser() %>
-    <% if(grps.length > 0){ %>
+    <% if(grps.length> 0){ %>
+        <script>
+            //window.onload = () => createMemberTable();
+            window.onload = function () {
+                createMemberTable();
+            }
+        </script>
         <div class="container mt-4 mb-4">
             <div id="grpsSection" class="border rounded mt-2 p-2">
                 <!-- Your working groups -->
@@ -34,24 +40,38 @@
                             <button class="qntm-button font-special-text shape-rounded-corners-small">
                                 <a class="toolbar-btn" onclick="editGrp()">Edit</a>
                             </button>
-                            <button class="qntm-button font-special-text shape-rounded-corners-small">
-                                <a class="toolbar-btn" onclick="">Add Members</a>
-                            </button>
-                            <div>
-                                <!--TODO Add Members -> select with name list of Org -> click: add to Group -->
-                            </div>
+                            <!-- TODO hide/show
+                                <button class="qntm-button font-special-text shape-rounded-corners-small">
+                                    <a class="toolbar-btn" onclick="findMembersToAdd()">Add Members</a>
+                                </button>
+                             -->
                         </div>
                     </div>
+
+                    <div id="addMembersSelect" class="mt-4 membersSelect">
+                        <!--TODO Add Members -> select with name list of Org -> click: add to Group -->
+                        <select id="memberSelect" multiple="multiple" class="custom-select js-example-basic-multiple">
+                        </select>
+                    </div>
+                    <div class="mt-2">
+                        <button class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn" onclick="addToGrp()">Add to group</a>
+                        </button>
+                    </div>
+                    <div id="btnMemberSelectHint" class="font-normal-text">
+                        Select your members first.
+                    </div>
+
                     <div class="mt-4">
                         <table id="membersTable" data-toolbar="#toolbar" class="table table-bordered mb-1 membersTable">
                         </table>
                     </div>
+
                     <div id="toolbar">
                         <div id="toolbarAdmin">
                             <button id="appointAdminGrpBtn"
                                 class="qntm-button font-special-text shape-rounded-corners-small">Appoint as
                                 admin</button>
-
                             <button id="deleteFromGrpBtn"
                                 class="qntm-button font-special-text shape-rounded-corners-small">Delete</button>
                             <button class="qntm-button font-special-text shape-rounded-corners-small">
@@ -62,7 +82,7 @@
                                 <a class="toolbar-btn" onclick="leaveGrp()">Leave</a></button>
                         </div>
                     </div>
-                    <div id="btnHint" class="font-normal-text">
+                    <div id="btnTableHint" class="font-normal-text">
                         Select your members first.
                     </div>
                 </div>
@@ -75,7 +95,3 @@
                 </button>
             </div>
             <% } %>
-
-                <script>
-                    window.onload = () => createMemberTable();
-                </script>
