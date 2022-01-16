@@ -1063,7 +1063,12 @@ footer a:hover {
   white-space: nowrap;
 }
 
-#btnHint {
+#btnTableHint {
+  display: none;
+  color: #029BDE;
+}
+
+#btnMemberSelectHint {
   display: none;
   color: #029BDE;
 }
@@ -1072,4 +1077,8 @@ footer a:hover {
   text-align: center;
   margin-top: 20%;
   margin-bottom: 20%;
+}
+
+.membersSelect {
+  /* display: none!important; */
 }

@@ -29,7 +29,6 @@ module.exports = {
             throw 'not Found: user'
         }
         return {
-            // message: "",
             user: user,
             grps: grps
         };

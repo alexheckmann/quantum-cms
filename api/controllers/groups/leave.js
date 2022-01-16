@@ -17,10 +17,10 @@ module.exports = {
 
 
     exits: {
-        success: {
+        /* success: {
             responseType: 'view',
             viewTemplatePath: 'pages/groups/index'
-        },
+        }, */
     },
 
 
@@ -37,17 +37,18 @@ module.exports = {
             sails.log('Removed user from working group.');
         }
         
+        return true;
         // the current user
-        let user = await User.findOne({ id: this.req.me.id }).populate('workingGroups').populate('adminOf');
+        // let user = await User.findOne({ id: this.req.me.id }).populate('workingGroups').populate('adminOf');
 
-        if (!user) {throw 'notFound user: ' + this.req.me.id;}
+        // if (!user) {throw 'notFound user: ' + this.req.me.id;}
 
         // the groups of the user
-        let grps = user.workingGroups;
+        // let grps = user.workingGroups;
 
-        return {
+        /* return {
             user: user,
             grps: grps
-        };
+        }; */ 
     }
 };
