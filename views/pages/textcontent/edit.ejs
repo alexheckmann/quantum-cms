@@ -97,15 +97,16 @@
                         <div class="ml-1 font-extra-small-text font-weight-bold float-left">
                             <label class="mb-1">Tags:</label>
                         </div>
-                        <div class="d-flex flex-row flex-wrap w-100" style="height: 90px">
+                        <div class="d-flex flex-row flex-wrap w-100 app-tag-section">
                             <div :href="'/dashboard/tag/' + entry.id"
-                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container"
-                               v-for="entry in tags" :key="entry.id" v-cloak>
+                                 class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container"
+                                 v-for="entry in tags" :key="entry.id" v-cloak>
                                 <span class="font-extra-small-text font-weight-bold"
                                       :style="{color: entry.colour}" v-cloak>●</span>
-                                <span class="px-1 font-extra-small-text font-weight-bold" v-cloak>{{ entry.name }}</span>
+                                <span class="px-1 font-extra-small-text font-weight-bold"
+                                      v-cloak>{{ entry.name }}</span>
                                 <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"
-                                @click="removeTag(entry.id)"></span>
+                                      @click="removeTag(entry.id)"></span>
                             </div>
                             <a href="/dashboard/tag/new" id="app-tag-add-container"
                                class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap">
@@ -357,29 +358,30 @@
           }
         },
         createTag: function () {
-          console.log(this.newTagName);
-          const formData = {
-            name: this.newTagName,
-            textcontent: this.id
-          };
-          const body = JSON.stringify(formData);
-          const postForm = (body) => {
-            let url = new URL(window.location.origin + '/api/textcontent/createtag');
-            return fetch(url, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': window.SAILS_LOCALS._csrf
-              },
-              body
-            });
-          };
-          postForm(body)
-            .then(res => res.json())
-            .then(data => {
-              this.loadTags();
-              this.newTagName = '';
-            });
+          if (this.newTagName !== '') {
+            const formData = {
+              name: this.newTagName.trim(),
+              textcontent: this.id
+            };
+            const body = JSON.stringify(formData);
+            const postForm = (body) => {
+              let url = new URL(window.location.origin + '/api/textcontent/createtag');
+              return fetch(url, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': window.SAILS_LOCALS._csrf
+                },
+                body
+              });
+            };
+            postForm(body)
+              .then(res => res.json())
+              .then(data => {
+                this.loadTags();
+                this.newTagName = '';
+              });
+          }
         },
         retrieveOldVersion: function (itemId) {
           let url = new URL(window.location.origin + '/api/textcontent/findoneoldversion');

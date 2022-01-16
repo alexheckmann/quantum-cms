@@ -474,6 +474,11 @@ button {
   height: 24px;
 }
 
+.app-tag-section {
+  height: 90px;
+  overflow-y: auto;
+}
+
 .app-tag-container, #app-tag-add-container {
   height: 24px;
 }
