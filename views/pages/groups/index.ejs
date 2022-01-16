@@ -1,5 +1,11 @@
 <%- exposeLocalsToBrowser() %>
     <% if(grps.length> 0){ %>
+        <script>
+            //window.onload = () => createMemberTable();
+            window.onload = function () {
+                createMemberTable();
+            }
+        </script>
         <div class="container mt-4 mb-4">
             <div id="grpsSection" class="border rounded mt-2 p-2">
                 <!-- Your working groups -->
@@ -89,7 +95,3 @@
                 </button>
             </div>
             <% } %>
-
-                <script>
-                    window.onload = () => createMemberTable();
-                </script>
