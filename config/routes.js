@@ -132,6 +132,7 @@ module.exports.routes = {
   'GET /api/textcontent/destroy': {action: 'api/textcontent/destroy'},
   'GET /api/textcontent/findoldversions': {action: 'api/textcontent/findoldversions'},
   'GET /api/textcontent/findoneoldversion': {action: 'api/textcontent/findoneoldversion'},
+  'POST /api/textcontent/createtag': {action: 'api/textcontent/createtag'},
   'POST /api/textcontent/update': {action: 'api/textcontent/update'},
 
 };

@@ -2,7 +2,8 @@
     <div class="qntm-app-navbar-container flex-fill border-right" role="menubar">
         <ul class="qntm-app-navbar-links" role="menu">
             <div class="d-flex flex-nowrap mb-3">
-                <form class="d-flex justify-content-between border shape-rounded-corners-small w-75 ml-3 mr-1">
+                <form class="d-flex justify-content-between border shape-rounded-corners-small w-75 ml-3 mr-1"
+                @submit.prevent="createTag">
                     <input name="q" type="search" autocomplete="off" minlength="1" maxlength="20"
                            placeholder="Search for entries"
                            class="border-0 w-100 pl-2 form-control"
@@ -22,9 +23,9 @@
                     </button>
                 </form>
             </div>
-                <li class="qntm-navbar-list-item qntm-app-navbar-list-item" v-for="entry in allEntries">
-                    <a class="qntm-navbar-link font-special-text blue-font" v-cloak>{{ entry.title }}</a>
-                </li>
+            <li class="qntm-navbar-list-item qntm-app-navbar-list-item" v-for="entry in allEntries">
+                <a class="qntm-navbar-link font-special-text blue-font" v-cloak>{{ entry.title }}</a>
+            </li>
         </ul>
     </div>
     <!-- TODO QNTM-63 -->
@@ -62,6 +63,7 @@
                     </div>
                 </div>
                 <div class="flex-fill px-3 app-info-column">
+                    <!-- Container with Meta Information -->
                     <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big p-3 justify-content-center mb-4">
                         <div class="d-flex flex-column">
                             <div>
@@ -89,6 +91,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Container with additional features -->
                     <div class="bg-white shape-rounded-corners-big d-flex flex-column shape-drop-shadow-straight p-3">
                         <!-- TODO QTNM-40 tags -->
                         <div class="ml-1 font-extra-small-text font-weight-bold float-left">
@@ -115,6 +118,12 @@
                             <a href="/dashboard/tag/new" id="app-tag-add-container"
                                class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap">
                                 <span class="font-extra-small-text font-weight-bold">+</span>
+                            </a>
+                            <a id="app-tag-add-container"
+                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap">
+                                <span class="font-extra-small-text font-weight-bold mr-1">●</span>
+                                <input class="font-extra-small-text font-weight-bold border-0" v-model="newTagName"
+                                       @change="createTag" required>
                             </a>
                         </div>
                         <!-- TODO remove blur with similar functionality -->
@@ -242,6 +251,7 @@
         updatedFrom: '<% if (textcontent.updatedFrom != null) { %><%= textcontent.updatedFrom.fullName; %><% } else { %>–<% } %>',
         endpoint: '<%= textcontent.endpoint; %>',
         oldVersions: [],
+        newTagName: '',
       },
       methods: {
         loadAllEntries: function () {
@@ -269,8 +279,8 @@
             };
             const body = JSON.stringify(formData);
             const postForm = (body) => {
-              let url = window.location.origin;
-              return fetch(url + '/api/textcontent/update', {
+              let url = new URL(window.location.origin + '/api/textcontent/update');
+              return fetch(url, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -328,6 +338,29 @@
         /* Hides dropdown when it loses focus */
         hideOldVersions: function () {
 
+        },
+        createTag: function () {
+          console.log(this.newTagName);
+          const formData = {
+            name: this.newTagName,
+            textcontent: this.id
+          };
+          const body = JSON.stringify(formData);
+          const postForm = (body) => {
+            let url = new URL(window.location.origin + '/api/textcontent/createtag');
+            return fetch(url, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': window.SAILS_LOCALS._csrf
+              },
+              body
+            });
+          };
+          postForm(body)
+            .then(res => res.json())
+            .then(data => {
+            });
         },
         retrieveOldVersion: function (itemId) {
           let url = new URL(window.location.origin + '/api/textcontent/findoneoldversion');
