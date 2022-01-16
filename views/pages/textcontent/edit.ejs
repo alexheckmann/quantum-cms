@@ -73,7 +73,7 @@
                                    class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container">
                                         <span class="font-extra-small-text font-weight-bold"
                                               style="color: <%= entry.colour %>">●</span>
-                                    <span class="px-1 font-extra-small-text font-weight-bold"><%= entry.name %>></span>
+                                    <span class="px-1 font-extra-small-text font-weight-bold"><%= entry.name %></span>
                                     <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"></span>
                                 </a>
                             <% }); %>
@@ -91,23 +91,16 @@
                             </a>
                         </div>
                         <!-- TODO QNTM-69 Text Versioning -->
-                        <div class="dropdown my-3">
-                            <button class="qntm-primary-button grey-background w-100 shape-rounded-corners-small border dropdown-toggle font-special-text font-extra-small-text grey-font"
-                                    type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
+                        <div class="app-dropdown my-3">
+                            <button type="button" aria-haspopup="true" aria-expanded="false" @click="listOldVersions"
+                                    @blur="hideOldVersions"
+                                    class="qntm-primary-button grey-background w-100 shape-rounded-corners-small border dropdown-toggle font-special-text font-extra-small-text grey-font">
                                 Retrieve older versions
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <% if (textcontent.oldversions.length > 0) { %>
-                                    <% textcontent.oldversions.forEach(function(entry){ %>
-                                        <!-- TODO QNTM-69 Text Versioning: convert date into readable format -->
-                                        <a href="#" class="grey-font dropdown-item text-center">
-                                            <%= entry.updatedAt; %>
-                                        </a>
-                                    <% }); %>
-                                <% } else { %>
-                                    <span class="my-2 py-3 px-2 grey-font font-extra-small-text font-weight-bold">No other versions available</span>
-                                <% } %>
+                            <div id="dropdownList" class="app-dropdown-content">
+                                <button type="button" class="grey-font text-center" v-for="ov in oldVersions" v-cloak>
+                                    {{ ov.updatedAt }}
+                                </button>
                             </div>
                         </div>
                         <div class="ml-1 font-extra-small-text font-weight-bold float-left">
@@ -135,7 +128,7 @@
                                 <div class="ml-3 mr-1">
                                     <button id="app-delete-button"
                                             class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text border-0"
-                                    type="button" @click="destroy">
+                                            type="button" @click="destroy">
                                         Delete
                                     </button>
                                 </div>
@@ -207,8 +200,9 @@
             createdAt: '<%= textcontent.createdAt; %>',
             updatedAt: '<%= textcontent.updatedAt; %>',
             author: '<%= textcontent.author.fullName; %>',
-            updatedFrom: "<% if (textcontent.updatedFrom != null) { %><%= textcontent.updatedFrom.fullName; %><% } else { %>–<% } %>",
-            endpoint: "<%= textcontent.endpoint; %>",
+            updatedFrom: '<% if (textcontent.updatedFrom != null) { %><%= textcontent.updatedFrom.fullName; %><% } else { %>–<% } %>',
+            endpoint: '<%= textcontent.endpoint; %>',
+            oldVersions: [],
           },
           methods: {
             update: function () {
@@ -220,7 +214,7 @@
               const body = JSON.stringify(formData);
               const postForm = (body) => {
                 let url = window.location.origin;
-                return fetch(url + '/api/v1/textcontent/update', {
+                return fetch(url + '/api/textcontent/update', {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -246,6 +240,35 @@
                 window.location = '/dashboard/text';
               });
             },
+            loadOldVersions: function () {
+              // loads old versions
+              let id = this.id;
+              let url = new URL(window.location.origin + '/api/textcontent/findoldversions');
+              url.searchParams.append('id', id);
+
+              fetch(url)
+                .then(res => res.json())
+                .then((data) => {
+                  data.forEach(entry => {
+                    entry.updatedAt = convertDate(entry.updatedAt);
+                    this.oldVersions.push(entry);
+                  });
+                  console.log(this.oldVersions);
+                });
+            },
+            listOldVersions: function () {
+              let x = document.getElementById('dropdownList');
+              if (x.className.indexOf('show') === -1) {
+                x.className += ' show';
+              } else {
+                x.className = x.className.replace(' show', '');
+              }
+            },
+            /* Hides dropdown when it loses focus */
+            hideOldVersions: function () {
+              let x = document.getElementById('dropdownList');
+              x.className = x.className.replace(' show', '');
+            },
             reset: function () {
               this.title = this.originalTitle;
               this.content = this.originalContent;
@@ -263,6 +286,8 @@
           mounted() {
             this.createdAt = convertDate(parseInt(this.createdAt));
             this.updatedAt = convertDate(parseInt(this.updatedAt));
+
+            this.loadOldVersions();
           }
         });
       };

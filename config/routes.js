@@ -128,7 +128,8 @@ module.exports.routes = {
   'POST /groups/:id/update': { action: 'groups/update' },
 
   'GET /api/textcontent/findone': {action: 'api/textcontent/find-one'},
-  'GET /api/textcontent/destroy': {action: 'textcontent/destroy'},
+  'GET /api/textcontent/destroy': {action: 'api/textcontent/destroy'},
+  'GET /api/textcontent/findoldversions': {action: 'api/textcontent/findoldversions'},
   'POST /api/textcontent/update': {action: 'api/textcontent/update'},
 
 };
