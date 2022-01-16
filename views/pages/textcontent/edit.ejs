@@ -10,7 +10,7 @@
                     </h1>
                 </div>
                 <label class="mr-4 mb-0 px-3 py-2 shape-rounded-corners-small font-extra-small-text font-weight-bold"
-                       v-bind:class="state.COLOR" v-cloak>
+                       :class="state.COLOR" v-cloak>
                     {{ state.TEXT }}
                 </label>
             </div>
@@ -90,7 +90,7 @@
                                 <span class="font-extra-small-text font-weight-bold">+</span>
                             </a>
                         </div>
-                        <!-- TODO QNTM-69 Text Versioning -->
+                        <!-- TODO remove blur with similar functionality -->
                         <div class="app-dropdown my-3">
                             <button type="button" aria-haspopup="true" aria-expanded="false" @click="listOldVersions"
                                     @blur="hideOldVersions" id="app-dropdown-button"
@@ -98,8 +98,11 @@
                                     font-special-text font-extra-small-text grey-font">
                                 Retrieve older versions
                             </button>
-                            <div id="dropdownList" class="app-dropdown-content d-none position-absolute grey-background">
-                                <button type="button" class="grey-font text-center d-block app-dropdown-item" v-for="ov in oldVersions" v-cloak>
+                            <div id="dropdownList"
+                                 class="app-dropdown-content d-none position-absolute grey-background">
+                                <button type="button" class="grey-font text-center d-block app-dropdown-item"
+                                        @click="retrieveOldVersion(ov.id)" v-for="ov in oldVersions" :key="ov.id"
+                                        v-cloak>
                                     {{ ov.updatedAt }}
                                 </button>
                                 <span class="grey-font text-center d-block app-dropdown-item
@@ -169,6 +172,10 @@
             TEXT: '⚠ unpublished changes',
             COLOR: 'editor-status-unpublished'
           },
+          OLD_VERSION: {
+            TEXT: '⚠ using old version',
+            COLOR: 'editor-status-old'
+          },
         });
 
         /* Converts a JS timestamp from milliseconds to readable time format */
@@ -193,7 +200,6 @@
         let app = new Vue({
           el: '#editor',
           data: {
-            csrf: window.SAILS_LOCALS.csrf,
             id: '<%= textcontent.id; %>',
             title: '<%= textcontent.title; %>',
             originalTitle: '<%= textcontent.title; %>',
@@ -209,30 +215,37 @@
           },
           methods: {
             update: function () {
-              const formData = {
-                id: this.id,
-                title: this.title,
-                content: this.content
-              };
-              const body = JSON.stringify(formData);
-              const postForm = (body) => {
-                let url = window.location.origin;
-                return fetch(url + '/api/textcontent/update', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': window.SAILS_LOCALS._csrf
-                  },
-                  body
-                });
-              };
-              postForm(body)
-                .then(res => res.json())
-                .then(data => {
-                  this.updatedAt = convertDate(data.updatedAt);
-                  this.updatedFrom = data.updatedFrom;
-                  this.state = State.ACTIVE;
-                });
+              if (this.title !== this.originalTitle || this.content !== this.originalTitle) {
+                const formData = {
+                  id: this.id,
+                  title: this.title,
+                  content: this.content
+                };
+                const body = JSON.stringify(formData);
+                const postForm = (body) => {
+                  let url = window.location.origin;
+                  return fetch(url + '/api/textcontent/update', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRF-Token': window.SAILS_LOCALS._csrf
+                    },
+                    body
+                  });
+                };
+                postForm(body)
+                  .then(res => res.json())
+                  .then(data => {
+                    this.originalTitle = this.title;
+                    this.originalContent = this.content;
+                    this.updatedAt = convertDate(data.updatedAt);
+                    this.updatedFrom = data.updatedFrom;
+                    this.state = State.ACTIVE;
+
+                    this.oldVersions = [];
+                    this.loadOldVersions();
+                  });
+              }
             },
             destroy: function () {
               let id = this.id;
@@ -256,21 +269,37 @@
                     entry.updatedAt = convertDate(entry.updatedAt);
                     this.oldVersions.push(entry);
                   });
-                  console.log(this.oldVersions);
                 });
             },
             listOldVersions: function () {
               let x = document.getElementById('dropdownList');
-              if (x.className.indexOf('show') === -1) {
-                x.className += ' show';
+              if (x.className.indexOf('d-block') === -1) {
+                x.className += ' d-block';
               } else {
-                x.className = x.className.replace(' show', '');
+                x.className = x.className.replace(' d-block', '');
               }
             },
             /* Hides dropdown when it loses focus */
             hideOldVersions: function () {
-              let x = document.getElementById('dropdownList');
-              x.className = x.className.replace(' show', '');
+
+            },
+            retrieveOldVersion: function (itemId) {
+              let url = new URL(window.location.origin + '/api/textcontent/findoneoldversion');
+              url.searchParams.append('id', itemId);
+
+              fetch(url)
+                .then(res => res.json())
+                .then((data) => {
+                  this.title = data.title;
+                  this.originalTitle = data.title;
+                  this.content = data.content;
+                  this.originalContent = data.content;
+                  this.state = State.OLD_VERSION;
+
+                  // hides dropdown after a version has been selected
+                  let list = document.getElementById('dropdownList');
+                  list.className = list.className.replace(' d-block', '');
+                });
             },
             reset: function () {
               this.title = this.originalTitle;
@@ -286,7 +315,7 @@
             }
           },
           /* executes this function when Vue if fully loaded */
-          mounted() {
+          created() {
             this.createdAt = convertDate(parseInt(this.createdAt));
             this.updatedAt = convertDate(parseInt(this.updatedAt));
 

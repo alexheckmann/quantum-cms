@@ -22,6 +22,8 @@ module.exports = {
 
 
   fn: async function ({ id }) {
+    let textContentArchive = await TextContentArchive.destroy({newestVersion: id});
+    sails.log.debug('Deleted associated entries');
     let textcontent = await TextContent.destroyOne({ id: id });
   }
 };

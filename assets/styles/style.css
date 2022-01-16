@@ -452,6 +452,18 @@ button {
   max-width: 34px;
 }
 
+.editor-status-saved {
+  background-color: rgb(239, 250, 239);
+}
+
+.editor-status-unpublished {
+  background-color: rgb(250, 239, 239);
+}
+
+.editor-status-old {
+  background-color: var(--color-transparent-blue);
+}
+
 .app-info-column {
   max-width: 287px;
 }
@@ -474,12 +486,17 @@ button {
   content: "×";
   padding-inline: 6px;
   animation: fadeIn 350ms;
+  transition: height 350ms;
 }
 
 
 .app-tag-container:hover {
   padding-right: 2px !important;
   max-width: calc(100% + 10px);
+}
+
+.app-tag-container:active {
+  height: 22px;
 }
 
 .app-tag-close-button:hover, #app-tag-add-container:hover {
@@ -508,11 +525,6 @@ button {
 
 .app-dropdown-item:hover {
   background-color: var(--color-transparent-blue) !important;
-}
-
-
-.show {
-  display: block !important;
 }
 
 #entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div, #app-search-button-icon, #app-new-button-icon, #app-dropdown-button {
