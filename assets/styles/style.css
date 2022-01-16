@@ -515,7 +515,7 @@ button {
   display: block !important;
 }
 
-#entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div, #app-search-button-icon, #app-new-button-icon, #dropdownMenuButton {
+#entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div, #app-search-button-icon, #app-new-button-icon, #app-dropdown-button {
   cursor: pointer;
 }
 
