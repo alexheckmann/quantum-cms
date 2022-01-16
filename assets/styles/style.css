@@ -492,26 +492,27 @@ button {
 }
 
 .app-dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
   width: 223px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
   max-height: 170px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.app-dropdown-content button {
-  color: black;
+.app-dropdown-item {
+  width: 223px;
   padding: 12px 16px;
   text-decoration: none;
-  display: block;
-
 }
 
+.app-dropdown-item:hover {
+  background-color: var(--color-transparent-blue) !important;
+}
+
+
 .show {
-  display: block;
+  display: block !important;
 }
 
 #entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div, #app-search-button-icon, #app-new-button-icon, #dropdownMenuButton {

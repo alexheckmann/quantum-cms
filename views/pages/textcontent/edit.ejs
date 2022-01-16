@@ -97,8 +97,8 @@
                                     class="qntm-primary-button grey-background w-100 shape-rounded-corners-small border dropdown-toggle font-special-text font-extra-small-text grey-font">
                                 Retrieve older versions
                             </button>
-                            <div id="dropdownList" class="app-dropdown-content">
-                                <button type="button" class="grey-font text-center" v-for="ov in oldVersions" v-cloak>
+                            <div id="dropdownList" class="app-dropdown-content d-none position-absolute grey-background">
+                                <button type="button" class="grey-font text-center d-block app-dropdown-item" v-for="ov in oldVersions" v-cloak>
                                     {{ ov.updatedAt }}
                                 </button>
                             </div>
