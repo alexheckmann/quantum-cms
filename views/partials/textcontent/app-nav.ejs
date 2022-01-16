@@ -22,7 +22,7 @@
         </div>
         <% textcontents.forEach(function(entry){ %>
             <li class="qntm-navbar-list-item qntm-app-navbar-list-item">
-                <a href="/dashboard/text/<%= entry.id; %>/edit"
+                <a href="/dashboard/text/<%= entry.id; %>/edit" id="contentItem<%= entry.id; %>"
                    class="qntm-navbar-link font-special-text blue-font"><%= entry.title; %></a>
             </li>
         <% }); %>

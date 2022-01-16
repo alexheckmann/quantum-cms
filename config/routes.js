@@ -72,18 +72,18 @@ module.exports.routes = {
   // textcontent
   //
 
-  'GET /dashboard/text/new': { action: 'textcontent/new'},
-  'POST /dashboard/text': { action: 'textcontent/create' },
+  'GET /dashboard/text/new': {action: 'textcontent/new'},
+  'POST /dashboard/text': {action: 'textcontent/create'},
 
-  'GET /dashboard/text/:id/edit': { action: 'textcontent/edit' },
-  'POST /dashboard/text/:id/update': { action: 'textcontent/update' },
+  'GET /dashboard/text/:id/edit': {action: 'textcontent/edit'},
+  'POST /dashboard/text/:id/update': {action: 'textcontent/update'},
 
-  'GET /dashboard/text/:id/destroy': { action: 'textcontent/destroy' },
+  'GET /dashboard/text/:id/destroy': {action: 'textcontent/destroy'},
 
-  'GET /dashboard/text/:id': { action:'textcontent/find-one' },
+  'GET /dashboard/text/:id': {action: 'textcontent/find-one'},
 
-  'GET /dashboard/text': { action: 'textcontent/find', locals: {layout: 'layouts/layout'}},
-  'GET /dashboard': { action: 'textcontent/find', locals: {layout: 'layouts/layout'}},
+  'GET /dashboard/text': {action: 'textcontent/find'},
+  'GET /dashboard': {action: 'textcontent/find'},
 
   //
   // organisation
@@ -126,5 +126,11 @@ module.exports.routes = {
 
   'GET /groups/edit': { action: 'groups/edit' },
   'POST /groups/:id/update': { action: 'groups/update' },
+
+  'GET /api/textcontent/findone': {action: 'api/textcontent/find-one'},
+  'GET /api/textcontent/destroy': {action: 'api/textcontent/destroy'},
+  'GET /api/textcontent/findoldversions': {action: 'api/textcontent/findoldversions'},
+  'GET /api/textcontent/findoneoldversion': {action: 'api/textcontent/findoneoldversion'},
+  'POST /api/textcontent/update': {action: 'api/textcontent/update'},
 
 };

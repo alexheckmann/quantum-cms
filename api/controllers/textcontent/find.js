@@ -37,7 +37,6 @@ module.exports = {
         select: ['title']
       }).sort('title ASC');
     }
-    sails.log.debug(textcontents);
     return ({textcontents: textcontents});
   }
 };

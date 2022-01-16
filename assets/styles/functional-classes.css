@@ -2,52 +2,53 @@
 
 /* functional classes for padding */
 .p-5-vertical {
-    padding-top: 5px;
-    padding-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 /* Functional classes for fonts */
 
 .font-special-text {
-    font-family: "Oswald", sans-serif;
+  font-family: "Oswald", sans-serif;
 }
+
 .font-headline-text {
-    font-size: clamp(1.5rem, 2rem, 3rem);
-    color: #173361;
+  font-size: clamp(1.5rem, 2rem, 3rem);
+  color: #173361;
 }
 
 .font-normal-text {
-    font-size: clamp(1rem, 1.25vw, 1.1rem);
+  font-size: clamp(1rem, 1.25vw, 1.1rem);
 }
 
 .font-small-text {
-    font-size: clamp(0.75rem, 2.5vw, 1rem);
-    letter-spacing: 1px;
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
+  letter-spacing: 1px;
 }
 
 .font-extra-small-text {
-    font-size: 0.75rem;
+  font-size: 0.75rem;
 }
 
 .shape-rounded-corners-small {
-    border-radius: 5px;
+  border-radius: 5px;
 }
 
 .shape-rounded-corners-big {
-    border-radius: 23px;
+  border-radius: 23px;
 }
 
 .shape-drop-shadow {
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 .shape-drop-shadow-straight {
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
 }
 
 /* Functional class for blue text color */
 .blue-font {
-    color: #173361 !important;
+  color: #173361 !important;
 }
 
 .grey-font {
@@ -55,15 +56,11 @@
 }
 
 .blue-background {
-    background-image: linear-gradient(90deg, var(--color-dark-blue), var(--color-light-blue));
+  background-image: linear-gradient(90deg, var(--color-dark-blue), var(--color-light-blue));
 }
 
 .grey-background {
   background-color: var(--color-light-grey) !important;
-}
-
-.editor-status-saved {
-  background-color: var(--color-transparent-blue);
 }
 
 .background-image {

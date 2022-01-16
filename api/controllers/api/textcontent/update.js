@@ -27,17 +27,12 @@ module.exports = {
   },
 
 
-  exits: {
-    success: {
-      responseType: 'view',
-      viewTemplatePath: 'pages/textcontent/show'
-    },
-  },
+  exits: {},
 
 
   fn: async function (inputs) {
     // fetch the TextContent for archiving from the DB
-    let oldTextContent = await TextContent.findOne({ id: inputs.id });
+    let oldTextContent = await TextContent.findOne({id: inputs.id});
     if (!oldTextContent) {
       throw 'notFound TextContent: ' + inputs.id;
     } else {
@@ -48,8 +43,6 @@ module.exports = {
         newestVersion: oldTextContent.id,
       };
       textcontentarchive = await TextContentArchive.create(textcontentarchive).fetch();
-      sails.log.debug('Archive textcontent:');
-      sails.log.debug(textcontentarchive);
     }
 
     // update TextContent
@@ -57,16 +50,22 @@ module.exports = {
       title: inputs.title,
       content: inputs.content,
       updatedFrom: this.req.session.userId,
-      endpoint: 'https://qntm-cms.herokuapp.com/textcontent/' + inputs.id + '/' + inputs.title
+      endpoint: 'https://qntm-cms.herokuapp.com/textcontent/' + inputs.id
     };
-    textcontent = await TextContent.updateOne({ id: inputs.id }).set(textcontent);
-    sails.log.debug('Updated textcontent:');
-    sails.log.debug(textcontent);
+    textcontent = await TextContent.updateOne({id: inputs.id}).set(textcontent);
 
-    if (!textcontent) { throw 'notFound TextContent with ID: ' + textcontent.id; }
+    if (!textcontent) {
+      throw 'notFound TextContent with ID: ' + textcontent.id;
+    }
+    let author = await User.findOne({
+      where: {
+        id: textcontent.updatedFrom
+      },
+      select: ['fullName']
+    });
     return {
-      message: 'Successfully created.',
-      textcontent: textcontent
+      updatedAt: textcontent.updatedAt,
+      updatedFrom: author.fullName
     };
   }
 
