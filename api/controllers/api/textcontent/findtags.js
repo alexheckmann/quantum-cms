@@ -15,9 +15,16 @@ module.exports = {
   exits: {},
 
   fn: async function ({id}) {
-    let tags = await Tag.find({
-      where: {textContentTag: id},
-    }).sort('name DESC');
+    let tags = await TextContent.find({
+      where: {id: id},
+      select: ['id'],
+    }).populate('tags', {
+      select: ['colour', 'name', 'id']
+    });
+
+    if (!tags) {
+      throw 'notFound';
+    }
 
     return tags;
   }
