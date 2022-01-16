@@ -1,7 +1,34 @@
-<div class="d-flex flex-grow-1 flex-shrink-1 flex-wrap">
-    <%- partial('../../partials/textcontent/app-nav.ejs'); %>
+<div class="d-flex flex-grow-1 flex-shrink-1 flex-wrap" id="editor">
+    <div class="qntm-app-navbar-container flex-fill border-right" role="menubar">
+        <ul class="qntm-app-navbar-links" role="menu">
+            <div class="d-flex flex-nowrap mb-3">
+                <form class="d-flex justify-content-between border shape-rounded-corners-small w-75 ml-3 mr-1">
+                    <input name="q" type="search" autocomplete="off" minlength="1" maxlength="20"
+                           placeholder="Search for entries"
+                           class="border-0 w-100 pl-2 form-control"
+                           v-model="searchInput" @change="loadAllEntries">
+                    <button type="button" id="app-search-button-icon" @click="loadAllEntries"
+                            class="bg-transparent grey-background shape-rounded-corners-small d-inline-block flex-shrink-0 border-left qntm-icon-button border">
+                        <img src="/images/icon_search.svg" alt="Search Icon">
+                    </button>
+                </form>
+
+                <form action="/dashboard/text/new" class="ml-0" style="height: 38px">
+                    <button class="shape-rounded-corners-small border d-flex align-items-center qntm-icon-button flex-shrink-0 grey-background">
+                        <svg id="app-new-button-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
+                             data-testid="AddIcon" tabindex="-1" title="Add">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+                <li class="qntm-navbar-list-item qntm-app-navbar-list-item" v-for="entry in allEntries">
+                    <a class="qntm-navbar-link font-special-text blue-font" v-cloak>{{ entry.title }}</a>
+                </li>
+        </ul>
+    </div>
     <!-- TODO QNTM-63 -->
-    <div class="flex-fill grey-background d-flex flex-row" role="dialog" id="editor">
+    <div class="flex-fill grey-background d-flex flex-row" role="dialog">
         <form class="flex-fill">
             <div class="d-flex flex-row align-items-center justify-content-between" style="height: 72px">
                 <div class="pl-4 pt-3">
@@ -159,169 +186,187 @@
             </div>
         </form>
     </div>
-    <%- exposeLocalsToBrowser() %>
-    <script>
-      window.onload = () => {
-        /* creating an enum for text state */
-        const State = Object.freeze({
-          ACTIVE: {
-            TEXT: '✓ published',
-            COLOR: 'editor-status-saved'
-          },
-          UNPUBLISHED: {
-            TEXT: '⚠ unpublished changes',
-            COLOR: 'editor-status-unpublished'
-          },
-          OLD_VERSION: {
-            TEXT: '⚠ using old version',
-            COLOR: 'editor-status-old'
-          },
-        });
-
-        /* Converts a JS timestamp from milliseconds to readable time format */
-        const convertDate = (date) => {
-          let ISODate = new Date(date);
-
-          let day = ISODate.getDate();
-          let month = ISODate.getMonth() + 1;
-          let year = ISODate.getFullYear();
-          let hour = ISODate.getHours();
-          let min = ISODate.getMinutes();
-
-          // adds leading zero
-          month = (month < 10 ? '0' : '') + month;
-          day = (day < 10 ? '0' : '') + day;
-          hour = (hour < 10 ? '0' : '') + hour;
-          min = (min < 10 ? '0' : '') + min;
-
-          return day + '/' + month + '/' + year + ' ' + hour + ':' + min;
-        };
-
-        let app = new Vue({
-          el: '#editor',
-          data: {
-            id: '<%= textcontent.id; %>',
-            title: '<%= textcontent.title; %>',
-            originalTitle: '<%= textcontent.title; %>',
-            content: '<%= textcontent.content; %>',
-            originalContent: '<%= textcontent.content; %>',
-            state: State.ACTIVE,
-            createdAt: '<%= textcontent.createdAt; %>',
-            updatedAt: '<%= textcontent.updatedAt; %>',
-            author: '<%= textcontent.author.fullName; %>',
-            updatedFrom: '<% if (textcontent.updatedFrom != null) { %><%= textcontent.updatedFrom.fullName; %><% } else { %>–<% } %>',
-            endpoint: '<%= textcontent.endpoint; %>',
-            oldVersions: [],
-          },
-          methods: {
-            update: function () {
-              if (this.title !== this.originalTitle || this.content !== this.originalTitle) {
-                const formData = {
-                  id: this.id,
-                  title: this.title,
-                  content: this.content
-                };
-                const body = JSON.stringify(formData);
-                const postForm = (body) => {
-                  let url = window.location.origin;
-                  return fetch(url + '/api/textcontent/update', {
-                    method: 'POST',
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'X-CSRF-Token': window.SAILS_LOCALS._csrf
-                    },
-                    body
-                  });
-                };
-                postForm(body)
-                  .then(res => res.json())
-                  .then(data => {
-                    this.originalTitle = this.title;
-                    this.originalContent = this.content;
-                    this.updatedAt = convertDate(data.updatedAt);
-                    this.updatedFrom = data.updatedFrom;
-                    this.state = State.ACTIVE;
-
-                    this.oldVersions = [];
-                    this.loadOldVersions();
-                  });
-              }
-            },
-            destroy: function () {
-              let id = this.id;
-              let url = new URL(window.location.origin + '/api/textcontent/destroy');
-              url.searchParams.append('id', id);
-
-              fetch(url).then(() => {
-                window.location = '/dashboard/text';
-              });
-            },
-            loadOldVersions: function () {
-              // loads old versions
-              let id = this.id;
-              let url = new URL(window.location.origin + '/api/textcontent/findoldversions');
-              url.searchParams.append('id', id);
-
-              fetch(url)
-                .then(res => res.json())
-                .then((data) => {
-                  data.forEach(entry => {
-                    entry.updatedAt = convertDate(entry.updatedAt);
-                    this.oldVersions.push(entry);
-                  });
-                });
-            },
-            listOldVersions: function () {
-              let x = document.getElementById('dropdownList');
-              if (x.className.indexOf('d-block') === -1) {
-                x.className += ' d-block';
-              } else {
-                x.className = x.className.replace(' d-block', '');
-              }
-            },
-            /* Hides dropdown when it loses focus */
-            hideOldVersions: function () {
-
-            },
-            retrieveOldVersion: function (itemId) {
-              let url = new URL(window.location.origin + '/api/textcontent/findoneoldversion');
-              url.searchParams.append('id', itemId);
-
-              fetch(url)
-                .then(res => res.json())
-                .then((data) => {
-                  this.title = data.title;
-                  this.originalTitle = data.title;
-                  this.content = data.content;
-                  this.originalContent = data.content;
-                  this.state = State.OLD_VERSION;
-
-                  // hides dropdown after a version has been selected
-                  let list = document.getElementById('dropdownList');
-                  list.className = list.className.replace(' d-block', '');
-                });
-            },
-            reset: function () {
-              this.title = this.originalTitle;
-              this.content = this.originalContent;
-              this.state = State.ACTIVE;
-            },
-            changeStatus: function () {
-              if (this.title !== this.originalTitle || this.content !== this.originalContent) {
-                this.state = State.UNPUBLISHED;
-              } else {
-                this.state = State.ACTIVE;
-              }
-            }
-          },
-          /* executes this function when Vue if fully loaded */
-          created() {
-            this.createdAt = convertDate(parseInt(this.createdAt));
-            this.updatedAt = convertDate(parseInt(this.updatedAt));
-
-            this.loadOldVersions();
-          }
-        });
-      };
-    </script>
 </div>
+<%- exposeLocalsToBrowser() %>
+<script>
+  window.onload = () => {
+    /* creating an enum for text state */
+    const State = Object.freeze({
+      ACTIVE: {
+        TEXT: '✓ published',
+        COLOR: 'editor-status-saved'
+      },
+      UNPUBLISHED: {
+        TEXT: '⚠ unpublished changes',
+        COLOR: 'editor-status-unpublished'
+      },
+      OLD_VERSION: {
+        TEXT: '⚠ using old version',
+        COLOR: 'editor-status-old'
+      },
+    });
+
+    /* Converts a JS timestamp from milliseconds to readable time format */
+    const convertDate = (date) => {
+      let ISODate = new Date(date);
+
+      let day = ISODate.getDate();
+      let month = ISODate.getMonth() + 1;
+      let year = ISODate.getFullYear();
+      let hour = ISODate.getHours();
+      let min = ISODate.getMinutes();
+
+      // adds leading zero
+      month = (month < 10 ? '0' : '') + month;
+      day = (day < 10 ? '0' : '') + day;
+      hour = (hour < 10 ? '0' : '') + hour;
+      min = (min < 10 ? '0' : '') + min;
+
+      return day + '/' + month + '/' + year + ' ' + hour + ':' + min;
+    };
+
+    let app = new Vue({
+      el: '#editor',
+      data: {
+        allEntries: [],
+        searchInput: '',
+        id: '<%= textcontent.id; %>',
+        title: '<%= textcontent.title; %>',
+        originalTitle: '<%= textcontent.title; %>',
+        content: '<%= textcontent.content; %>',
+        originalContent: '<%= textcontent.content; %>',
+        state: State.ACTIVE,
+        createdAt: '<%= textcontent.createdAt; %>',
+        updatedAt: '<%= textcontent.updatedAt; %>',
+        author: '<%= textcontent.author.fullName; %>',
+        updatedFrom: '<% if (textcontent.updatedFrom != null) { %><%= textcontent.updatedFrom.fullName; %><% } else { %>–<% } %>',
+        endpoint: '<%= textcontent.endpoint; %>',
+        oldVersions: [],
+      },
+      methods: {
+        loadAllEntries: function () {
+          this.allEntries = [];
+          // loads old versions
+          let url = new URL(window.location.origin + '/api/textcontent/find');
+          if (this.searchInput.length > 0) {
+            url.searchParams.append('q', this.searchInput);
+          }
+
+          fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+              data.forEach(entry => {
+                this.allEntries.push(entry);
+              });
+            });
+        },
+        update: function () {
+          if (this.title !== this.originalTitle || this.content !== this.originalTitle) {
+            const formData = {
+              id: this.id,
+              title: this.title,
+              content: this.content
+            };
+            const body = JSON.stringify(formData);
+            const postForm = (body) => {
+              let url = window.location.origin;
+              return fetch(url + '/api/textcontent/update', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': window.SAILS_LOCALS._csrf
+                },
+                body
+              });
+            };
+            postForm(body)
+              .then(res => res.json())
+              .then(data => {
+                this.originalTitle = this.title;
+                this.originalContent = this.content;
+                this.updatedAt = convertDate(data.updatedAt);
+                this.updatedFrom = data.updatedFrom;
+                this.state = State.ACTIVE;
+
+                this.oldVersions = [];
+                this.loadOldVersions();
+              });
+          }
+        },
+        destroy: function () {
+          let id = this.id;
+          let url = new URL(window.location.origin + '/api/textcontent/destroy');
+          url.searchParams.append('id', id);
+
+          fetch(url).then(() => {
+            window.location = '/dashboard/text';
+          });
+        },
+        loadOldVersions: function () {
+          // loads old versions
+          let id = this.id;
+          let url = new URL(window.location.origin + '/api/textcontent/findoldversions');
+          url.searchParams.append('id', id);
+
+          fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+              data.forEach(entry => {
+                entry.updatedAt = convertDate(entry.updatedAt);
+                this.oldVersions.push(entry);
+              });
+            });
+        },
+        listOldVersions: function () {
+          let x = document.getElementById('dropdownList');
+          if (x.className.indexOf('d-block') === -1) {
+            x.className += ' d-block';
+          } else {
+            x.className = x.className.replace(' d-block', '');
+          }
+        },
+        /* Hides dropdown when it loses focus */
+        hideOldVersions: function () {
+
+        },
+        retrieveOldVersion: function (itemId) {
+          let url = new URL(window.location.origin + '/api/textcontent/findoneoldversion');
+          url.searchParams.append('id', itemId);
+
+          fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+              this.title = data.title;
+              this.originalTitle = data.title;
+              this.content = data.content;
+              this.originalContent = data.content;
+              this.state = State.OLD_VERSION;
+
+              // hides dropdown after a version has been selected
+              let list = document.getElementById('dropdownList');
+              list.className = list.className.replace(' d-block', '');
+            });
+        },
+        reset: function () {
+          this.title = this.originalTitle;
+          this.content = this.originalContent;
+          this.state = State.ACTIVE;
+        },
+        changeStatus: function () {
+          if (this.title !== this.originalTitle || this.content !== this.originalContent) {
+            this.state = State.UNPUBLISHED;
+          } else {
+            this.state = State.ACTIVE;
+          }
+        }
+      },
+      /* created() hook for data fetching from backend API when being loaded */
+      created() {
+        this.loadAllEntries();
+        this.loadOldVersions();
+        this.createdAt = convertDate(parseInt(this.createdAt));
+        this.updatedAt = convertDate(parseInt(this.updatedAt));
+      }
+    });
+  };
+</script>

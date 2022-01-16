@@ -315,6 +315,7 @@ button {
 .qntm-navbar-link {
   text-decoration: none !important;
   color: white;
+  cursor: pointer;
 }
 
 .qntm-navbar-link:hover {
