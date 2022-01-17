@@ -23,12 +23,8 @@ module.exports = {
         let ids = inputs.members.map(i=>Number(i));
         console.log("ids: " + ids);        
 
-        let workingGrp = await WorkingGroup.removeFromCollection(inputs.id, 'workers').members(ids);
+        await WorkingGroup.removeFromCollection(inputs.id, 'workers').members(ids);
 
-        if (workingGrp) {
-            return true;
-        } else {
-            throw("Error in deletemembers controller -> check 'api/controllers/api/groups/deletemembers.js'.");
-        }
+        return true;
     }
 };

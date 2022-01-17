@@ -63,7 +63,6 @@ module.exports = {
             data.push({name: element.fullName, id: element.id});
         })
 
-
         return data;
     }
 };

@@ -20,7 +20,6 @@ module.exports = {
     },
 
     fn: async function (inputs) {
-        // selected group
         var grp = await WorkingGroup.findOne({ id: inputs.id });
 
         console.log("Selected group:")
