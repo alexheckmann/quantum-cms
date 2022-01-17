@@ -1,106 +1,113 @@
-<div class="container mt-4 mb-4">
-    <div class="border rounded mt-2 p-2">
-        <!-- Your organisation -->
-        <div class="container">
-            <div class="row">
-                <h3>Your organisation</h3>
-            </div>
-            <div class="d-flex justify-content-between">
-                <% if(!!org){ %>
-                    <div class="font-weight-bold">
-                        Name:
+<%- exposeLocalsToBrowser() %>
+    <% if(!!org){ %>
+        <div class="container mt-4 mb-4">
+            <div class="border rounded mt-2 p-2">
+                <!-- Your organisation -->
+                <div class="container">
+                    <div class="row">
+                        <h3>Your organisation</h3>
                     </div>
-                    <% org.forEach(function(org){ %>
-                        <div class="">
-                            <%= org.name %>
-                        </div>
-                        <% }); %>
-                        <div class="d-flex">
-                            <div class="mr-1">
-                                <a class="qntm-primary-button font-special-text shape-rounded-corners-small"
-                                    href="/organisation/<%= user.id %>/edit">Edit</a>
-                            </div>
-                            <div class="">
-                                <a class="qntm-primary-button font-special-text shape-rounded-corners-small"
-                                    href="/organisation/<%= user.id %>/delete">Resign</a>
-                        </div>
-                            </div>
-                            <% } else { %>
-                                <p>You have no organisation.</p>
-                                <div class="">
-                                    <a class="qntm-primary-button font-special-text shape-rounded-corners-small mt-1"
-                                        href="/organisation/new">Add</a>
-                                </div>
-                                <% } %>
-            </div>
-        </div>
-    </div>
-    <!-- Members -->
-    <div class="border rounded mt-2 p-2">
-        <div class="container">
-            <div class="row">
-                <h3>Members</h3>
-            </div>
-            <% if(!!users){ %>
-                <div class="mb-2">
-                    <table id="dataTable" data-toggle="table" class="table table-hover" data-click-to-select="true"
-                        data-toolbar="#toolbar">
-                        <thead class="thead-light">
-                            <tr>
-                                <th data-field="state" data-checkbox="true"></th>
-                                <th data-field="id" data-visible="false"></th>
-                                <th data-field="name" scope="col" data-sortable="true">Name</th>
-                                <th data-field="role" scope="col" data-sortable="true">Role</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% users.forEach(function(users){ %>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <%= users.id %>
-                                    </td>
-                                    <td>
-                                        <%= users.fullName %>
-                                    </td>
-                                    <% if(users.admin){ %>
-                                        <td id="dataTable_stateRow_adminCheck">Admin</td>
-                                        <% } else { %>
-                                            <td>Worker</td>
-                                            <% }; %>
-                                                <% if(user.admin){ %>
-                                                    <% if(!users.admin && users.id !=user.id){ %>
-                                                        <!-- <td class=""><a
-                                                                class="qntm-primary-button font-special-text shape-rounded-corners-small"
-                                                                href="/organisation/<%= users.id %>/updateAdmin">Appoint
-                                                                as
-                                                                admin</a></td>
-
-                                                        <td class=""> <a
-                                                                class="qntm-primary-button font-special-text shape-rounded-corners-small"
-                                                                href="/organisation/<%= users.id %>/delete">Delete</a>
-                                                        </td> -->
-                                                        <% } %>
-                                                            <% }; %>
-                                </tr>
-                                <% }); %>
-                        </tbody>
-                    </table>
+                    <div>
+                        <label id="orgNameLabel" class="form-control">
+                        </label>
+                    </div>
+                    <div id="orgToolbar" class="d-flex">
+                        <button class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn" onclick="editOrg()">Edit</a>
+                        </button>
+                        <button class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn" href="/organisation/<%= user.id %>/delete">Resign</a>
+                        </button>
+                    </div>
                 </div>
-                <div id="toolbar">
-                    <button id="adminBtn" class="qntm-button font-special-text shape-rounded-corners-small">Appoint as
-                        admin</button>
+            </div>
 
-                    <button id="deleteBtn"
-                        class="qntm-button font-special-text shape-rounded-corners-small">Delete</button>
+            <!-- Members -->
+            <div class="border rounded mt-2 p-2">
+                <div class="container">
+                    <div class="row">
+                        <h3>Members</h3>
+                    </div>
+                    <% if(!!users){ %>
+                        <div class="mb-2">
+                            <table id="dataTable" data-toggle="table" class="table table-hover"
+                                data-click-to-select="true" data-toolbar="#toolbar">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th data-field="state" data-checkbox="true"></th>
+                                        <th data-field="id" data-visible="false"></th>
+                                        <th data-field="name" scope="col" data-sortable="true">Name</th>
+                                        <th data-field="role" scope="col" data-sortable="true">Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% users.forEach(function(users){ %>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <%= users.id %>
+                                            </td>
+                                            <td>
+                                                <%= users.fullName %>
+                                            </td>
+                                            <% if(users.admin){ %>
+                                                <td id="dataTable_stateRow_adminCheck">Admin</td>
+                                                <% } else { %>
+                                                    <td>Worker</td>
+                                                    <% }; %>
+                                                        <% if(user.admin){ %>
+                                                            <% if(!users.admin && users.id !=user.id){ %>
+                                                                <% } %>
+                                                                    <% }; %>
+                                        </tr>
+                                        <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="toolbar">
+                            <button id="adminBtn"
+                                class="qntm-button font-special-text shape-rounded-corners-small">Appoint as
+                                admin</button>
+
+                            <button id="deleteBtn"
+                                class="qntm-button font-special-text shape-rounded-corners-small">Delete</button>
+                        </div>
+                        <% } else { %>
+                            <p>You have no organisation.</p>
+                            <% } %>
                 </div>
-                <% } else { %>
-                    <p>You have no organisation.</p>
-                    <% } %>
-        </div>
-    </div>
-
-    <%- exposeLocalsToBrowser() %>
-        <script>
-            // window.onload = () => createTable();
-        </script>
+            </div>
+            <% } else { %>
+                <div id="noOrgSection">
+                    <button class="qntm-button font-special-text shape-rounded-corners-small">
+                        <a class="toolbar-btn" href="/organisation/new">Create your organisation</a>
+                    </button>
+                </div>
+                <% } %>
+                    <script>
+                        window.onload = () => fetchOrgData();
+                        /* window.onload = () => {
+                            let app = new Vue({
+                                el: '#app',
+                                data: {
+                                    orgName: "",
+                                    orgId: "",
+                                },
+                                methods: {
+                                    findOrg: function () {
+                                        let origin = window.location.origin
+                                        let url = new URL(origin + '/api/organisation/findorg');
+                                        fetch(url)
+                                            .then(res => res.json())
+                                            .then(data => {
+                                                this.orgName = data.name;
+                                                this.orgId = data.id;
+                                            })
+                                    }
+                                },
+                                beforeMount() {
+                                    this.findOrg()
+                                }
+                            })
+                        }; */
+                    </script>
