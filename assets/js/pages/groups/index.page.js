@@ -38,7 +38,6 @@ function createMemberTable() {
     } else {
         console.log("User has no group.")
     }
-
 }
 
 /*
@@ -51,7 +50,7 @@ function checkAdminCurrentUser(grp) {
         .then(res => res.json())
         .then(data => {
             userIsAdmin = data;
-            console.log("data: " + data);
+            console.log("isAdmin: " + data);
             if (data) {
                 showAdminTools();
             } else {
@@ -65,6 +64,7 @@ function showAdminTools() {
     $("#toolbarGrpsAdmin").show();
     $("#toolbarMember").hide();
     $("#toolbarGrpsMember").hide();
+    $("#addMembersSelect").show();
 }
 
 function showMemberTools() {
@@ -72,6 +72,7 @@ function showMemberTools() {
     $("#toolbarGrpsAdmin").hide();
     $("#toolbarMember").show();
     $("#toolbarGrpsMember").show();
+    $("#addMembersSelect").hide();
 }
 
 // fetches the members of the selected group
@@ -165,13 +166,13 @@ function createGroupTable(data) {
     // tbody element
     table.append(tbody);
     data.forEach((element) => {
-        tbody.append(createTR(element));
+        tbody.append(createTR(element, i));
         i = i + 1;
     })
 }
 
 // creates a TR for a member table without checkbox
-function createTR(element) {
+function createTR(element, i) {
     let tr = $('<tr>');
     tr.append($('<td id="id">').text(element.id).hide());
     appendTdToRow(tr, element.name, i);
@@ -329,9 +330,7 @@ function leaveGrp() {
     fetch(createFetchURL('/groups/leave', "id", grpId))
         .then(res => res.json())
         .then(data => {
-            console.log("data: " + data);
             if (data) {
-                // TODO findGrps();
                 window.location = '/groups';
             }
         })
@@ -346,7 +345,6 @@ function selectAll() {
     var tdCheckbox = table.find('tbody input:checkbox:enabled'); // checboxes inside table body
 
     for (let userCheckBox of tdCheckbox) {
-        console.log(userCheckBox);
         userCheckBox.checked = isAllBoxChecked;
     }
     // TODO if all tr are checked, the th must also be checked
@@ -377,11 +375,11 @@ function findMembersToAdd(grp) {
         .then(data => {
             createMembersOptions(data);
         })
-    //}
 }
 
 // creates the options with the members that can be added to the group
 function createMembersOptions(data) {
+    // TODO Bug: Member zur Grp hinzugefügt -> select Member geht nicht
     let select = $('#memberSelect');
     data.forEach(element => {
         select.append($('<option></option>').val(element.id).text(element.name).attr("id", element.id));

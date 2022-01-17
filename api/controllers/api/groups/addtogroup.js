@@ -23,12 +23,8 @@ module.exports = {
         let ids = inputs.members.map(i=>Number(i));
         console.log("ids: " + ids);      
         
-        let workingGrp = await WorkingGroup.addToCollection(inputs.id, 'workers').members(ids);
+        await WorkingGroup.addToCollection(inputs.id, 'workers').members(ids);
 
-        if (workingGrp) {
-            return true;
-        } else {
-            throw("Error in addtogroup controller -> check 'api/controllers/api/groups/addtogroup.js'.");
-        }
+        return true;
     }
 };
