@@ -128,14 +128,14 @@
                                 Retrieve older versions
                             </button>
                             <div id="dropdownList"
-                                 class="app-dropdown-content d-none position-absolute grey-background">
+                                 class="app-dropdown-content position-absolute grey-background" v-show="showList" v-cloak>
                                 <button type="button" class="grey-font text-center d-block app-dropdown-item"
                                         @click="retrieveOldVersion(ov.id)" v-for="ov in oldVersions" :key="ov.id"
                                         v-cloak>
                                     {{ ov.updatedAt }}
                                 </button>
                                 <span class="grey-font text-center d-block app-dropdown-item
-                                font-weight-bold font-extra-small-text" v-if="oldVersions.length === 0">No other versions available!</span>
+                                font-weight-bold font-extra-small-text" v-if="oldVersions.length === 0" v-cloak>No other versions available!</span>
                             </div>
                         </div>
                         <div class="ml-1 font-extra-small-text font-weight-bold float-left">
@@ -244,6 +244,7 @@
         updatedFrom: '<% if (textcontent.updatedFrom != null) { %><%= textcontent.updatedFrom.fullName; %><% } else { %>–<% } %>',
         endpoint: '<%= textcontent.endpoint; %>',
         oldVersions: [],
+        showList: false,
         newTagName: '',
         tags: [],
       },
@@ -350,12 +351,7 @@
           });
         },
         listOldVersions: function () {
-          let x = document.getElementById('dropdownList');
-          if (x.className.indexOf('d-block') === -1) {
-            x.className += ' d-block';
-          } else {
-            x.className = x.className.replace(' d-block', '');
-          }
+          this.showList = !this.showList;
         },
         createTag: function () {
           if (this.newTagName !== '') {
