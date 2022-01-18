@@ -22,7 +22,7 @@ module.exports = {
 
     if (!!user.organisation) {
       // gets the organisation to the current user
-      org = await Organisation.find({ id: user.organisation.id });
+      org = await Organisation.findOne({ id: user.organisation.id });
 
       // all user with same org
       users = await User.find({

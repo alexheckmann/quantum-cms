@@ -14,7 +14,7 @@ $(() => {
     var ids = $.map($table.bootstrapTable('getSelections'), (row) => {
       return row.id;
     });
-    console.log('IDs to delete: '+ids);
+    console.log('IDs to delete: ' + ids);
     deleteMembers(ids);
   });
 
@@ -22,7 +22,7 @@ $(() => {
     var ids = $.map($table.bootstrapTable('getSelections'), (row) => {
       return row.id;
     });
-    console.log('IDs to set admin: '+ids);
+    console.log('IDs to set admin: ' + ids);
     appointAdmin(ids);
   });
 });
@@ -83,4 +83,28 @@ function deleteMembers(ids) {
   };
   postForm(body);
   window.location = '/organisation';
+}
+//############################## REDESIGN ##############################
+let orgId;
+
+function fetchOrgData() {
+  findOrg();
+}
+
+function findOrg() {
+  let origin = window.location.origin
+  let url = new URL(origin + '/api/organisation/findorg');
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      $('#orgNameLabel').text(data.name);
+      orgId = data.id;
+    })
+}
+
+// opens an edit window with the org
+function editOrg() {
+  let orgId = $('#orgNameLabel').find().val();
+  alert("orgId: " + orgId)
+  // window.location = createFetchURL('/organisation/edit', "id", grpId);
 }

@@ -20,8 +20,6 @@ module.exports = {
   },
 
   fn: async function (inputs) {
-    console.log("ID of the selected group: " + inputs.id);
-
     // fetches the group with the selected ID
     var grp = await WorkingGroup.findOne({ id: inputs.id }).populate('workers').populate('admins');
 

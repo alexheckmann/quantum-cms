@@ -20,12 +20,12 @@ module.exports = {
     },
 
     fn: async function (inputs) {
-        // current user
         var user = await User.findOne({ id: this.req.me.id }).populate('adminOf');
 
         console.log("Current User:")
         console.log(user);
 
+        // if user is admin of seelcted group return true else false
         if (user.adminOf.filter(e => e.id == inputs.id).length > 0) {
             return true;
           } else {
