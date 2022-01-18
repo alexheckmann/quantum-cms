@@ -295,6 +295,9 @@
 
               this.updatedFrom = data.updatedFrom ? data.updatedFrom.fullName : '–';
               this.endpoint = data.endpoint;
+
+              this.loadTags();
+              this.loadOldVersions();
             });
         },
         loadOldVersions: function () {
