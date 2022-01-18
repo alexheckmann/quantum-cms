@@ -116,7 +116,7 @@
                             <a id="app-tag-add-container"
                                class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap">
                                 <span class="font-extra-small-text font-weight-bold mr-1">●</span>
-                                <input class="font-extra-small-text font-weight-bold border-0" v-model="newTagName"
+                                <input class="font-extra-small-text font-weight-bold border-0" v-model.trim="newTagName"
                                        @change="createTag" required>
                             </a>
                         </div>
@@ -360,7 +360,7 @@
         createTag: function () {
           if (this.newTagName !== '') {
             const formData = {
-              name: this.newTagName.trim(),
+              name: this.newTagName,
               textcontent: this.id
             };
             const body = JSON.stringify(formData);
