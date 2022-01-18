@@ -29,13 +29,15 @@
             </li>
         </ul>
     </div>
-    <!-- TODO QNTM-63 -->
     <div class="flex-fill grey-background d-flex flex-row" role="dialog">
         <form class="flex-fill">
             <div class="d-flex flex-row align-items-center justify-content-between" style="height: 72px">
                 <div class="pl-4 pt-3">
-                    <h1 v-cloak>
+                    <h1 v-if="!isNewEntry || title !== ''" v-cloak>
                         {{ title }}
+                    </h1>
+                    <h1 v-if="isNewEntry && title === ''" v-cloak>
+                        Create new content
                     </h1>
                 </div>
                 <label class="mr-4 mb-0 px-3 py-2 shape-rounded-corners-small font-extra-small-text font-weight-bold"
@@ -197,6 +199,10 @@
   window.onload = () => {
     /* creating an enum for text state */
     const State = Object.freeze({
+      NEW: {
+        TEXT: '',
+        COLOR: ''
+      },
       ACTIVE: {
         TEXT: '✓ published',
         COLOR: 'editor-status-saved'
@@ -240,7 +246,7 @@
         originalTitle: '',
         content: '',
         originalContent: '',
-        state: State.ACTIVE,
+        state: State.NEW,
         createdAt: '',
         updatedAt: '',
         author: '',
@@ -277,6 +283,7 @@
           fetch(url)
             .then(res => res.json())
             .then((data) => {
+              this.isNewEntry = false;
               this.id = data.id;
               this.title = data.title;
               this.originalTitle = data.title;
@@ -288,6 +295,39 @@
 
               this.updatedFrom = data.updatedFrom ? data.updatedFrom.fullName : '–';
               this.endpoint = data.endpoint;
+            });
+        },
+        loadOldVersions: function () {
+          // loads old versions
+          let id = this.id;
+          let url = new URL(window.location.origin + '/api/textcontent/findoldversions');
+          url.searchParams.append('id', id);
+
+          fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+              data.forEach(entry => {
+                entry.updatedAt = convertDate(entry.updatedAt);
+                this.oldVersions.push(entry);
+              });
+            });
+        },
+        loadTags: function () {
+          this.tags = [];
+          // loads old versions
+          let id = this.id;
+          let url = new URL(window.location.origin + '/api/textcontent/findtags');
+          url.searchParams.append('id', id);
+
+          fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+              // first forEach accesses observer, second forEach accesses tag array
+              data.forEach(entry => {
+                entry.tags.forEach(entry => {
+                  this.tags.push(entry);
+                });
+              });
             });
         },
         update: function () {
@@ -331,39 +371,6 @@
           fetch(url).then(() => {
             window.location = '/dashboard/text';
           });
-        },
-        loadOldVersions: function () {
-          // loads old versions
-          let id = this.id;
-          let url = new URL(window.location.origin + '/api/textcontent/findoldversions');
-          url.searchParams.append('id', id);
-
-          fetch(url)
-            .then(res => res.json())
-            .then((data) => {
-              data.forEach(entry => {
-                entry.updatedAt = convertDate(entry.updatedAt);
-                this.oldVersions.push(entry);
-              });
-            });
-        },
-        loadTags: function () {
-          this.tags = [];
-          // loads old versions
-          let id = this.id;
-          let url = new URL(window.location.origin + '/api/textcontent/findtags');
-          url.searchParams.append('id', id);
-
-          fetch(url)
-            .then(res => res.json())
-            .then((data) => {
-              // first forEach accesses observer, second forEach accesses tag array
-              data.forEach(entry => {
-                entry.tags.forEach(entry => {
-                  this.tags.push(entry);
-                });
-              });
-            });
         },
         removeTag: function (tagId) {
           let id = this.id;
@@ -427,14 +434,17 @@
         changeStatus: function () {
           if (this.title !== this.originalTitle || this.content !== this.originalContent) {
             this.state = State.UNPUBLISHED;
-          } else {
+          } else if (!this.isNewEntry) {
             this.state = State.ACTIVE;
+          } else {
+            this.state = State.NEW;
           }
         }
       },
       /* created() hook for data fetching from backend API when being loaded */
       created() {
         this.loadAllEntries();
+
         if (!this.isNewEntry) {
           this.loadOldVersions();
           this.loadTags();
