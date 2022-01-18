@@ -138,5 +138,6 @@ module.exports.routes = {
   'GET /api/textcontent/removetag': {action: 'api/textcontent/removetag'},
   'POST /api/textcontent/createtag': {action: 'api/textcontent/createtag'},
   'POST /api/textcontent/update': {action: 'api/textcontent/update'},
+  'POST /api/textcontent/save': {action: 'api/textcontent/save'},
 
 };

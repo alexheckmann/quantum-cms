@@ -14,8 +14,9 @@
                     </button>
                 </form>
 
-                <form action="/dashboard/text/new" class="ml-0" style="height: 38px">
-                    <button class="shape-rounded-corners-small border d-flex align-items-center qntm-icon-button flex-shrink-0 grey-background">
+                <form class="ml-0" style="height: 38px">
+                    <button type="button" @click="createNewEntry"
+                            class="shape-rounded-corners-small border d-flex align-items-center qntm-icon-button flex-shrink-0 grey-background">
                         <svg id="app-new-button-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
                              data-testid="AddIcon" tabindex="-1" title="Add">
                             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
@@ -100,7 +101,7 @@
                         <div class="ml-1 font-extra-small-text font-weight-bold float-left">
                             <label class="mb-1">Tags:</label>
                         </div>
-                        <div class="d-flex flex-row flex-wrap w-100 app-tag-section">
+                        <div class="d-flex flex-row flex-wrap w-100 app-tag-section" v-cloak>
                             <div :href="'/dashboard/tag/' + entry.id"
                                  class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container"
                                  v-for="entry in tags" :key="entry.id" v-cloak>
@@ -125,7 +126,7 @@
                         </div>
                         <div class="app-dropdown my-3">
                             <button type="button" aria-haspopup="true" aria-expanded="false" @click="listOldVersions"
-                                    id="app-dropdown-button"
+                                    id="app-dropdown-button" :disabled="isNewEntry"
                                     class="qntm-primary-button grey-background w-100 shape-rounded-corners-small border dropdown-toggle
                                     font-special-text font-extra-small-text grey-font">
                                 Retrieve older versions
@@ -161,12 +162,12 @@
                                     <span class="font-extra-small-text font-weight-bold ml-2 mr-3">Delete?</span>
                                     <div class="material-switch pull-right">
                                         <input id="app-delete-confirmation" name="delete-switch" type="checkbox"
-                                               :disabled="isNewEntry"/>
+                                               :disabled="isNewEntry" v-model="deleteBtnEnabled"/>
                                         <label for="app-delete-confirmation" class="label-danger"></label>
                                     </div>
                                 </div>
                                 <div class="ml-3 mr-1">
-                                    <button id="app-delete-button" :disabled="deleteBtnDisabled"
+                                    <button id="app-delete-button" :disabled="!deleteBtnEnabled"
                                             class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text border-0"
                                             type="button" @click="destroy">
                                         Delete
@@ -252,7 +253,7 @@
         author: '',
         updatedFrom: '',
         endpoint: '',
-        deleteBtnDisabled: true,
+        deleteBtnEnabled: false,
         oldVersions: [],
         showList: false,
         newTagName: '',
@@ -276,6 +277,20 @@
               });
             });
         },
+        createNewEntry: function () {
+          this.isNewEntry = true;
+          this.id = '';
+          this.title = '';
+          this.originalTitle = '';
+          this.content = '';
+          this.originalContent = '';
+          this.createdAt = '';
+          this.updatedAt = '';
+          this.author = '';
+          this.updatedFrom = '';
+          this.deleteBtnEnabled = false;
+          this.endpoint = '';
+        },
         loadSingleEntry: function (entryId) {
           let url = new URL(window.location.origin + '/api/textcontent/findoneentry');
           url.searchParams.append('id', entryId);
@@ -292,6 +307,7 @@
               this.createdAt = convertDate(data.createdAt);
               this.updatedAt = convertDate(data.updatedAt);
               this.author = data.author.fullName;
+              this.deleteBtnEnabled = false;
 
               this.updatedFrom = data.updatedFrom ? data.updatedFrom.fullName : '–';
               this.endpoint = data.endpoint;
@@ -335,14 +351,26 @@
         },
         update: function () {
           if (this.title !== this.originalTitle || this.content !== this.originalTitle) {
-            const formData = {
-              id: this.id,
-              title: this.title,
-              content: this.content
-            };
+            let formData;
+            let url;
+            if (this.isNewEntry) {
+              formData = {
+                title: this.title,
+                content: this.content
+              };
+              url = new URL(window.location.origin + '/api/textcontent/save');
+
+            } else {
+              formData = {
+                id: this.id,
+                title: this.title,
+                content: this.content
+              };
+              url = new URL(window.location.origin + '/api/textcontent/update');
+
+            }
             const body = JSON.stringify(formData);
             const postForm = (body) => {
-              let url = new URL(window.location.origin + '/api/textcontent/update');
               return fetch(url, {
                 method: 'POST',
                 headers: {
@@ -355,14 +383,22 @@
             postForm(body)
               .then(res => res.json())
               .then(data => {
-                this.originalTitle = this.title;
-                this.originalContent = this.content;
-                this.updatedAt = convertDate(data.updatedAt);
-                this.updatedFrom = data.updatedFrom;
-                this.state = State.ACTIVE;
+                if (this.isNewEntry) {
+                  this.isNewEntry = false;
+                  console.log(this.isNewEntry);
+                  this.loadSingleEntry(data.id);
+                  this.loadAllEntries();
+                } else {
+                  this.originalTitle = this.title;
+                  this.originalContent = this.content;
+                  this.updatedAt = convertDate(data.updatedAt);
+                  this.updatedFrom = data.updatedFrom;
+                  this.oldVersions = [];
 
-                this.oldVersions = [];
-                this.loadOldVersions();
+                  this.loadOldVersions();
+                }
+
+                this.state = State.ACTIVE;
               });
           }
         },
@@ -372,7 +408,8 @@
           url.searchParams.append('id', id);
 
           fetch(url).then(() => {
-            window.location = '/dashboard/text';
+            this.loadAllEntries();
+            this.createNewEntry();
           });
         },
         removeTag: function (tagId) {
