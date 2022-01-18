@@ -92,24 +92,28 @@ module.exports.routes = {
   'GET /organisation/new': { view: 'pages/organisation/new' },
   'POST /organisation': { action: 'organisation/create' },
 
-  'GET /organisation/:id/edit': { action: 'organisation/edit' },
+  'GET /organisation/edit': { action: 'organisation/edit' },
   'POST /organisation/:id/update': { action: 'organisation/update' },
 
   'GET /organisation/:id/updateadmin': { action: 'organisation/updateadmin' },
 
   'GET /organisation/:id/destroy': { action: 'organisation/destroy' },
-  'GET /organisation/:id/delete': { action: 'organisation/delete' },
+  'GET /organisation/delete': { action: 'organisation/delete' },
 
   'GET /organisation': { action: 'organisation/find' },
 
   //
   // API
   //
-  'POST /api/organisation/appointadmin': {action: 'api/organisation/appointadmin'},
-  'POST /api/organisation/deletemembers': {action: 'api/organisation/deletemembers'},
 
   // api/organisation
   'GET /api/organisation/findorg': { action: 'api/organisation/findorg' },
+  'GET /api/organisation/checkadmin': { action: 'api/organisation/checkadmin' },
+  'GET /api/organisation/fetchorgmembers': { action: 'api/organisation/fetchorgmembers' },
+  'POST /api/organisation/appointadmin': {action: 'api/organisation/appointadmin'},
+  'POST /api/organisation/deletemembers': {action: 'api/organisation/deletemembers'},
+
+
 
   // api/groups
   'GET /api/groups/find': { action: 'api/groups/find' },

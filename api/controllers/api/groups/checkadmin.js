@@ -4,7 +4,7 @@ module.exports = {
     friendlyName: 'Check Admin',
 
 
-    description: 'Checks whether the current user is admin of the selected group..',
+    description: 'Checks whether the current user is admin of the selected group.',
 
 
     inputs: {

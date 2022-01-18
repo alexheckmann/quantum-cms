@@ -8,18 +8,19 @@
             <div class="">
                 <%= message ? message : "" %>
             </div>
-            <div class="d-flex justify-content-between">
+            <% if(org){ %>
+                <div class="">
                     <div class="font-weight-bold">
                         Name:
                     </div>
-                    <% if(org){ %>
-                        <div class="">
-                            <%= org.name %>
-                        </div>
-                        <% } else { %>
-                            <p>You have no organisation.</p>
-                            <% } %>
-                            <a class="qntm-primary-button font-special-text shape-rounded-corners-small" href="/organisation">Organisation</a>
-            </div>
+                    <div class="form-group mt-1 mb-1">
+                        <textarea readonly class="form-control grpTextDesc" rows="1"><%= org.name %></textarea>
+                    </div>
+                </div>
+                    <% } else { %>
+                        <p>You have no organisation.</p>
+                        <% } %>
+                            <a class="qntm-primary-button font-special-text shape-rounded-corners-small"
+                                href="/organisation">Organisation</a>
         </div>
     </div>

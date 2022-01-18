@@ -6,14 +6,11 @@
                 <h3>Update your organisation</h3>
             </div>
 
-            <form action="/organisation/<%= org.id %>/update" method="post">
+            <form action="/organisation/<%= org.id %>/update" method="post" class="mt-2">
                 <div>
                     <input type="hidden" name="_csrf" value="<%= _csrf %>" />
                     <input type="hidden" name="id" value="<%= org.id %>">
-                    <div>
-                        <label>Name</label>
-                    </div>
-                    <textarea name="name" type="text" maxlength="80" id="" cols="30" rows="1"><%= org.name %></textarea>
+                    <textarea name="name" placeholder="Name of the organisation" type="text" maxlength="80" id="" cols="30" rows="1"><%= org.name %></textarea>
                 </div>
                 <button class="qntm-primary-button font-special-text shape-rounded-corners-small" type="submit">
                     Update

@@ -1,4 +1,4 @@
-var userIsAdmin;
+let userIsAdmin;
 
 // resets the table and initiates the creation of a new one
 function resetTable() {
@@ -339,9 +339,9 @@ function leaveGrp() {
 // select or deselect all checkboxes that are not disabled
 function selectAll() {
 
-    let isAllBoxChecked = $("#selectAll")[0].checked; // main checkbox inside table thead
+    let isAllBoxChecked = $("#selectAll")[0].checked; // main checkbox inside table thead    
 
-    var table = $('#membersTable'); // table selector 
+    var table = $('#membersTable'); // table selector
     var tdCheckbox = table.find('tbody input:checkbox:enabled'); // checboxes inside table body
 
     for (let userCheckBox of tdCheckbox) {
@@ -439,5 +439,12 @@ function createFetchURL(route, searchParam, searchParamName) {
     let origin = window.location.origin;
     let url = new URL(origin + route);
     url.searchParams.append(searchParam, searchParamName);
+    return url;
+}
+
+// help function for creating a fetch URL
+function createFetchURLRoute(route) {
+    let origin = window.location.origin;
+    let url = new URL(origin + route);
     return url;
 }
