@@ -469,7 +469,8 @@
         reset: function () {
           this.title = this.originalTitle;
           this.content = this.originalContent;
-          this.state = State.ACTIVE;
+
+          this.state = this.isNewEntry ? State.NEW : State.ACTIVE;
         },
         changeStatus: function () {
           if (this.title !== this.originalTitle || this.content !== this.originalContent) {
