@@ -135,7 +135,7 @@
                                  class="app-dropdown-content position-absolute grey-background" v-show="showList"
                                  v-cloak>
                                 <button type="button" class="grey-font text-center d-block app-dropdown-item"
-                                        @click="retrieveOldVersion(ov.id)" v-for="ov in oldVersions" :key="ov.id"
+                                        @click="retrieveOldVersion(ov.id)" v-for="ov in oldVersions"
                                         v-cloak>
                                     {{ ov.updatedAt }}
                                 </button>
