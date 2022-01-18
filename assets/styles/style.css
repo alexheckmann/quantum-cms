@@ -426,6 +426,10 @@ button {
 
 }
 
+.app-active-nav-link {
+  background-color: var(--color-transparent-blue);
+}
+
 .qntm-app-navbar-list-item + .qntm-navbar-link {
   text-align: left;
 }
