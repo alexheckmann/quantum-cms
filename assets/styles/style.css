@@ -1084,6 +1084,12 @@ footer a:hover {
   margin-bottom: 20%;
 }
 
-.membersSelect {
-  /* display: none!important; */
+#noOrgSection {
+  text-align: center;
+  margin-top: 20%;
+  margin-bottom: 20%;
+}
+
+.hidden-toolbar {
+  display: none;
 }

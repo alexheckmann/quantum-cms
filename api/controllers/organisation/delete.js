@@ -9,7 +9,7 @@ module.exports = {
 
     inputs: {
         id: {
-            description: 'The id of the user.',
+            description: 'The id of the organisation.',
             type: 'number',
             required: true
         },
@@ -24,19 +24,33 @@ module.exports = {
 
 
     fn: async function (inputs) {
-        // updates the org from the user to NULL
-        sails.log.debug("Delete organisation from user: " + inputs.id)
+        let userData = await User.findOne({ id: this.req.session.userId }).populate("workingGroups");
 
-        let user = await User.updateOne({ id: inputs.id }).set({
+        // updates the org from the user to NULL
+        let user = await User.updateOne({ id: this.req.session.userId }).set({
             organisation: null,
             admin: null
         });
+
+        let org = await Organisation.findOne({id: inputs.id}).populate("employees");
+
+        console.log("org: ");
+        console.log(org);
+
+        if (org.employees.length === 0) {
+            await Organisation.destroyOne({id: inputs.id})
+            console.log("Destroyed organisation: " + inputs.id);
+
+            await WorkingGroup.destroy().where(userData.workingGroups.id);
+
+            // TODO Delete content?
+        }
 
         if (user) {
             sails.log("Deleted organisation from user: " + user.id);
             return "/organisation";
         } else {
-            sails.log("Can not delelte organisation from user: " + user.id)
+            sails.log("Can not delelte organisation from user.")
             return "/organisation";
         };
     }

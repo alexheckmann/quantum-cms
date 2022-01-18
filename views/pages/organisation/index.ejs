@@ -2,7 +2,7 @@
     <% if(!!org){ %>
         <div class="container mt-4 mb-4">
             <div class="border rounded mt-2 p-2">
-                <!-- Your organisation -->
+                <!-- Your organisation section-->
                 <div class="container">
                     <div class="row">
                         <h3>Your organisation</h3>
@@ -10,71 +10,54 @@
                     <div>
                         <label id="orgNameLabel" class="form-control">
                         </label>
+                        <label id="orgIdLabel" hidden class="form-control">
+                            <%= org.id %>
+                        </label>
                     </div>
-                    <div id="orgToolbar" class="d-flex">
+                    <div id="orgAdminToolbar" class="hidden-toolbar">
                         <button class="qntm-button font-special-text shape-rounded-corners-small">
                             <a class="toolbar-btn" onclick="editOrg()">Edit</a>
                         </button>
                         <button class="qntm-button font-special-text shape-rounded-corners-small">
-                            <a class="toolbar-btn" href="/organisation/<%= user.id %>/delete">Resign</a>
+                            <a class="toolbar-btn" onclick="resignFromOrg()">Resign</a>
+                        </button>
+                        <!--TODO invite link-->
+                        <button onclick="" class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn">Invitation link</a>
+                            <img src="/images/icon-copy.svg" alt="Copy to clipboard" id="app-copy-button-icon"
+                                class="d-inline-block flex-shrink-0 qntm-icon-button">
+                        </button>
+                    </div>
+                    <div id="orgMemberToolbar" class="hidden-toolbar">
+                        <button class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn" onclick="resignFromOrg()">Resign</a>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Members -->
+            <!-- Members section-->
             <div class="border rounded mt-2 p-2">
                 <div class="container">
                     <div class="row">
                         <h3>Members</h3>
                     </div>
-                    <% if(!!users){ %>
-                        <div class="mb-2">
-                            <table id="dataTable" data-toggle="table" class="table table-hover"
-                                data-click-to-select="true" data-toolbar="#toolbar">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th data-field="state" data-checkbox="true"></th>
-                                        <th data-field="id" data-visible="false"></th>
-                                        <th data-field="name" scope="col" data-sortable="true">Name</th>
-                                        <th data-field="role" scope="col" data-sortable="true">Role</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% users.forEach(function(users){ %>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <%= users.id %>
-                                            </td>
-                                            <td>
-                                                <%= users.fullName %>
-                                            </td>
-                                            <% if(users.admin){ %>
-                                                <td id="dataTable_stateRow_adminCheck">Admin</td>
-                                                <% } else { %>
-                                                    <td>Worker</td>
-                                                    <% }; %>
-                                                        <% if(user.admin){ %>
-                                                            <% if(!users.admin && users.id !=user.id){ %>
-                                                                <% } %>
-                                                                    <% }; %>
-                                        </tr>
-                                        <% }); %>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div id="toolbar">
-                            <button id="adminBtn"
-                                class="qntm-button font-special-text shape-rounded-corners-small">Appoint as
-                                admin</button>
+                    <div class="mt-4">
+                        <table id="orgMembersTable" data-toolbar="#toolbar" class="table table-bordered membersTable mb-2">
+                        </table>
+                    </div>
+                    <div id="orgAdminTableToolbar" class="hidden-toolbar">
+                        <button class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn" onclick="appointAsOrgAdmin()">Appoint as admin</a>
+                        </button>
 
-                            <button id="deleteBtn"
-                                class="qntm-button font-special-text shape-rounded-corners-small">Delete</button>
-                        </div>
-                        <% } else { %>
-                            <p>You have no organisation.</p>
-                            <% } %>
+                        <button class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn" onclick="deleteFromOrg()">Delete</a>
+                        </button>
+                    </div>
+                    <div id="btnTableHint" class="font-normal-text">
+                        Select your members first.
+                    </div>
                 </div>
             </div>
             <% } else { %>
@@ -86,28 +69,4 @@
                 <% } %>
                     <script>
                         window.onload = () => fetchOrgData();
-                        /* window.onload = () => {
-                            let app = new Vue({
-                                el: '#app',
-                                data: {
-                                    orgName: "",
-                                    orgId: "",
-                                },
-                                methods: {
-                                    findOrg: function () {
-                                        let origin = window.location.origin
-                                        let url = new URL(origin + '/api/organisation/findorg');
-                                        fetch(url)
-                                            .then(res => res.json())
-                                            .then(data => {
-                                                this.orgName = data.name;
-                                                this.orgId = data.id;
-                                            })
-                                    }
-                                },
-                                beforeMount() {
-                                    this.findOrg()
-                                }
-                            })
-                        }; */
                     </script>

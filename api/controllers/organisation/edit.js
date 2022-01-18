@@ -28,7 +28,6 @@ module.exports = {
     },
   
     fn: async function ({id}) {
-  
       let org = await Organisation.findOne({ id: id });
       if (!org) { throw 'notFound'; }
       return {

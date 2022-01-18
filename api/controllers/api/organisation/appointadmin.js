@@ -12,10 +12,6 @@ module.exports = {
     },
 
     exits: {
-        redirect: {
-            responseType: 'redirect',
-            description: 'Requesting user is logged in, so redirect to the internal welcome page.'
-        },
     },
 
 
@@ -29,7 +25,6 @@ module.exports = {
         }).set({
             admin: user.organisation
         });
-
-        throw { redirect: '/organisation' };
+        return true;
     }
 };
