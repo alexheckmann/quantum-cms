@@ -1,7 +1,447 @@
-<div class="d-flex flex-grow-1 flex-shrink-1">
-    <%- partial('../../partials/textcontent/app-nav.ejs'); %>
-    <div class="flex-fill grey-background d-flex flex-row justify-content-center align-items-center" ROLE="dialog">
-        <span class="">TODO Welcome text</span>
+<div class="d-flex flex-grow-1 flex-shrink-1 flex-wrap" id="editor">
+    <div class="qntm-app-navbar-container flex-fill border-right" role="menubar">
+        <ul class="qntm-app-navbar-links" role="menu">
+            <div class="d-flex flex-nowrap mb-3">
+                <form class="d-flex justify-content-between border shape-rounded-corners-small w-75 ml-3 mr-1"
+                      @submit.prevent="createTag">
+                    <input name="q" type="search" autocomplete="off" minlength="1" maxlength="20"
+                           placeholder="Search for entries"
+                           class="border-0 w-100 pl-2 form-control"
+                           v-model="searchInput" @change="loadAllEntries">
+                    <button type="button" id="app-search-button-icon" @click="loadAllEntries"
+                            class="bg-transparent grey-background shape-rounded-corners-small d-inline-block flex-shrink-0 border-left qntm-icon-button border">
+                        <img src="/images/icon_search.svg" alt="Search Icon">
+                    </button>
+                </form>
+
+                <form action="/dashboard/text/new" class="ml-0" style="height: 38px">
+                    <button class="shape-rounded-corners-small border d-flex align-items-center qntm-icon-button flex-shrink-0 grey-background">
+                        <svg id="app-new-button-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
+                             data-testid="AddIcon" tabindex="-1" title="Add">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            <li class="qntm-navbar-list-item qntm-app-navbar-list-item" v-for="entry in allEntries">
+                <a class="qntm-navbar-link font-special-text blue-font" @click="loadSingleEntry(entry.id)" v-cloak>{{
+                    entry.title }}</a>
+            </li>
+        </ul>
+    </div>
+    <!-- TODO QNTM-63 -->
+    <div class="flex-fill grey-background d-flex flex-row" role="dialog">
+        <form class="flex-fill">
+            <div class="d-flex flex-row align-items-center justify-content-between" style="height: 72px">
+                <div class="pl-4 pt-3">
+                    <h1 v-cloak>
+                        {{ title }}
+                    </h1>
+                </div>
+                <label class="mr-4 mb-0 px-3 py-2 shape-rounded-corners-small font-extra-small-text font-weight-bold"
+                       :class="state.COLOR" v-cloak>
+                    {{ state.TEXT }}
+                </label>
+            </div>
+            <div class="d-flex flex-wrap pt-3">
+                <div class="flex-fill px-3">
+                    <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big p-3 flex-grow-1 mb-4">
+                        <div>
+                            <div class="font-weight-bold font-extra-small-text">
+                                <label for="entryTitle">Title:</label>
+                            </div>
+                            <textarea class="form-control flex-grow-1" name="title" type="text" minlength="1"
+                                      maxlength="80" id="entryTitle" cols="30" rows="1" required
+                                      v-model="title" @input="changeStatus"></textarea>
+                            <div class="mt-4 font-weight-bold font-extra-small-text">
+                                <label for="entryContent">Content:</label>
+                            </div>
+                            <textarea class="form-control flex-grow-1" name="content" type="text" minlength="2"
+                                      maxlength="1024" id="entryContent" cols="30" rows="15" required
+                                      v-model="content" @input="changeStatus"></textarea>
+                            <div class="invalid-feedback">Please enter your content.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-fill px-3 app-info-column">
+                    <!-- Container with Meta Information -->
+                    <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big p-3 justify-content-center mb-4">
+                        <div class="d-flex flex-column">
+                            <div>
+                                <h4>Information</h4>
+                            </div>
+                            <div class="qntm-pricing-separator-line mb-2 pt-1"></div>
+                            <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
+                                <span class="mr-2 font-extra-small-text font-weight-bold">Created:</span>
+                                <span v-cloak>{{ createdAt }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
+                                <span class="mr-2 font-extra-small-text font-weight-bold">Updated:</span>
+                                <span v-cloak>{{ updatedAt }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
+                                <span class="mr-2 font-extra-small-text font-weight-bold">Author:</span>
+                                <span class="text-truncate" v-cloak>{{ author }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center align-content-center text-left app-info-text">
+                                <span class="mr-2 font-extra-small-text font-weight-bold">Editor:</span>
+
+                                <span class="text-truncate" v-cloak>
+                                    {{ updatedFrom }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Container with additional features -->
+                    <div class="bg-white shape-rounded-corners-big d-flex flex-column shape-drop-shadow-straight p-3">
+                        <!-- TODO QTNM-40 tags -->
+                        <div class="ml-1 font-extra-small-text font-weight-bold float-left">
+                            <label class="mb-1">Tags:</label>
+                        </div>
+                        <div class="d-flex flex-row flex-wrap w-100 app-tag-section">
+                            <div :href="'/dashboard/tag/' + entry.id"
+                                 class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container"
+                                 v-for="entry in tags" :key="entry.id" v-cloak>
+                                <span class="font-extra-small-text font-weight-bold"
+                                      :style="{color: entry.colour}" v-cloak>●</span>
+                                <span class="px-1 font-extra-small-text font-weight-bold"
+                                      v-cloak>{{ entry.name }}</span>
+                                <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"
+                                      @click="removeTag(entry.id)"></span>
+                            </div>
+                            <a href="/dashboard/tag/new" id="app-tag-add-container"
+                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap">
+                                <span class="font-extra-small-text font-weight-bold">+</span>
+                            </a>
+                            <!-- TODO replace with more dynamic container -->
+                            <a id="app-tag-add-container"
+                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap">
+                                <span class="font-extra-small-text font-weight-bold mr-1">●</span>
+                                <input class="font-extra-small-text font-weight-bold border-0" v-model.trim="newTagName"
+                                       @change="createTag" required>
+                            </a>
+                        </div>
+                        <div class="app-dropdown my-3">
+                            <button type="button" aria-haspopup="true" aria-expanded="false" @click="listOldVersions"
+                                    id="app-dropdown-button"
+                                    class="qntm-primary-button grey-background w-100 shape-rounded-corners-small border dropdown-toggle
+                                    font-special-text font-extra-small-text grey-font">
+                                Retrieve older versions
+                            </button>
+                            <div id="dropdownList"
+                                 class="app-dropdown-content position-absolute grey-background" v-show="showList"
+                                 v-cloak>
+                                <button type="button" class="grey-font text-center d-block app-dropdown-item"
+                                        @click="retrieveOldVersion(ov.id)" v-for="ov in oldVersions" :key="ov.id"
+                                        v-cloak>
+                                    {{ ov.updatedAt }}
+                                </button>
+                                <span class="grey-font text-center d-block app-dropdown-item
+                                font-weight-bold font-extra-small-text" v-if="oldVersions.length === 0" v-cloak>No other versions available!</span>
+                            </div>
+                        </div>
+                        <div class="ml-1 font-extra-small-text font-weight-bold float-left">
+                            <label for="entry_endpoint" class="mb-1">Endpoint:</label>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <div class="mb-2 d-flex align-items-center grey-background border shape-rounded-corners-small"
+                                 id="entry_endpoint_container">
+                                <textarea name="endpoint" type="text" id="entry_endpoint"
+                                          cols="30" rows="1"
+                                          class="text-truncate font-extra-small-text border-0 mr-2 grey-background"
+                                          readonly v-model="endpoint"></textarea>
+                                <img src="/images/icon-copy.svg" alt="Copy to clipboard"
+                                     id="app-copy-button-icon"
+                                     class="d-inline-block flex-shrink-0 mr-1 qntm-icon-button">
+                            </div>
+                            <div class="d-flex align-items-center align-content-center mt-2">
+                                <div class="d-flex align-items-center">
+                                    <span class="font-extra-small-text font-weight-bold ml-2 mr-3">Delete?</span>
+                                    <div class="material-switch pull-right">
+                                        <input id="app-delete-confirmation" name="delete-switch" type="checkbox"
+                                               :disabled="isNewEntry"/>
+                                        <label for="app-delete-confirmation" class="label-danger"></label>
+                                    </div>
+                                </div>
+                                <div class="ml-3 mr-1">
+                                    <button id="app-delete-button" :disabled="deleteBtnDisabled"
+                                            class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text border-0"
+                                            type="button" @click="destroy">
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around align-content-center align-items-center my-4">
+                        <div>
+                            <button class="qntm-primary-button shape-rounded-corners-small font-special-text border-0"
+                                    type="button" @click="update">
+                                Save
+                            </button>
+                        </div>
+                        <div>
+                            <button class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text border-0"
+                                    type="button" @click="reset">
+                                Revert
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+<%- exposeLocalsToBrowser() %>
+<script>
+  window.onload = () => {
+    /* creating an enum for text state */
+    const State = Object.freeze({
+      ACTIVE: {
+        TEXT: '✓ published',
+        COLOR: 'editor-status-saved'
+      },
+      UNPUBLISHED: {
+        TEXT: '⚠ unpublished changes',
+        COLOR: 'editor-status-unpublished'
+      },
+      OLD_VERSION: {
+        TEXT: '⚠ using old version',
+        COLOR: 'editor-status-old'
+      },
+    });
 
+    /* Converts a JS timestamp from milliseconds to readable time format */
+    const convertDate = (date) => {
+      let ISODate = new Date(date);
+
+      let day = ISODate.getDate();
+      let month = ISODate.getMonth() + 1;
+      let year = ISODate.getFullYear();
+      let hour = ISODate.getHours();
+      let min = ISODate.getMinutes();
+
+      // adds leading zero
+      month = (month < 10 ? '0' : '') + month;
+      day = (day < 10 ? '0' : '') + day;
+      hour = (hour < 10 ? '0' : '') + hour;
+      min = (min < 10 ? '0' : '') + min;
+
+      return day + '/' + month + '/' + year + ' ' + hour + ':' + min;
+    };
+
+    let app = new Vue({
+      el: '#editor',
+      data: {
+        allEntries: [],
+        searchInput: '',
+        id: '',
+        title: '',
+        originalTitle: '',
+        content: '',
+        originalContent: '',
+        state: State.ACTIVE,
+        createdAt: '',
+        updatedAt: '',
+        author: '',
+        updatedFrom: '',
+        endpoint: '',
+        deleteBtnDisabled: true,
+        oldVersions: [],
+        showList: false,
+        newTagName: '',
+        tags: [],
+        isNewEntry: true,
+      },
+      methods: {
+        loadAllEntries: function () {
+          this.allEntries = [];
+          // loads old versions
+          let url = new URL(window.location.origin + '/api/textcontent/find');
+          if (this.searchInput.length > 0) {
+            url.searchParams.append('q', this.searchInput);
+          }
+
+          fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+              data.forEach(entry => {
+                this.allEntries.push(entry);
+              });
+            });
+        },
+        loadSingleEntry: function (entryId) {
+          let url = new URL(window.location.origin + '/api/textcontent/findoneentry');
+          url.searchParams.append('id', entryId);
+
+          fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+              this.id = data.id;
+              this.title = data.title;
+              this.originalTitle = data.title;
+              this.content = data.content;
+              this.originalContent = data.content;
+              this.createdAt = convertDate(data.createdAt);
+              this.updatedAt = convertDate(data.updatedAt);
+              this.author = data.author.fullName;
+
+              this.updatedFrom = data.updatedFrom ? data.updatedFrom.fullName : '–';
+              this.endpoint = data.endpoint;
+            });
+        },
+        update: function () {
+          if (this.title !== this.originalTitle || this.content !== this.originalTitle) {
+            const formData = {
+              id: this.id,
+              title: this.title,
+              content: this.content
+            };
+            const body = JSON.stringify(formData);
+            const postForm = (body) => {
+              let url = new URL(window.location.origin + '/api/textcontent/update');
+              return fetch(url, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': window.SAILS_LOCALS._csrf
+                },
+                body
+              });
+            };
+            postForm(body)
+              .then(res => res.json())
+              .then(data => {
+                this.originalTitle = this.title;
+                this.originalContent = this.content;
+                this.updatedAt = convertDate(data.updatedAt);
+                this.updatedFrom = data.updatedFrom;
+                this.state = State.ACTIVE;
+
+                this.oldVersions = [];
+                this.loadOldVersions();
+              });
+          }
+        },
+        destroy: function () {
+          let id = this.id;
+          let url = new URL(window.location.origin + '/api/textcontent/destroy');
+          url.searchParams.append('id', id);
+
+          fetch(url).then(() => {
+            window.location = '/dashboard/text';
+          });
+        },
+        loadOldVersions: function () {
+          // loads old versions
+          let id = this.id;
+          let url = new URL(window.location.origin + '/api/textcontent/findoldversions');
+          url.searchParams.append('id', id);
+
+          fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+              data.forEach(entry => {
+                entry.updatedAt = convertDate(entry.updatedAt);
+                this.oldVersions.push(entry);
+              });
+            });
+        },
+        loadTags: function () {
+          this.tags = [];
+          // loads old versions
+          let id = this.id;
+          let url = new URL(window.location.origin + '/api/textcontent/findtags');
+          url.searchParams.append('id', id);
+
+          fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+              // first forEach accesses observer, second forEach accesses tag array
+              data.forEach(entry => {
+                entry.tags.forEach(entry => {
+                  this.tags.push(entry);
+                });
+              });
+            });
+        },
+        removeTag: function (tagId) {
+          let id = this.id;
+          let url = new URL(window.location.origin + '/api/textcontent/removetag');
+          url.searchParams.append('id', id);
+          url.searchParams.append('tagId', tagId);
+
+          fetch(url).then(() => {
+            this.loadTags();
+          });
+        },
+        listOldVersions: function () {
+          this.showList = !this.showList;
+        },
+        createTag: function () {
+          if (this.newTagName !== '') {
+            const formData = {
+              name: this.newTagName,
+              textcontent: this.id
+            };
+            const body = JSON.stringify(formData);
+            const postForm = (body) => {
+              let url = new URL(window.location.origin + '/api/textcontent/createtag');
+              return fetch(url, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': window.SAILS_LOCALS._csrf
+                },
+                body
+              });
+            };
+            postForm(body)
+              .then(res => res.json())
+              .then(data => {
+                this.loadTags();
+                this.newTagName = '';
+              });
+          }
+        },
+        retrieveOldVersion: function (itemId) {
+          let url = new URL(window.location.origin + '/api/textcontent/findoneoldversion');
+          url.searchParams.append('id', itemId);
+
+          fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+              this.title = data.title;
+              this.content = data.content;
+              this.state = State.OLD_VERSION;
+
+              // hides dropdown after a version has been selected
+              this.showList = !this.showList;
+            });
+        },
+        reset: function () {
+          this.title = this.originalTitle;
+          this.content = this.originalContent;
+          this.state = State.ACTIVE;
+        },
+        changeStatus: function () {
+          if (this.title !== this.originalTitle || this.content !== this.originalContent) {
+            this.state = State.UNPUBLISHED;
+          } else {
+            this.state = State.ACTIVE;
+          }
+        }
+      },
+      /* created() hook for data fetching from backend API when being loaded */
+      created() {
+        this.loadAllEntries();
+        if (!this.isNewEntry) {
+          this.loadOldVersions();
+          this.loadTags();
+          this.createdAt = convertDate(parseInt(this.createdAt));
+          this.updatedAt = convertDate(parseInt(this.updatedAt));
+        }
+      }
+    });
+  };
+</script>
