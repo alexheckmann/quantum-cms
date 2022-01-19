@@ -223,3 +223,15 @@ function selectAllOrg() {
   }
   // TODO if all tr are checked, the th must also be checked
 }
+
+function copyToClipboard() {
+  let origin = window.location.origin
+  let url = new URL(origin + '/signup');
+  url.searchParams.append("inviteId" ,"dfgsdfgsdfsfdg");
+
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val(url).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
