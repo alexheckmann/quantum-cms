@@ -104,28 +104,24 @@
                         <div class="ml-1 font-extra-small-text font-weight-bold float-left">
                             <label class="mb-1">Tags:</label>
                         </div>
-                        <div class="d-flex flex-row flex-wrap w-100 app-tag-section" v-cloak>
-                            <div :href="'/dashboard/tag/' + entry.id"
-                                 class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container"
+                        <div class="d-flex flex-row flex-wrap w-100 app-tag-section">
+                            <div class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container"
                                  v-for="entry in tags" :key="entry.id" v-cloak>
                                 <span class="font-extra-small-text font-weight-bold"
                                       :style="{color: entry.colour}" v-cloak>●</span>
                                 <span class="px-1 font-extra-small-text font-weight-bold"
                                       v-cloak>{{ entry.name }}</span>
                                 <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"
-                                      @click="removeTag(entry.id)"></span>
+                                      @click="removeTag(entry.id)" v-cloak></span>
                             </div>
-                            <a href="/dashboard/tag/new" id="app-tag-add-container"
-                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap">
-                                <span class="font-extra-small-text font-weight-bold">+</span>
-                            </a>
-                            <!-- TODO replace with more dynamic container -->
-                            <a id="app-tag-add-container"
-                               class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap">
-                                <span class="font-extra-small-text font-weight-bold mr-1">●</span>
+                            <button type="button" id="app-tag-add-container"
+                                    class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap bg-white">
+                                <span class="font-extra-small-text font-weight-bold mr-1" v-show="showNewTagName"
+                                      v-cloak>●</span>
                                 <input class="font-extra-small-text font-weight-bold border-0" v-model.trim="newTagName"
-                                       @change="createTag" required>
-                            </a>
+                                       v-show="showNewTagName" @change="createTag" required v-cloak>
+                                <span class="font-extra-small-text font-weight-bold" @click="showTagCreation">+</span>
+                            </button>
                         </div>
                         <div class="app-dropdown my-3">
                             <button type="button" aria-haspopup="true" aria-expanded="false" @click="listOldVersions"
@@ -260,6 +256,7 @@
         oldVersions: [],
         showList: false,
         newTagName: '',
+        showNewTagName: false,
         tags: [],
         isNewEntry: true,
       },
@@ -414,6 +411,9 @@
             this.loadAllEntries();
             this.createNewEntry();
           });
+        },
+        showTagCreation: function () {
+          this.showNewTagName = true;
         },
         removeTag: function (tagId) {
           let id = this.id;

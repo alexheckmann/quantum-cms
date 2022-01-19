@@ -40,10 +40,9 @@
     <!--STYLES-->
     <link rel="stylesheet" href="/dependencies/bootstrap-4/bootstrap-4.css">
     <link rel="stylesheet" href="/dependencies/fontawesome.css">
-    <!-- TODO fails to load <link rel="stylesheet" href="/styles/importer.css"> -->
+    <link rel="stylesheet" href="/styles/functional-classes.css">
+    <link rel="stylesheet" href="/styles/importer.css">
     <link rel="stylesheet" href="/styles/style.css">
-    <!-- select2 jQuery for select -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!--STYLES END-->
 </head>
 <body>
@@ -190,7 +189,6 @@
 <% /* Own JavaScript */ %>
 
 <% /* Stripe.js */ %>
-<script src="https://js.stripe.com/v3/"></script>
 
 <% /* Delete the global `self` to help avoid client-side bugs.
     (see https://developer.mozilla.org/en-US/docs/Web/API/Window/self) */ %>
@@ -642,6 +640,7 @@
 <script src="/js/components/stripe-card-element.component.js"></script>
 <script src="/js/utilities/open-stripe-checkout.js"></script>
 <script src="/js/navbar-animation.js"></script>
+<script src="/js/organisation.js"></script>
 <script src="/js/pages/account/account-overview.page.js"></script>
 <script src="/js/pages/account/edit-password.page.js"></script>
 <script src="/js/pages/account/edit-profile.page.js"></script>
@@ -653,13 +652,12 @@
 <script src="/js/pages/entrance/new-password.page.js"></script>
 <script src="/js/pages/entrance/signup.page.js"></script>
 <script src="/js/pages/faq.page.js"></script>
+<script src="/js/pages/groups/index.page.js"></script>
 <script src="/js/pages/homepage.page.js"></script>
 <script src="/js/pages/legal/privacy.page.js"></script>
 <script src="/js/pages/legal/terms.page.js"></script>
-<script src="/js/organisation.js"></script>
-<script src="/js/pages/groups/index.page.js"></script>
-<!-- select2 jQuery for select -->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="/js/pages/textcontent/edit.page.js"></script>
+<script src="/js/pages/textcontent/new.page.js"></script>
 <!--SCRIPTS END-->
 
 <% /* Display an overlay if the current browser is not supported.
