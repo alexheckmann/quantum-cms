@@ -114,7 +114,7 @@
                                 <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"
                                       @click="removeTag(entry.id)" v-cloak></span>
                             </div>
-                            <button type="button" id="app-tag-add-container"
+                            <button type="button" id="app-tag-add-container" :disabled="isNewEntry"
                                     class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap bg-white">
                                 <span class="font-extra-small-text font-weight-bold mr-1" v-show="showNewTagName"
                                       v-cloak>●</span>
@@ -138,6 +138,7 @@
                                         v-cloak>
                                     {{ ov.updatedAt }}
                                 </button>
+
                                 <span class="grey-font text-center d-block app-dropdown-item
                                 font-weight-bold font-extra-small-text" v-if="oldVersions.length === 0" v-cloak>No other versions available!</span>
                             </div>
@@ -290,6 +291,7 @@
           this.updatedFrom = '';
           this.deleteBtnEnabled = false;
           this.endpoint = '';
+          this.showNewTagName = false;
         },
         loadSingleEntry: function (entryId) {
           let url = new URL(window.location.origin + '/api/textcontent/findoneentry');
