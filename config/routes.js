@@ -73,16 +73,6 @@ module.exports.routes = {
   //
 
   'GET /dashboard/text/new': {action: 'textcontent/new'},
-  'POST /dashboard/text': {action: 'textcontent/create'},
-
-  'GET /dashboard/text/:id/edit': {action: 'textcontent/edit'},
-  'POST /dashboard/text/:id/update': {action: 'textcontent/update'},
-
-  'GET /dashboard/text/:id/destroy': {action: 'textcontent/destroy'},
-
-  'GET /dashboard/text/:id': {action: 'textcontent/find-one'},
-
-  'GET /dashboard/text': {action: 'textcontent/find'},
   'GET /dashboard': {action: 'textcontent/find'},
 
   //
@@ -140,6 +130,7 @@ module.exports.routes = {
   'POST /groups/:id/update': { action: 'groups/update' },
 
   'GET /api/textcontent/find': {action: 'api/textcontent/find'},
+  'GET /api/textcontent/findoneentry': {action: 'api/textcontent/findoneentry'},
   'GET /api/textcontent/destroy': {action: 'api/textcontent/destroy'},
   'GET /api/textcontent/findoldversions': {action: 'api/textcontent/findoldversions'},
   'GET /api/textcontent/findoneoldversion': {action: 'api/textcontent/findoneoldversion'},
@@ -147,5 +138,6 @@ module.exports.routes = {
   'GET /api/textcontent/removetag': {action: 'api/textcontent/removetag'},
   'POST /api/textcontent/createtag': {action: 'api/textcontent/createtag'},
   'POST /api/textcontent/update': {action: 'api/textcontent/update'},
+  'POST /api/textcontent/save': {action: 'api/textcontent/save'},
 
 };
