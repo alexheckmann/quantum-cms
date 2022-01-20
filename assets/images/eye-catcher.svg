@@ -28,15 +28,15 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="0.50000001"
-     inkscape:cx="167"
-     inkscape:cy="-69.999998"
+     inkscape:zoom="2.0000001"
+     inkscape:cx="389.74999"
+     inkscape:cy="191.49999"
      inkscape:window-width="1500"
      inkscape:window-height="978"
      inkscape:window-x="-6"
      inkscape:window-y="-6"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g29374"
      height="193.5mm"
      units="px" />
   <defs
@@ -1950,9 +1950,9 @@
          transform="rotate(-90,164.72339,104.18535)"><tspan
            x="159.47794"
            y="97.560883"
-           id="tspan29898"><tspan
+           id="tspan34293"><tspan
              style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-             id="tspan29896">IMAGES</tspan></tspan></text>
+             id="tspan34291">IMAGES</tspan></tspan></text>
     </g>
     <g
        id="g22076-2-3-4-5-3-1"
@@ -1966,9 +1966,9 @@
          transform="rotate(-90,171.03259,110.47599)"><tspan
            x="159.47794"
            y="97.560883"
-           id="tspan29902"><tspan
+           id="tspan34297"><tspan
              style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-             id="tspan29900">TEXT</tspan></tspan></text>
+             id="tspan34295">TEXT</tspan></tspan></text>
       <text
          xml:space="preserve"
          transform="matrix(0.08929857,0,0,0.08929857,57.389324,9.4746594)"
@@ -2001,9 +2001,9 @@
          transform="rotate(-90,164.72339,104.18535)"><tspan
            x="159.47794"
            y="97.560883"
-           id="tspan29906"><tspan
+           id="tspan34301"><tspan
              style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-             id="tspan29904">TAGS</tspan></tspan></text>
+             id="tspan34299">TAGS</tspan></tspan></text>
     </g>
     <g
        id="g22076-2-3-4-5-3-9-4"
@@ -2017,9 +2017,9 @@
          transform="rotate(-90,171.03259,110.47599)"><tspan
            x="159.47794"
            y="97.560883"
-           id="tspan29910"><tspan
+           id="tspan34305"><tspan
              style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-             id="tspan29908">GROUPS</tspan></tspan></text>
+             id="tspan34303">GROUPS</tspan></tspan></text>
       <text
          xml:space="preserve"
          transform="matrix(0.08929857,0,0,0.08929857,57.389324,9.4746594)"
@@ -2254,9 +2254,9 @@
            transform="rotate(-90,164.72339,104.18535)"><tspan
              x="159.47794"
              y="97.560883"
-             id="tspan29914"><tspan
+             id="tspan34309"><tspan
                style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-               id="tspan29912">IMAGES</tspan></tspan></text>
+               id="tspan34307">IMAGES</tspan></tspan></text>
       </g>
       <g
          id="g22076-2-3-4-5-3-1-6"
@@ -2270,9 +2270,9 @@
            transform="rotate(-90,171.03259,110.47599)"><tspan
              x="159.47794"
              y="97.560883"
-             id="tspan29918"><tspan
+             id="tspan34313"><tspan
                style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-               id="tspan29916">TEXT</tspan></tspan></text>
+               id="tspan34311">TEXT</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.08929857,0,0,0.08929857,57.389324,9.4746594)"
@@ -2305,9 +2305,9 @@
            transform="rotate(-90,164.72339,104.18535)"><tspan
              x="159.47794"
              y="97.560883"
-             id="tspan29922"><tspan
+             id="tspan34317"><tspan
                style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-               id="tspan29920">TAGS</tspan></tspan></text>
+               id="tspan34315">TAGS</tspan></tspan></text>
       </g>
       <g
          id="g22076-2-3-4-5-3-9-4-9"
@@ -2321,9 +2321,9 @@
            transform="rotate(-90,171.03259,110.47599)"><tspan
              x="159.47794"
              y="97.560883"
-             id="tspan29926"><tspan
+             id="tspan34321"><tspan
                style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-               id="tspan29924">GROUPS</tspan></tspan></text>
+               id="tspan34319">GROUPS</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.08929857,0,0,0.08929857,57.389324,9.4746594)"
@@ -2889,17 +2889,35 @@
              transform="rotate(-90,171.03259,110.47599)"
              id="text1629-8"
              style="font-size:4.93889px;white-space:pre;stroke-width:0.264583">
-            <text
-               xml:space="preserve"
-               style="font-size:5.60414px;line-height:1.25;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';fill:#ffffff;fill-opacity:1;stroke-width:0.300221"
-               x="169.07777"
-               y="98.122711"
-               id="text8720"><tspan
-                 sodipodi:role="line"
-                 style="font-size:5.60414px;fill:#ffffff;fill-opacity:1;stroke-width:0.300221"
-                 id="tspan8722"
-                 x="169.07777"
-                 y="98.122711">VERSIONS</tspan></text>
+            <g
+               aria-label="VERSIONS"
+               id="text8720"
+               style="font-size:5.60414px;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';fill:#ffffff;stroke-width:0.300221">
+              <path
+                 d="m 169.14502,94.199813 h 0.62206 l 0.4035,3.043048 h 0.0112 l 0.4035,-3.043048 h 0.56602 l -0.59404,3.922898 h -0.81821 z"
+                 id="path32728" />
+              <path
+                 d="m 171.44832,94.199813 h 1.68125 v 0.560414 h -1.06479 v 1.036766 h 0.84623 v 0.560414 h -0.84623 v 1.20489 h 1.06479 v 0.560414 h -1.68125 z"
+                 id="path32730" />
+              <path
+                 d="m 173.48262,94.199813 h 0.91348 q 0.47635,0 0.69491,0.224166 0.21856,0.218561 0.21856,0.678101 v 0.240978 q 0,0.610851 -0.4035,0.773371 v 0.01121 q 0.22417,0.06725 0.31384,0.274603 0.0953,0.207353 0.0953,0.55481 v 0.689309 q 0,0.168124 0.0112,0.274603 0.0112,0.100875 0.056,0.201749 h -0.62767 q -0.0336,-0.09527 -0.0448,-0.179332 -0.0112,-0.08406 -0.0112,-0.302624 v -0.71733 q 0,-0.268998 -0.0897,-0.375477 -0.0841,-0.106479 -0.29702,-0.106479 h -0.21295 v 1.681242 h -0.61646 z m 0.84062,1.681242 q 0.18494,0 0.27461,-0.09527 0.0953,-0.09527 0.0953,-0.319436 v -0.302624 q 0,-0.212957 -0.0785,-0.308227 -0.0729,-0.09527 -0.23538,-0.09527 h -0.2802 v 1.120828 z"
+                 id="path32732" />
+              <path
+                 d="m 176.54248,98.178753 q -0.44833,0 -0.6781,-0.252187 -0.22977,-0.25779 -0.22977,-0.734142 v -0.224166 h 0.58283 v 0.268999 q 0,0.381082 0.31944,0.381082 0.15691,0 0.23537,-0.08967 0.0841,-0.09527 0.0841,-0.302623 0,-0.246582 -0.11208,-0.431519 -0.11208,-0.190541 -0.41471,-0.453935 -0.38108,-0.336249 -0.53239,-0.605247 -0.15131,-0.274603 -0.15131,-0.616456 0,-0.465143 0.23537,-0.71733 0.23538,-0.25779 0.68371,-0.25779 0.44273,0 0.66689,0.25779 0.22977,0.252187 0.22977,0.728539 v 0.16252 h -0.58283 v -0.201749 q 0,-0.201749 -0.0785,-0.291416 -0.0785,-0.09527 -0.22977,-0.09527 -0.30823,0 -0.30823,0.375477 0,0.212958 0.11209,0.397894 0.11768,0.184937 0.42031,0.448331 0.38668,0.336249 0.53239,0.610852 0.14571,0.274602 0.14571,0.644476 0,0.481956 -0.24098,0.739746 -0.23537,0.257791 -0.68931,0.257791 z"
+                 id="path32734" />
+              <path
+                 d="m 177.82583,94.199813 h 0.61645 v 3.922898 h -0.61645 z"
+                 id="path32736" />
+              <path
+                 d="m 179.79288,98.178753 q -0.45394,0 -0.69491,-0.257791 -0.24098,-0.25779 -0.24098,-0.728538 v -2.062323 q 0,-0.470748 0.24098,-0.728539 0.24097,-0.25779 0.69491,-0.25779 0.45393,0 0.69491,0.25779 0.24098,0.257791 0.24098,0.728539 v 2.062323 q 0,0.470748 -0.24098,0.728538 -0.24098,0.257791 -0.69491,0.257791 z m 0,-0.560414 q 0.31943,0 0.31943,-0.386686 v -2.140781 q 0,-0.386686 -0.31943,-0.386686 -0.31944,0 -0.31944,0.386686 v 2.140781 q 0,0.386686 0.31944,0.386686 z"
+                 id="path32738" />
+              <path
+                 d="m 181.14347,94.199813 h 0.77337 l 0.59965,2.348135 h 0.0112 v -2.348135 h 0.5492 v 3.922898 h -0.63327 l -0.73974,-2.863715 h -0.0112 v 2.863715 h -0.54921 z"
+                 id="path32740" />
+              <path
+                 d="m 184.33782,98.178753 q -0.44833,0 -0.6781,-0.252187 -0.22977,-0.25779 -0.22977,-0.734142 v -0.224166 h 0.58283 v 0.268999 q 0,0.381082 0.31944,0.381082 0.15691,0 0.23537,-0.08967 0.0841,-0.09527 0.0841,-0.302623 0,-0.246582 -0.11208,-0.431519 -0.11208,-0.190541 -0.4147,-0.453935 -0.38109,-0.336249 -0.5324,-0.605247 -0.15131,-0.274603 -0.15131,-0.616456 0,-0.465143 0.23537,-0.71733 0.23538,-0.25779 0.68371,-0.25779 0.44273,0 0.66689,0.25779 0.22977,0.252187 0.22977,0.728539 v 0.16252 h -0.58283 v -0.201749 q 0,-0.201749 -0.0785,-0.291416 -0.0785,-0.09527 -0.22977,-0.09527 -0.30822,0 -0.30822,0.375477 0,0.212958 0.11208,0.397894 0.11769,0.184937 0.42031,0.448331 0.38668,0.336249 0.53239,0.610852 0.14571,0.274602 0.14571,0.644476 0,0.481956 -0.24098,0.739746 -0.23537,0.257791 -0.68931,0.257791 z"
+                 id="path32742" />
+            </g>
           </g>
           <text
              xml:space="preserve"
@@ -2908,35 +2926,59 @@
              style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect1643-5-5);fill:#000000;fill-opacity:1;stroke:none" />
         </g>
       </g>
-      <text
-         xml:space="preserve"
-         style="font-size:4.93889px;line-height:1.25;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
-         x="159.21547"
-         y="89.630325"
-         id="text8720-0"><tspan
-           sodipodi:role="line"
-           style="font-size:4.93889px;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
-           id="tspan8722-5"
-           x="159.21547"
-           y="89.630325">EDITS</tspan></text>
+      <g
+         aria-label="EDITS"
+         id="text8720-0"
+         style="font-size:4.93889px;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';fill:#ffffff;stroke-width:0.264583">
+        <path
+           d="m 159.41796,86.173102 h 1.48167 v 0.493889 h -0.93839 v 0.913695 h 0.74577 v 0.493889 h -0.74577 v 1.061861 h 0.93839 v 0.493889 h -1.48167 z"
+           id="path33043" />
+        <path
+           d="m 161.21078,86.173102 h 0.82973 q 0.40499,0 0.60748,0.217311 0.2025,0.217312 0.2025,0.637117 v 1.748367 q 0,0.419806 -0.2025,0.637117 -0.20249,0.217311 -0.60748,0.217311 h -0.82973 z m 0.81985,2.963334 q 0.13335,0 0.2025,-0.07902 0.0741,-0.07902 0.0741,-0.256822 v -1.797756 q 0,-0.1778 -0.0741,-0.256822 -0.0691,-0.07902 -0.2025,-0.07902 h -0.27658 v 2.469445 z"
+           id="path33045" />
+        <path
+           d="m 163.21596,86.173102 h 0.54327 v 3.457223 h -0.54327 z"
+           id="path33047" />
+        <path
+           d="m 164.58897,86.666991 h -0.56798 v -0.493889 h 1.67923 v 0.493889 h -0.56798 v 2.963334 h -0.54327 z"
+           id="path33049" />
+        <path
+           d="m 166.66823,89.679714 q -0.39511,0 -0.59761,-0.22225 -0.20249,-0.227189 -0.20249,-0.646994 v -0.197556 h 0.51364 v 0.237067 q 0,0.335844 0.28152,0.335844 0.13829,0 0.20743,-0.07902 0.0741,-0.08396 0.0741,-0.2667 0,-0.217311 -0.0988,-0.380295 -0.0988,-0.167922 -0.36548,-0.40005 -0.33584,-0.296333 -0.46919,-0.5334 -0.13335,-0.242005 -0.13335,-0.543278 0,-0.409928 0.20743,-0.632178 0.20743,-0.227189 0.60255,-0.227189 0.39017,0 0.58772,0.227189 0.2025,0.22225 0.2025,0.642056 v 0.143228 h -0.51365 v -0.1778 q 0,-0.1778 -0.0691,-0.256822 -0.0692,-0.08396 -0.2025,-0.08396 -0.27163,0 -0.27163,0.330906 0,0.187678 0.0988,0.350661 0.10372,0.162984 0.37042,0.395111 0.34078,0.296334 0.46919,0.538339 0.12842,0.242006 0.12842,0.567973 0,0.424744 -0.21238,0.651933 -0.20743,0.227189 -0.60748,0.227189 z"
+           id="path33051" />
+      </g>
       <circle
-         style="fill:#ffffff;fill-opacity:1;stroke:#173361;stroke-width:0.319;stroke-miterlimit:4;stroke-dasharray:0.638, 0.319, 0.1595, 0.319;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
+         style="fill:none;fill-opacity:1;stroke:#173361;stroke-width:0.319;stroke-miterlimit:4;stroke-dasharray:0.638, 0.319, 0.1595, 0.319;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
          id="path17804"
          cx="173.28375"
          cy="127.73843"
          r="1.3544071" />
       <circle
-         style="fill:#ffffff;fill-opacity:1;stroke:#173361;stroke-width:0.319;stroke-miterlimit:4;stroke-dasharray:0.638, 0.319, 0.1595, 0.319;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
+         style="fill:none;fill-opacity:1;stroke:#173361;stroke-width:0.319;stroke-miterlimit:4;stroke-dasharray:0.638, 0.319, 0.1595, 0.319;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
          id="path17804-2"
          cx="83.283577"
          cy="110.09692"
          r="1.3544071" />
       <circle
-         style="fill:#ffffff;fill-opacity:1;stroke:#173361;stroke-width:0.319;stroke-miterlimit:4;stroke-dasharray:0.638, 0.319, 0.1595, 0.319;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
+         style="fill:none;fill-opacity:1;stroke:#173361;stroke-width:0.319;stroke-miterlimit:4;stroke-dasharray:0.638, 0.319, 0.1595, 0.319;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
          id="path17804-2-8"
          cx="154.75656"
          cy="99.127052"
          r="1.3544071" />
     </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.199203;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.199203, 2.39044;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 73.5594,139.32757 H 88.994221"
+       id="path30963"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.199203;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.199203, 2.39044;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 112.07932,143.69835 h 15.43482"
+       id="path30963-8"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.199203;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.199203, 2.39044;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 127.68973,138.1421 h 15.43482"
+       id="path30963-4"
+       sodipodi:nodetypes="cc" />
   </g>
 </svg>
