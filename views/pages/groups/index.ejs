@@ -1,7 +1,9 @@
 <%- exposeLocalsToBrowser() %>
     <% if(grps.length> 0){ %>
         <script>
-            window.onload = () => createMemberTable();
+            window.onload = (event) => {
+                createMemberTable();
+            };
         </script>
         <div class="container mt-4 mb-4">
             <div id="grpsSection" class="border rounded mt-2 p-2">
@@ -48,7 +50,7 @@
                     <div id="addMembersSelect">
                         <div class="mt-4 membersSelect">
                             <!--TODO Add Members -> select with name list of Org -> click: add to Group -->
-                            <select id="memberSelect" multiple="multiple" class="custom-select js-example-basic-multiple">
+                            <select id="memberSelect" multiple class="custom-select">
                             </select>
                         </div>
                         <div class="mt-2">
