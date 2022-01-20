@@ -1,10 +1,10 @@
 module.exports = {
 
 
-  friendlyName: 'View features',
+  friendlyName: 'View about us page',
 
 
-  description: 'Display "features" page.',
+  description: 'Display "about us" page.',
 
 
   exits: {
