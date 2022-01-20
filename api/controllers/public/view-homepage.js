@@ -21,7 +21,7 @@ module.exports = {
   fn: async function (inputs, exits) {
 
     // Respond with view.
-    return exits.success({layout: 'layouts/public-layout'});
+    return exits.success({layout: 'layouts/landingpage-layout'});
 
   }
 
