@@ -16,10 +16,10 @@ function createGrpDesc(grp) {
   url.searchParams.append('id', grp);
 
   fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          $('#grpDescText').text(data[0].description);
-        });
+    .then(res => res.json())
+    .then(data => {
+      $('#grpDescText').text(data[0].description);
+    });
 }
 
 /*
@@ -47,16 +47,16 @@ and shows/hides the toolbar options accordingly.
 function checkAdminCurrentUser(grp) {
   console.log('checkAdminCurrentUser()');
   fetch(createFetchURL('/api/groups/checkadmin', 'id', grp))
-        .then(res => res.json())
-        .then(data => {
-          userIsAdmin = data;
-          console.log('isAdmin: ' + data);
-          if (data) {
-            showAdminTools();
-          } else {
-            showMemberTools();
-          }
-        });
+    .then(res => res.json())
+    .then(data => {
+      userIsAdmin = data;
+      console.log('isAdmin: ' + data);
+      if (data) {
+        showAdminTools();
+      } else {
+        showMemberTools();
+      }
+    });
 }
 
 function showAdminTools() {
@@ -79,14 +79,14 @@ function showMemberTools() {
 function findGrpMembers(grp) {
   console.log('findGrpMembers()');
   fetch(createFetchURL('/api/groups/find', 'id', grp))
-        .then(res => res.json())
-        .then(data => {
-          if (userIsAdmin) {
-            createGroupTableChk(data);
-          } else {
-            createGroupTable(data);
-          }
-        });
+    .then(res => res.json())
+    .then(data => {
+      if (userIsAdmin) {
+        createGroupTableChk(data);
+      } else {
+        createGroupTable(data);
+      }
+    });
 }
 // TODO
 function findGrps() {
@@ -95,12 +95,12 @@ function findGrps() {
   let url = new URL(origin + '/api/groups/findgrps');
 
   fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          if (data.length > 0) {
-            createOptions(data);
-          }
-        });
+    .then(res => res.json())
+    .then(data => {
+      if (data.length > 0) {
+        createOptions(data);
+      }
+    });
 }
 
 // TODO
@@ -262,13 +262,13 @@ function appointAsAdmin(ids) {
     });
   };
   postForm(body)
-        .then(res => res.json())
-        .then(data => {
-          if (data) {
-            // update table
-            resetTable();
-          }
-        });
+    .then(res => res.json())
+    .then(data => {
+      if (data) {
+        // update table
+        resetTable();
+      }
+    });
 }
 
 // delete selected IDs from the current group
@@ -291,13 +291,13 @@ function deleteFromGrp(ids) {
     });
   };
   postForm(body)
-        .then(res => res.json())
-        .then(data => {
-          if (data) {
-            // update table
-            resetTable();
-          }
-        });
+    .then(res => res.json())
+    .then(data => {
+      if (data) {
+        // update table
+        resetTable();
+      }
+    });
 }
 
 $(document).ready(() => {
@@ -328,12 +328,12 @@ function editGrp() {
 function leaveGrp() {
   let grpId = $('#grpSelect').find(':selected').val();
   fetch(createFetchURL('/groups/leave', 'id', grpId))
-        .then(res => res.json())
-        .then(data => {
-          if (data) {
-            window.location = '/groups';
-          }
-        });
+    .then(res => res.json())
+    .then(data => {
+      if (data) {
+        window.location = '/groups';
+      }
+    });
 }
 
 // select or deselect all checkboxes that are not disabled
@@ -371,30 +371,24 @@ function findMembersToAdd(grp) {
   url.searchParams.append('id', grp);
 
   fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          createMembersOptions(data);
-        });
+    .then(res => res.json())
+    .then(data => {
+      createMembersOptions(data);
+    });
+}
+
+function setSelected() {
+  // TODO
 }
 
 // creates the options with the members that can be added to the group
 function createMembersOptions(data) {
-  // TODO Bug: Member zur Grp hinzugefügt -> select Member geht nicht
   let select = $('#memberSelect');
   data.forEach(element => {
-    select.append($('<option></option>').val(element.id).text(element.name).attr('id', element.id));
+    let option = $('<option onclick="setSelected()"></option>').text(element.name).val(element.id);
+    select.append(option);
   });
 }
-
-// select2 for multi member selection to add
-/*
-$(document).ready(function () {
-    $('.js-example-basic-multiple').select2({
-        placeholder: 'Select members',
-        allowClear: true
-    });
-});
-*/
 
 // adds the selected members to the group
 function addToGrp() {
@@ -424,12 +418,12 @@ function addToGrp() {
       });
     };
     postForm(body)
-            .then(res => res.json())
-            .then(data => {
-              if (data) {
-                resetTable();
-              }
-            });
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          resetTable();
+        }
+      });
   } else {
     $('#btnMemberSelectHint').show();
     // TODO hint "select members fist."

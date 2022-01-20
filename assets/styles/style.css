@@ -801,7 +801,7 @@ button {
 }
 
 .qntm-separator-line-about-us {
-  margin: 6rem auto 6rem;
+  margin: auto;
   border-bottom: 1px solid var(--color-light-grey);
   width: 50%;
 }
