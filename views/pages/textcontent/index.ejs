@@ -27,7 +27,7 @@
             <div class="qntm-navbar-link w-100 pl-4 m-0"
                @click="loadSingleEntry(entry.id)" v-for="entry in allEntries"
                :class="{'app-active-nav-link': entry.id === id}" v-cloak>
-                <li class="qntm-navbar-list-item qntm-app-navbar-list-item font-special-text blue-font w-100">
+                <li class="qntm-navbar-list-item qntm-app-navbar-list-item font-special-text blue-font w-100 pl-1">
                     {{ entry.title }}
                 </li>
             </div>

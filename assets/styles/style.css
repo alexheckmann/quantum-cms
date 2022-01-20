@@ -401,10 +401,8 @@ button {
 }
 
 .qntm-app-navbar-links {
-  padding: 16px 0;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0 0 0 16px;
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
