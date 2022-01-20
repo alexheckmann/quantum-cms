@@ -5,11 +5,7 @@ const menuSlide = () => {
   let menuToggled = false;
 
   burger.addEventListener('click', () => {
-    if (!menuToggled) {
-      menuToggled = true;
-    } else {
-      menuToggled = false;
-    }
+    menuToggled = !menuToggled;
 
     // menu animation
     menu.classList.toggle('menu-active');
