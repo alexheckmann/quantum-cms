@@ -66,11 +66,11 @@
     <div class="flex-fill grey-background d-flex flex-row" role="dialog">
         <form class="flex-fill">
             <div class="d-flex flex-row align-items-center justify-content-between" style="height: 72px">
-                <div class="pl-4 pt-3">
+                <div class="pl-4 pt-3" v-cloak>
                     <h1 id="app-title" v-if="!isNewEntry || title !== ''" v-cloak>
                         {{ title }}
                     </h1>
-                    <h1 id="app-title" v-if="isNewEntry && title === ''" v-cloak>
+                    <h1 id="app-title" v-if="isNewEntry && title === '' && allGroups.length !== 0" v-cloak>
                         Create new content
                     </h1>
                 </div>
@@ -82,7 +82,7 @@
             <div class="d-flex flex-wrap pt-3">
                 <div class="flex-fill px-3">
                     <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big p-3 flex-grow-1 mb-4">
-                        <div>
+                        <div v-if="allGroups.length !== 0" v-cloak>
                             <div class="font-weight-bold font-extra-small-text">
                                 <label for="entryTitle">Title:</label>
                             </div>
@@ -96,6 +96,12 @@
                                       maxlength="1024" id="entryContent" cols="30" rows="15" required
                                       v-model="content" @input="changeStatus"></textarea>
                             <div class="invalid-feedback">Please enter your content.</div>
+                        </div>
+                        <div v-else id="app-no-grps-section" class="d-flex flex-column align-items-center text-center m-0 pt-5" v-cloak>
+                            <h2 class="font-normal-text w-50 pb-3" v-cloak>You need to join or create a group before starting with content creation!</h2>
+                            <button class="qntm-button font-special-text shape-rounded-corners-small" v-cloak>
+                                <a class="toolbar-btn" href="/groups/new">Create your first group</a>
+                            </button>
                         </div>
                     </div>
                 </div>

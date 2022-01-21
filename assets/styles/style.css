@@ -806,7 +806,7 @@ button {
 .qntm-pricing-box {
   order: 0;
   margin: 10px;
-  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.97) 100%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.97) 100%);
 }
 
 .qntm-pricing-content {
@@ -928,6 +928,10 @@ footer a:hover {
 
 .qntm-footer-copyright-container {
   justify-content: space-evenly;
+}
+
+#app-no-grps-section {
+  height: 492px;
 }
 
 /* Screen resolution for extremely large displays */
@@ -1085,6 +1089,10 @@ footer a:hover {
     max-width: 70%;
     text-overflow: ellipsis;
     font-size: 2rem;
+  }
+
+  #app-no-grps-section {
+    height: fit-content;
   }
 }
 
