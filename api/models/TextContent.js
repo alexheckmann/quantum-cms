@@ -31,6 +31,11 @@ module.exports = {
       via: 'newestVersion'
     },
 
+    group: {
+      model: 'workinggroup',
+      // TODO required: true
+    },
+
     author: {
       model: 'user',
       required: true

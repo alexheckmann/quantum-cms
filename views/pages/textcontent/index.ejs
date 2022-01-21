@@ -48,13 +48,17 @@
                  v-show="showAllGroups" v-cloak>
                 <button type="button"
                         class="font-special-text grey-font text-center d-block app-dropdown-item w-100 bg-white"
-                        @click="chooseGroup(grp.id)" v-for="grp in groups" v-cloak>
+                        @click="chooseGroup(grp.id)" v-for="grp in allGroups" v-if="grp !== currentGroup" v-cloak>
                     {{ grp.name }}
                 </button>
-
                 <a href="/groups" class="grey-font text-center d-block app-dropdown-item w-100
-                                font-weight-bold font-extra-small-text" v-if="groups.length === 0" v-cloak>Create a
-                    group!</a>
+                                font-weight-bold font-extra-small-text" v-if="allGroups.length === 1 && currentGroup !== null" v-cloak>
+                    Create or join more groups!
+                </a>
+                <a href="/groups" class="grey-font text-center d-block app-dropdown-item w-100
+                                font-weight-bold font-extra-small-text" v-if="allGroups.length === 0" v-cloak>
+                    Create or join a group!
+                </a>
             </div>
         </div>
     </div>
@@ -297,15 +301,19 @@
       },
       methods: {
         loadAllGroups: function () {
-          this.groups = [];
+          this.allGroups = [];
           let origin = window.location.origin;
           let url = new URL(origin + '/api/groups/findgrps');
 
           fetch(url)
             .then(res => res.json())
             .then(data => {
+              let i = 0;
               data.forEach(entry => {
-                this.groups.push(entry);
+                if (i === 0){
+                  this.currentGroup = entry;
+                }
+                this.allGroups.push(entry);
               });
             });
         },
@@ -313,13 +321,15 @@
           this.showAllGroups = !this.showAllGroups;
         },
         chooseGroup: function (groupId) {
-          this.groups.forEach(entry => {
+          this.allGroups.forEach(entry => {
             if (entry.id === groupId) {
               this.currentGroup = entry;
             }
           });
 
           this.showAllGroups = false;
+          this.loadAllEntries();
+          this.createNewEntry();
         },
         loadAllEntries: function () {
           this.allEntries = [];
@@ -328,6 +338,8 @@
           if (this.searchInput.length > 0) {
             url.searchParams.append('q', this.searchInput);
           }
+
+          url.searchParams.append('group', this.currentGroup.id);
 
           fetch(url)
             .then(res => res.json())
@@ -418,7 +430,8 @@
             if (this.isNewEntry) {
               formData = {
                 title: this.title,
-                content: this.content
+                content: this.content,
+                group: this.currentGroup.id
               };
               url = new URL(window.location.origin + '/api/textcontent/save');
 
@@ -447,7 +460,6 @@
               .then(data => {
                 if (this.isNewEntry) {
                   this.isNewEntry = false;
-                  console.log(this.isNewEntry);
                   this.loadSingleEntry(data.id);
                   this.loadAllEntries();
                 } else {
@@ -564,8 +576,7 @@
       /* created() hook for data fetching from backend API when being loaded */
       created() {
         this.loadAllGroups();
-        if (this.groups.length > 0) {
-          this.currentGroup = this.groups[1];
+        if (this.allGroups.length > 0) {
           this.loadAllEntries();
         }
 
