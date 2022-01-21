@@ -627,8 +627,17 @@ button {
   background-color: var(--color-transparent-blue) !important;
 }
 
-#entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div, #app-search-button-icon, #app-new-button-icon, #app-dropdown-button {
+#entry_endpoint_container, #entry_endpoint, #app-search-button-icon, #app-new-button-icon, #app-dropdown-button {
   cursor: pointer;
+}
+
+#entry_endpoint_container {
+  width: 223px;
+  height: 34px;
+}
+
+#entry_endpoint_container > span {
+  width: 180px;
 }
 
 /* style for eye catcher section */

@@ -151,16 +151,13 @@
                             <label for="entry_endpoint" class="mb-1">Endpoint:</label>
                         </div>
                         <div class="d-flex flex-column justify-content-center align-items-center">
-                            <div class="mb-2 d-flex align-items-center grey-background border shape-rounded-corners-small"
+                            <button type="button" class="mb-2 d-flex align-items-center grey-background border shape-rounded-corners-small"
                                  id="entry_endpoint_container">
-                                <textarea name="endpoint" type="text" id="entry_endpoint"
-                                          cols="30" rows="1"
-                                          class="text-truncate font-extra-small-text border-0 mr-2 grey-background"
-                                          readonly v-model="endpoint"></textarea>
+                                <span class="text-truncate font-extra-small-text border-0 p-1 mr-2"> <span v-cloak>{{endpoint}}</span></span>
                                 <img src="/images/icon-copy.svg" alt="Copy to clipboard"
                                      id="app-copy-button-icon"
                                      class="d-inline-block flex-shrink-0 mr-1 qntm-icon-button">
-                            </div>
+                            </button>
                             <div class="d-flex align-items-center align-content-center mt-2">
                                 <div class="d-flex align-items-center">
                                     <span class="font-extra-small-text font-weight-bold ml-2 mr-3">Delete?</span>
