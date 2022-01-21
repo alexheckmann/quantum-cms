@@ -1,5 +1,5 @@
 <div class="d-flex flex-grow-1 flex-shrink-1 flex-wrap" id="editor">
-    <div class="qntm-app-navbar-container flex-fill border-right" role="menubar">
+    <div class="qntm-app-navbar-container d-flex flex-wrap flex-fill border-right align-items-start" role="menubar">
         <ul class="qntm-app-navbar-links m-0 py-3 pl-0" role="menu">
             <div class="d-flex flex-nowrap mb-3 pl-4">
                 <form class="d-flex justify-content-between border shape-rounded-corners-small w-75 mr-1"
@@ -9,6 +9,7 @@
                            class="border-0 w-100 pl-2 form-control"
                            v-model="searchInput" @change="loadAllEntries">
                     <button type="button" id="app-search-button-icon" @click="loadAllEntries"
+                            :disabled="currentGroup === null"
                             class="bg-transparent grey-background shape-rounded-corners-small d-inline-block flex-shrink-0 border-left qntm-icon-button border">
                         <img src="/images/icon_search.svg" alt="Search Icon">
                     </button>
@@ -18,7 +19,7 @@
                     <button type="button" @click="createNewEntry"
                             class="shape-rounded-corners-small border d-flex align-items-center qntm-icon-button flex-shrink-0 grey-background">
                         <svg id="app-new-button-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"
-                             data-testid="AddIcon" tabindex="-1" title="Add">
+                             data-testid="AddIcon" tabindex="-1">
                             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
                         </svg>
                     </button>
@@ -33,6 +34,29 @@
                 </li>
             </div>
         </ul>
+        <div class="dropup app-dropdown mt-auto w-100">
+            <button type="button" aria-haspopup="true" aria-expanded="false" @click="listAllGroups"
+                    id="app-dropdown-button"
+                    class="qntm-primary-button bg-white w-100 shape-rounded-corners-small border dropdown-toggle
+                                    font-special-text font-extra-small-text grey-font">
+                <span v-if="currentGroup !== null" v-cloak>{{ currentGroup.name }}</span>
+                <span v-else>Select a group</span>
+            </button>
+            <div id="dropdownList"
+                 class="app-dropdown-content position-absolute bg-white w-100"
+                 style="bottom: 100%; box-shadow: 0 -8px 16px 0 rgba(0, 0, 0, 0.2);"
+                 v-show="showAllGroups" v-cloak>
+                <button type="button"
+                        class="font-special-text grey-font text-center d-block app-dropdown-item w-100 bg-white"
+                        @click="chooseGroup(grp.id)" v-for="grp in groups" v-cloak>
+                    {{ grp.name }}
+                </button>
+
+                <a href="/groups" class="grey-font text-center d-block app-dropdown-item w-100
+                                font-weight-bold font-extra-small-text" v-if="groups.length === 0" v-cloak>Create a
+                    group!</a>
+            </div>
+        </div>
     </div>
     <div class="flex-fill grey-background d-flex flex-row" role="dialog">
         <form class="flex-fill">
@@ -101,7 +125,6 @@
                     </div>
                     <!-- Container with additional features -->
                     <div class="bg-white shape-rounded-corners-big d-flex flex-column shape-drop-shadow-straight p-3">
-                        <!-- TODO QTNM-40 tags -->
                         <div class="ml-1 font-extra-small-text font-weight-bold float-left">
                             <label class="mb-1">Tags:</label>
                         </div>
@@ -151,8 +174,9 @@
                             <label for="entry_endpoint" class="mb-1">Endpoint:</label>
                         </div>
                         <div class="d-flex flex-column justify-content-center align-items-center">
-                            <button type="button" class="mb-2 d-flex align-items-center grey-background border shape-rounded-corners-small"
-                                 id="entry_endpoint_container">
+                            <button type="button"
+                                    class="mb-2 d-flex align-items-center grey-background border shape-rounded-corners-small"
+                                    id="entry_endpoint_container">
                                 <span class="text-truncate font-extra-small-text border-0 p-1 mr-2"> <span v-cloak>{{endpoint}}</span></span>
                                 <img src="/images/icon-copy.svg" alt="Copy to clipboard"
                                      id="app-copy-button-icon"
@@ -180,13 +204,13 @@
                     <div class="d-flex justify-content-around align-content-center align-items-center my-4">
                         <div>
                             <button class="qntm-primary-button shape-rounded-corners-small font-special-text border-0"
-                                    type="button" @click="update">
+                                    type="button" @click="update" :disabled="currentGroup === null">
                                 Save
                             </button>
                         </div>
                         <div>
                             <button class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text border-0"
-                                    type="button" @click="reset">
+                                    type="button" @click="reset" :disabled="currentGroup === null">
                                 Revert
                             </button>
                         </div>
@@ -241,6 +265,9 @@
     let app = new Vue({
       el: '#editor',
       data: {
+        allGroups: [],
+        showAllGroups: false,
+        currentGroup: null,
         allEntries: [],
         searchInput: '',
         id: '',
@@ -269,6 +296,31 @@
         }
       },
       methods: {
+        loadAllGroups: function () {
+          this.groups = [];
+          let origin = window.location.origin;
+          let url = new URL(origin + '/api/groups/findgrps');
+
+          fetch(url)
+            .then(res => res.json())
+            .then(data => {
+              data.forEach(entry => {
+                this.groups.push(entry);
+              });
+            });
+        },
+        listAllGroups: function () {
+          this.showAllGroups = !this.showAllGroups;
+        },
+        chooseGroup: function (groupId) {
+          this.groups.forEach(entry => {
+            if (entry.id === groupId) {
+              this.currentGroup = entry;
+            }
+          });
+
+          this.showAllGroups = false;
+        },
         loadAllEntries: function () {
           this.allEntries = [];
           // loads old versions
@@ -511,7 +563,11 @@
       },
       /* created() hook for data fetching from backend API when being loaded */
       created() {
-        this.loadAllEntries();
+        this.loadAllGroups();
+        if (this.groups.length > 0) {
+          this.currentGroup = this.groups[1];
+          this.loadAllEntries();
+        }
 
         if (!this.isNewEntry) {
           this.loadOldVersions();

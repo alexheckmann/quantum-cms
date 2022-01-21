@@ -12,8 +12,7 @@ module.exports = {
     }
   },
 
-  exits: {
-  },
+  exits: {},
 
   fn: async function (inputs) {
     let textcontents;
