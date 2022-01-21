@@ -25,9 +25,10 @@
                 </form>
             </div>
             <div class="qntm-navbar-link w-100 pl-4 m-0"
-               @click="loadSingleEntry(entry.id)" v-for="entry in allEntries"
-               :class="{'app-active-nav-link': entry.id === id}" v-cloak>
-                <li class="qntm-navbar-list-item qntm-app-navbar-list-item font-special-text blue-font w-100 pl-1">
+                 @click="loadSingleEntry(entry.id)" v-for="entry in allEntries"
+                 :class="{'app-active-nav-link': entry.id === id}" v-cloak>
+                <li class="qntm-navbar-list-item qntm-app-navbar-list-item font-special-text blue-font w-100 pl-1"
+                    v-cloak>
                     {{ entry.title }}
                 </li>
             </div>
@@ -37,10 +38,10 @@
         <form class="flex-fill">
             <div class="d-flex flex-row align-items-center justify-content-between" style="height: 72px">
                 <div class="pl-4 pt-3">
-                    <h1 v-if="!isNewEntry || title !== ''" v-cloak>
+                    <h1 id="app-title" v-if="!isNewEntry || title !== ''" v-cloak>
                         {{ title }}
                     </h1>
-                    <h1 v-if="isNewEntry && title === ''" v-cloak>
+                    <h1 id="app-title" v-if="isNewEntry && title === ''" v-cloak>
                         Create new content
                     </h1>
                 </div>
@@ -104,23 +105,26 @@
                         <div class="ml-1 font-extra-small-text font-weight-bold float-left">
                             <label class="mb-1">Tags:</label>
                         </div>
-                        <div class="d-flex flex-row flex-wrap w-100 app-tag-section">
-                            <div class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container"
-                                 v-for="entry in tags" :key="entry.id" v-cloak>
+                        <div class="d-flex flex-row flex-wrap w-100 app-tag-section" v-cloak>
+                            <button class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container bg-white"
+                                    v-for="entry in tags" :key="entry.id" v-cloak>
                                 <span class="font-extra-small-text font-weight-bold"
                                       :style="{color: entry.colour}" v-cloak>●</span>
-                                <span class="px-1 font-extra-small-text font-weight-bold"
+                                <span class="px-1 font-extra-small-text font-weight-bold text-truncate"
                                       v-cloak>{{ entry.name }}</span>
                                 <span class="font-extra-small-text font-weight-bold app-tag-close-button shape-rounded-corners-big"
                                       @click="removeTag(entry.id)" v-cloak></span>
-                            </div>
+                            </button>
                             <button type="button" id="app-tag-add-container" :disabled="isNewEntry"
+                                    @click="showTagCreation"
                                     class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap bg-white">
                                 <span class="font-extra-small-text font-weight-bold mr-1" v-show="showNewTagName"
                                       v-cloak>●</span>
-                                <input class="font-extra-small-text font-weight-bold border-0" v-model.trim="newTagName"
+                                <input class="font-extra-small-text font-weight-bold border-0"
+                                       style="outline: none !important;" @input="changeTagNameWidth"
+                                       v-model.trim="newTagName" :style="{width: newTagNameWidth}"
                                        v-show="showNewTagName" @change="createTag" required v-cloak>
-                                <span class="font-extra-small-text font-weight-bold" @click="showTagCreation">+</span>
+                                <span class="font-extra-small-text font-weight-bold">+</span>
                             </button>
                         </div>
                         <div class="app-dropdown my-3">
@@ -258,8 +262,14 @@
         showList: false,
         newTagName: '',
         showNewTagName: false,
+        newTagNameLength: 4,
         tags: [],
         isNewEntry: true,
+      },
+      computed: {
+        newTagNameWidth: function () {
+          return this.newTagNameLength + 'ch';
+        }
       },
       methods: {
         loadAllEntries: function () {
@@ -433,6 +443,12 @@
         listOldVersions: function () {
           this.showList = !this.showList;
         },
+        changeTagNameWidth: function () {
+          if (this.newTagNameLength < 20) {
+            const BASE_LENGTH = 4;
+            this.newTagNameLength = Math.max(this.newTagName.length + BASE_LENGTH, BASE_LENGTH);
+          }
+        },
         createTag: function () {
           if (this.newTagName !== '') {
             const formData = {
@@ -456,7 +472,12 @@
               .then(data => {
                 this.loadTags();
                 this.newTagName = '';
+                this.newTagNameLength = 4;
+                this.showNewTagName = false;
               });
+          } else {
+            this.newTagName = '';
+            this.showNewTagName = false;
           }
         },
         retrieveOldVersion: function (itemId) {
@@ -477,6 +498,7 @@
         reset: function () {
           this.title = this.originalTitle;
           this.content = this.originalContent;
+          this.showNewTagName = false;
 
           this.state = this.isNewEntry ? State.NEW : State.ACTIVE;
         },

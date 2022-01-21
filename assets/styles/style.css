@@ -572,7 +572,8 @@ button {
 }
 
 .app-tag-container {
-  max-width: 120px;
+  --tag-max-width: 20ch;
+  max-width: var(--tag-max-width);
   transition: max-width 350ms ease-in-out;
 }
 
@@ -586,7 +587,7 @@ button {
 
 .app-tag-container:hover {
   padding-right: 2px !important;
-  max-width: calc(100% + 10px);
+  max-width: calc(var(--tag-max-width) + 10px);
 }
 
 .app-tag-container:active {
