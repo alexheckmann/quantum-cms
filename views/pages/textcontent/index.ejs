@@ -320,6 +320,7 @@
         },
         loadOldVersions: function () {
           // loads old versions
+          this.oldVersions = [];
           let id = this.id;
           let url = new URL(window.location.origin + '/api/textcontent/findoldversions');
           url.searchParams.append('id', id);
@@ -415,7 +416,9 @@
           });
         },
         showTagCreation: function () {
-          this.showNewTagName = true;
+          if (!this.isNewEntry) {
+            this.showNewTagName = true;
+          }
         },
         removeTag: function (tagId) {
           let id = this.id;
