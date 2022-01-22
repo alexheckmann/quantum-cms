@@ -53,7 +53,8 @@
                     {{ grp.name }}
                 </button>
                 <a href="/groups" class="grey-font text-center d-block app-dropdown-item w-100
-                                font-weight-bold font-extra-small-text" v-if="allGroups.length === 1 && currentGroup !== null" v-cloak>
+                                font-weight-bold font-extra-small-text"
+                   v-if="allGroups.length === 1 && currentGroup !== null" v-cloak>
                     Create or join more groups!
                 </a>
                 <a href="/groups" class="grey-font text-center d-block app-dropdown-item w-100
@@ -233,7 +234,7 @@
         </form>
     </div>
 </div>
-<%- exposeLocalsToBrowser() %>
+<%- exposeLocalsToBrowser(); %>
 <script>
   window.onload = () => {
     /* creating an enum for text state */
@@ -319,8 +320,9 @@
             .then(data => {
               let i = 0;
               data.forEach(entry => {
-                if (i === 0){
+                if (i === 0) {
                   this.currentGroup = entry;
+                  this.loadAllEntries();
                 }
                 this.allGroups.push(entry);
               });
