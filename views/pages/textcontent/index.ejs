@@ -97,8 +97,10 @@
                                       v-model="content" @input="changeStatus"></textarea>
                             <div class="invalid-feedback">Please enter your content.</div>
                         </div>
-                        <div v-else id="app-no-grps-section" class="d-flex flex-column align-items-center text-center m-0 pt-5" v-cloak>
-                            <h2 class="font-normal-text w-50 pb-3" v-cloak>You need to join or create a group before starting with content creation!</h2>
+                        <div v-else id="app-no-grps-section"
+                             class="d-flex flex-column align-items-center text-center m-0 pt-5" v-cloak>
+                            <h2 class="font-normal-text w-50 pb-3" v-cloak>You need to join or create a group before
+                                starting with content creation!</h2>
                             <button class="qntm-button font-special-text shape-rounded-corners-small" v-cloak>
                                 <a class="toolbar-btn" href="/groups/new">Create your first group</a>
                             </button>
@@ -187,7 +189,7 @@
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             <button type="button"
                                     class="mb-2 d-flex align-items-center grey-background border shape-rounded-corners-small"
-                                    id="entry_endpoint_container">
+                                    id="entry_endpoint_container" @click="copyURL">
                                 <span class="text-truncate font-extra-small-text border-0 p-1 mr-2"> <span v-cloak>{{endpoint}}</span></span>
                                 <img src="/images/icon-copy.svg" alt="Copy to clipboard"
                                      id="app-copy-button-icon"
@@ -562,6 +564,9 @@
               // hides dropdown after a version has been selected
               this.showList = !this.showList;
             });
+        },
+        copyURL: async function (mytext) {
+          await navigator.clipboard.writeText(this.endpoint);
         },
         reset: function () {
           this.title = this.originalTitle;
