@@ -26,9 +26,7 @@ module.exports = {
   },
 
   fn: async function ({ id }) {
-    // TODO select only fullName of author
-    let textcontent = await TextContent.findOne({ where: {id: id}, select: ['title', 'content']}).populate('author');
-    // TODO change textcontent.content to Value not found when an error occurs instead of throwing error?
+    let textcontent = await TextContent.findOne({ where: {id: id}, select: ['title', 'content']});
     if (!textcontent) { throw 'notFound'; }
     return {
       message: '',

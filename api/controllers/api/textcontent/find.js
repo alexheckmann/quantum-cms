@@ -9,11 +9,15 @@ module.exports = {
       description: 'The search input.',
       type: 'string',
       required: false
+    },
+    group: {
+      description: 'The group the content belongs to.',
+      type: 'number',
+      required: true
     }
   },
 
-  exits: {
-  },
+  exits: {},
 
   fn: async function (inputs) {
     let textcontents;
@@ -23,13 +27,13 @@ module.exports = {
           title: {
             'contains': inputs.q
           },
-          author: this.req.session.userId
+          group: inputs.group
         },
         select: ['title']
       }).sort('title ASC');
     } else {
       textcontents = await TextContent.find({
-        where: {author: this.req.session.userId},
+        where: {group: inputs.group},
         select: ['title']
       }).sort('title ASC');
     }

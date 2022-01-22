@@ -17,6 +17,7 @@
     rule. (Include them up here along with any hard-coded «link» tags for Typekit,
     Google Fonts, etc. - above the «body» to prevent the page flickering when fonts
     load.) */ %>
+    <link rel="preload" href="/assets/Pacifico-Bold.woff2" as="font" type="font/woff2" crossorigin>
 
     <% /* Certain scripts, normally analytics tools like Google Tag Manager and
     Google Analytics, should only be included in production: */
@@ -41,9 +42,6 @@
     <% /* Auto-injected «link» tags: */ %>
     <!--STYLES-->
     <link rel="stylesheet" href="/dependencies/bootstrap-4/bootstrap-4.css">
-    <link rel="stylesheet" href="/dependencies/fontawesome.css">
-    <link rel="stylesheet" href="/styles/functional-classes.css">
-    <link rel="stylesheet" href="/styles/importer.css">
     <link rel="stylesheet" href="/styles/style.css">
     <!--STYLES END-->
 </head>
@@ -670,16 +668,12 @@
 <script src="/js/pages/account/edit-password.page.js"></script>
 <script src="/js/pages/account/edit-profile.page.js"></script>
 <script src="/js/pages/contact.page.js"></script>
-<script src="/js/pages/dashboard/welcome.page.js"></script>
 <script src="/js/pages/entrance/confirmed-email.page.js"></script>
 <script src="/js/pages/entrance/forgot-password.page.js"></script>
 <script src="/js/pages/entrance/login.page.js"></script>
 <script src="/js/pages/entrance/new-password.page.js"></script>
 <script src="/js/pages/entrance/signup.page.js"></script>
-<script src="/js/pages/faq.page.js"></script>
 <script src="/js/pages/groups/index.page.js"></script>
-<script src="/js/pages/homepage.page.js"></script>
-<script src="/js/pages/subscription/select.page.js"></script>
 <!--SCRIPTS END-->
 
 <% /* Display an overlay if the current browser is not supported.

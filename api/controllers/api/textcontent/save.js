@@ -19,6 +19,11 @@ module.exports = {
       type: 'string',
       maxLength: 1024,
     },
+    group: {
+      description: 'The group the content belongs to.',
+      type: 'number',
+      required: true
+    }
   },
 
 
@@ -33,6 +38,7 @@ module.exports = {
       title: inputs.title,
       content: inputs.content,
       endpoint: 'https://www.qntm-cms.herokuapp.com/api/text/' + this.title,
+      group: inputs.group
     };
 
     textcontent = await TextContent.create(textcontent).fetch();

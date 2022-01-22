@@ -1,5 +1,91 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans:ital,wght@0,400;0,700;1,700&family=Oswald&display=swap');
-@import "functional-classes.css";
+
+/* functional classes for padding */
+.p-5-vertical {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* Functional classes for fonts */
+
+.font-special-text {
+  font-family: "Oswald", sans-serif;
+}
+
+.font-headline-text {
+  font-size: clamp(1.5rem, 2rem, 3rem);
+  color: #173361;
+}
+
+.font-normal-text {
+  font-size: clamp(1rem, 1.25vw, 1.1rem);
+}
+
+.font-small-text {
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
+  letter-spacing: 1px;
+}
+
+.font-extra-small-text {
+  font-size: 0.75rem;
+}
+
+.shape-rounded-corners-small {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+.shape-rounded-corners-big {
+  border-radius: 23px;
+  -webkit-border-radius: 23px;
+}
+
+.shape-drop-shadow {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.shape-drop-shadow-straight {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
+/* Functional class for blue text color */
+.blue-font {
+  color: #173361 !important;
+}
+
+.grey-font {
+  color: var(--color-dark-grey) !important;
+}
+
+.blue-background {
+  background-image: linear-gradient(90deg, var(--color-dark-blue), var(--color-light-blue));
+}
+
+.grey-background {
+  background-color: var(--color-light-grey) !important;
+}
+
+.background-image {
+  background-image: url("../images/blue-violet-hero.svg");
+  background-repeat: no-repeat;
+  background-position: 0 60%;
+  background-size: contain;
+
+}
+
+.background-image-right-side {
+  background-image: url("../images/background_side_right.svg");
+  background-repeat: no-repeat;
+  background-position: 100% 60%;
+  background-size: contain;
+}
+
+.background-image-left-side {
+  background-image: url("../images/background_side_left.svg");
+  background-repeat: no-repeat;
+  background-position: -1% 60%;
+  background-size: contain;
+}
 
 :root {
   /* Variables with color palette */
@@ -504,8 +590,9 @@ button {
 }
 
 .app-tag-container {
-  max-width: fit-content;
-  transition: max-width 900ms ease-in-out;
+  --tag-max-width: 20ch;
+  max-width: var(--tag-max-width);
+  transition: max-width 350ms ease-in-out;
 }
 
 .app-tag-container:hover > .app-tag-close-button:after {
@@ -518,15 +605,20 @@ button {
 
 .app-tag-container:hover {
   padding-right: 2px !important;
-  max-width: calc(100% + 10px);
+  max-width: calc(var(--tag-max-width) + 10px);
 }
 
 .app-tag-container:active {
+  margin-top: 4px !important;
   height: 22px;
 }
 
 .app-tag-close-button:hover, #app-tag-add-container:hover {
   background-color: var(--color-transparent-blue);
+}
+
+#app-tag-add-container {
+  transition: width 350ms ease-in-out;
 }
 
 .app-dropdown {
@@ -553,8 +645,17 @@ button {
   background-color: var(--color-transparent-blue) !important;
 }
 
-#entry_endpoint_container, #entry_endpoint, #entry_endpoint_container > div, #app-search-button-icon, #app-new-button-icon, #app-dropdown-button {
+#entry_endpoint_container, #entry_endpoint, #app-search-button-icon, #app-new-button-icon, #app-dropdown-button {
   cursor: pointer;
+}
+
+#entry_endpoint_container {
+  width: 223px;
+  height: 34px;
+}
+
+#entry_endpoint_container > span {
+  width: 180px;
 }
 
 /* style for eye catcher section */
@@ -723,7 +824,7 @@ button {
 .qntm-pricing-box {
   order: 0;
   margin: 10px;
-  background-color: rgb(255, 255, 255);
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.97) 100%);
 }
 
 .qntm-pricing-content {
@@ -814,7 +915,6 @@ button {
 }
 
 .qntm-separator-line-short {
-  margin: 6rem auto;
   border-bottom: 1px solid lightgray;
 }
 
@@ -846,6 +946,10 @@ footer a:hover {
 
 .qntm-footer-copyright-container {
   justify-content: space-evenly;
+}
+
+#app-no-grps-section {
+  height: 492px;
 }
 
 /* Screen resolution for extremely large displays */
@@ -996,6 +1100,17 @@ footer a:hover {
   .qntm-footer-link-container .qntm-link-footer {
     padding: 0.75em;
     margin: 0;
+  }
+
+  #app-title {
+    display: inline-block !important;
+    max-width: 70%;
+    text-overflow: ellipsis;
+    font-size: 2rem;
+  }
+
+  #app-no-grps-section {
+    height: fit-content;
   }
 }
 

@@ -17,6 +17,6 @@ module.exports = {
   fn: async function ({id}) {
     return await TextContent.findOne({
       where: {id: id},
-    }).populate('author').populate('updatedFrom');
+    }).populate('author').populate('updatedFrom').populate('group');
   }
 };
