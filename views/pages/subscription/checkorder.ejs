@@ -1,0 +1,72 @@
+<%- exposeLocalsToBrowser() %>
+    <section
+        class="d-flex qntm-eye-catcher-section justify-content-center align-items-center align-content-center flex-wrap text-center">
+        <div class="eye-catcher-title-container">
+            <div class="qntm-eye-catcher-headline font-headline-text blue-font m-auto">
+                <h1>(2) Your order</h1>
+            </div>
+            <div class="qntm-eye-catcher-content font-normal-text d-flex flex-column flex-grow-1 flex-shrink-1">
+                <span>
+                    Check the following information to complete the order.
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">Your service</h4>
+                <form class="needs-validation" novalidate="">
+
+                    <div class="mb-3">
+                        <label for="type">Type</label>
+                        <label read-only class="form-control"><%= subType.name %></label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="price">Price</label>
+                        <label read-only class="form-control" id="price1">40€/month*</label>
+                        <span>*after one year 35€/month</span><br>
+                        <span>**after two years 30€/month</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="details">Service includes</label>
+                            <ul class="qntm-pricing-list from-control">
+                                <li class="qntm-pricing-list-item">Unlimited content entries</li>
+                                <li class="qntm-pricing-list-item">Quarterly Business Reviews</li>
+                                <li class="qntm-pricing-list-item">Response Times for General Guidance: 24h</li>
+                                <li class="qntm-pricing-list-item">Support during Business Hours</li>
+                            </ul>
+                    </div>
+   
+                    <hr class="mb-4">
+
+                    <h4 class="mb-3">Payment</h4>
+
+                    <div class="d-block my-3">
+                        <!-- <div class="custom-control custom-radio">
+                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked=""
+                                required="">
+                            <label class="custom-control-label" for="credit">Credit card</label>
+                        </div> -->
+                        <div class="custom-control custom-radio">
+                            <input id="invoice" name="paymentMethod" type="radio" class="custom-control-input"
+                                required="" checked>
+                            <label class="custom-control-label" for="invoice">Invoice</label>
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                    <button
+                        class="qntm-primary-button-wide font-special-text shape-rounded-corners-small btn btn-primary btn-lg btn-block"
+                        type="submit">Buy now</button>
+                        <div class="qntm-eye-catcher-content-small font-extra-small-text mx-auto">
+                            <span>By placing an order, you agree to our terms and conditions. Please read our privacy policy and our notes on cookies.</span>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+    </script>

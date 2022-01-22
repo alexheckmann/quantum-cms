@@ -1,12 +1,13 @@
-<section class="d-flex qntm-eye-catcher-section justify-content-center align-items-center align-content-center flex-wrap text-center">
+<section
+    class="d-flex qntm-eye-catcher-section justify-content-center align-items-center align-content-center flex-wrap text-center">
     <div class="eye-catcher-title-container">
         <div class="qntm-eye-catcher-headline font-headline-text blue-font m-auto">
             <h1>Quantum CMS Pricing</h1>
         </div>
         <div class="qntm-eye-catcher-content font-normal-text d-flex flex-column flex-grow-1 flex-shrink-1">
-				<span>
-					The Content Management System built for omnichannel experiences.
-				</span>
+            <span>
+                The Content Management System built for omnichannel experiences.
+            </span>
         </div>
     </div>
 </section>
@@ -20,41 +21,57 @@
                     Premium
                 </h2>
                 <h5 class="qntm-pricing-price-tag font-extra-small-text">from 40€/month</h5>
-                <a class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                   href="/signup">Sign
-                    Up</a>
-                <div class="qntm-pricing-separator-line"></div>
-                <p class="font-normal-text pricing-description">
-                    For non-productive applications with low or variable traffic. Minimal configuration required.
-                </p>
-                <ul class="qntm-pricing-list">
-                    <li class="qntm-pricing-list-item">Unlimited content entries</li>
-                    <li class="qntm-pricing-list-item">Quarterly Business Reviews</li>
-                    <li class="qntm-pricing-list-item">Response Times for General Guidance: 24h</li>
-                    <li class="qntm-pricing-list-item">Support during Business Hours</li>
-                </ul>
+                <% if (me) { %>
+                    <!-- logged in -->
+                    <a
+                        class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                        href="/saveselection/1">Subscribe</a>
+                    <% } else { %>
+                        <!-- logged out -->
+                        <a class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                            href="/signup">Sign Up</a>
+                        <% } %>
+                            <div class="qntm-pricing-separator-line"></div>
+                            <p class="font-normal-text pricing-description">
+                                For non-productive applications with low or variable traffic. Minimal configuration
+                                required.
+                            </p>
+                            <ul class="qntm-pricing-list">
+                                <li class="qntm-pricing-list-item">Unlimited content entries</li>
+                                <li class="qntm-pricing-list-item">Quarterly Business Reviews</li>
+                                <li class="qntm-pricing-list-item">Response Times for General Guidance: 24h</li>
+                                <li class="qntm-pricing-list-item">Support during Business Hours</li>
+                            </ul>
             </div>
         </div>
-        <div class="qntm-pricing-box qntm-pricing-middle-box shape-drop-shadow-straight shape-rounded-corners-big d-flex flex-column">
+        <div
+            class="qntm-pricing-box qntm-pricing-middle-box shape-drop-shadow-straight shape-rounded-corners-big d-flex flex-column">
             <div class="qntm-pricing-content">
                 <h2 class="qntm-pricing-title">
                     Enterprise
                 </h2>
                 <h5 class="qntm-pricing-price-tag font-extra-small-text">from 70€/month</h5>
-                <a class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                   href="/signup">Sign
-                    Up</a>
-                <div class="qntm-pricing-separator-line"></div>
-                <p class="font-normal-text pricing-description">
-                    For production applications for enterprise-scale.
-                    Sophisticated workload capabilities.
-                <p>
-                <ul class="qntm-pricing-list">
-                    <li class="qntm-pricing-list-item">Dedicated servers</li>
-                    <li class="qntm-pricing-list-item">99.95% Availability</li>
-                    <li class="qntm-pricing-list-item">Designated Technical Account Manager</li>
-                    <li class="qntm-pricing-list-item">24/7 Technical Support</li>
-                </ul>
+                <% if (me) { %>
+                    <!-- logged in -->
+                    <a
+                        class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                        href="/saveselection/2">Subscribe</a>
+                    <% } else { %>
+                        <!-- logged out -->
+                        <a class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                            href="/signup">Sign Up</a>
+                        <% } %>
+                            <div class="qntm-pricing-separator-line"></div>
+                            <p class="font-normal-text pricing-description">
+                                For production applications for enterprise-scale.
+                                Sophisticated workload capabilities.
+                            <p>
+                            <ul class="qntm-pricing-list">
+                                <li class="qntm-pricing-list-item">Dedicated servers</li>
+                                <li class="qntm-pricing-list-item">99.95% Availability</li>
+                                <li class="qntm-pricing-list-item">Designated Technical Account Manager</li>
+                                <li class="qntm-pricing-list-item">24/7 Technical Support</li>
+                            </ul>
             </div>
         </div>
         <div class="qntm-pricing-box shape-drop-shadow-straight shape-rounded-corners-big d-flex flex-column">
@@ -63,25 +80,34 @@
                     Standard
                 </h2>
                 <h5 class="qntm-pricing-price-tag font-extra-small-text">from 0€/month</h5>
-                <a class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                   href="/signup">Sign
-                    Up</a>
-                <div class="qntm-pricing-separator-line"></div>
-                <p class="font-normal-text pricing-description">
-                    For exploring Quantum CMS in a sandbox environment. Basic configuration
-                    options.
-                </p>
-                <ul class="qntm-pricing-list">
-                    <li class="qntm-pricing-list-item">100 entries for content</li>
-                    <li class="qntm-pricing-list-item">Usable API endpoints</li>
-                    <li class="qntm-pricing-list-item">Upgrade to Premium for full services</li>
-                    <li class="qntm-pricing-list-item">No credit card required to start</li>
-                </ul>
+                <% if (me) { %>
+                    <!-- logged in -->
+                    <a 
+                        class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                        href="/saveselection/3">Subscribe</a>
+                    <% } else { %>
+                        <!-- logged out -->
+                        <a class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                            href="/signup">Sign Up</a>
+                        <% } %>
+                            <div class="qntm-pricing-separator-line"></div>
+                            <p class="font-normal-text pricing-description">
+                                For exploring Quantum CMS in a sandbox environment. Basic configuration
+                                options.
+                            </p>
+                            <ul class="qntm-pricing-list">
+                                <li class="qntm-pricing-list-item">100 entries for content</li>
+                                <li class="qntm-pricing-list-item">Usable API endpoints</li>
+                                <li class="qntm-pricing-list-item">Upgrade to Premium for full services</li>
+                                <li class="qntm-pricing-list-item">No credit card required to start</li>
+                            </ul>
             </div>
         </div>
     </div>
 
 </section>
-
-<!-- Section about getting started at the bottom of the page -->
-<%- partial('../../partials/public/getting-started-partial.ejs'); %>
+<script>
+    function appendToSession(value) {
+        alert(value)
+    }
+</script>

@@ -251,7 +251,25 @@ button {
   letter-spacing: unset;
 }
 
+.qntm-primary-button-wide {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease 0s;
+  color: rgb(255, 255, 255);
+  background-color: var(--color-dark-blue);
+  letter-spacing: unset;
+}
+
 .qntm-primary-button:hover {
+  background-color: var(--color-light-blue);
+  color: rgb(255, 255, 255);
+}
+
+.qntm-primary-button-wide:hover {
   background-color: var(--color-light-blue);
   color: rgb(255, 255, 255);
 }
@@ -1209,4 +1227,27 @@ footer a:hover {
 
 .hidden-toolbar {
   display: none;
+}
+
+/* subscription */
+.sub-select {
+    cursor:pointer;
+}
+
+.sub-select:hover,
+    .sub-select:active {
+        background-color: #029BDE;
+        transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
+        color:#ffffff;
+    }
+
+
+.selected {
+        background-color: #029BDE!important;
+        transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
+        color:#ffffff;    
+}
+
+.white {
+  color:white!important;
 }

@@ -1,0 +1,134 @@
+<%- exposeLocalsToBrowser() %>
+    <% if(org){ %>
+        <section
+            class="d-flex qntm-eye-catcher-section justify-content-center align-items-center align-content-center flex-wrap text-center">
+            <div class="eye-catcher-title-container">
+                <div class="qntm-eye-catcher-headline font-headline-text blue-font m-auto">
+                    <h1>(1) Select a service</h1>
+                </div>
+                <div class="qntm-eye-catcher-content font-normal-text d-flex flex-column flex-grow-1 flex-shrink-1">
+                    <span>
+                        Select the type of service, that fits best to the needs of you and your company.
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contains information about why people should use our platform -->
+        <section class="qntm-pricing-section background-image-right-side w-100">
+            <div class="qntm-pricing-container d-flex flex-wrap m-auto w-100 justify-content-around">
+                <div id="1"
+                    class="sub-select qntm-pricing-box shape-drop-shadow-straight shape-rounded-corners-big d-flex flex-column">
+                    <div class="qntm-pricing-content">
+                        <h2 class="qntm-pricing-title">
+                            Premium
+                        </h2>
+                        <h5 class="qntm-pricing-price-tag font-extra-small-text">from 40€/month</h5>
+                        <p class="mt-4 font-normal-text pricing-description">
+                            For non-productive applications with low or variable traffic. Minimal configuration
+                            required.
+                        </p>
+                        <ul class="qntm-pricing-list">
+                            <li class="qntm-pricing-list-item">Unlimited content entries</li>
+                            <li class="qntm-pricing-list-item">Quarterly Business Reviews</li>
+                            <li class="qntm-pricing-list-item">Response Times for General Guidance: 24h</li>
+                            <li class="qntm-pricing-list-item">Support during Business Hours</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="2"
+                    class="sub-select qntm-pricing-box qntm-pricing-middle-box shape-drop-shadow-straight shape-rounded-corners-big d-flex flex-column">
+                    <div class="qntm-pricing-content">
+                        <h2 class="qntm-pricing-title">
+                            Enterprise
+                        </h2>
+                        <h5 class="qntm-pricing-price-tag font-extra-small-text">from 70€/month</h5>
+                        <p class="mt-4 font-normal-text pricing-description">
+                            For production applications for enterprise-scale.
+                            Sophisticated workload capabilities.
+                        <p>
+                        <ul class="qntm-pricing-list">
+                            <li class="qntm-pricing-list-item">Dedicated servers</li>
+                            <li class="qntm-pricing-list-item">99.95% Availability</li>
+                            <li class="qntm-pricing-list-item">Designated Technical Account Manager</li>
+                            <li class="qntm-pricing-list-item">24/7 Technical Support</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="3"
+                    class="sub-select qntm-pricing-box shape-drop-shadow-straight shape-rounded-corners-big d-flex flex-column">
+                    <div class="qntm-pricing-content">
+                        <h2 class="qntm-pricing-title">
+                            Standard
+                        </h2>
+                        <h5 class="qntm-pricing-price-tag font-extra-small-text">from 0€/month</h5>
+                        <p class="mt-4 font-normal-text pricing-description">
+                            For exploring Quantum CMS in a sandbox environment. Basic configuration
+                            options.
+                        </p>
+                        <ul class="qntm-pricing-list">
+                            <li class="qntm-pricing-list-item">100 entries for content</li>
+                            <li class="qntm-pricing-list-item">Usable API endpoints</li>
+                            <li class="qntm-pricing-list-item">Upgrade to Premium for full services</li>
+                            <li class="qntm-pricing-list-item">No credit card required to start</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section
+            class="d-flex qntm-eye-catcher-section justify-content-center align-items-center align-content-center flex-wrap text-center">
+            <div>
+                <a class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                    href="" onclick="selectService()">Next step</a>
+            </div>
+        </section>
+        <% } else { %>
+            <div>
+                <div class="qntm-eye-catcher-content font-normal-text d-flex flex-column flex-grow-1 flex-shrink-1">
+                    <span>
+                        You must first join an organisation or create one yourself to book a service.
+                    </span>
+                </div>
+                <button class="qntm-button font-special-text shape-rounded-corners-small">
+                    <a class="toolbar-btn" href="/organisation">Create your first group</a>
+                </button>
+            </div>
+            <% } %>
+                <script>
+                    window.onload = () => {
+
+                        var x = document.getElementsByClassName('sub-select');
+                        Array.from(x).forEach((element) => {
+                            if (element.id == "<%= subId %>") {
+                                element.classList.add("selected");
+                            }
+                        });
+                    }
+
+                    var selectedDiv = "";
+
+                    var x = document.getElementsByClassName('sub-select')
+                    for (var i = 0; i < x.length; i++) {
+                        x[i].addEventListener("click", function () {
+                            var selectedEl = document.querySelector(".selected");
+                            if (selectedEl) {
+                                selectedEl.classList.remove("selected");
+                            }
+                            this.classList.add("selected");
+
+                        }, false);;
+
+                    }
+
+                    function selectService() {
+                        var selectedEl = document.querySelector(".selected");
+                        let id = $(".selected").prop("id");
+                        if (selectedEl) {
+                            alert(id);
+                            window.location = createFetchURL('/checkorder/', 'id', id);
+                        } else {
+                            alert('please choose an option')
+                        }
+                    }
+                </script>
