@@ -27,8 +27,7 @@ module.exports = {
   },
 
 
-  exits: {
-  },
+  exits: {},
 
 
   fn: async function (inputs) {
@@ -37,14 +36,17 @@ module.exports = {
       status: 'active',
       title: inputs.title,
       content: inputs.content,
-      endpoint: 'https://www.qntm-cms.herokuapp.com/api/text/' + this.title,
       group: inputs.group
     };
 
     textcontent = await TextContent.create(textcontent).fetch();
-
+    textcontent = await TextContent.updateOne({id: textcontent.id}).set({
+      endpoint: 'https://qntm-cms.herokuapp.com/api/external/' + textcontent.id
+    });
     sails.log.debug(textcontent);
-    if (!textcontent) { throw 'notFound'; }
+    if (!textcontent) {
+      throw 'notFound';
+    }
     return {
       id: textcontent.id
     };

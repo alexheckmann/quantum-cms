@@ -163,6 +163,11 @@ button {
   border: none !important;
 }
 
+button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
 [v-cloak] {
   display: none;
 }
@@ -186,6 +191,10 @@ button {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-dark-grey);
+}
+
+.material-switch {
+  margin-top: 6px;
 }
 
 .material-switch > input[type="checkbox"] {
@@ -227,12 +236,12 @@ button {
 }
 
 .material-switch > input[type="checkbox"]:checked + label::before {
-  background: lightsalmon;
+  background: var(--color-dark-grey);
   opacity: 0.5;
 }
 
 .material-switch > input[type="checkbox"]:checked + label::after {
-  background: lightsalmon;
+  background: var(--color-dark-grey);
   left: 20px;
 }
 
@@ -645,8 +654,22 @@ button {
   background-color: var(--color-transparent-blue) !important;
 }
 
-#entry_endpoint_container, #entry_endpoint, #app-search-button-icon, #app-new-button-icon, #app-dropdown-button {
+#entry_endpoint_container, #entry_endpoint, #app-search-button-icon,
+#app-new-button-icon, #app-dropdown-button, #app-delete-button:not(:disabled) {
   cursor: pointer;
+}
+
+#app-delete-button:disabled:hover {
+  background-color: white;
+}
+
+#app-delete-button:not(:disabled) {
+  color: white;
+  background-color: var(--color-dark-grey);
+}
+
+#app-delete-button:not(:disabled):hover {
+  box-shadow: 0 0 0 0.2rem rgb(108 117 125 / 50%)
 }
 
 #entry_endpoint_container {
@@ -1145,7 +1168,9 @@ footer a:hover {
     margin-bottom: 20px;
   }
 
-  .app-info-column {max-width: 100%}
+  .app-info-column {
+    max-width: 100%
+  }
 }
 
 @keyframes fadeIn {
@@ -1233,23 +1258,23 @@ footer a:hover {
 
 /* subscription */
 .sub-select {
-    cursor:pointer;
+  cursor: pointer;
 }
 
 .sub-select:hover,
-    .sub-select:active {
-        background-color: #029BDE;
-        transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
-        color:#ffffff;
-    }
+.sub-select:active {
+  background-color: #029BDE;
+  transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
+  color: #ffffff;
+}
 
 
 .selected {
-        background-color: #029BDE!important;
-        transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
-        color:#ffffff;    
+  background-color: #029BDE !important;
+  transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
+  color: #ffffff;
 }
 
 .white {
-  color:white!important;
+  color: white !important;
 }
