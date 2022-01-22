@@ -140,4 +140,13 @@ module.exports.routes = {
   'POST /api/textcontent/update': {action: 'api/textcontent/update'},
   'POST /api/textcontent/save': {action: 'api/textcontent/save'},
 
+  //
+  // Subscription
+  //
+  'GET /subscription/:id': { action: 'subscription/getselection' },
+
+  'GET /saveselection/:id': { action: 'subscription/saveselection' },
+
+  'GET /checkorder': { action: 'subscription/getservice' },
+
 };
