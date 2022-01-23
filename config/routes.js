@@ -79,7 +79,7 @@ module.exports.routes = {
   // organisation
   //
 
-  'GET /organisation/new': {view: 'pages/organisation/new'},
+  'GET /organisation/new': {action: 'organisation/view-new-organisation'},
   'POST /organisation': {action: 'organisation/create'},
 
   'GET /organisation/edit': {action: 'organisation/edit'},
