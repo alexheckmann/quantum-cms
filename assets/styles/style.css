@@ -1238,16 +1238,21 @@ footer a:hover {
     .sub-select:active {
         background-color: #029BDE;
         transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
-        color:#ffffff;
+        color:#173361;
     }
 
 
 .selected {
-        background-color: #029BDE!important;
+        background: #029BDE;
         transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
-        color:#ffffff;    
+        color:#173361;    
 }
 
 .white {
   color:white!important;
+}
+
+#nextStepBtn {
+  color: white;
+  cursor: pointer;
 }

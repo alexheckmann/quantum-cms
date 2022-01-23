@@ -62,12 +62,14 @@ function showOrgAdminTools() {
   $('#orgMemberToolbar').hide();
   $('#orgAdminToolbar').show();
   $('#orgAdminTableToolbar').show();
+  $('#orgAdminSubToolbar').show();
 }
 
 function showOrgMemberTools() {
   console.log("showOrgMemberTools()");
   $('#orgAdminToolbar').hide();
   $('#orgAdminTableToolbar').hide();
+  $('#orgAdminSubToolbar').hide();
   $('#orgMemberToolbar').show();
 }
 
