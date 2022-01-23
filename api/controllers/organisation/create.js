@@ -25,16 +25,22 @@ module.exports = {
 
 
   fn: async function (inputs) {
+
+    const randomHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+
     // create new organisation
     let org = {
       name: inputs.organisation,
+      inviteCode: randomHex(8)
     };
+
+
     org = await Organisation.create(org).fetch();
     sails.log.debug('Created Organisation:');
     sails.log.debug(org);
 
     // adds the user who created the organisation to it and gives him admin rights.
-    let user = await User.updateOne({id: this.req.me.id }).set({
+    let user = await User.updateOne({id: this.req.me.id}).set({
       organisation: org.id,
       admin: org.id
     });
@@ -42,7 +48,9 @@ module.exports = {
     sails.log.debug('User:');
     sails.log.debug(user);
 
-    if (!org) { throw 'notFound'; }
+    if (!org) {
+      throw 'notFound';
+    }
     return {
       message: 'Organisation successfully created.',
       org: org
