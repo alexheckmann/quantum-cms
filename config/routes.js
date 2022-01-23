@@ -79,38 +79,37 @@ module.exports.routes = {
   // organisation
   //
 
-  'GET /organisation/new': { view: 'pages/organisation/new' },
-  'POST /organisation': { action: 'organisation/create' },
+  'GET /organisation/new': {view: 'pages/organisation/new'},
+  'POST /organisation': {action: 'organisation/create'},
 
-  'GET /organisation/edit': { action: 'organisation/edit' },
-  'POST /organisation/:id/update': { action: 'organisation/update' },
+  'GET /organisation/edit': {action: 'organisation/edit'},
+  'POST /organisation/:id/update': {action: 'organisation/update'},
 
-  'GET /organisation/:id/updateadmin': { action: 'organisation/updateadmin' },
+  'GET /organisation/:id/updateadmin': {action: 'organisation/updateadmin'},
 
-  'GET /organisation/:id/destroy': { action: 'organisation/destroy' },
-  'GET /organisation/delete': { action: 'organisation/delete' },
+  'GET /organisation/:id/destroy': {action: 'organisation/destroy'},
+  'GET /organisation/delete': {action: 'organisation/delete'},
 
-  'GET /organisation': { action: 'organisation/find' },
+  'GET /organisation': {action: 'organisation/find'},
 
   //
   // API
   //
 
   // api/organisation
-  'GET /api/organisation/findorg': { action: 'api/organisation/findorg' },
-  'GET /api/organisation/checkadmin': { action: 'api/organisation/checkadmin' },
-  'GET /api/organisation/fetchorgmembers': { action: 'api/organisation/fetchorgmembers' },
+  'GET /api/organisation/findorg': {action: 'api/organisation/findorg'},
+  'GET /api/organisation/checkadmin': {action: 'api/organisation/checkadmin'},
+  'GET /api/organisation/fetchorgmembers': {action: 'api/organisation/fetchorgmembers'},
   'POST /api/organisation/appointadmin': {action: 'api/organisation/appointadmin'},
   'POST /api/organisation/deletemembers': {action: 'api/organisation/deletemembers'},
 
 
-
   // api/groups
-  'GET /api/groups/find': { action: 'api/groups/find' },
-  'GET /api/groups/findusers': { action: 'api/groups/findusers' },
-  'GET /api/groups/checkadmin': { action: 'api/groups/checkadmin' },
-  'GET /api/groups/description': { action: 'api/groups/description' },
-  'GET /api/groups/findgrps': { action: 'api/groups/findgrps' },
+  'GET /api/groups/find': {action: 'api/groups/find'},
+  'GET /api/groups/findusers': {action: 'api/groups/findusers'},
+  'GET /api/groups/checkadmin': {action: 'api/groups/checkadmin'},
+  'GET /api/groups/description': {action: 'api/groups/description'},
+  'GET /api/groups/findgrps': {action: 'api/groups/findgrps'},
   'POST /api/groups/deletemembers': {action: 'api/groups/deletemembers'},
   'POST /api/groups/appointadmin': {action: 'api/groups/appointadmin'},
   'POST /api/groups/addtogroup': {action: 'api/groups/addtogroup'},
@@ -118,16 +117,20 @@ module.exports.routes = {
   //
   // Groups
   //
-  'GET /groups/new': { view: 'pages/groups/new' },
+  'GET /groups/new': {view: 'pages/groups/new'},
 
-  'GET /groups': { action: 'groups/find' },
+  'GET /groups': {action: 'groups/find'},
 
-  'GET /groups/leave': { action: 'groups/leave' },
+  'GET /groups/leave': {action: 'groups/leave'},
 
-  'POST /groups': { action: 'groups/create' },
+  'POST /groups': {action: 'groups/create'},
 
-  'GET /groups/edit': { action: 'groups/edit' },
-  'POST /groups/:id/update': { action: 'groups/update' },
+  'GET /groups/edit': {action: 'groups/edit'},
+  'POST /groups/:id/update': {action: 'groups/update'},
+
+  /*
+  TextContent
+   */
 
   'GET /api/textcontent/find': {action: 'api/textcontent/find'},
   'GET /api/textcontent/findoneentry': {action: 'api/textcontent/findoneentry'},
@@ -139,6 +142,11 @@ module.exports.routes = {
   'POST /api/textcontent/createtag': {action: 'api/textcontent/createtag'},
   'POST /api/textcontent/update': {action: 'api/textcontent/update'},
   'POST /api/textcontent/save': {action: 'api/textcontent/save'},
+
+  /*
+  Content via external API call
+   */
+  'GET /api/external/:id': {action: 'api/external/text/findone'},
 
   //
   // Subscription

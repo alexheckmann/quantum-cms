@@ -53,7 +53,8 @@
                     {{ grp.name }}
                 </button>
                 <a href="/groups" class="grey-font text-center d-block app-dropdown-item w-100
-                                font-weight-bold font-extra-small-text" v-if="allGroups.length === 1 && currentGroup !== null" v-cloak>
+                                font-weight-bold font-extra-small-text"
+                   v-if="allGroups.length === 1 && currentGroup !== null" v-cloak>
                     Create or join more groups!
                 </a>
                 <a href="/groups" class="grey-font text-center d-block app-dropdown-item w-100
@@ -97,8 +98,10 @@
                                       v-model="content" @input="changeStatus"></textarea>
                             <div class="invalid-feedback">Please enter your content.</div>
                         </div>
-                        <div v-else id="app-no-grps-section" class="d-flex flex-column align-items-center text-center m-0 pt-5" v-cloak>
-                            <h2 class="font-normal-text w-50 pb-3" v-cloak>You need to join or create a group before starting with content creation!</h2>
+                        <div v-else id="app-no-grps-section"
+                             class="d-flex flex-column align-items-center text-center m-0 pt-5" v-cloak>
+                            <h2 class="font-normal-text w-50 pb-3" v-cloak>You need to join or create a group before
+                                starting with content creation!</h2>
                             <button class="qntm-button font-special-text shape-rounded-corners-small" v-cloak>
                                 <a class="toolbar-btn" href="/groups/new">Create your first group</a>
                             </button>
@@ -141,7 +144,7 @@
                         </div>
                         <div class="d-flex flex-row flex-wrap w-100 app-tag-section" v-cloak>
                             <button class="d-flex border px-2 mr-1 mt-1 shape-rounded-corners-big align-items-center flex-nowrap app-tag-container bg-white"
-                                    v-for="entry in tags" :key="entry.id" v-cloak>
+                                    v-for="entry in tags" :key="entry.id" @click="searchForTag(entry.name)" v-cloak>
                                 <span class="font-extra-small-text font-weight-bold"
                                       :style="{color: entry.colour}" v-cloak>●</span>
                                 <span class="px-1 font-extra-small-text font-weight-bold text-truncate"
@@ -187,13 +190,13 @@
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             <button type="button"
                                     class="mb-2 d-flex align-items-center grey-background border shape-rounded-corners-small"
-                                    id="entry_endpoint_container">
+                                    id="entry_endpoint_container" @click="copyURL">
                                 <span class="text-truncate font-extra-small-text border-0 p-1 mr-2"> <span v-cloak>{{endpoint}}</span></span>
                                 <img src="/images/icon-copy.svg" alt="Copy to clipboard"
                                      id="app-copy-button-icon"
                                      class="d-inline-block flex-shrink-0 mr-1 qntm-icon-button">
                             </button>
-                            <div class="d-flex align-items-center align-content-center mt-2">
+                            <div class="d-flex align-content-center align-content-center mt-2">
                                 <div class="d-flex align-items-center">
                                     <span class="font-extra-small-text font-weight-bold ml-2 mr-3">Delete?</span>
                                     <div class="material-switch pull-right">
@@ -231,7 +234,7 @@
         </form>
     </div>
 </div>
-<%- exposeLocalsToBrowser() %>
+<%- exposeLocalsToBrowser(); %>
 <script>
   window.onload = () => {
     /* creating an enum for text state */
@@ -317,8 +320,9 @@
             .then(data => {
               let i = 0;
               data.forEach(entry => {
-                if (i === 0){
+                if (i === 0) {
                   this.currentGroup = entry;
+                  this.loadAllEntries();
                 }
                 this.allGroups.push(entry);
               });
@@ -498,6 +502,10 @@
             this.showNewTagName = true;
           }
         },
+        searchForTag: function (tagName) {
+          this.searchInput = tagName;
+          this.loadAllEntries();
+        },
         removeTag: function (tagId) {
           let id = this.id;
           let url = new URL(window.location.origin + '/api/textcontent/removetag');
@@ -506,6 +514,7 @@
 
           fetch(url).then(() => {
             this.loadTags();
+            this.loadAllEntries();
           });
         },
         listOldVersions: function () {
@@ -563,6 +572,9 @@
               this.showList = !this.showList;
             });
         },
+        copyURL: async function (mytext) {
+          await navigator.clipboard.writeText(this.endpoint);
+        },
         reset: function () {
           this.title = this.originalTitle;
           this.content = this.originalContent;
@@ -585,13 +597,6 @@
         this.loadAllGroups();
         if (this.allGroups.length > 0) {
           this.loadAllEntries();
-        }
-
-        if (!this.isNewEntry) {
-          this.loadOldVersions();
-          this.loadTags();
-          this.createdAt = convertDate(parseInt(this.createdAt));
-          this.updatedAt = convertDate(parseInt(this.updatedAt));
         }
       }
     });

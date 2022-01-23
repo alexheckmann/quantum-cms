@@ -22,16 +22,47 @@ module.exports = {
   fn: async function (inputs) {
     let textcontents;
     if (inputs.q && inputs.q.length > 0) {
+      let tags = await Tag.find({
+        where: {
+          name: {
+            'contains': inputs.q
+          }
+        },
+        select: ['id']
+      }).populate('textContentTag', {
+        select: ['id']
+      });
+
+      let tagIds = [];
+      tags.forEach(entry => {
+        entry.textContentTag.forEach(tag => {
+          tagIds.push(tag.id);
+        });});
+
       textcontents = await TextContent.find({
         where: {
-          title: {
-            'contains': inputs.q
-          },
+          or: [
+            {
+              title: {
+                'contains': inputs.q
+              }
+            },
+            {
+              content: {
+                'contains': inputs.q
+              }
+            },
+            {
+              id: tagIds
+            }
+          ],
           group: inputs.group
         },
         select: ['title']
       }).sort('title ASC');
-    } else {
+    }
+    else
+    {
       textcontents = await TextContent.find({
         where: {group: inputs.group},
         select: ['title']
