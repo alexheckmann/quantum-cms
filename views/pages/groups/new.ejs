@@ -1,12 +1,10 @@
-<div class="container mt-4 mb-4">
+<div class="flex-fill container mt-4 mb-4">
     <div class="border rounded mt-2 p-2">
         <!-- New working group -->
         <div class="container">
-            <div class="row">
-                <h3>New working group</h3>
-            </div>
             <form action="/groups" method="post">
-                <div>
+                <div class="">
+                        <h3>New working group</h3>
                     <input type="hidden" name="_csrf" value="<%= _csrf %>" />
                     <div class="mt-2">
                         <textarea class="form-control" placeholder="The name of your group." name="name" type="text" maxlength="80"
