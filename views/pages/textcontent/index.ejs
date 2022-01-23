@@ -598,13 +598,6 @@
         if (this.allGroups.length > 0) {
           this.loadAllEntries();
         }
-
-        if (!this.isNewEntry) {
-          this.loadOldVersions();
-          this.loadTags();
-          this.createdAt = convertDate(parseInt(this.createdAt));
-          this.updatedAt = convertDate(parseInt(this.updatedAt));
-        }
       }
     });
   };
