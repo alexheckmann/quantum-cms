@@ -1,8 +1,8 @@
 module.exports = {
 
-    friendlyName: 'Delete Members',
+    friendlyName: 'Delete members',
 
-    description: '',
+    description: 'Delete members from organisation.',
 
     inputs: {
         members: {

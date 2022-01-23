@@ -21,32 +21,42 @@ module.exports = {
       responseType: 'view',
       viewTemplatePath: 'pages/organisation/show'
     },
-  },
 
 
-  fn: async function (inputs) {
-    // create new organisation
-    let org = {
-      name: inputs.organisation,
-    };
-    org = await Organisation.create(org).fetch();
-    sails.log.debug('Created Organisation:');
-    sails.log.debug(org);
+    fn: async function (inputs) {
+        // create new organisation
+        sails.log.debug("Create new organisation.")
+        let org = {
+            name: inputs.name,
+        };
+        org = await Organisation.create(org).fetch();
+        sails.log.debug('Created Organisation:')
+        sails.log.debug(org)
 
-    // adds the user who created the organisation to it and gives him admin rights.
-    let user = await User.updateOne({id: this.req.me.id }).set({
-      organisation: org.id,
-      admin: org.id
-    });
+        // adds the user who created the organisation to it and gives him admin rights.
+        let user = await User.updateOne({ id: this.req.me.id }).set({
+            organisation: org.id,
+            admin: org.id
+        });
 
-    sails.log.debug('User:');
-    sails.log.debug(user);
+        // data for a new sub to the org
+        let subscription = {
+            status: 'active',
+            subType: 3,
+            organisation: org.id
+        }
+        // create the new sub
+        subscription = await Subscription.create(subscription).fetch();
 
-    if (!org) { throw 'notFound'; }
-    return {
-      message: 'Organisation successfully created.',
-      org: org
-    };
-  }
+        sails.log.debug('User:')
+        sails.log.debug(user)
+
+        if (!org) { throw 'notFound'; }
+        return {
+            message: "Organisation successfully created.",
+            org: org,
+            sub: subscription
+        };
+    }
 
 };
