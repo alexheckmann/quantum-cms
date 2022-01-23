@@ -151,10 +151,13 @@ module.exports.routes = {
   //
   // Subscription
   //
-  'GET /subscription/:id': {action: 'subscription/getselection'},
+  'GET /saveselection/:id': { action: 'subscription/saveselection' },
 
-  'GET /saveselection/:id': {action: 'subscription/saveselection'},
+  'GET /subscription/:id': { action: 'subscription/getselection' },
 
-  'GET /checkorder': {action: 'subscription/getservice'},
+  'GET /getservice/:id': { action: 'subscription/getservice' },
 
+  'GET /checkorder': { action: 'subscription/checkorder' },
+
+  'GET /createsubscription/:id': { action: 'subscription/createsubscription' },
 };

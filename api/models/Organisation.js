@@ -17,7 +17,7 @@ module.exports = {
             maxLength: 80
         },
 
-        subscriptions: {
+        subscription: {
             collection: 'subscription',
             via: 'organisation'
         },

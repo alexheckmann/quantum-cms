@@ -19,7 +19,7 @@ module.exports = {
 
         organisation: {
             model: 'organisation',
-            required: true
+            unique: true
         }
     },
 };

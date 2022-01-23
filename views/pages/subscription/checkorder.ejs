@@ -16,55 +16,73 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">Your service</h4>
-                <form class="needs-validation" novalidate="">
+                <hr class="mb-4">
 
-                    <div class="mb-3">
-                        <label for="type">Type</label>
-                        <label read-only class="form-control"><%= subType.name %></label>
-                    </div>
+                <h4 class="mb-3">Service</h4>
+                <div class="mb-3">
+                    <label for="type">Type</label>
+                    <label read-only class="form-control">
+                        <%= subType.name %>
+                    </label>
+                </div>
 
-                    <div class="mb-3">
-                        <label for="price">Price</label>
-                        <label read-only class="form-control" id="price1">40€/month*</label>
-                        <span>*after one year 35€/month</span><br>
-                        <span>**after two years 30€/month</span>
-                    </div>
-
-                    <div class="mb-3">
+                <div class="mb-3">
+                    <label for="price">Price</label>
+                    <label read-only class="form-control" id="price1">
+                        <%= subType.price %>€/month
+                    </label>
+                </div>
+                <% if(subType.id==1){ %>
+                    <div id="premium" class="mb-3">
                         <label for="details">Service includes</label>
-                            <ul class="qntm-pricing-list from-control">
-                                <li class="qntm-pricing-list-item">Unlimited content entries</li>
-                                <li class="qntm-pricing-list-item">Quarterly Business Reviews</li>
-                                <li class="qntm-pricing-list-item">Response Times for General Guidance: 24h</li>
-                                <li class="qntm-pricing-list-item">Support during Business Hours</li>
+                        <ul class="qntm-pricing-list from-control">
+                            <li class="qntm-pricing-list-item">Unlimited content entries</li>
+                            <li class="qntm-pricing-list-item">Quarterly Business Reviews</li>
+                            <li class="qntm-pricing-list-item">Response Times for General Guidance: 24h</li>
+                            <li class="qntm-pricing-list-item">Support during Business Hours</li>
+                        </ul>
+                    </div>
+                    <% } else if (subType.id==2) { %>
+                        <div id="enterprise" class="mb-3">
+                            <label for="details">Service includes</label>
+                            <ul class="qntm-pricing-list">
+                                <li class="qntm-pricing-list-item">Dedicated servers</li>
+                                <li class="qntm-pricing-list-item">99.95% Availability</li>
+                                <li class="qntm-pricing-list-item">Designated Technical Account Manager</li>
+                                <li class="qntm-pricing-list-item">24/7 Technical Support</li>
                             </ul>
-                    </div>
-   
-                    <hr class="mb-4">
-
-                    <h4 class="mb-3">Payment</h4>
-
-                    <div class="d-block my-3">
-                        <!-- <div class="custom-control custom-radio">
-                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked=""
-                                required="">
-                            <label class="custom-control-label" for="credit">Credit card</label>
-                        </div> -->
-                        <div class="custom-control custom-radio">
-                            <input id="invoice" name="paymentMethod" type="radio" class="custom-control-input"
-                                required="" checked>
-                            <label class="custom-control-label" for="invoice">Invoice</label>
                         </div>
-                    </div>
-                    <hr class="mb-4">
-                    <button
-                        class="qntm-primary-button-wide font-special-text shape-rounded-corners-small btn btn-primary btn-lg btn-block"
-                        type="submit">Buy now</button>
-                        <div class="qntm-eye-catcher-content-small font-extra-small-text mx-auto">
-                            <span>By placing an order, you agree to our terms and conditions. Please read our privacy policy and our notes on cookies.</span>
-                        </div>
-                </form>
+                        <% } else { %>
+                            <div id="standard" class="mb-3">
+                                <label for="details">Service includes</label>
+                                <ul class="qntm-pricing-list">
+                                    <li class="qntm-pricing-list-item">100 entries for content</li>
+                                    <li class="qntm-pricing-list-item">Usable API endpoints</li>
+                                    <li class="qntm-pricing-list-item">Upgrade to Premium for full services</li>
+                                    <li class="qntm-pricing-list-item">No credit card required to start</li>
+                                </ul>
+                            </div>
+                            <% } %>
+                                <% if(subType.id!=3){ %>
+                                    <hr class="mb-4">
+                                    <h4 class="mb-3">Payment</h4>
+
+                                    <div class="d-block my-3">
+                                        <div class="custom-control custom-radio">
+                                            <input id="invoice" type="radio" class="custom-control-input" checked>
+                                            <label class="custom-control-label" for="invoice">Invoice</label>
+                                        </div>
+                                    </div>
+                                    <hr class="mb-4">
+                                    <% } %>
+                                        <a class="qntm-primary-button-wide font-special-text shape-rounded-corners-small btn btn-lg btn-block"
+                                            href="/createsubscription/<%= subType.id %>">Buy now</a>
+                                        <div class="qntm-eye-catcher-content-small font-extra-small-text mx-auto mb-4">
+                                            <span>By placing an order, you agree to our terms and conditions. Please
+                                                read
+                                                our privacy policy
+                                                and our notes on cookies.</span>
+                                        </div>
             </div>
         </div>
     </div>

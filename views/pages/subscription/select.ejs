@@ -1,5 +1,5 @@
 <%- exposeLocalsToBrowser() %>
-    <% if(org){ %>
+    <% if(isAdmin){ %>
         <section
             class="d-flex qntm-eye-catcher-section justify-content-center align-items-center align-content-center flex-wrap text-center">
             <div class="eye-catcher-title-container">
@@ -77,58 +77,74 @@
             </div>
         </section>
         <section
-            class="d-flex qntm-eye-catcher-section justify-content-center align-items-center align-content-center flex-wrap text-center">
+            class="flex-fill d-flex qntm-eye-catcher-section justify-content-center align-items-center align-content-center flex-wrap text-center">
             <div>
-                <a class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                    href="" onclick="selectService()">Next step</a>
+                <a id="nextStepBtn"
+                    class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                    onclick="selectService()">Next step</a>
             </div>
         </section>
-        <% } else { %>
-            <div>
+        <% } else if(org) { %>
+            <div id="noOrgSection" class="flex-fill">
                 <div class="qntm-eye-catcher-content font-normal-text d-flex flex-column flex-grow-1 flex-shrink-1">
                     <span>
-                        You must first join an organisation or create one yourself to book a service.
+                        Admin rights are required to make changes to the contracts.
                     </span>
                 </div>
                 <button class="qntm-button font-special-text shape-rounded-corners-small">
-                    <a class="toolbar-btn" href="/organisation">Create your first group</a>
+                    <a class="toolbar-btn" href="/organisation">Organisation</a>
+                </button>
+                <button class="qntm-button font-special-text shape-rounded-corners-small">
+                    <a class="toolbar-btn" href="/">Editor</a>
                 </button>
             </div>
-            <% } %>
-                <script>
-                    window.onload = () => {
+            <% } else { %>
+                <div id="noOrgSection" class="flex-fill">
+                    <div class="qntm-eye-catcher-content font-normal-text d-flex flex-column flex-grow-1 flex-shrink-1">
+                        <span>
+                            You must first join an organisation or create one yourself to book a service.
+                        </span>
+                    </div>
+                    <button class="qntm-button font-special-text shape-rounded-corners-small">
+                        <a class="toolbar-btn" href="/organisation">Organisation</a>
+                    </button>
+                </div>
+                <% } %>
+                    <script>
+                        window.onload = () => {
 
-                        var x = document.getElementsByClassName('sub-select');
-                        Array.from(x).forEach((element) => {
-                            if (element.id == "<%= subId %>") {
-                                element.classList.add("selected");
-                            }
-                        });
-                    }
-
-                    var selectedDiv = "";
-
-                    var x = document.getElementsByClassName('sub-select')
-                    for (var i = 0; i < x.length; i++) {
-                        x[i].addEventListener("click", function () {
-                            var selectedEl = document.querySelector(".selected");
-                            if (selectedEl) {
-                                selectedEl.classList.remove("selected");
-                            }
-                            this.classList.add("selected");
-
-                        }, false);;
-
-                    }
-
-                    function selectService() {
-                        var selectedEl = document.querySelector(".selected");
-                        let id = $(".selected").prop("id");
-                        if (selectedEl) {
-                            alert(id);
-                            window.location = createFetchURL('/checkorder/', 'id', id);
-                        } else {
-                            alert('please choose an option')
+                            var x = document.getElementsByClassName('sub-select');
+                            Array.from(x).forEach((element) => {
+                                if (element.id == "<%= subId %>") {
+                                    element.classList.add("selected");
+                                }
+                            });
                         }
-                    }
-                </script>
+
+                        var selectedDiv = "";
+
+                        var x = document.getElementsByClassName('sub-select')
+                        for (var i = 0; i < x.length; i++) {
+                            x[i].addEventListener("click", function () {
+                                var selectedEl = document.querySelector(".selected");
+                                if (selectedEl) {
+                                    selectedEl.classList.remove("selected");
+                                }
+                                this.classList.add("selected");
+
+                            }, false);;
+
+                        }
+
+                        function selectService() {
+                            console.log("function: selectService()")
+
+                            var selectedEl = document.querySelector(".selected");
+                            let id = $(".selected").prop("id");
+                            if (selectedEl) {
+                                window.location.href = '/getservice/' + id;
+                            } else {
+                                alert('please choose an option')
+                            }
+                        }
+                    </script>

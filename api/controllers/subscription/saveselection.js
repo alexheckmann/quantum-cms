@@ -2,7 +2,7 @@ module.exports = {
 
     friendlyName: 'Save selection.',
 
-    description: 'Save selection id.',
+    description: 'save selection id.',
 
     inputs: {
         id: {
@@ -15,14 +15,18 @@ module.exports = {
     exits: {
         redirect: {
             description: '',
+            responseCode: 301,
             responseType: 'redirect'
         }
     },
 
     fn: async function (inputs) {
+        sails.log.debug('action: saveselection.js')
         // session
         this.req.session.subscription = inputs.id;
 
-        throw { redirect: '/subscription/' + inputs.id };
+        throw { 
+            redirect: '/subscription/'+inputs.id
+        };
     }
 }
