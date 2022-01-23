@@ -20,7 +20,7 @@ module.exports = {
     success: {
       responseType: 'view',
       viewTemplatePath: 'pages/organisation/show'
-    },
+    }
   },
 
 
@@ -45,16 +45,25 @@ module.exports = {
       admin: org.id
     });
 
-    sails.log.debug('User:');
-    sails.log.debug(user);
+    // data for a new sub to the org
+    let subscription = {
+      status: 'active',
+      subType: 3,
+      organisation: org.id
+    }
+    // create the new sub
+    subscription = await Subscription.create(subscription).fetch();
+
+    sails.log.debug('User:')
+    sails.log.debug(user)
 
     if (!org) {
       throw 'notFound';
     }
     return {
-      message: 'Organisation successfully created.',
-      org: org
+      message: "Organisation successfully created.",
+      org: org,
+      sub: subscription
     };
   }
-
-};
+}

@@ -87,7 +87,6 @@ module.exports.routes = {
 
   'GET /organisation/:id/updateadmin': {action: 'organisation/updateadmin'},
 
-  'GET /organisation/:id/destroy': {action: 'organisation/destroy'},
   'GET /organisation/delete': {action: 'organisation/delete'},
 
   'GET /organisation': {action: 'organisation/find'},
