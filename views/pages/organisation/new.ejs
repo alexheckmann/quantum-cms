@@ -1,19 +1,20 @@
-<div class="container mt-4 mb-4">
-    <div class="border rounded mt-2 p-2">
+<div class="container flex-fill d-flex align-items-center justify-content-center mt-4 mb-4">
+    <div class="border shape-rounded-corners-big mt-2 p-2">
         <!-- New organisation -->
-        <div class="container">
-            <div class="row">
-                <h3>New organisation</h3>
-            </div>
-            <form action="/organisation" method="post" class="mt-2">
-                <div>
-                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-                    <div>
-                        <textarea name="name" placeholder="Name of the orgenisation" type="text" maxlength="80" id="" cols="30" rows="1"></textarea>
+        <div class="container px-4 pb-4 pt-2">
+            <form action="/organisation" method="post">
+                <div class="d-flex flex-column align-items-center">
+                    <h3>New organisation</h3>
+                    <input type="hidden" name="_csrf" value="<%= _csrf; %>"/>
+                    <div class="d-flex flex-column w-100 pt-2 pb-3">
+                        <label for="organisation" class="font-extra-small-text font-weight-bold">Enter a name:</label>
+                        <input name="organisation" placeholder="Name of the organisation" type="text" maxlength="80"
+                               required/>
                     </div>
                     <div>
                         <button class="qntm-primary-button font-special-text shape-rounded-corners-small"
-                            type="submit">Add</button>
+                                type="submit">Save
+                        </button>
                         <button class="qntm-primary-button font-special-text shape-rounded-corners-small" type="reset">
                             Reset
                         </button>

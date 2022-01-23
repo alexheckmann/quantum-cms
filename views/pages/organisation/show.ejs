@@ -1,4 +1,4 @@
-<div class="container mt-4 mb-4">
+<div class="container flex-fill mt-4 mb-4">
     <div class="border rounded mt-2 p-2">
         <!-- Your organisation -->
         <div class="container">
@@ -6,7 +6,7 @@
                 <h1>Your organisation.</h1>
             </div>
             <div class="">
-                <%= message ? message : "" %>
+                <%= message ? message : '' ;%>
             </div>
             <% if(org){ %>
                 <div class="">
@@ -14,13 +14,14 @@
                         Name:
                     </div>
                     <div class="form-group mt-1 mb-1">
-                        <textarea readonly class="form-control grpTextDesc" rows="1"><%= org.name %></textarea>
+                        <textarea readonly class="form-control grpTextDesc" rows="1"><%= org.name ;%></textarea>
                     </div>
                 </div>
-                    <% } else { %>
-                        <p>You have no organisation.</p>
-                        <% } %>
-                            <a class="qntm-primary-button font-special-text shape-rounded-corners-small"
-                                href="/organisation">Organisation</a>
+            <% } else { %>
+                <p>You have no organisation.</p>
+            <% } %>
+            <a class="qntm-primary-button font-special-text shape-rounded-corners-small"
+               href="/organisation">Organisation</a>
         </div>
     </div>
+</div>

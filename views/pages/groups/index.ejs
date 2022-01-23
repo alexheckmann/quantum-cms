@@ -1,98 +1,100 @@
-<%- exposeLocalsToBrowser() %>
-    <% if(grps.length> 0){ %>
-        <script>
-            window.onload = (event) => {
-                createMemberTable();
-            };
-        </script>
-        <div class="container mt-4 mb-4">
-            <div id="grpsSection" class="border rounded mt-2 p-2">
-                <!-- Your working groups -->
-                <div class="container">
-                    <div class="row">
-                        <h3>Your working groups</h3>
-                    </div>
-                    <div class="d-flex justify-content-between mt-2">
-                        <!--TODO select with keys blocked -> -->
-                        <select onkeydown="ignoreKeys(event);" class="custom-select" id="grpSelect"
+<% if(grps.length > 0){ %>
+    <script>
+      window.onload = (event) => {
+        createMemberTable();
+      };
+    </script>
+    <div class="container mt-4 mb-4">
+        <div id="grpsSection" class="border rounded mt-2 p-2">
+            <!-- Your working groups -->
+            <div class="container">
+                <div class="row">
+                    <h3>Your working groups</h3>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <!--TODO select with keys blocked -> -->
+                    <select onkeydown="ignoreKeys(event);" class="custom-select" id="grpSelect"
                             onchange="resetTable()">
-                            <% grps.forEach(function(grps){ %>
-                                <option value="<%= grps.id %>">
-                                    <%= grps.name %>
-                                </option>
-                                <% }); %>
+                        <% grps.forEach(function(grps){ %>
+                            <option value="<%= grps.id; %>">
+                                <%= grps.name; %>
+                            </option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group mt-1 mb-1">
+                    <textarea readonly id="grpDescText" class="form-control grpTextDesc" rows="2"></textarea>
+                </div>
+                <div id="toolbarGrps" class="d-flex mt-2">
+                    <div id="toolbarGrpsMember">
+                        <button class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn" href="/groups/new">Add Group</a>
+                        </button>
+                    </div>
+                    <div id="toolbarGrpsAdmin">
+                        <button class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn" href="/groups/new">Add Group</a>
+                        </button>
+                        <button class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn" onclick="editGrp()">Edit</a>
+                        </button>
+                        <!-- TODO hide/show
+                            <button class="qntm-button font-special-text shape-rounded-corners-small">
+                                <a class="toolbar-btn" onclick="findMembersToAdd()">Add Members</a>
+                            </button>
+                         -->
+                    </div>
+                </div>
+
+                <div id="addMembersSelect">
+                    <div class="mt-4 membersSelect">
+                        <!--TODO Add Members -> select with name list of Org -> click: add to Group -->
+                        <select id="memberSelect" multiple class="custom-select">
                         </select>
                     </div>
-                    <div class="form-group mt-1 mb-1">
-                        <textarea readonly id="grpDescText" class="form-control grpTextDesc" rows="2"></textarea>
+                    <div class="mt-2">
+                        <button class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn" onclick="addToGrp()">Add to group</a>
+                        </button>
                     </div>
-                    <div id="toolbarGrps" class="d-flex mt-2">
-                        <div id="toolbarGrpsMember">
-                            <button class="qntm-button font-special-text shape-rounded-corners-small">
-                                <a class="toolbar-btn" href="/groups/new">Add Group</a>
-                            </button>
-                        </div>
-                        <div id="toolbarGrpsAdmin">
-                            <button class="qntm-button font-special-text shape-rounded-corners-small">
-                                <a class="toolbar-btn" href="/groups/new">Add Group</a>
-                            </button>
-                            <button class="qntm-button font-special-text shape-rounded-corners-small">
-                                <a class="toolbar-btn" onclick="editGrp()">Edit</a>
-                            </button>
-                            <!-- TODO hide/show
-                                <button class="qntm-button font-special-text shape-rounded-corners-small">
-                                    <a class="toolbar-btn" onclick="findMembersToAdd()">Add Members</a>
-                                </button>
-                             -->
-                        </div>
-                    </div>
-
-                    <div id="addMembersSelect">
-                        <div class="mt-4 membersSelect">
-                            <!--TODO Add Members -> select with name list of Org -> click: add to Group -->
-                            <select id="memberSelect" multiple class="custom-select">
-                            </select>
-                        </div>
-                        <div class="mt-2">
-                            <button class="qntm-button font-special-text shape-rounded-corners-small">
-                                <a class="toolbar-btn" onclick="addToGrp()">Add to group</a>
-                            </button>
-                        </div>
-                        <div id="btnMemberSelectHint" class="font-normal-text">
-                            Select your members first.
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <table id="membersTable" data-toolbar="#toolbar" class="table table-bordered mb-2 membersTable">
-                        </table>
-                    </div>
-
-                    <div id="toolbar">
-                        <div id="toolbarAdmin">
-                            <button id="appointAdminGrpBtn"
-                                class="qntm-button font-special-text shape-rounded-corners-small">Appoint as
-                                admin</button>
-                            <button id="deleteFromGrpBtn"
-                                class="qntm-button font-special-text shape-rounded-corners-small">Delete</button>
-                            <button class="qntm-button font-special-text shape-rounded-corners-small">
-                                <a class="toolbar-btn" onclick="leaveGrp()">Leave</a></button>
-                        </div>
-                        <div id="toolbarMember">
-                            <button class="qntm-button font-special-text shape-rounded-corners-small">
-                                <a class="toolbar-btn" onclick="leaveGrp()">Leave</a></button>
-                        </div>
-                    </div>
-                    <div id="btnTableHint" class="font-normal-text">
+                    <div id="btnMemberSelectHint" class="font-normal-text">
                         Select your members first.
                     </div>
                 </div>
+
+                <div class="mt-4">
+                    <table id="membersTable" data-toolbar="#toolbar" class="table table-bordered mb-2 membersTable">
+                    </table>
+                </div>
+
+                <div id="toolbar">
+                    <div id="toolbarAdmin">
+                        <button id="appointAdminGrpBtn"
+                                class="qntm-button font-special-text shape-rounded-corners-small">Appoint as
+                            admin
+                        </button>
+                        <button id="deleteFromGrpBtn"
+                                class="qntm-button font-special-text shape-rounded-corners-small">Delete
+                        </button>
+                        <button class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn" onclick="leaveGrp()">Leave</a></button>
+                    </div>
+                    <div id="toolbarMember">
+                        <button class="qntm-button font-special-text shape-rounded-corners-small">
+                            <a class="toolbar-btn" onclick="leaveGrp()">Leave</a></button>
+                    </div>
+                </div>
+                <div id="btnTableHint" class="font-normal-text">
+                    Select your members first.
+                </div>
             </div>
         </div>
-        <% } else { %>
-            <div id="noGrpsSection" class="">
-                <button class="qntm-button font-special-text shape-rounded-corners-small">
-                    <a class="toolbar-btn" href="/groups/new">Create your first group</a>
-                </button>
-            </div>
-            <% } %>
+    </div>
+<% } else { %>
+    <div id="noGrpsSection" class="flex-fill">
+        <button class="qntm-button font-special-text shape-rounded-corners-small">
+            <a class="toolbar-btn" href="/groups/new">Create your first group</a>
+        </button>
+    </div>
+<% } %>
+<%- exposeLocalsToBrowser() %>

@@ -98,6 +98,7 @@
   --color-dark-blue: #173361;
   --color-transparent-blue: #E8F0FE;
   --slalom-item-margin: clamp(30px, 1.1vw, 50px);
+  --box-shadow-highlight: 0 0 0 0.2rem rgb(0 123 255 / 25%);
 }
 
 * {
@@ -165,7 +166,7 @@ button {
 
 button:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+  box-shadow: var(--box-shadow-highlight);
 }
 
 [v-cloak] {
@@ -1265,21 +1266,20 @@ footer a:hover {
 }
 
 .sub-select:hover,
-    .sub-select:active {
-        background-color: #029BDE;
-        transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
-        color:#173361;
-    }
+.sub-select:active {
+  background-color: #029BDE;
+  transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
+  color: #173361;
+}
 
 
 .selected {
-        background: #029BDE;
-        transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
-        color:#173361;    
+  box-shadow: var(--box-shadow-highlight);
+  transition: all 350ms ease-in;
 }
 
 .white {
-  color:white!important;
+  color: white !important;
 }
 
 #nextStepBtn {

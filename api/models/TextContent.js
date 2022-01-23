@@ -33,7 +33,7 @@ module.exports = {
 
     group: {
       model: 'workinggroup',
-      // TODO required: true
+      required: true
     },
 
     author: {

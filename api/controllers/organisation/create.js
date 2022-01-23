@@ -1,26 +1,25 @@
 module.exports = {
 
 
-    friendlyName: 'Create organisation',
+  friendlyName: 'Create organisation',
 
 
-    description: 'Create a new organisation.',
+  description: 'Create a new organisation.',
 
 
-    inputs: {
-        name: {
-            description: 'The name of the organisation.',
-            type: 'string',
-            required: true
-        },
+  inputs: {
+    organisation: {
+      description: 'The name of the organisation.',
+      type: 'string',
+      required: true
     },
+  },
 
 
-    exits: {
-        success: {
-            responseType: 'view',
-            viewTemplatePath: 'pages/organisation/show'
-        },
+  exits: {
+    success: {
+      responseType: 'view',
+      viewTemplatePath: 'pages/organisation/show'
     },
 
 
