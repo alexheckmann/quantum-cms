@@ -1,53 +1,52 @@
 module.exports = {
 
 
-    friendlyName: 'Create organisation',
+  friendlyName: 'Create organisation',
 
 
-    description: 'Create a new organisation.',
+  description: 'Create a new organisation.',
 
 
-    inputs: {
-        name: {
-            description: 'The name of the organisation.',
-            type: 'string',
-            required: true
-        },
+  inputs: {
+    organisation: {
+      description: 'The name of the organisation.',
+      type: 'string',
+      required: true
     },
+  },
 
 
-    exits: {
-        success: {
-            responseType: 'view',
-            viewTemplatePath: 'pages/organisation/show'
-        },
+  exits: {
+    success: {
+      responseType: 'view',
+      viewTemplatePath: 'pages/organisation/show'
     },
+  },
 
 
-    fn: async function (inputs) {
-        // create new organisation
-        sails.log.debug("Create new organisation.")
-        let org = {
-            name: inputs.name,
-        };
-        org = await Organisation.create(org).fetch();
-        sails.log.debug('Created Organisation:')
-        sails.log.debug(org)
+  fn: async function (inputs) {
+    // create new organisation
+    let org = {
+      name: inputs.organisation,
+    };
+    org = await Organisation.create(org).fetch();
+    sails.log.debug('Created Organisation:');
+    sails.log.debug(org);
 
-        // adds the user who created the organisation to it and gives him admin rights.
-        let user = await User.updateOne({id: this.req.me.id }).set({
-            organisation: org.id,
-            admin: org.id
-        });
+    // adds the user who created the organisation to it and gives him admin rights.
+    let user = await User.updateOne({id: this.req.me.id }).set({
+      organisation: org.id,
+      admin: org.id
+    });
 
-        sails.log.debug('User:')
-        sails.log.debug(user)
+    sails.log.debug('User:');
+    sails.log.debug(user);
 
-        if (!org) { throw 'notFound'; }
-        return {
-            message: "Organisation successfully created.",
-            org: org
-        };
-    }
+    if (!org) { throw 'notFound'; }
+    return {
+      message: 'Organisation successfully created.',
+      org: org
+    };
+  }
 
 };
