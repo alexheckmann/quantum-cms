@@ -1265,21 +1265,20 @@ footer a:hover {
 }
 
 .sub-select:hover,
-    .sub-select:active {
-        background-color: #029BDE;
-        transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
-        color:#173361;
-    }
+.sub-select:active {
+  background-color: #029BDE;
+  transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
+  color: #173361;
+}
 
 
 .selected {
-        background: #029BDE;
-        transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
-        color:#173361;    
+  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+  transition: all 350ms ease-in;
 }
 
 .white {
-  color:white!important;
+  color: white !important;
 }
 
 #nextStepBtn {
