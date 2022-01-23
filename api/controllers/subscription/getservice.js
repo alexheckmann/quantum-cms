@@ -1,5 +1,3 @@
-const sailsHookApianalytics = require("sails-hook-apianalytics");
-
 module.exports = {
 
     friendlyName: 'Get selected service.',
@@ -15,24 +13,21 @@ module.exports = {
     },
 
     exits: {
-        success: {
-            responseType: 'view',
-            viewTemplatePath: 'pages/subscription/checkorder'
+        redirect: {
+            description: '',
+            responseCode: 301,
+            responseType: 'redirect'
         }
     },
 
     fn: async function (inputs) {
-        // session
+        sails.log.debug('action: getservice.js')
+        
+        // session update
         this.req.session.subscription = inputs.id;
         
         console.log("Session sub: " + this.req.session.subscription);
 
-        // sub_type
-        let subType = await SubType.findOne({ id: inputs.id });
-
-
-        return {
-            subType: subType,
-        }
+        throw { redirect: '/checkorder' };
     }
 }

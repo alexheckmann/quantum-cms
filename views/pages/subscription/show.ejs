@@ -1,0 +1,28 @@
+<div class="container mt-4 mb-4">
+    <div class="border rounded mt-2 p-2">
+        <!-- Your organisation -->
+        <div class="container">
+            <div class="row">
+                <h1>Your subscription.</h1>
+            </div>
+            <div class="">
+                <%= message ? message : "" %>
+            </div>
+            <% if(subscription){ %>
+                <div class="">
+                    <div class="font-weight-bold">
+                        Type:
+                    </div>
+                    <div class="form-group mt-1 mb-1">
+                        <textarea readonly class="form-control grpTextDesc" rows="1"><%= subscription.subType.name %></textarea>
+                    </div>
+                </div>
+                <% } else { %>
+                    <p>You have no subscription.</p>
+                    <% } %>
+                        <a class="qntm-primary-button font-special-text shape-rounded-corners-small"
+                            href="/organisation">Organisation</a>
+                        <a class="qntm-primary-button font-special-text shape-rounded-corners-small"
+                            href="/dashboard">Editor</a>
+        </div>
+    </div>

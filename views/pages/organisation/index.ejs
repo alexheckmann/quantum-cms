@@ -36,37 +36,64 @@
                 </div>
             </div>
 
-            <!-- Members section-->
-            <div class="border rounded mt-2 p-2">
-                <div class="container">
-                    <div class="row">
-                        <h3>Members</h3>
+            <% if(!!sub){ %>
+                <div class="border rounded mt-2 p-2">
+                    <!-- Subscription -->
+                    <div class="container">
+                        <div class="row">
+                            <h3>Subscription</h3>
+                        </div>
+                        <div>
+                            <label id="subNameLabel" class="form-control">
+                                <%= sub.subType.name %>
+                            </label>
+                            <label id="subIdLabel" hidden class="form-control">
+                                <%= sub.id %>
+                            </label>
+                        </div>
+                        <% if(sub.subType !=3){ %>
+                            <div id="orgAdminSubToolbar" class="hidden-toolbar">
+                                <button class="qntm-button font-special-text shape-rounded-corners-small">
+                                    <a class="toolbar-btn" href="/pricing">Change</a>
+                                </button>
+                            </div>
+                            <% } %>
                     </div>
-                    <div class="mt-4">
-                        <table id="orgMembersTable" data-toolbar="#toolbar" class="table table-bordered membersTable mb-2">
-                        </table>
-                    </div>
-                    <div id="orgAdminTableToolbar" class="hidden-toolbar">
-                        <button class="qntm-button font-special-text shape-rounded-corners-small">
-                            <a class="toolbar-btn" onclick="appointAsOrgAdmin()">Appoint as admin</a>
-                        </button>
-
-                        <button class="qntm-button font-special-text shape-rounded-corners-small">
-                            <a class="toolbar-btn" onclick="deleteFromOrg()">Delete</a>
-                        </button>
-                    </div>
-                    <div id="btnTableHint" class="font-normal-text">
-                        Select your members first.
-                    </div>
-                </div>
-            </div>
-            <% } else { %>
-                <div id="noOrgSection">
-                    <button class="qntm-button font-special-text shape-rounded-corners-small">
-                        <a class="toolbar-btn" href="/organisation/new">Create your organisation</a>
-                    </button>
                 </div>
                 <% } %>
-                    <script>
-                        window.onload = () => fetchOrgData();
-                    </script>
+
+                    <!-- Members section-->
+                    <div class="border rounded mt-2 p-2">
+                        <div class="container">
+                            <div class="row">
+                                <h3>Members</h3>
+                            </div>
+                            <div class="mt-4">
+                                <table id="orgMembersTable" data-toolbar="#toolbar"
+                                    class="table table-bordered membersTable mb-2">
+                                </table>
+                            </div>
+                            <div id="orgAdminTableToolbar" class="hidden-toolbar">
+                                <button class="qntm-button font-special-text shape-rounded-corners-small">
+                                    <a class="toolbar-btn" onclick="appointAsOrgAdmin()">Appoint as admin</a>
+                                </button>
+
+                                <button class="qntm-button font-special-text shape-rounded-corners-small">
+                                    <a class="toolbar-btn" onclick="deleteFromOrg()">Delete</a>
+                                </button>
+                            </div>
+                            <div id="btnTableHint" class="font-normal-text">
+                                Select your members first.
+                            </div>
+                        </div>
+                    </div>
+                    <% } else { %>
+                        <div id="noOrgSection" class="flex-fill">
+                            <button class="qntm-button font-special-text shape-rounded-corners-small">
+                                <a class="toolbar-btn" href="/organisation/new">Create your organisation</a>
+                            </button>
+                        </div>
+                        <% } %>
+                            <script>
+                                window.onload = () => fetchOrgData();
+                            </script>

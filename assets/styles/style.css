@@ -1265,19 +1265,24 @@ footer a:hover {
 }
 
 .sub-select:hover,
-.sub-select:active {
-  background-color: #029BDE;
-  transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
-  color: #ffffff;
-}
+    .sub-select:active {
+        background-color: #029BDE;
+        transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
+        color:#173361;
+    }
 
 
 .selected {
-  background-color: #029BDE !important;
-  transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
-  color: #ffffff;
+        background: #029BDE;
+        transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
+        color:#173361;    
 }
 
 .white {
-  color: white !important;
+  color:white!important;
+}
+
+#nextStepBtn {
+  color: white;
+  cursor: pointer;
 }

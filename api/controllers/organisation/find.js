@@ -30,22 +30,20 @@ module.exports = {
         select: ['fullName', 'organisation']
       }).populate('organisation').populate('admin');
 
+      // sub to org
+      let sub = await Subscription.findOne({ organisation: org.id }).populate('subType');
 
-      sails.log.debug('user.organisation: ' + user.organisation.id)
-      sails.log.debug(org)
-
-      sails.log.debug('Members:')
-      sails.log.debug(users)
       return {
         message: "",
         user: user,
         org: org,
-        users: users
+        users: users,
+        sub: sub
       };
 
     } else {
       sails.log.debug('User has no organisation.')
-      
+
       return {
         // TODO
         message: "User has no organisation.",
