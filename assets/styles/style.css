@@ -1209,11 +1209,11 @@ footer a:hover {
 }
 
 .membersTable tr:hover {
-  background: #029BDE;
+  background: var(--color-transparent-blue);
 }
 
 .highlight_row {
-  background: #029BDE;
+  background: var(--color-transparent-blue);
 }
 
 .toolbar-btn {
@@ -1236,12 +1236,12 @@ footer a:hover {
 
 #btnTableHint {
   display: none;
-  color: #029BDE;
+  color: var(--color-light-blue);
 }
 
 #btnMemberSelectHint {
   display: none;
-  color: #029BDE;
+  color: var(--color-light-blue);
 }
 
 #noGrpsSection {
@@ -1267,9 +1267,9 @@ footer a:hover {
 
 .sub-select:hover,
 .sub-select:active {
-  background-color: #029BDE;
+  background-color: var(--color-transparent-blue);
   transition: background-color 0.4s ease-in, border-color 0.4s ease-in;
-  color: #173361;
+  color: var(--color-dark-blue);
 }
 
 
