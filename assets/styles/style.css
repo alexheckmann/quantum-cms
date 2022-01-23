@@ -98,6 +98,7 @@
   --color-dark-blue: #173361;
   --color-transparent-blue: #E8F0FE;
   --slalom-item-margin: clamp(30px, 1.1vw, 50px);
+  --box-shadow-highlight: 0 0 0 0.2rem rgb(0 123 255 / 25%);
 }
 
 * {
@@ -165,7 +166,7 @@ button {
 
 button:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+  box-shadow: var(--box-shadow-highlight);
 }
 
 [v-cloak] {
@@ -1273,7 +1274,7 @@ footer a:hover {
 
 
 .selected {
-  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+  box-shadow: var(--box-shadow-highlight);
   transition: all 350ms ease-in;
 }
 
