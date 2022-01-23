@@ -20,7 +20,12 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    // Respond with view.
+    // if user is logged in, return public layout since the dropdown won't work without bootstrap.js & jquery,
+    // which is not included in landingpage-layout.ejs
+    if (this.req.me) {
+      return exits.success({layout: 'layouts/public-layout'});
+    }
+    // Respond with optimized layout for public visitors to push search engine performance
     return exits.success({layout: 'layouts/landingpage-layout'});
 
   }
