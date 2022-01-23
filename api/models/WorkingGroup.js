@@ -13,6 +13,11 @@ module.exports = {
       maxLength: 80
     },
 
+    organisation: {
+      model: 'organisation',
+      required: true
+    },
+
     workers: {
       collection: 'user',
       via: 'workingGroups'

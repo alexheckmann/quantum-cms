@@ -32,6 +32,11 @@ module.exports = {
     admins: {
       collection: 'user',
       via: 'admin'
+    },
+
+    workingGroups: {
+      collection: 'WorkingGroup',
+      via: 'organisation'
     }
   },
 };
