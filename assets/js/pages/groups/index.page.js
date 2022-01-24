@@ -88,7 +88,8 @@ function findGrpMembers(grp) {
       }
     });
 }
-// TODO
+
+// fetches all groups to the current user
 function findGrps() {
   console.log('findGrps()');
   let origin = window.location.origin;
@@ -103,7 +104,7 @@ function findGrps() {
     });
 }
 
-// TODO
+// create options with the groups of the current user
 function createOptions(data) {
   let select = $('#selectGrp');
   select.empty();
@@ -362,7 +363,7 @@ function ignoreKeys(e) {
   }
 }
 
-// holt alle Mitglieder aus der Organisation, die derzeit nicht in der ausgewählten Gruppe sind
+// gets all members from the organisation who are not currently in the selected group
 function findMembersToAdd(grp) {
   $('#memberSelect').empty();
 
@@ -375,10 +376,6 @@ function findMembersToAdd(grp) {
     .then(data => {
       createMembersOptions(data);
     });
-}
-
-function setSelected() {
-  // TODO
 }
 
 // creates the options with the members that can be added to the group
@@ -426,7 +423,6 @@ function addToGrp() {
       });
   } else {
     $('#btnMemberSelectHint').show();
-    // TODO hint "select members fist."
   }
 }
 

@@ -71,21 +71,17 @@ module.exports.routes = {
   //
   // textcontent
   //
-
   'GET /dashboard/text/new': {action: 'textcontent/new'},
   'GET /dashboard': {action: 'textcontent/find'},
 
   //
   // organisation
   //
-
   'GET /organisation/new': {action: 'organisation/view-new-organisation'},
   'POST /organisation': {action: 'organisation/create'},
 
   'GET /organisation/edit': {action: 'organisation/edit'},
   'POST /organisation/:id/update': {action: 'organisation/update'},
-
-  'GET /organisation/:id/updateadmin': {action: 'organisation/updateadmin'},
 
   'GET /organisation/delete': {action: 'organisation/delete'},
 

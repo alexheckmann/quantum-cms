@@ -17,7 +17,7 @@ module.exports = {
 
   fn: async function () {
     let org = [];
-    // find current user with all groups
+    // find current user
     let user = await User.findOne({ id: this.req.me.id }).populate('organisation');
 
     if (user.organisation) {

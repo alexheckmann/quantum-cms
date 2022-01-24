@@ -16,17 +16,17 @@ module.exports = {
     let grps = [];
 
     // find current user with all groups
-    let user = await User.findOne({id: this.req.me.id}).populate('adminOf').populate('workingGroups');
+    let user = await User.findOne({ id: this.req.me.id }).populate('adminOf').populate('workingGroups');
 
     if (user) {
-      // creates an array of objects with the values ID, name and role
+      // creates an array of objects with the values id and name
       user.workingGroups.forEach(element => {
-        grps.push({name: element.name, id: element.id});
+        grps.push({ name: element.name, id: element.id });
       });
 
       return grps;
     } else {
-      throw('Error in findgrps controller -> check \'api/controllers/api/groups/findgrps.js\'.');
+      throw ('Error in findgrps controller -> check \'api/controllers/api/groups/findgrps.js\'.');
     }
   }
 };
