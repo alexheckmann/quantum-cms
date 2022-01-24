@@ -234,7 +234,17 @@ Organisation `assets/js/pages/organisation/index.page.js`:
 - `.show()` & `.hide()` von allen Toolbar Elementen in den Funktionen `showOrgAdminTools()` und `showOrgMemberTools()`.
 - function `createOrgTableChk(data)` erzeugt eine Tabelle mit Checkboxen, dabei werden die html-Elemente über `$('<element>')` generiert und mit `.append()` zur Tabelle hinzugefügt.
 - function `resetOrgMembersTable()` leert eine Tabelle über `$('#orgMembersTable').empty()`.
-- function `selectAllOrg()`
+- function `selectAllOrg()` setzt alle Checkboxen die nicht deaktiviert sind auf checked oder umgekehrt.
+- `window.onload = () => { fetchOrgData();}` in `pages/organisation/index.ejs` um die Daten der Organisation zu laden.
+
+Groups `assets/js/pages/groups/index.page.js`:
+- function `createOptions(data)` holt das Select Element `$('#selectGrp')` und fügt option-Elemente an -> `$('<option>').text(...)`.
+- function `appendTdToRow(row, value, i)` erzeugt ein neues `td` Element und fügt es an die übergebene `tr` an.
+- Document ready event -> `$('.membersTable').on('click', 'tr', function (event) { ...` setzt die Checkbox checked/unchecked bei einem Klick in die `tr`.
+- Wird eine Checkbox innerhalb einer `tr` verändert, wird die Class `highlight_row` zur `tr` hinzugefügt/entfernt.
+- function `editGrp()` sucht die ausgewählte Gruppe aus dem `Select` Element über -> `$('#grpSelect').find(':selected').val()`.
+- function `createMembersOptions(data)` holt das Select Element `$('#memberSelect')` und fügt option-Elemente an.
+- In function `addToGrp()` wird von jedem ausgewählten Mitglied die ID in ein Array gepusht -> `$('#memberSelect option:selected').each(function () { ...`.
 
 
 ### Vue.js
@@ -270,15 +280,49 @@ Groups `assets/js/pages/groups/index.page.js`:
 
 ### Datenmodell
 
+- User
+- Organisation
+- Subscription
+- SubType
+- WorkingGroup
+- TextContent
+- TextContentArchive
+- Tag
+- Invoice (not used)
+- ImageContent (not used)
+- ImageContentArchive (not used)
+
 ### Associations
 
 #### Many-to-Many
+(m <---> n)
+- `User/workingGroups` has and belongs to many `WorkingGroup/workers`
+- `User/adminOf` has and belongs to many `WorkingGroup/admins`
+- `TextContent/tags` has and belongs to many `Tag/textContentTag`
+- `ImageContent/tags` has and belongs to many `Tag/imageContentTag`
 
 #### One way assocations
+(n ---> 1)
 
 #### One-to-Many
+(1 <---> n)
+- `User/authorOfText` has many `TextContent/author`
+- `User/hasUpdatedText` has many `TextContent/updatedFrom`
+- `User/authorOfImage` has many `ImageContent/author`
+- `User/hasUpdatedImage` has many `ImageContent/updatedFrom`
+- `WorkingGroup/textBelongsTo` has many `TextContent/group`
+- `TextContent/oldversions` has many `TextContentArchive/newestVersion`
+- `ImageContent/oldversions` has many `ImageContentArchive/newestVersion`
+- `Organisation/subscription` has many `Subscription/organisation`
+- `Organisation/invoices` has many `Invoice/organisation`
+- `Organisation/employees` has many `User/organisation`
+- `Organisation/admins` has many `User/admin`
+- `Organisation/workingGroups` has many `WorkingGroup/organisation`
+- `SubType/subscriptions` has many `Subscription/subType`
+- `Subscription/invoices` has many `Invoice/subscription`
 
 #### One-to-One
+(1 <---> 0..1)
 
 ### CRUD
 
@@ -287,6 +331,14 @@ Groups `assets/js/pages/groups/index.page.js`:
 ### Server-Side
 
 ### Client-Side
+
+Validation in HTML Forms
+Examples:
+- `views/pages/textcontent/new.ejs`
+- `views/pages/organisation/new.ejs`
+- `views/pages/organisation/edit.ejs`
+- `views/pages/groups/new.ejs`
+- `views/pages/groups/edit.ejs`
 
 ## Sessions
 

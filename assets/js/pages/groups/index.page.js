@@ -348,7 +348,6 @@ function selectAll() {
   for (let userCheckBox of tdCheckbox) {
     userCheckBox.checked = isAllBoxChecked;
   }
-  // TODO if all tr are checked, the th must also be checked
 }
 
 // disabling A-Z and arrows
@@ -382,7 +381,7 @@ function findMembersToAdd(grp) {
 function createMembersOptions(data) {
   let select = $('#memberSelect');
   data.forEach(element => {
-    let option = $('<option onclick="setSelected()"></option>').text(element.name).val(element.id);
+    let option = $('<option></option>').text(element.name).val(element.id);
     select.append(option);
   });
 }
