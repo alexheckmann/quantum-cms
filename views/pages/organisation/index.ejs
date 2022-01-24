@@ -5,7 +5,7 @@
                 <!-- Your organisation section-->
                 <div class="container">
                     <div class="row">
-                        <h3>Your organisation</h3>
+                        <h3>Organisation</h3>
                     </div>
                     <div>
                         <label id="orgNameLabel" class="form-control">
@@ -51,13 +51,11 @@
                                 <%= sub.id %>
                             </label>
                         </div>
-                        <% if(sub.subType !=3){ %>
                             <div id="orgAdminSubToolbar" class="hidden-toolbar">
                                 <button class="qntm-button font-special-text shape-rounded-corners-small">
-                                    <a class="toolbar-btn" href="/pricing">Change</a>
+                                    <a class="toolbar-btn" href="/saveselection/<%= sub.subType.id %>">Change</a>
                                 </button>
                             </div>
-                            <% } %>
                     </div>
                 </div>
                 <% } %>

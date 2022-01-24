@@ -37,7 +37,7 @@ function resignFromOrg() {
 }
 
 /*
-Checks whether the current user is the admin of the selected group
+Checks whether the current user is the admin of the organisation
 and shows/hides the toolbar options accordingly.
 */
 function checkOrgAdminUser() {
@@ -223,7 +223,6 @@ function selectAllOrg() {
   for (let userCheckBox of tdCheckbox) {
     userCheckBox.checked = isAllBoxChecked;
   }
-  // TODO if all tr are checked, the th must also be checked
 }
 
 function copyToClipboard() {
