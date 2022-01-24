@@ -15,8 +15,6 @@ module.exports = {
     },
 
     fn: async function () {
-        sails.log.debug('Find all working groups from the current user.')
-
         // true if user has a Org
         let hasOrg = false;
 
@@ -28,9 +26,6 @@ module.exports = {
         }
 
         let grps = user.workingGroups;
-
-        sails.log.debug('user:')
-        sails.log.debug(user)
 
         if (!user) {
             throw 'not Found: user'

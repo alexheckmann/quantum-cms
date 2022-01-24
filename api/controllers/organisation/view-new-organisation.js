@@ -21,7 +21,7 @@ module.exports = {
 
 
   fn: async function () {
-    let user = User.findOne({id: this.req.session.id}).populate('organisation');
+    let user = await User.findOne({id: this.req.session.userId}).populate('organisation');
     if (user.organisation) {
       throw {redirect: '/organisation'};
     }

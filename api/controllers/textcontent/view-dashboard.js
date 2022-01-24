@@ -1,8 +1,8 @@
 module.exports = {
 
-  friendlyName: 'Find',
+  friendlyName: 'View "Dashboard',
 
-  description: 'Find text content.',
+  description: 'View "dashboard" page.',
 
   inputs: {
   },

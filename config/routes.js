@@ -70,7 +70,7 @@ module.exports.routes = {
   //
   // textcontent
   //
-  'GET /dashboard': {action: 'textcontent/find'},
+  'GET /dashboard': {action: 'textcontent/view-dashboard'},
 
   //
   // organisation
