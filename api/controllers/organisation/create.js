@@ -17,9 +17,8 @@ module.exports = {
 
 
   exits: {
-    success: {
-      responseType: 'view',
-      viewTemplatePath: 'pages/organisation/show'
+    redirect: {
+      responseType: 'redirect'
     },
     notFound: {
       description: 'No organisation with the specified ID was found in the database.',
@@ -60,10 +59,8 @@ module.exports = {
     if (!org) {
       throw 'notFound';
     }
-    return {
-      message: 'Organisation successfully created.',
-      org: org,
-      sub: subscription
+    throw {
+      redirect: '/organisation'
     };
   }
 };

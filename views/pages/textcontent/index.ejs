@@ -71,7 +71,7 @@
                     <h1 id="app-title" v-if="!isNewEntry || title !== ''" v-cloak>
                         {{ title }}
                     </h1>
-                    <h1 id="app-title" v-if="isNewEntry && title === '' && allGroups.length !== 0" v-cloak>
+                    <h1 id="app-title" v-if="hasOrganisation && isNewEntry && title ==='' && allGroups.length !== 0" v-cloak>
                         Create new content
                     </h1>
                 </div>
@@ -83,27 +83,36 @@
             <div class="d-flex flex-wrap pt-3">
                 <div class="flex-fill px-3">
                     <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big p-3 flex-grow-1 mb-4">
-                        <div v-if="allGroups.length !== 0" v-cloak>
-                            <div class="font-weight-bold font-extra-small-text">
+                        <div v-if="hasOrganisation && allGroups.length !== 0" v-cloak>
+                            <div class="font-weight-bold font-extra-small-text" v-cloak>
                                 <label for="entryTitle">Title:</label>
                             </div>
                             <textarea class="form-control flex-grow-1" name="title" type="text" minlength="1"
                                       maxlength="80" id="entryTitle" cols="30" rows="1" required
-                                      v-model="title" @input="changeStatus"></textarea>
-                            <div class="mt-4 font-weight-bold font-extra-small-text">
+                                      v-model="title" @input="changeStatus" v-cloak></textarea>
+                            <div class="mt-4 font-weight-bold font-extra-small-text" v-cloak>
                                 <label for="entryContent">Content:</label>
                             </div>
                             <textarea class="form-control flex-grow-1" name="content" type="text" minlength="2"
                                       maxlength="1024" id="entryContent" cols="30" rows="15" required
-                                      v-model="content" @input="changeStatus"></textarea>
+                                      v-model="content" @input="changeStatus" v-cloak></textarea>
                             <div class="invalid-feedback">Please enter your content.</div>
                         </div>
-                        <div v-else id="app-no-grps-section"
+                        <div v-else-if="hasOrganisation && allGroups.length === 0" id="app-no-grps-section"
                              class="d-flex flex-column align-items-center text-center m-0 pt-5" v-cloak>
                             <h2 class="font-normal-text w-50 pb-3" v-cloak>You need to join or create a group before
                                 starting with content creation!</h2>
                             <button class="qntm-button font-special-text shape-rounded-corners-small" v-cloak>
-                                <a class="toolbar-btn" href="/groups/new">Create your first group</a>
+                                <a class="toolbar-btn" href="/groups/new" v-cloak>Create your first group</a>
+                            </button>
+                        </div>
+                        <div v-else id="app-no-grps-section"
+                             class="d-flex flex-column align-items-center text-center m-0 pt-5" v-cloak>
+                            <h2 class="font-normal-text w-50 pb-3" v-cloak>You need to join or create an organisation
+                                before
+                                starting with content creation!</h2>
+                            <button class="qntm-button font-special-text shape-rounded-corners-small" v-cloak>
+                                <a class="toolbar-btn" href="/organisation" v-cloak>Create or join an organisation</a>
                             </button>
                         </div>
                     </div>
@@ -279,6 +288,7 @@
     let app = new Vue({
       el: '#editor',
       data: {
+        hasOrganisation: false,
         allGroups: [],
         showAllGroups: false,
         currentGroup: null,
@@ -310,6 +320,22 @@
         }
       },
       methods: {
+        loadOrganisation: function () {
+          this.hasOrganisation = false;
+          let origin = window.location.origin;
+          let url = new URL(origin + '/api/organisation/findorg');
+
+          fetch(url)
+            .then(res => res.json())
+            .then(data => {
+              data.forEach(entry => {
+                if (entry) {
+                  this.hasOrganisation = true;
+                }
+              })
+
+            });
+        },
         loadAllGroups: function () {
           this.allGroups = [];
           let origin = window.location.origin;
@@ -594,6 +620,7 @@
       },
       /* created() hook for data fetching from backend API when being loaded */
       created() {
+        this.loadOrganisation();
         this.loadAllGroups();
         if (this.allGroups.length > 0) {
           this.loadAllEntries();

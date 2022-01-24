@@ -17,8 +17,7 @@ module.exports = {
     endpoint: {
       type: 'string',
       columnType: 'varchar(80)',
-      maxLength: 80,
-      required: true
+      maxLength: 80
     },
     status: {
       type: 'string',

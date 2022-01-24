@@ -46,7 +46,7 @@ Als Admin einer Organisation hat der Benutzer folgende Möglichkeiten:
   - Den Namen der Organisation editieren.
   - Mitglieder der Organisation mit der Rolle 'Member' aus dieser entfernen.
   - Mitglieder der Organisation mit der Rolle 'Member' als Admin ernennen.
-  - Das Abonnement (Premium, Enterprise, Standard) der Organisation ändern. 
+  - Das Abonnement (Premium, Enterprise, Standard) der Organisation ändern.
 
 Als Admin einer Arbeitsgruppe hat der Benutzer folgende Möglichkeiten:
   `pages/groups/index.ejs`
@@ -267,7 +267,7 @@ Groups `assets/js/pages/groups/index.page.js`:
 - function `deleteFromGrp(ids)` übergibt ein JSON File mit den Id's der Mitglieder, welche aus der Gruppe entfernt werden, an die Action `/api/groups/deletemembers`.
 - function `leaveGrp()` ruft die Action `/groups/leave` auf und entfernt den aktuellen Benutzer aus der Gruppe.
 - function `findMembersToAdd(grp)` ruft die Action `/api/groups/findusers` auf und holt alle Mitglieder aus der Organisation, die derzeit nicht in der ausgewählten Gruppe sind.
-- function `addToGrp()` übergibt ein JSON File mit den ID's der Mitglieder, welche zur Gruppe hinzugefügt werden, an die Action `/api/groups/addtogroup`. 
+- function `addToGrp()` übergibt ein JSON File mit den ID's der Mitglieder, welche zur Gruppe hinzugefügt werden, an die Action `/api/groups/addtogroup`.
 
 
 ## EJS
@@ -343,6 +343,8 @@ Examples:
 ## Sessions
 
 ## SEO & Performance
+
+## Google PageInsights Analyse
 
 ### On-Page SEO
 
