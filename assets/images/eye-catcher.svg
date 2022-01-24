@@ -28,9 +28,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="1"
-     inkscape:cx="158.5"
-     inkscape:cy="188.99999"
+     inkscape:zoom="2"
+     inkscape:cx="135.75"
+     inkscape:cy="181.5"
      inkscape:window-width="1500"
      inkscape:window-height="978"
      inkscape:window-x="-6"
@@ -1832,7 +1832,7 @@
        fx="128.21799"
        fy="118.51753"
        r="92.604164"
-       gradientTransform="matrix(1.0283377,0,0,0.43434227,-4.6700864,66.505963)"
+       gradientTransform="matrix(1.0383377,0,0,0.43862797,-5.0262245,66.394903)"
        gradientUnits="userSpaceOnUse" />
   </defs>
   <g
@@ -1950,9 +1950,9 @@
          transform="rotate(-90,164.72339,104.18535)"><tspan
            x="159.47794"
            y="97.560883"
-           id="tspan34939"><tspan
+           id="tspan2568"><tspan
              style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-             id="tspan34937">IMAGES</tspan></tspan></text>
+             id="tspan2566">IMAGES</tspan></tspan></text>
     </g>
     <g
        id="g22076-2-3-4-5-3-1"
@@ -1966,9 +1966,9 @@
          transform="rotate(-90,171.03259,110.47599)"><tspan
            x="159.47794"
            y="97.560883"
-           id="tspan34943"><tspan
+           id="tspan2572"><tspan
              style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-             id="tspan34941">TEXT</tspan></tspan></text>
+             id="tspan2570">TEXT</tspan></tspan></text>
       <text
          xml:space="preserve"
          transform="matrix(0.08929857,0,0,0.08929857,57.389324,9.4746594)"
@@ -2001,9 +2001,9 @@
          transform="rotate(-90,164.72339,104.18535)"><tspan
            x="159.47794"
            y="97.560883"
-           id="tspan34947"><tspan
+           id="tspan2576"><tspan
              style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-             id="tspan34945">TAGS</tspan></tspan></text>
+             id="tspan2574">TAGS</tspan></tspan></text>
     </g>
     <g
        id="g22076-2-3-4-5-3-9-4"
@@ -2017,9 +2017,9 @@
          transform="rotate(-90,171.03259,110.47599)"><tspan
            x="159.47794"
            y="97.560883"
-           id="tspan34951"><tspan
+           id="tspan2580"><tspan
              style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-             id="tspan34949">GROUPS</tspan></tspan></text>
+             id="tspan2578">GROUPS</tspan></tspan></text>
       <text
          xml:space="preserve"
          transform="matrix(0.08929857,0,0,0.08929857,57.389324,9.4746594)"
@@ -2037,13 +2037,13 @@
        id="path21736-6-9-1"
        sodipodi:nodetypes="cc" />
     <rect
-       style="fill:url(#radialGradient19066);fill-opacity:1;stroke:none;stroke-width:1.10203;stroke-dasharray:2.20405, 2.20405;stroke-dashoffset:11.0203;paint-order:stroke markers fill"
+       style="fill:url(#radialGradient19066);fill-opacity:1;stroke:none;stroke-width:1.11282;stroke-dasharray:2.22564, 2.22564;stroke-dashoffset:11.1282;paint-order:stroke markers fill"
        id="rect1236"
-       width="190.45671"
-       height="80.443802"
+       width="192.30879"
+       height="81.237549"
        x="31.952953"
        y="77.76123"
-       ry="0.60825986" />
+       ry="0.61426163" />
     <g
        transform="matrix(0.26458,0,0,0.26458,-37.270289,6.1698743)"
        id="text1539"
@@ -2254,9 +2254,9 @@
            transform="rotate(-90,164.72339,104.18535)"><tspan
              x="159.47794"
              y="97.560883"
-             id="tspan34955"><tspan
+             id="tspan2584"><tspan
                style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-               id="tspan34953">IMAGES</tspan></tspan></text>
+               id="tspan2582">IMAGES</tspan></tspan></text>
       </g>
       <g
          id="g22076-2-3-4-5-3-1-6"
@@ -2270,9 +2270,9 @@
            transform="rotate(-90,171.03259,110.47599)"><tspan
              x="159.47794"
              y="97.560883"
-             id="tspan34959"><tspan
+             id="tspan2588"><tspan
                style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-               id="tspan34957">TEXT</tspan></tspan></text>
+               id="tspan2586">TEXT</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.08929857,0,0,0.08929857,57.389324,9.4746594)"
@@ -2305,9 +2305,9 @@
            transform="rotate(-90,164.72339,104.18535)"><tspan
              x="159.47794"
              y="97.560883"
-             id="tspan34963"><tspan
+             id="tspan2592"><tspan
                style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-               id="tspan34961">TAGS</tspan></tspan></text>
+               id="tspan2590">TAGS</tspan></tspan></text>
       </g>
       <g
          id="g22076-2-3-4-5-3-9-4-9"
@@ -2321,9 +2321,9 @@
            transform="rotate(-90,171.03259,110.47599)"><tspan
              x="159.47794"
              y="97.560883"
-             id="tspan34967"><tspan
+             id="tspan2596"><tspan
                style="font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:center;text-anchor:middle;fill:#ffffff"
-               id="tspan34965">GROUPS</tspan></tspan></text>
+               id="tspan2594">GROUPS</tspan></tspan></text>
         <text
            xml:space="preserve"
            transform="matrix(0.08929857,0,0,0.08929857,57.389324,9.4746594)"
