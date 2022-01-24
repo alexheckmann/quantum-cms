@@ -1,0 +1,62 @@
+<div class="blue-background d-flex flex-row flex-wrap justify-content-between align-items-center py-3 fixed-bottom"
+     id="cookieBar">
+    <div class="px-3 text-white font-extra-small-text ">
+        By clicking “<span class="font-weight-bold text-white font-extra-small-text">Accept Essential Cookies</span>”,
+        you agree to the storing of cookies on your device to enable basic
+        functionalities.
+    </div>
+    <div class="d-flex align-content-center align-content-center px-3">
+        <div class="d-flex align-items-center">
+            <span class="font-extra-small-text font-weight-bold text-white mr-2 pt-1">Accept Essential Cookies?</span>
+        </div>
+        <div class="px-3 my-3">
+            <button class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text blue-font border-0 w-100"
+                    type="button" onclick="setCookie()">
+                Accept Essential Cookies
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+  function setCookie() {
+    const d = new Date();
+    d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
+    let expires = 'expires=' + d.toUTCString();
+    document.cookie = 'acceptedCookies' + '=' + 'true' + ';' + expires + ';path=/';
+    checkCookie();
+  }
+
+  function getCookie() {
+    let name = 'acceptedCookies' + '=';
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return '';
+  }
+
+  function checkCookie() {
+    let cookieBar = document.getElementById('cookieBar');
+    let acceptedCookies = getCookie('acceptedCookies');
+    if (acceptedCookies === 'true') {
+      console.log(true);
+      cookieBar.style.setProperty('display', 'none', 'important');
+    } else {
+      if (acceptedCookies == null) {
+        cookieBar.style.setProperty('display', 'flex', 'important');
+      }
+    }
+  }
+
+  window.onload = () => {
+
+    checkCookie();
+  };
+</script>
