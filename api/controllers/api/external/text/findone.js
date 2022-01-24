@@ -17,7 +17,7 @@ module.exports = {
   fn: async function ({id}) {
     return await TextContent.findOne({
       where: {id: id},
-      select: ['title', 'content']
+      select: ['content']
     });
   }
 };
