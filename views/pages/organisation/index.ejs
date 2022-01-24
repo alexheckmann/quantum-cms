@@ -1,71 +1,69 @@
-<%- exposeLocalsToBrowser() %>
+<%- exposeLocalsToBrowser(); %>
 <% if(!!org){ %>
-<div class="container py-4">
+<div class="container flex-fill py-4">
     <div class="border rounded mt-2 p-2">
         <!-- Your organisation section-->
         <div class="container">
-            <div class="row">
-                <h3>Your organisation</h3>
-            </div>
             <div>
+                <h3>Your organisation</h3>
                 <label id="orgNameLabel" class="form-control">
                 </label>
                 <label id="orgIdLabel" hidden class="form-control">
                     <%= org.id; %>
                 </label>
             </div>
-            <div id="orgAdminToolbar" class="hidden-toolbar">
-                <button class="qntm-button font-special-text shape-rounded-corners-small">
-                    <a class="toolbar-btn" onclick="editOrg()">Edit</a>
-                </button>
-                <button class="qntm-button font-special-text shape-rounded-corners-small">
-                    <a class="toolbar-btn" onclick="resignFromOrg()">Resign</a>
-                </button>
-                <!--TODO invite link-->
-                <button onclick="" class="qntm-button font-special-text shape-rounded-corners-small">
-                    <a class="toolbar-btn">Invitation link</a>
-                    <img src="/images/icon-copy.svg" alt="Copy to clipboard" id="app-copy-button-icon"
-                         class="d-inline-block flex-shrink-0 qntm-icon-button">
-                </button>
+            <div id="orgAdminToolbar" class="hidden-toolbar flex-row justify-content-between">
+                <div>
+                    <button class="qntm-button font-special-text shape-rounded-corners-small">
+                        <a class="toolbar-btn" onclick="editOrg()">Edit</a>
+                    </button>
+                    <button class="qntm-button font-special-text shape-rounded-corners-small">
+                        <a class="toolbar-btn" onclick="resignFromOrg()">Leave</a>
+                    </button>
+                </div>
+                <div class="text-right">
+                    <label class="font-extra-small-text font-weight-bold pr-3">Invite code:</label>
+                    <input readonly value="<%= org.inviteCode %>"
+                           class="qntm-button font-special-text shape-rounded-corners-small border-0 text-right w-50"/>
+                </div>
             </div>
-            <div id="orgMemberToolbar" class="hidden-toolbar">
+            <div id="orgMemberToolbar" class="hidden-toolbar flex-row justify-content-between">
                 <button class="qntm-button font-special-text shape-rounded-corners-small">
-                    <a class="toolbar-btn" onclick="resignFromOrg()">Resign</a>
+                    <a class="toolbar-btn" onclick="resignFromOrg()">Leave</a>
                 </button>
+                <div class="text-right">
+                    <label class="font-extra-small-text font-weight-bold pr-3">Invite code:</label>
+                    <input readonly value="<%= org.inviteCode %>"
+                           class="qntm-button font-special-text shape-rounded-corners-small border-0 text-right w-50"/>
+                </div>
             </div>
         </div>
     </div>
 
-            <% if(!!sub){ %>
-                <div class="border rounded mt-2 p-2">
-                    <!-- Subscription -->
-                    <div class="container">
-                        <div class="row">
-                            <h3>Subscription</h3>
-                        </div>
-                        <div>
-                            <label id="subNameLabel" class="form-control">
-                                <%= sub.subType.name %>
-                            </label>
-                            <label id="subIdLabel" hidden class="form-control">
-                                <%= sub.id %>
-                            </label>
-                        </div>
-                            <div id="orgAdminSubToolbar" class="hidden-toolbar">
-                                <button class="qntm-button font-special-text shape-rounded-corners-small">
-                                    <a class="toolbar-btn" href="/saveselection/<%= sub.subType.id %>">Change</a>
-                                </button>
-                            </div>
-                    </div>
-                </div>
-                <% } %>
+    <% if(!!sub){ %>
+        <div class="border rounded mt-2 p-2">
+            <!-- Subscription -->
+            <div class="container">
+                <h3>Subscription</h3>
+                <label id="subNameLabel" class="form-control">
+                    <%= sub.subType.name %>
+                </label>
+                <label id="subIdLabel" hidden class="form-control">
+                    <%= sub.id %>
+                </label>
+            </div>
+            <div id="orgAdminSubToolbar" class="hidden-toolbar">
+                <button class="qntm-button font-special-text shape-rounded-corners-small">
+                    <a class="toolbar-btn" href="/saveselection/<%= sub.subType.id %>">Change</a>
+                </button>
+            </div>
+        </div>
+    <% } %>
 
     <!-- Members section-->
     <div class="border rounded mt-2 p-2">
         <div class="container">
-            <div class="row">
-                <h3>Members</h3>
-            </div>
+            <h3>Members</h3>
             <div class="mt-4">
                 <table id="orgMembersTable" data-toolbar="#toolbar"
                        class="table table-bordered membersTable mb-2">
@@ -92,25 +90,31 @@
                     <a class="toolbar-btn" href="/organisation/new">Create your organisation</a>
                 </button>
                 <span class="font-extra-small-text py-3">or</span>
-                <button class="qntm-button font-special-text shape-rounded-corners-small" onclick="showInviteCodeInput()">
+                <button class="qntm-button font-special-text shape-rounded-corners-small"
+                        onclick="showInviteCodeInput()">
                     <span class="toolbar-btn">join an existing one!</span>
                 </button>
                 <div class="flex-column align-items-center pt-3" id="inviteCodeSection">
                     <label class="font-extra-small-text font-weight-bold">Enter your invite code:</label>
-                    <input id="inviteCodeInput" class="border-bottom pb-2 font-headline-text font-weight-bold w-50 text-center"
-                           type="text" autocomplete="false" minlength="8" maxlength="8" required onkeydown="submitCode()"/>
-                    <label class="font-extra-small-text font-weight-bold">It consists of 8 characters <br> (0-9 and a-f):</label>
-                    <label id="inviteCodeAlert" class="font-extra-small-text font-weight-bold text-danger">Please enter a valid code!</label>
+                    <input id="inviteCodeInput"
+                           class="border-bottom pb-2 font-headline-text font-weight-bold w-50 text-center"
+                           type="text" autocomplete="false" minlength="8" maxlength="8" required
+                           onkeydown="submitCode()"/>
+                    <label class="font-extra-small-text font-weight-bold">It consists of 8 characters <br> (0-9 and
+                        a-f):</label>
+                    <label id="inviteCodeAlert" class="font-extra-small-text font-weight-bold text-danger">Please enter
+                        a valid code!</label>
 
                 </div>
             </div>
         </div>
-    <% } %>
-    <script>
-      window.onload = () => {
-        $('#inviteCodeSection').hide();
-        $('#inviteCodeAlert').hide();
-        fetchOrgData();
-      }
-    </script>
+</div>
+<% } %>
+<script>
+  window.onload = () => {
+    $('#inviteCodeSection').hide();
+    $('#inviteCodeAlert').hide();
+    fetchOrgData();
+  }
+</script>
 </div>

@@ -54,7 +54,7 @@ function checkOrgAdminUser() {
 
 function showOrgAdminTools() {
   $('#orgMemberToolbar').hide();
-  $('#orgAdminToolbar').show();
+  $('#orgAdminToolbar').css('display', 'flex');
   $('#orgAdminTableToolbar').show();
   $('#orgAdminSubToolbar').show();
 }
@@ -63,7 +63,7 @@ function showOrgMemberTools() {
   $('#orgAdminToolbar').hide();
   $('#orgAdminTableToolbar').hide();
   $('#orgAdminSubToolbar').hide();
-  $('#orgMemberToolbar').show();
+  $('#orgMemberToolbar').css('display', 'flex');
 }
 
 // fetches the members of the selected group
