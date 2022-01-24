@@ -4,9 +4,35 @@
 
 ## Purpose
 
+Problemstellung
+- Die Verantwortlichen für den Inhalt einer Website können diesen nicht einfach auf der Seite ändern, da dies im HTML geschehen muss.
+- Zusätzlich muss im Zweifel durch die Änderung im HTML die Seite neu deployed werden.
+
+Lösung
+- Content Management System, mit dem man Website-/App-Inhalte an zentraler Stelle verwalten und per API in die Website einbinden kann.
+
+Abheben von anderen CMS
+- intuitiv und leicht zu bedienen (leider auch weniger Features)
+
 ## Persona
 
 ## Product Overview & Main Features
+
+"Main"-features:
+- Als Content-Verantwortlicher benötige ich ein Interface zur Verwaltung von Text-Inhalten, sodass ich diese einfach ändern kann.
+- Als Frontend-Entwickler benötige ich einen Link zum Endpunkt, um Text-Inhalte über eine API in meine Website einbinden zu können
+- Als Content-Verantwortlicher benötige ich die Möglichkeit, die Einträge meiner Kollegen zu sehen, um gut mit ihnen zusammen arbeiten zu können.
+- Als Content-Verantwortlicher benötige ich eine Möglichkeit zur Registrierung, um persönliche Inhalte verwalten zu können.
+
+"Nice 2 have"-features:
+- Als Content-Verantwortlicher benötige ich die Möglichkeit, Bilder verwalten zu können, um Bildinhalte auf meiner Website auch einfach ändern zu können.
+- Als Content-Verantwortlicher benötige ich die Möglichkeit, Videos verwalten zu können, um Bildinhalte auf meiner Website auch einfach ändern zu können.
+- Als Content-Verantwortlicher würde ich gerne verschiedene Versionen meines Texts verwalten können, um zur Not wieder auf eine ältere Version wechseln zu können.
+- Als Content-Verantwortlicher würde ich gerne nach Inhalten suchen können, um diese schnell zu finden.
+
+"Too hard"-features:
+- Als Content-Verantwortlicher würde ich gerne die Single-Sign-On-Lösung meines Unternehmens nutzen können, um das Einloggen simpler zu haben.
+- Als Content-Verantwortlicher hätte ich gerne Vorschläge zu Textinhalten basierend auf Keywords, um möglichst schnell mit den Inhalten fertig zu werden.
 
 ## Kreativ-Prozess
 
