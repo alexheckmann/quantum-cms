@@ -32,7 +32,6 @@ module.exports = {
 
       // sub to org
       let sub = await Subscription.findOne({ organisation: org.id }).populate('subType');
-      console.log('step 1');
       return {
         message: '',
         user: user,
@@ -42,7 +41,6 @@ module.exports = {
       };
 
     } else {
-      sails.log.debug('User has no organisation.');
       return {
         message: 'User has no organisation.',
         user: user,
