@@ -101,6 +101,7 @@ module.exports.routes = {
   'GET /api/organisation/fetchorgmembers': {action: 'api/organisation/fetchorgmembers'},
   'POST /api/organisation/appointadmin': {action: 'api/organisation/appointadmin'},
   'POST /api/organisation/deletemembers': {action: 'api/organisation/deletemembers'},
+  'POST /api/organisation/submitinvite': {action: 'api/organisation/submitinvite'},
 
 
   // api/groups

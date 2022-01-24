@@ -341,8 +341,8 @@ function selectAll() {
 
   let isAllBoxChecked = $('#selectAll')[0].checked; // main checkbox inside table thead
 
-  var table = $('#membersTable'); // table selector
-  var tdCheckbox = table.find('tbody input:checkbox:enabled'); // checboxes inside table body
+  let table = $('#membersTable'); // table selector
+  let tdCheckbox = table.find('tbody input:checkbox:enabled'); // checboxes inside table body
 
   for (let userCheckBox of tdCheckbox) {
     userCheckBox.checked = isAllBoxChecked;
@@ -393,7 +393,7 @@ function createMembersOptions(data) {
 // adds the selected members to the group
 function addToGrp() {
   $('#btnMemberSelectHint').hide();
-  var ids = [];
+  let ids = [];
   // Enumerate over each checked checkbox
   $('#memberSelect option:selected').each(function () {
     ids.push($(this).val());

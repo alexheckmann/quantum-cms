@@ -656,7 +656,7 @@ button:focus {
 }
 
 #entry_endpoint_container, #entry_endpoint, #app-search-button-icon,
-#app-new-button-icon, #app-dropdown-button, #app-delete-button:not(:disabled) {
+#app-new-button-icon, #app-dropdown-button, #app-delete-button:not(:disabled), #noOrgSection > div > button {
   cursor: pointer;
 }
 
@@ -1285,4 +1285,22 @@ footer a:hover {
 #nextStepBtn {
   color: white;
   cursor: pointer;
+}
+
+#inviteCodeSection {
+  display: flex;
+}
+
+#inviteCodeInput {
+  border-width: 0 0 3px 0 !important;
+  border-bottom: var(--color-transparent-blue);
+}
+
+#inviteCodeInput:hover {
+  background-color: white;
+}
+
+#inviteCodeInput:focus {
+  outline: none;
+  border-bottom: var(--color-dark-blue);
 }

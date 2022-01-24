@@ -1,9 +1,4 @@
 <% if(grps.length > 0){ %>
-    <script>
-      window.onload = (event) => {
-        createMemberTable();
-      };
-    </script>
     <div class="container mt-4 mb-4">
         <div id="grpsSection" class="border rounded mt-2 p-2">
             <!-- Your working groups -->
@@ -90,6 +85,11 @@
             </div>
         </div>
     </div>
+    <script>
+      window.onload = (event) => {
+        createMemberTable();
+      };
+    </script>
 <% } else { %>
     <div id="noGrpsSection" class="flex-fill">
         <button class="qntm-button font-special-text shape-rounded-corners-small">

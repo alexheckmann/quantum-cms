@@ -50,20 +50,20 @@ module.exports = {
       status: 'active',
       subType: 3,
       organisation: org.id
-    }
+    };
     // create the new sub
     subscription = await Subscription.create(subscription).fetch();
 
-    sails.log.debug('User:')
-    sails.log.debug(user)
+    sails.log.debug('User:');
+    sails.log.debug(user);
 
     if (!org) {
       throw 'notFound';
     }
     return {
-      message: "Organisation successfully created.",
+      message: 'Organisation successfully created.',
       org: org,
       sub: subscription
     };
   }
-}
+};
