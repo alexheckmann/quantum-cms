@@ -330,11 +330,17 @@ Groups `assets/js/pages/groups/index.page.js`:
 
 ### Server-Side
 
+Auf der Serverseite haben wir Input-Validation zum einen bei den Controllern in den Inputs und zum anderen bei den Attributen in den Models.
+Beispiel für Controller:
+- `api/controllers/textcontent/create.js`
+Beispiel für Model:
+- `api/models/TextContent.js`
+
 ### Client-Side
 
-Validation in HTML Forms
-Examples:
-- `views/pages/textcontent/new.ejs`
+Validation in HTML Forms mit den Attributen minlength/maxlength/required und type text/number/email. 
+Beispiele sind hier zu finden:
+- `views/pages/textcontent/index.ejs`
 - `views/pages/organisation/new.ejs`
 - `views/pages/organisation/edit.ejs`
 - `views/pages/groups/new.ejs`
