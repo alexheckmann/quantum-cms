@@ -231,7 +231,10 @@ assets/js/navbar-animation.js
 ### jQuery
 
 Organisation `assets/js/pages/organisation/index.page.js`:
-- 
+- `.show()` & `.hide()` von allen Toolbar Elementen in den Funktionen `showOrgAdminTools()` und `showOrgMemberTools()`.
+- function `createOrgTableChk(data)` erzeugt eine Tabelle mit Checkboxen, dabei werden die html-Elemente über `$('<element>')` generiert und mit `.append()` zur Tabelle hinzugefügt.
+- function `resetOrgMembersTable()` leert eine Tabelle über `$('#orgMembersTable').empty()`.
+- function `selectAllOrg()`
 
 
 ### Vue.js
