@@ -64,27 +64,27 @@
                     <% if (me) { %>
                         <!-- logged in navbar -->
                         <div class="dropdown">
-                          <button
-                            class="btn btn-secondary dropdown-toggle qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                            type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                            Account
-                          </button>
-                          <div class="dropdown-menu qntm-navbar-dropdown">
-                            <div class="qntm-navbar-dropdown-head d-flex flex-column align-items-center mw-100 text-white">
-                              <h3 class="qntm-navbar-dropdown-head-h3 mw-100 m-0 font-weight-bold text-white">
-                                <%= me.fullName %>
-                              </h3>
-                              <p class="text-white">
-                                <%= me.emailAddress %>
-                              </p>
+                            <button
+                                    class="btn btn-secondary dropdown-toggle qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </button>
+                            <div class="dropdown-menu qntm-navbar-dropdown">
+                                <div class="qntm-navbar-dropdown-head d-flex flex-column align-items-center mw-100 text-white">
+                                    <h3 class="qntm-navbar-dropdown-head-h3 mw-100 m-0 font-weight-bold text-white">
+                                        <%= me.fullName %>
+                                    </h3>
+                                    <p class="text-white">
+                                        <%= me.emailAddress %>
+                                    </p>
+                                </div>
+                                <a class="dropdown-item" href="/account">Profile</a>
+                                <a class="dropdown-item" href="/organisation">Organisation</a>
+                                <a class="dropdown-item" href="/groups">Groups</a>
+                                <a class="dropdown-item" href="/resources">Documentation</a>
+                                <div class="qntm-navbar-dropdown-separator-line m-auto w-100"></div>
+                                <a class="dropdown-item" href="/logout">Sign Out</a>
                             </div>
-                            <a class="dropdown-item" href="/account">Profile</a>
-                            <a class="dropdown-item" href="/organisation">Organisation</a>
-                            <a class="dropdown-item" href="/groups">Groups</a>
-                            <a class="dropdown-item" href="/resources">Documentation</a>
-                            <div class="qntm-navbar-dropdown-separator-line m-auto w-100"></div>
-                            <a class="dropdown-item" href="/logout">Sign Out</a>
-                          </div>
                         </div>
 
                     <% } else { %>
@@ -113,35 +113,35 @@
                     <a href="/resources" class="qntm-navbar-link font-special-text">Resources</a>
                 </li>
                 <hr class="qntm-menu-separator">
-                    <% if (me) { %>
-                          <!--logged in mobile -->
-                          <li class="qntm-navbar-list-item">
-                            <a href="/organisation" class="qntm-navbar-link font-special-text">Organisation</a>
-                          </li>
-                          <li class="qntm-navbar-list-item">
-                            <a href="/groups" class="qntm-navbar-link font-special-text">Groups</a>
-                          </li>
-                          <li class="qntm-navbar-list-item">
-                            <a href="/account/profile" class="qntm-navbar-link font-special-text">Profile</a>
-                          </li>
-                          <li class="qntm-navbar-list-item">
-                            <a href="/resources" class="qntm-navbar-link font-special-text">Documentation</a>
-                          </li>
-                          <hr class="qntm-menu-separator">
+                <% if (me) { %>
+                    <!--logged in mobile -->
+                    <li class="qntm-navbar-list-item">
+                        <a href="/organisation" class="qntm-navbar-link font-special-text">Organisation</a>
+                    </li>
+                    <li class="qntm-navbar-list-item">
+                        <a href="/groups" class="qntm-navbar-link font-special-text">Groups</a>
+                    </li>
+                    <li class="qntm-navbar-list-item">
+                        <a href="/account/profile" class="qntm-navbar-link font-special-text">Profile</a>
+                    </li>
+                    <li class="qntm-navbar-list-item">
+                        <a href="/resources" class="qntm-navbar-link font-special-text">Documentation</a>
+                    </li>
+                    <hr class="qntm-menu-separator">
 
-                          <div class="qntm-menu-button-section d-flex align-content-center align-items-center">
-                            <a href="/logout" class="qntm-navbar-link font-special-text">Sign Out</a>
-                          </div>
-                    <% } else { %>
-                          <!--logged out mobile -->
-                          <div class="qntm-menu-button-section d-flex align-content-center align-items-center">
-                            <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
-                               href="/signup">Try Free</a>
-                            <div>
-                                <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
-                            </div>
-                          </div>
-                    <% } %>
+                    <div class="qntm-menu-button-section d-flex align-content-center align-items-center">
+                        <a href="/logout" class="qntm-navbar-link font-special-text">Sign Out</a>
+                    </div>
+                <% } else { %>
+                    <!--logged out mobile -->
+                    <div class="qntm-menu-button-section d-flex align-content-center align-items-center">
+                        <a class="qntm-secondary-button qntm-primary-button font-special-text shape-rounded-corners-small"
+                           href="/signup">Try Free</a>
+                        <div>
+                            <a href="/login" class="qntm-navbar-link font-special-text">Sign In</a>
+                        </div>
+                    </div>
+                <% } %>
             </ul>
         </div>
     </nav>
@@ -167,10 +167,9 @@
 
 <%- body; %>
 
-<%- partial('../partials/public/cookies.ejs'); %>
 <footer class="footer">
-  <section class="qntm-section-footer">
-      <div class="qntm-separator-line m-auto"></div>
+    <section class="qntm-section-footer">
+        <div class="qntm-separator-line m-auto"></div>
         <div class="qntm-footer-copyright-container d-flex position-relative m-0 p-0 pt-2">
             <a href="/" class="font-small-text pb-2 grey-font">© Double A, Inc. 2021. We love our users!</a>
         </div>

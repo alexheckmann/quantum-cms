@@ -71,7 +71,8 @@
                     <h1 id="app-title" v-if="!isNewEntry || title !== ''" v-cloak>
                         {{ title }}
                     </h1>
-                    <h1 id="app-title" v-if="hasOrganisation && isNewEntry && title ==='' && allGroups.length !== 0" v-cloak>
+                    <h1 id="app-title" v-if="hasOrganisation && isNewEntry && title ==='' && allGroups.length !== 0"
+                        v-cloak>
                         Create new content
                     </h1>
                 </div>
@@ -332,7 +333,7 @@
                 if (entry) {
                   this.hasOrganisation = true;
                 }
-              })
+              });
 
             });
         },
