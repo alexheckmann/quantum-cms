@@ -113,7 +113,7 @@ module.exports.routes = {
   //
   // Groups
   //
-  'GET /groups/new': {view: 'pages/groups/new'},
+  'GET /groups/new': {action: 'groups/view-new-group'},
 
   'GET /groups': {action: 'groups/find'},
 
