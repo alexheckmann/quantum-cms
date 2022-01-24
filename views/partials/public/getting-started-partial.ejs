@@ -6,9 +6,16 @@
 				Start writing your content and deliver it to all of your media channels - all within minutes!
 			</span>
         </div>
+        <% if (!me) { %>
         <a class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
-           href="getting-started">
+           href="/signup">
             Get Started
         </a>
+        <% } else {%>
+            <a class="getting-started-button qntm-primary-button font-special-text shape-rounded-corners-small"
+               href="/dashboard">
+                Get Started
+            </a>
+        <% }%>
     </div>
 </section>
