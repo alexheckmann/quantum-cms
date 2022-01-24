@@ -41,6 +41,21 @@ inhalt aus policies.js beschreiben
 
 #### Admin-Bereich
 
+Als Admin einer Organisation hat der Benutzer folgende Möglichkeiten:
+  `pages/organisation/index.ejs`
+  - Den Namen der Organisation editieren.
+  - Mitglieder der Organisation mit der Rolle 'Member' aus dieser entfernen.
+  - Mitglieder der Organisation mit der Rolle 'Member' als Admin ernennen.
+  - Das Abonnement (Premium, Enterprise, Standard) der Organisation ändern. 
+
+Als Admin einer Arbeitsgruppe hat der Benutzer folgende Möglichkeiten:
+  `pages/groups/index.ejs`
+  - Den Namen und die Beschreibung einer bestehenden Gruppe verändern.
+  - Mitglieder der selben organisation, welche noch nicht in der Gruppe sind, zu dieser hinzufügen.
+  - Mitglieder der Gruppe mit der Rolle 'Member' aus dieser entfernen.
+  - Mitglieder der Gruppe mit der Rolle 'Member' als Admin der Gruppe ernennen.
+
+
 ### Änderungen abhängig von Benutzergruppe
 
 # Der Editor
@@ -215,9 +230,32 @@ assets/js/navbar-animation.js
 
 ### jQuery
 
+Organisation `assets/js/pages/organisation/index.page.js`:
+- 
+
+
 ### Vue.js
 
 ### AJAX
+
+Organisation `assets/js/pages/organisation/index.page.js`:
+- function `findOrg()` ruft die Action `/api/organisation/findorg` auf und holt Namen und ID der Organisation.
+- function `checkOrgAdminUser()` ruft die Action `/api/organisation/checkadmin` auf und gibt zurück ob der aktuelle Benutzer Admin der Organisation ist.
+- function `fetchOrgMembers()`ruft die Action `/api/organisation/fetchorgmembers` auf und holt alle Mitglieder der Organisation.
+- function `appointAsOrgAdmin()` übergibt ein JSON File mit den Id's der Mitglieder, welche als Admin der Organisation ernennt werden, an die Action `/api/organisation/appointadmin`.
+- function `deleteFromOrg()` übergibt ein JSON File mit den Id's der Mitglieder, welche aus der Organisation entfernt werden, an die Action `/api/organisation/deletemembers`.
+
+Groups `assets/js/pages/groups/index.page.js`:
+- function `createGrpDesc(grp)` ruft die Action `/api/groups/description` auf und holt die Beschreibung der ausgewählten Gruppe.
+- function `checkAdminCurrentUser(grp)` ruft die Action `/api/groups/checkadmin` auf und gibt zurück ob der aktuelle Benutzer Admin der ausgewählten Gruppe ist.
+- function `findGrpMembers(grp)` ruft die Action `/api/groups/find` auf und holt die Mitglieder der ausgewählten Gruppe.
+- function `findGrps()` ruft die Action `/api/groups/findgrps` auf und holt alle Gruppen des aktuellen Benutzer.
+- function `appointAsAdmin(ids)` übergibt ein JSON File mit den Id's der Mitglieder, welche als Admin der Gruppe ernennt werden, an die Action `/api/groups/appointadmin`.
+- function `deleteFromGrp(ids)` übergibt ein JSON File mit den Id's der Mitglieder, welche aus der Gruppe entfernt werden, an die Action `/api/groups/deletemembers`.
+- function `leaveGrp()` ruft die Action `/groups/leave` auf und entfernt den aktuellen Benutzer aus der Gruppe.
+- function `findMembersToAdd(grp)` ruft die Action `/api/groups/findusers` auf und holt alle Mitglieder aus der Organisation, die derzeit nicht in der ausgewählten Gruppe sind.
+- function `addToGrp()` übergibt ein JSON File mit den ID's der Mitglieder, welche zur Gruppe hinzugefügt werden, an die Action `/api/groups/addtogroup`. 
+
 
 ## EJS
 

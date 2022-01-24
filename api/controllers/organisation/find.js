@@ -15,13 +15,13 @@ module.exports = {
   },
 
   fn: async function () {
-    var org;
-    var users;
-    // gets the current user
+    let org;
+    let users;
+    // the current user
     let user = await User.findOne({ id: this.req.session.userId }).populate('organisation').populate('admin');
 
     if (!!user.organisation) {
-      // gets the organisation to the current user
+      // the organisation to the current user
       org = await Organisation.findOne({ id: user.organisation.id });
 
       // all user with same org
@@ -45,13 +45,11 @@ module.exports = {
       sails.log.debug('User has no organisation.')
 
       return {
-        // TODO
         message: "User has no organisation.",
         user: user,
         org: org,
         users: users
       };
     }
-
   }
 }

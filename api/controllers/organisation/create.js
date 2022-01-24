@@ -20,6 +20,10 @@ module.exports = {
     success: {
       responseType: 'view',
       viewTemplatePath: 'pages/organisation/show'
+    },
+    notFound: {
+      description: 'No organisation with the specified ID was found in the database.',
+      responseType: 'notFound'
     }
   },
 
@@ -33,7 +37,6 @@ module.exports = {
       name: inputs.organisation,
       inviteCode: randomHex(8)
     };
-
 
     org = await Organisation.create(org).fetch();
     sails.log.debug('Created Organisation:');
@@ -53,9 +56,6 @@ module.exports = {
     };
     // create the new sub
     subscription = await Subscription.create(subscription).fetch();
-
-    sails.log.debug('User:');
-    sails.log.debug(user);
 
     if (!org) {
       throw 'notFound';

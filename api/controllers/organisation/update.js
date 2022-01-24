@@ -26,18 +26,16 @@ module.exports = {
             responseType: 'view',
             viewTemplatePath: 'pages/organisation/show'
         },
+        notFound: {
+            description: 'No organisation with the specified ID was found in the database.',
+            responseType: 'notFound'
+        }
     },
 
 
     fn: async function (inputs) {
         // update organisation
-        sails.log.debug("Update organisation: " + inputs.id)
-        sails.log(inputs);
-
         let org = await Organisation.updateOne({ id: inputs.id }).set(inputs);
-
-        sails.log.debug("Updated organisation: " + inputs.id)
-        sails.log(org);
 
         if (!org) { throw 'notFound'; }
         return {
