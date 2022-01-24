@@ -77,8 +77,6 @@ module.exports.routes = {
   // organisation
   //
   'GET /organisation/new': {action: 'organisation/view-new-organisation'},
-  'POST /organisation': {action: 'organisation/create'},
-
   'GET /organisation/edit': {action: 'organisation/edit'},
   'POST /organisation/:id/update': {action: 'organisation/update'},
 
@@ -94,6 +92,7 @@ module.exports.routes = {
   'GET /api/organisation/findorg': {action: 'api/organisation/findorg'},
   'GET /api/organisation/checkadmin': {action: 'api/organisation/checkadmin'},
   'GET /api/organisation/fetchorgmembers': {action: 'api/organisation/fetchorgmembers'},
+  'POST /api/organisation/create': {action: 'api/organisation/create'},
   'POST /api/organisation/appointadmin': {action: 'api/organisation/appointadmin'},
   'POST /api/organisation/deletemembers': {action: 'api/organisation/deletemembers'},
   'POST /api/organisation/submitinvite': {action: 'api/organisation/submitinvite'},

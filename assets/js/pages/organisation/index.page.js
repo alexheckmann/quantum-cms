@@ -217,6 +217,36 @@ function showInviteCodeInput() {
   $('#inviteCodeSection').show();
 }
 
+function createOrg() {
+  let el = $('#newOrgName');
+  let orgName = el.val();
+  const formData = {
+    organisation: orgName,
+    _csrf: window.SAILS_LOCALS._csrf
+  };
+  const body = JSON.stringify(formData);
+  const postForm = (body) => {
+    return fetch(createFetchURLRoute('/api/organisation/create'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body
+    });
+  };
+  postForm(body)
+    .then(res => {
+      res.json();
+      if (res.ok) {
+
+      }
+    })
+    .then(data => {
+      window.location = '/organisation';
+    });
+}
+
+
 function submitCode() {
   let el = $('#inviteCodeInput');
   let code = el.val();

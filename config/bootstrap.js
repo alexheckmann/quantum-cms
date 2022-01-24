@@ -63,6 +63,12 @@ module.exports.bootstrap = async function() {
     { emailAddress: 'admin@qntm-cms.com', fullName: 'James Bond', isSuperAdmin: true, password: await sails.helpers.passwords.hashPassword('quantum2021#') },
   ]);
 
+  await SubType.createEach([
+    {name: 'Premium', price: 40},
+    {name: 'Enterprise', price: 70},
+    {name: 'Standard', price: 0},
+  ]);
+
   // Save new bootstrap version
   await sails.helpers.fs.writeJson.with({
     destination: bootstrapLastRunInfoPath,

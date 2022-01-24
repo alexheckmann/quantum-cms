@@ -16,15 +16,7 @@ module.exports = {
   },
 
 
-  exits: {
-    redirect: {
-      responseType: 'redirect'
-    },
-    notFound: {
-      description: 'No organisation with the specified ID was found in the database.',
-      responseType: 'notFound'
-    }
-  },
+  exits: {},
 
 
   fn: async function (inputs) {
@@ -36,17 +28,15 @@ module.exports = {
       name: inputs.organisation,
       inviteCode: randomHex(8)
     };
-
+    console.log('create org');
     org = await Organisation.create(org).fetch();
-    sails.log.debug('Created Organisation:');
-    sails.log.debug(org);
-
+    console.log(org);
     // adds the user who created the organisation to it and gives him admin rights.
     let user = await User.updateOne({id: this.req.me.id}).set({
       organisation: org.id,
       admin: org.id
     });
-
+    console.log('create sub');
     // data for a new sub to the org
     let subscription = {
       status: 'active',
@@ -55,12 +45,5 @@ module.exports = {
     };
     // create the new sub
     subscription = await Subscription.create(subscription).fetch();
-
-    if (!org) {
-      throw 'notFound';
-    }
-    throw {
-      redirect: '/organisation'
-    };
   }
 };

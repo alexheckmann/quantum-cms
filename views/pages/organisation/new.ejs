@@ -1,19 +1,20 @@
+<%- exposeLocalsToBrowser(); %>
 <div class="container flex-fill d-flex align-items-center justify-content-center mt-4 mb-4">
     <div class="border shape-rounded-corners-big mt-2 p-2">
         <!-- New organisation -->
         <div class="container px-4 pb-4 pt-2">
-            <form action="/organisation" method="post">
+            <form>
                 <div class="d-flex flex-column align-items-center">
                     <h3>New organisation</h3>
                     <input type="hidden" name="_csrf" value="<%= _csrf; %>"/>
                     <div class="d-flex flex-column w-100 pt-2 pb-3">
                         <label for="organisation" class="font-extra-small-text font-weight-bold">Enter a name:</label>
-                        <input name="organisation" placeholder="Name of the organisation" type="text" maxlength="80"
-                               required/>
+                        <input id="newOrgName" onsubmit="createOrg()" name="organisation" placeholder="Name of the organisation" type="text" maxlength="80"
+                               required autocomplete="off"/>
                     </div>
                     <div>
                         <button class="qntm-primary-button font-special-text shape-rounded-corners-small"
-                                type="submit">Save
+                                type="button" onclick="createOrg()">Save
                         </button>
                         <button class="qntm-primary-button font-special-text shape-rounded-corners-small" type="reset">
                             Reset
