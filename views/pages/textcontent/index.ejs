@@ -40,8 +40,8 @@
                     id="app-dropdown-button"
                     class="qntm-primary-button bg-white w-100 shape-rounded-corners-small border dropdown-toggle
                                     font-special-text font-extra-small-text grey-font">
-                <span v-if="currentGroup !== null" v-cloak>{{ currentGroup.name }}</span>
-                <span v-else>Select a group</span>
+                <span class="w-100" v-if="currentGroup !== null" v-cloak>{{ currentGroup.name }}</span>
+                <span class="w-100 mx-3" v-else>Select a group</span>
             </button>
             <div id="dropdownList"
                  class="app-dropdown-content position-absolute bg-white w-100"
@@ -66,12 +66,13 @@
     </div>
     <div class="flex-fill grey-background d-flex flex-row" role="dialog">
         <form class="flex-fill">
-            <div class="d-flex flex-row align-items-center justify-content-between" style="height: 72px">
+            <div class="d-flex flex-row flex-wrap align-items-center justify-content-between" style="height: 72px">
                 <div class="pl-4 pt-3" v-cloak>
-                    <h1 id="app-title" v-if="!isNewEntry || title !== ''" v-cloak>
+                    <h1 id="app-title" class="font-headline-text w-100" v-if="!isNewEntry || title !== ''" v-cloak>
                         {{ title }}
                     </h1>
-                    <h1 id="app-title" v-if="hasOrganisation && isNewEntry && title ==='' && allGroups.length !== 0"
+                    <h1 id="app-title" class="font-headline-text w-100"
+                        v-if="hasOrganisation && isNewEntry && title ==='' && allGroups.length !== 0"
                         v-cloak>
                         Create new content
                     </h1>
@@ -81,7 +82,7 @@
                     {{ state.TEXT }}
                 </label>
             </div>
-            <div class="d-flex flex-wrap pt-3">
+            <div class="d-flex flex-wrap mt-4">
                 <div class="flex-fill px-3">
                     <div class="bg-white shape-drop-shadow-straight shape-rounded-corners-big p-3 flex-grow-1 mb-4">
                         <div v-if="hasOrganisation && allGroups.length !== 0" v-cloak>
@@ -332,6 +333,7 @@
               data.forEach(entry => {
                 if (entry) {
                   this.hasOrganisation = true;
+                  this.loadAllGroups();
                 }
               });
 
@@ -345,14 +347,16 @@
           fetch(url)
             .then(res => res.json())
             .then(data => {
-              let i = 0;
-              data.forEach(entry => {
-                if (i === 0) {
-                  this.currentGroup = entry;
-                  this.loadAllEntries();
-                }
-                this.allGroups.push(entry);
-              });
+              if (data != null && data.length > 0) {
+                let i = 0;
+                data.forEach(entry => {
+                  if (i === 0) {
+                    this.currentGroup = entry;
+                  }
+                  this.allGroups.push(entry);
+                });
+                this.loadAllEntries();
+              }
             });
         },
         listAllGroups: function () {
@@ -622,10 +626,6 @@
       /* created() hook for data fetching from backend API when being loaded */
       created() {
         this.loadOrganisation();
-        this.loadAllGroups();
-        if (this.allGroups.length > 0) {
-          this.loadAllEntries();
-        }
       }
     });
   };
