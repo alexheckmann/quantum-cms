@@ -425,7 +425,7 @@ Beispiele sind hier zu finden:
 
 ## Sessions
 
-Auf dem `pricing.ejs` View sind die drei unterschiedlichen SubType's beschrieben mit jeweils einem 'Subscribe' Button. Wird einer der Button's ausgelöst, wird die Vorauswahl des Benutzers über die Action `api/controllers/subscription/saveselection.js` in der Session gespeichert. Über einen Redirect wird die Action `getselection.js` aufgerufen, hier wird die in der Session gespeicherte SubType ID via Return an den View übergeben. Im View `pages/subscription/select.ejs` wird der vom Benutzer zuvor gewählte SubType gehighlightet. So kann der Benutzer seine Auswahl direkt bestätigen oder nochmals überdenken.
+Auf dem `pricing.ejs` View sind die drei unterschiedlichen SubType's beschrieben mit jeweils einem 'Subscribe' Button. Wird einer der Button's ausgelöst, wird die Vorauswahl des Benutzers über die Action `api/controllers/subscription/saveselection.js` in der Session gespeichert. Über einen Redirect wird die Action `getselection.js` aufgerufen, hier wird die in der Session gespeicherte SubType ID via Return an den View übergeben. Im View `pages/subscription/select.ejs` wird der vom Benutzer zuvor gewählte SubType gehighlightet. So kann der Benutzer seine Auswahl direkt bestätigen oder nochmals überdenken. Über den 'Next step' Button gelangt der Benutzer auf den `checkorder.ejs` View. Hier werden nochmals Informationen zu dem ausgewählten SubType aufgezeigt. Über den 'Buy now' Butten kann der Kauf bestätigt werden. Der Benutzer kann so mit nur drei Klicks die Subscription der Organisation ändern.
 
 ## SEO & Performance
 
