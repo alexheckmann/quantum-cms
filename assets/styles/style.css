@@ -284,15 +284,6 @@ button:focus {
   color: rgb(255, 255, 255);
 }
 
-/* TODO delete*/
-.qntm-primary-button:focus {
-
-}
-
-.qntm-primary-button:active {
-
-}
-
 .qntm-secondary-button {
   background-color: white;
   border: 1px var(--color-dark-grey) !important;

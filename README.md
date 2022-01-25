@@ -100,7 +100,7 @@ Luigi (32)
 
 ### Farbgebung
 
-Als Farben wurden Blau /
+Als Farben wurden Blautöne sowie leichte Grautöne genutzt, um Professionalität und Intuitivität rüberzubringen.
 
 ### Wireframes
 
@@ -116,11 +116,15 @@ einzusehen: [Wireframes](https://www.figma.com/file/SZDct0TmvQygDVJyrwxgkn/Wiref
 
 ## Funktionsbereiche & Autorisierung
 
-inhalt aus policies.js beschreiben
-
 #### Public
 
+Uneingeloggte User können nur auf views in _pages/public/_ & _pages/entrance/_ zugreifen. Dies hat den Hintergrund, dass
+User auf diesen Seiten nur Informationen sammeln können sollen. Der Zugriff auf _entrance/_ ist nötig, um den
+priviligierten Bereich betreten zu können.
+
 #### Privilegierter Bereich
+
+Im eingeloggten Bereich können die Funktionen der Web-Applikation genutzt werden (siehe Editor).
 
 #### Admin-Bereich
 
@@ -175,15 +179,14 @@ Standardmäßig wird der Inhalt so geladen, dass ein neuer Eintrag erstellt werd
 dieser zusätzlich in der Seitenleiste gehighlightet, um den Überblick zu bewahren. Zusätzlich werden alle
 Eintrag-spezifischen Daten geladen.
 
-## TODO
-
 #### Implementierung
 
-Die Gruppen werden via AJAX Call in `loadAllGroups()`(_siehe index.ejs:Vue:methods:loadAllGroups()_) geladen. Der
-Methodenaufruf findet im `created()`-Lifecycle-Hook von Vue (_siehe index.ejs:Vue:created()_) statt, der ausgeführt
-wird, sobald Vue fertig geladen ist. Zusätzlich wird der erste Eintrag, der geladen wird, als `currentGroup` gesetzt, um
-die UX zu verbessern. Dadurch muss der User nicht immer aufwendig erst eine Gruppe auswählen, sobald er die Seite neu
-lädt. Die Gruppenauswahl wird durch einen Klick auf den **Select a group**-Button (_
+Initial wird überprüft, ob eine Organisation vorhanden ist. Wenn ja, können Gruppen geladen werden. Der Methodenaufruf
+findet im `created()`-Lifecycle-Hook von Vue (_siehe index.ejs:Vue:created()_) statt, der ausgeführt wird, sobald Vue
+fertig geladen ist. Die Gruppen werden via AJAX Call in `loadAllGroups()`(_siehe index.ejs:Vue:methods:loadAllGroups()_)
+geladen. Zusätzlich wird der erste Eintrag, der geladen wird, als `currentGroup` gesetzt, um die UX zu verbessern.
+Dadurch muss der User nicht immer aufwendig erst eine Gruppe auswählen, sobald er die Seite neu lädt. Die Gruppenauswahl
+wird durch einen Klick auf den **Select a group**-Button (_
 siehe index.ejs:#app-dropdown-button && index.ejs:Vue:methods:
 listAllGroups()_) angezeigt. Dadurch wird ein boolean gesetzt, der durch `v-if` die Anzeige togglet. Der Button zeigt,
 je nachdem, ob eine Gruppe ausgewählt ist (`currentGroup !== null)` oder nicht, den Namen der derzeitigen Gruppe bzw.
@@ -226,7 +229,7 @@ aufgelistet werden. Durch das Klicken auf einen der Einträge wird die jeweilige
 
 #### Implementierung
 
-In _api/update.js_ wird bei jedem Speichern zuästlich eine Version im Archiv erstellt.
+In _api/update.js_ wird bei jedem Speichern zusätzlich eine Version im Archiv erstellt.
 
 Alle alten Versionen werden geladen, sobald der User im Editor einen spezifischen Eintrag auswählt (Methodenaufruf
 loadOldVersions() siehe _index.ejs:Vue:methods:loadSingleEntry()_. In der Methodendeklaration (siehe _index.ejs:Vue:
@@ -298,6 +301,9 @@ Stylesheets statt Bootstrap sind alle Situationen, in denen `cursor: pointer`, i
 
 ## MVC
 
+Es wurden Models für die Erstellung von Datenentitäten genutzt, Controller basierend auf Sails.js-Actions zur
+Interaktion mit den Models sowie Views basierend auf EJS-Templates zur
+
 ## Styling
 
 ### Pure CSS
@@ -323,7 +329,27 @@ ein `<div class="flex-fill ...">` sein. Beispiele hierfür sind _/organisation/n
 Um unserer Website den Look & Feel einer wirklichen Applikation zu geben, wurde (zumindest für die Browser, die auf
 Webkit aufbauen) die Scrollbar umgestylet. Dies wurde durch die `::-webkit-scrollbar-*`-Klassen erreicht.
 
+Durch die Verwendung von mehreren Pseudo-Klassen wurde ein Toggle-Switch designt, der an Material Design angelehnt ist.
+
+Weitere Beispiele für komplexere CSS-Konstrukte ist das Styling des **delete**-Buttons im Dashboard, der je nach Status
+disabled oder nicht ein komplett anderes Styling erhält. Dadurch entstehen lange Selektoren
+wie `#app-delete-button:not(:disabled):hover`.
+
+CSS-Transitions & Animationen werden sinnvoll verwendet, um dem User eine hochwertigere Bedienung der Applikation zu
+bieten, bspw. beim Ausklappen der Mobile Navbar, dem Burger Menu oder auf dem Dashboard beim hover über die Tags.
+Hierfür wurde auch ein eigener Keyframe `fadeIn` definiert.
+
+Breakpoints für media-queries wurden nicht von Bootstrap übernommen, sondern anhand eigener Erfahrungen mit unserem
+Layout gesetzt und konsequent optimiert.
+
 ### Bootstrap
+
+Von Bootstrap wurden größtenteils nur Utility Classes verwendet, da der Rest den Anforderungen an die Applikation nicht
+gerecht wurde. An mehreren Stellen wurde zwar probiert, Bootstrap-Komponenten zu nutzen, allerdings ist dies immer an
+technischen Hürden gescheitert. Ein Beispiel ist die Verwendung von Bootstrap-Dropdown für das Laden alter Versionen im
+Editor; dies ist daran gescheitert, dass das von Bootstrap hinterlegte JS schneller ausgeführt wurde als der AJAX Call
+zum Bekommen der Daten, weswegen es zu einem Client Side Error kommt. Aufgrund solcher Errors wurde entschieden,
+Bootstrap nur für dekorative Zwecke zu nutzen und solche Funktionalitäten selber zu implementieren.
 
 ## JavaScript
 
@@ -336,6 +362,8 @@ Webkit aufbauen) die Scrollbar umgestylet. Dies wurde durch die `::-webkit-scrol
   kopieren.
 - `assets/js/pages/subscription/select.page.js`: Hinzufügen und entfernen von Klassen mit
   document.getElementsByClassName, addEventListener und querySelector.
+- Nutzung von eingebauter JS-Funktion `history.back()` zum Zurückspringen auf die davorliegende Seite auf _
+  /organisation/new_ & _/groups/new_.
 
 ### Vanilla JavaScript
 
@@ -369,6 +397,8 @@ Groups `assets/js/pages/groups/index.page.js`:
   -> `$('#memberSelect option:selected').each(function () { ...`.
 
 ### Vue.js
+
+Für die Implementierungen mit Vue, bitte Abschnitt "Der Editor" lesen.
 
 ### AJAX
 
@@ -498,6 +528,10 @@ zu finden:
 - `views/pages/groups/new.ejs`
 - `views/pages/groups/edit.ejs`
 
+Im `views/pages/textcontent/index.ejs` gibt es durch die Nutzung von Vue.js zusätzliche Validierung, dass weder
+unveränderte Inhalte geupdatet (um unnötige Requests und damit Ressourcenverschwendung zu vermeiden) noch leere Strings
+verschickt werden können.
+
 ## Sessions
 
 Auf dem `pricing.ejs` View sind die drei unterschiedlichen SubType's beschrieben mit jeweils einem 'Subscribe' Button.
@@ -600,24 +634,22 @@ Von unserer Seite aus lässt sich hieran nichts ändern, ohne für Heroku etwas 
 - Nutzung von HTTP/2
 - Ressourcen beseitigen, die das Rendering blockieren
 - Bildelemente haben keine explizite `width` und `height`
--
 
 </details>
 
-</details>
-
-## On-Page SEO
+## SEO
 
 **Maßnahmen**:
 
 - SEO-Friendly URLs: kurze, human-friendly URLs
-- Content Mix aus Text, Diagrammen, Hintergrundgraphiken & interaktive Elemente (auf _/features_) für bessere Time-On-Site
+- Content Mix aus Text, Diagrammen, Hintergrundgraphiken & interaktive Elemente (auf _/features_) für bessere
+  Time-On-Site
 - Abwechslungsreiches Layout für höheres Interesse & bessere Dwell Time
-- Verwendnug eines `meta`-Tags: `<meta name="description"
+- Verwendung eines `meta`-Tags: `<meta name="description"
   content="A headless CMS in the cloud, used to provide omnichannel experiences for developers & online marketing.">`
 - Verwendung von Keywords & LSI Keywords auf der gesamten Landingpage
-- SEO-Keywords: content, cms, content management system, qntm, quantum, digital experiences, managing website input,
-  omnichannel, headless cms, cloud
+- SEO-Keywords: content, cms, content management system, qntm, quantum, digital experiences, marketing, omnichannel,
+  headless cms, cloud
 - Responsive Design
 - Interne Verlinkungen durch Call to Action
 - Site Speed-Optimierung durch Verwendung eines seperaten, optimierten Layouts nur für die Landingpage, welches nur
@@ -625,4 +657,3 @@ Von unserer Seite aus lässt sich hieran nichts ändern, ohne für Heroku etwas 
 - Site Speed-Optimierung durch die Verwendung von `svg` statt `png / jpeg`, Nutzung von `alt`-Tags für bessere
   Accessibility & Einbettung von keywords in den Tag-Beschreibungen
 
-## Technische SEO & Performance
