@@ -9,15 +9,15 @@
                     <input type="hidden" name="_csrf" value="<%= _csrf; %>"/>
                     <div class="d-flex flex-column w-100 pt-2 pb-3">
                         <label for="organisation" class="font-extra-small-text font-weight-bold">Enter a name:</label>
-                        <input id="newOrgName" onsubmit="createOrg()" name="organisation" placeholder="Name of the organisation" type="text" maxlength="80"
+                        <input id="newOrgName" class="form-control mw-100" onsubmit="createOrg()" name="organisation" placeholder="Name of the organisation" type="text" maxlength="80"
                                required autocomplete="off"/>
                     </div>
-                    <div>
-                        <button class="qntm-primary-button font-special-text shape-rounded-corners-small"
-                                type="button" onclick="createOrg()">Save
+                    <div class="d-flex flex-wrap justify-content-between">
+                        <button class="qntm-primary-button font-special-text shape-rounded-corners-small mx-1"
+                                type="button" onclick="createOrg()">Create
                         </button>
-                        <button class="qntm-primary-button font-special-text shape-rounded-corners-small" type="reset">
-                            Reset
+                        <button class="qntm-primary-button qntm-secondary-button shape-rounded-corners-small font-special-text mx-1" type="button" onclick="history.back()">
+                            Cancel
                         </button>
                     </div>
                 </div>
