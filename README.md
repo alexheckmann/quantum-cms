@@ -2,6 +2,11 @@
 
 [Quantum CMS](https://qntm-cms.heroku-app.com) application
 
+## Projektteilnehmer
+
+- Alexander Heckmann, MatNr. 298068 
+- Alexander Aichholz, MatNr. 298158
+
 ## Purpose
 
 Problemstellung
@@ -334,16 +339,17 @@ Groups `assets/js/pages/groups/index.page.js`:
 
 ## EJS
 
-- 3 unterschiedliche Layouts -> landing page für Homepage (SEO optimierung)
-- public für header und footer -> links
-- layout für dashboard, damit es nicht so überladen wirkt 
-
 ### Layout
+
+Drei unterschiedliche Layouts:
+- `landingpage-layout.ejs` -> für die Homepage mit SEO Optimierung.
+- `layout.ejs` -> Optimiert für das Dashboard, mit weniger Links im Header, damit die Seite nicht überladen wirkt.
+- `public-layout.ejs` -> Beinhaltet Header und Footer mit allen Links für alle Public Views.
 
 ### Partials
 
-- getting started
-- cookie
+- `views/partials/public/cookies.ejs`: Banner für `Accept Essential Cookies`.
+- `views/partials/public/getting-started-partial.ejs`: Partial mit Motivationsspruch, welches den User dazu bewegen soll sich anzumelden.
 
 ## Daten
 
@@ -419,11 +425,17 @@ Beispiele sind hier zu finden:
 
 ## Sessions
 
-- Subscription buchen
+Auf dem `pricing.ejs` View sind die drei unterschiedlichen SubType's beschrieben mit jeweils einem 'Subscribe' Button. Wird einer der Button's ausgelöst, wird die Vorauswahl des Benutzers über die Action `api/controllers/subscription/saveselection.js` in der Session gespeichert. Über einen Redirect wird die Action `getselection.js` aufgerufen, hier wird die in der Session gespeicherte SubType ID via Return an den View übergeben. Im View `pages/subscription/select.ejs` wird der vom Benutzer zuvor gewählte SubType gehighlightet. So kann der Benutzer seine Auswahl direkt bestätigen oder nochmals überdenken.
 
 ## SEO & Performance
 
+SEO-Keywords: content, cms, content management system, qntm, quantum, digital experiences, managing website input, omnichannel, headless cms, cloud
+
 ## Google PageInsights Analyse
+
+- Performace Desktop: 
+
+- Performace Mobile: 
 
 ### On-Page SEO
 
