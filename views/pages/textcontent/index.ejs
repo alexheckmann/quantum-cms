@@ -29,7 +29,7 @@
             <div class="qntm-navbar-link w-100 pl-4 m-0"
                  @click="loadSingleEntry(entry.id)" v-for="entry in allEntries"
                  :class="{'app-active-nav-link': entry.id === id}" v-cloak>
-                <li class="qntm-navbar-list-item qntm-app-navbar-list-item font-special-text blue-font w-100 pl-1"
+                <li class="qntm-navbar-list-item qntm-app-navbar-list-item font-special-text blue-font w-100 pl-1 mw-100 text-truncate"
                     v-cloak>
                     {{ entry.title }}
                 </li>
@@ -90,7 +90,7 @@
                                 <label for="entryTitle">Title:</label>
                             </div>
                             <textarea class="form-control flex-grow-1" name="title" type="text" minlength="1"
-                                      maxlength="80" id="entryTitle" cols="30" rows="1" required
+                                      maxlength="30" id="entryTitle" cols="30" rows="1" required
                                       v-model="title" @input="changeStatus" v-cloak></textarea>
                             <div class="mt-4 font-weight-bold font-extra-small-text" v-cloak>
                                 <label for="entryContent">Content:</label>
@@ -393,6 +393,7 @@
         },
         createNewEntry: function () {
           this.isNewEntry = true;
+          this.state = State.NEW;
           this.id = '';
           this.title = '';
           this.originalTitle = '';
