@@ -16,6 +16,36 @@ Abheben von anderen CMS
 
 ## Persona
 
+Pauline (27)
+- Arbeitet im Startup als Marketing-Experte und SEO.
+- Das Startup ist in der Modebranche und baut gerade seine Website auf.
+- Perfektionist
+- Wortgewandt
+- Verbringt ihre Zeit gerne mit Lesen und Poetry Slams
+- Sitzt in Cafés mit einem Chai Latte, Avocado-Toast und klassischer Musik
+- Fährt gerne im Sommer Rennrad um den Bodensee
+- Er möchte die Textinhalte auf der neuen Website perfekt passend haben, hat aber keinerlei Kenntnisse von HTML und braucht eine Möglichkeit, die Texte selbstständig ändern zu können.
+
+Kevin (35)
+- Hat gerade seinen Bachelor in Informatik gemacht und hat als Frontend-Entwickler im Busreiseunternehmen seines kleinen Bruders angefangen
+- Nimmt sich gerne seine Zeit, liebt Pizza
+- Hat gerne seine Ruhe
+- Seinen Feierabend verbringt er gerne im Discord mit seinen Studienfreunden beim Zocken oder beim Diskutieren über Kryptowährungen
+- Am Wochenende geht er gerne in Bars zum Billard spielen
+- Seinen Urlaub verbringt er am liebsten in Berlin
+- Er ist genervt davon, ständig vom Marketing Vorschläge zu bekommen, was man denn auf der Website hinschreiben kann, nur weil sie selber keine Änderungen am Frontend machen können
+
+Luigi (32)
+- Ist Besitzer eines Concept Restaurants, in dem jede Woche die Küche einer anderen Region gezeigt wird, um die Vielseitigkeit der italienische Kultur unter die Leute zu bringen
+- Kocht für sein Leben gerne
+- Ist charmant und gesellig
+- Sehr temperamentvoll
+- Könnte den ganzen Tag nur über Essen reden
+- Will seinen Besuchern das bestmögliche Erlebnis bieten
+- Findet Technologie unwichtig, nur Mittel zum Zweck, das Leben findet auf der Straße statt
+- Er würde am liebsten den gesamten Sommer in der Toskana bei seiner Familie verbringen, aber dann würde er gleichzeitig auch sein Restaurant vermissen
+- Eine Website hat er durch eine Agentur entwickelt bekommen, um die wechselnde Speisekarte anzupassen haben sie ihm der Einfachheit halber ein CMS empfohlen. Dadurch wirkt die Website eleganter als mit einer eingebetteten PDF.
+
 ## Product Overview & Main Features
 
 "Main"-features:
@@ -248,8 +278,11 @@ Stylesheets statt Bootstrap sind alle Situationen, in denen `cursor: pointer`, i
 
 ## JavaScript
 
-- DOM Manipulation -> Navbar
-- Cookie
+- `assets/js/navbar-animation.js`: querySelector, EventListener and toggle für Menü- und burger animation.
+- `checkCookie()`, `getCookie()` und `setCookie()` Funktionen mit DOM Manipulation für den Cookie Banner in `views/partials/public/cookies.ejs`
+- function `ignoreKeys(e)` in `assets/js/pages/groups/index.page.js` um das wechseln der Gruppe mit der Tastatur zu deaktivieren, da bei zu schnellem Wechsel der Gruppe das HTML der vorherigen Gruppe ebenfalls angezeigt wird.
+- `copyURL: async function (mytext)` in `views/pages/textcontent/index.ejs` um ein Textelement zum Clipboard zu kopieren.
+- `assets/js/pages/subscription/select.page.js`: Hinzufügen und entfernen von Klassen mit document.getElementsByClassName, addEventListener und querySelector.
 
 ### Vanilla JavaScript
 
@@ -309,7 +342,7 @@ Groups `assets/js/pages/groups/index.page.js`:
 
 ### Partials
 
-- getting Started
+- getting started
 - cookie
 
 ## Daten
@@ -362,7 +395,7 @@ Groups `assets/js/pages/groups/index.page.js`:
 
 ### CRUD
 
-- Textcontent, Gruppen, Org
+- Textcontent, Gruppen, Organisation
 
 ## Input Validation
 
