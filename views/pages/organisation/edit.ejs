@@ -10,7 +10,7 @@
                 <div>
                     <input type="hidden" name="_csrf" value="<%= _csrf %>" />
                     <input type="hidden" name="id" value="<%= org.id %>">
-                    <textarea name="name" placeholder="Name of the organisation" type="text" maxlength="80" id="" cols="30" rows="1"><%= org.name %></textarea>
+                    <textarea name="name" placeholder="Name of the organisation" type="text" maxlength="80" id="" cols="30" rows="1" required><%= org.name %></textarea>
                 </div>
                 <button class="qntm-primary-button font-special-text shape-rounded-corners-small" type="submit">
                     Update
