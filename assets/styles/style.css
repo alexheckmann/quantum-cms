@@ -1293,3 +1293,10 @@ footer a:hover {
   outline: none;
   border-bottom: var(--color-dark-blue);
 }
+
+.qntm-table-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 0;
+}

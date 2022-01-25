@@ -248,6 +248,9 @@ Stylesheets statt Bootstrap sind alle Situationen, in denen `cursor: pointer`, i
 
 ## JavaScript
 
+- DOM Manipulation -> Navbar
+- Cookie
+
 ### Vanilla JavaScript
 
 #### DOM Manipulation
@@ -298,9 +301,16 @@ Groups `assets/js/pages/groups/index.page.js`:
 
 ## EJS
 
+- 3 unterschiedliche Layouts -> landing page für Homepage (SEO optimierung)
+- public für header und footer -> links
+- layout für dashboard, damit es nicht so überladen wirkt 
+
 ### Layout
 
 ### Partials
+
+- getting Started
+- cookie
 
 ## Daten
 
@@ -352,6 +362,8 @@ Groups `assets/js/pages/groups/index.page.js`:
 
 ### CRUD
 
+- Textcontent, Gruppen, Org
+
 ## Input Validation
 
 ### Server-Side
@@ -373,6 +385,8 @@ Beispiele sind hier zu finden:
 - `views/pages/groups/edit.ejs`
 
 ## Sessions
+
+- Subscription buchen
 
 ## SEO & Performance
 
