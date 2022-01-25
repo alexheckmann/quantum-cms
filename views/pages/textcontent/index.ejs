@@ -467,7 +467,7 @@
             });
         },
         update: function () {
-          if (this.title !== this.originalTitle || this.content !== this.originalTitle) {
+          if ((this.title !== this.originalTitle || this.content !== this.originalTitle) && this.title !== '' && this.content !== '') {
             let formData;
             let url;
             if (this.isNewEntry) {
