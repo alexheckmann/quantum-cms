@@ -1,0 +1,123 @@
+<div id="documentation">
+    <section
+        class="d-flex qntm-eye-catcher-section justify-content-center align-items-center align-content-center flex-wrap text-center">
+        <div class="qntm-eye-catcher-title-container">
+            <div class="qntm-eye-catcher-headline font-headline-text blue-font m-auto">
+                <h1>Quantum CMS <br> Documentation</h1>
+            </div>
+        </div>
+    </section>
+    <div class="container pt-5 pb-5">
+        <hr />
+        <p>If your questions are not answered by the documentation, you can <a href="/contact">contact us</a> us
+            at any time. We will take care of your request.</p>
+
+        <h3>Editor</h3>
+        <p>The editor is a form to fill in and save text content in the database. To use the editor, the user must
+            belong to an organisation and join at least one group. When the editor is started, all groups to which the
+            user belongs are loaded. The user will find a selection in the lower left corner, at the bottom of the
+            sidebar. If the user does not belong to a group, a button will be displayed prompting the user to join or
+            create a group. As soon as at least one group exists, a list of all entries for the current group is loaded.
+            Now the user can choose whether to work on an existing entry or create a new entry. By default, the content
+            is loaded so that a new entry can be created. If an entry is selected, it is also highlighted in the sidebar
+            to provide an overview. In addition, all entry-specific data is loaded.</p>
+        <h4>Editing functions</h4>
+        <p>In the editing area, content can be written and titles can be assigned to succinctly describe the content.
+            Furthermore, it is shown when an entry was written, who the author is and - if it happened - who updated it
+            at what time by changing the title and / or content. As soon as the user is satisfied with what has been
+            typed, he or she can use the "Save" button to save a new content or an update.</p>
+        <h4>Versioning</h4>
+        <p>As soon as a user saves a content, an archive entry is automatically created for the overwritten version. All
+            previous versions of an entry can be listed by clicking on the "Retrieve older versions" button. Clicking on
+            one of the entries loads the respective version.</p>
+        <h4>Revert</h4>
+        <p>However, if the user is not satisfied, he or she can use the "Revert" button to reset the content to the
+            initial situation - empty for new entries, the last requested version for existing entries. Even when
+            switching between versions, the originally loaded version is always set as the initial situation. This
+            allows the user to switch between old versions and the latest one without any problems.</p>
+        <h4>Status-Flag</h4>
+        <p>The status flag tells the user in which state the displayed content is. There are 4 different states:</p>
+        <p>'NEW'</p>
+        <ul>
+            <li>'NEW' is displayed when a new content is created.</li>
+        </ul>
+        <p>'ACTIVE'</p>
+        <ul>
+            <li>'ACTIVE' is displayed when a content is loaded and is unchanged.</li>
+        </ul>
+        <p>'UNPUBLISHED'</p>
+        <ul>
+            <li>If an 'ACTIVE' content is changed, the status is set to 'UNPUBLISHED'.</li>
+        </ul>
+        <p>'OLD_VERSION'</p>
+        <ul>
+            <li>When an old version is loaded from the archive, the status changes to 'OLD_VERSION'.</li>
+        </ul>
+
+        <h3>Subscription</h3>
+        <p>To be able to manage text content, each organisation needs a subscription. There are three options to choose
+            from. The 'Standard' option is automatically booked when a new organisation is created. The options are:</p>
+        <p>'Standard'</p>
+        <ul>
+            <li>To explore Quantum CMS in a sandbox environment. Basic configuration options.</li>
+        </ul>
+        <p>'Premium'</p>
+        <ul>
+            <li>For non-productive applications with low or variable traffic. Minimal configuration required.</li>
+        </ul>
+        <p>'Enterprise'</p>
+        <ul>
+            <li>For enterprise-scale production applications. Sophisticated workload functions.</li>
+        </ul>
+        <p>Further information can be obtained via <a href="/pricing">pricing</a> or by <a href="/contact">contacting
+                us</a> directly.</p>
+
+
+        <h3>Organisation</h3>
+        <p>Each user needs an organisation to be able to manage text content. Each user can only be in one organisation.
+            There are two ways to join an organisation:</p>
+        <ol type="a">
+            <li>Create a new organisation.</li>
+            <li>Join an existing organisation via an invitation code.</li>
+        </ol>
+        <p>If the user now belongs to an organisation, a distinction is made between two roles:</p>
+        <ol type="a">
+            <li>The user is a 'member' of the organisation.</li>
+            <li>The user is 'admin' of the organisation.</li>
+        </ol>
+        <p>Members of the organisation can recruit potential members via the invitation code and can also leave the
+            organisation via the "Leave" button.Users with admin rights also have the following options:</p>
+        <ul>
+            <li>Change the group name.</li>
+            <li>Change the subscription of the organisation.</li>
+            <li>Remove members from the organisation.</li>
+            <li>Appoint members of the organisation from role 'member' to 'admin'.</li>
+        </ul>
+
+        <h3>Groups</h3>
+        <p>In order to manage text content in a more specific way, groups are created within the organisation. At
+            least one group is required to create text content. Each member of an organisation can create new groups.
+            Within a group, a distinction is made between two roles:</p>
+        <ol type="a">
+            <li>The user is a 'member' of the group.</li>
+            <li>The user is 'admin' of the group.</li>
+        </ol>
+        <p>As a 'member' you have the following options within the group:</p>
+        <ul>
+            <li>Create new Textcontent.</li>
+            <li>Manage existing Textcontent.</li>
+            <li>Manage tags for text content.</li>
+            <li>Leave the group.</li>
+        </ul>
+        <p>As 'admin' of a group you have additional rights to the 'member' options:</p>
+        <ul>
+            <li>Change the group name.</li>
+            <li>Add members of the organisation who do not belong to the group to the group.</li>
+            <li>Remove members from the group.</li>
+            <li>Appoint members of the group from role 'member' to 'admin'.</li>
+        </ul>
+
+        <p><strong>Last updated: 01/01/2022</strong></p>
+    </div>
+</div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>

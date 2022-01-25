@@ -22,6 +22,7 @@ module.exports.routes = {
   'Get /about': {action: 'public/view-about'},
   'GET /faq': {action: 'public/view-faq'},
   'GET /contact': {action: 'public/view-contact'},
+  'GET /documentation': {action: 'public/view-documentation'},
 
   'GET /terms': {action: 'public/legal/view-terms'},
   'GET /privacy': {action: 'public/legal/view-privacy'},
