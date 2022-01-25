@@ -23,12 +23,17 @@ module.exports = {
 
     const randomHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
 
+    let newInviteCode = randomHex(8);
+    let checkOrgs = await Organisation.find({inviteCode: newInviteCode});
+    while (checkOrgs.length !== 0) {
+      newInviteCode = randomHex(8);
+      checkOrgs = await Organisation.find({inviteCode: newInviteCode});
+    }
     // create new organisation
     let org = {
       name: inputs.organisation,
-      inviteCode: randomHex(8)
+      inviteCode: newInviteCode
     };
-    console.log('create org');
     org = await Organisation.create(org).fetch();
     console.log(org);
     // adds the user who created the organisation to it and gives him admin rights.
@@ -36,7 +41,6 @@ module.exports = {
       organisation: org.id,
       admin: org.id
     });
-    console.log('create sub');
     // data for a new sub to the org
     let subscription = {
       status: 'active',
