@@ -40,8 +40,8 @@
                     id="app-dropdown-button"
                     class="qntm-primary-button bg-white w-100 shape-rounded-corners-small border dropdown-toggle
                                     font-special-text font-extra-small-text grey-font">
-                <span class="w-100" v-if="currentGroup !== null" v-cloak>{{ currentGroup.name }}</span>
-                <span class="w-100 mx-3" v-else>Select a group</span>
+                <span class="w-100 app-info-column" v-if="currentGroup !== null" v-cloak>{{ currentGroup.name }}</span>
+                <span class="w-100 app-info-column" v-else>Select a group</span>
             </button>
             <div id="dropdownList"
                  class="app-dropdown-content position-absolute bg-white w-100"
