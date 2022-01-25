@@ -49,6 +49,7 @@
     <nav role="navigation" class="qntm-navbar text-white position-relative w-100">
         <div class="qntm-navbar-container blue-background d-flex align-items-center align-content-center m-0">
             <a href="/">
+                <!-- using partial since img must be self-contained, and since a font is used for the svg logo, the font would not be rendered -->
                 <%- partial('../../assets/images/quantum_logo.svg'); %>
             </a>
             <div class="qntm-navbar-link-container d-flex justify-content-between align-items-center w-100 m-0">
@@ -90,7 +91,7 @@
                                 <a class="dropdown-item" href="/account">Profile</a>
                                 <a class="dropdown-item" href="/organisation">Organisation</a>
                                 <a class="dropdown-item" href="/groups">Groups</a>
-                                <a class="dropdown-item" href="/documentation">Documentation</a>
+                                <a class="dropdown-item" href="/resources">Documentation</a>
                                 <div class="qntm-navbar-dropdown-separator-line m-auto w-100"></div>
                                 <a class="dropdown-item" href="/logout">Sign Out</a>
                             </div>
@@ -125,11 +126,14 @@
                     <a href="/resources" class="qntm-navbar-link font-special-text">Resources</a>
                 </li>
                 <li class="qntm-navbar-list-item">
-                    <a href="/organisation" class="qntm-navbar-link font-special-text">Company</a>
+                    <a href="/about" class="qntm-navbar-link font-special-text">About Us</a>
                 </li>
                 <hr class="qntm-menu-separator">
                 <% if (me) { %>
                     <!--logged in mobile -->
+                    <li class="qntm-navbar-list-item">
+                        <a href="/dashboard" class="qntm-navbar-link font-special-text">Access Dashboard</a>
+                    </li>
                     <li class="qntm-navbar-list-item">
                         <a href="/organisation" class="qntm-navbar-link font-special-text">Organisation</a>
                     </li>
