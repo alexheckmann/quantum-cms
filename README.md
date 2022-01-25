@@ -404,10 +404,6 @@ Groups `assets/js/pages/groups/index.page.js`:
 
 ## EJS
 
-- 3 unterschiedliche Layouts -> landing page für Homepage (SEO optimierung)
-- public für header und footer -> links
-- layout für dashboard, damit es nicht so überladen wirkt
-
 ### Layout
 
 Drei unterschiedliche Layouts:
