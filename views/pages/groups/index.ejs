@@ -1,10 +1,35 @@
 <% if(!me.organisation){ %>
     <div id="noGrpsSection" class="flex-fill">
-        <span>Before you can create a group, you must belong to an organisation.</span><br>
-        <button class="qntm-button font-special-text shape-rounded-corners-small">
-            <a class="toolbar-btn" href="/organisation">Create or join an organisation!</a>
-        </button>
+        <div class="d-flex flex-column align-items-center justify-content-center">
+            <span class="mb-3">Before you can create a group, you must belong to an organisation.</span>
+            <button class="qntm-button font-special-text shape-rounded-corners-small">
+                <a class="toolbar-btn" href="/organisation/new">Create your organisation</a>
+            </button>
+            <span class="font-extra-small-text py-3">or</span>
+            <button class="qntm-button font-special-text shape-rounded-corners-small"
+                    onclick="showInviteCodeInput()">
+                <span class="toolbar-btn">join an existing one!</span>
+            </button>
+            <div class="flex-column align-items-center pt-3" id="inviteCodeSection">
+                <label class="font-extra-small-text font-weight-bold">Enter your invite code:</label>
+                <input id="inviteCodeInput"
+                       class="border-bottom pb-2 font-headline-text font-weight-bold w-50 text-center"
+                       type="text" autocomplete="false" minlength="8" maxlength="8" required
+                       onkeydown="submitCode()"/>
+                <label class="font-extra-small-text font-weight-bold">The code consists of 8 characters <br> (0-9 and
+                    a-f):</label>
+                <label id="inviteCodeAlert" class="font-extra-small-text font-weight-bold text-danger">Please enter
+                    a valid code!</label>
+            </div>
+        </div>
     </div>
+    <script>
+      window.onload = () => {
+        $('#inviteCodeSection').hide();
+        $('#inviteCodeAlert').hide();
+        fetchOrgData();
+      };
+    </script>
 <% } else { %>
     <% if (grps.length > 0) { %>
         <script>
@@ -18,7 +43,6 @@
                 <div class="container">
                     <div class="d-flex flex-column justify-content-between mt-2">
                         <h3>Groups</h3>
-                        <!--TODO select with keys blocked -> -->
                         <select onkeydown="ignoreKeys(event);" class="custom-select" id="grpSelect"
                                 onchange="resetTable()">
                             <% grps.forEach(function(grps){ %>

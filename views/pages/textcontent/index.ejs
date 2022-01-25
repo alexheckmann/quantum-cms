@@ -89,7 +89,7 @@
                                 <label for="entryTitle">Title:</label>
                             </div>
                             <textarea class="form-control flex-grow-1" name="title" type="text" minlength="1"
-                                      maxlength="30" id="entryTitle" cols="30" rows="1" required
+                                      maxlength="80" id="entryTitle" cols="30" rows="1" required
                                       v-model="title" @input="changeStatus" v-cloak></textarea>
                             <div class="mt-4 font-weight-bold font-extra-small-text" v-cloak>
                                 <label for="entryContent">Content:</label>
@@ -467,7 +467,7 @@
             });
         },
         update: function () {
-          if (this.title !== this.originalTitle || this.content !== this.originalTitle) {
+          if ((this.title !== this.originalTitle || this.content !== this.originalTitle) && this.title !== '' && this.content !== '') {
             let formData;
             let url;
             if (this.isNewEntry) {

@@ -17,5 +17,6 @@ module.exports.policies = {
   'public/*': true,
   'account/logout': true,
   'deliver-contact-form-message': true,
+  'api/external/*': true
 
 };

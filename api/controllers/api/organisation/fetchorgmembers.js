@@ -21,9 +21,6 @@ module.exports = {
     // fetches the org with the selected ID
     let org = await Organisation.findOne({id: inputs.id}).populate('employees').populate('admins');
 
-    console.log('Organisation:');
-    console.log(org);
-
     // members of the organisation
     let members = [];
 
@@ -37,9 +34,6 @@ module.exports = {
         }
       });
     }
-
-    console.log('Members:');
-    console.log(members);
 
     return members;
   }
