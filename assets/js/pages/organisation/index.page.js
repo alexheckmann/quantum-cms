@@ -186,8 +186,6 @@ function deleteFromOrg() {
       .then(data => {
         if (data) {
           resetOrgMembersTable();
-        } else {
-          // TODO Fehlerbehandlung
         }
       });
   } else {
