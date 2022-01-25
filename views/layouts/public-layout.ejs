@@ -17,7 +17,6 @@
     rule. (Include them up here along with any hard-coded «link» tags for Typekit,
     Google Fonts, etc. - above the «body» to prevent the page flickering when fonts
     load.) */ %>
-    <link rel="preload" href="/assets/Pacifico-Bold.woff2" as="font" type="font/woff2" crossorigin>
 
     <% /* Certain scripts, normally analytics tools like Google Tag Manager and
     Google Analytics, should only be included in production: */
@@ -91,7 +90,6 @@
                                 <a class="dropdown-item" href="/account">Profile</a>
                                 <a class="dropdown-item" href="/organisation">Organisation</a>
                                 <a class="dropdown-item" href="/groups">Groups</a>
-                                <a class="dropdown-item" href="/documentation">Documentation</a>
                                 <div class="qntm-navbar-dropdown-separator-line m-auto w-100"></div>
                                 <a class="dropdown-item" href="/logout">Sign Out</a>
                             </div>
@@ -127,7 +125,7 @@
                     <a href="/resources" class="qntm-navbar-link font-special-text">Resources</a>
                 </li>
                 <li class="qntm-navbar-list-item">
-                    <a href="/organisation" class="qntm-navbar-link font-special-text">Company</a>
+                    <a href="/about" class="qntm-navbar-link font-special-text">About Us</a>
                 </li>
                 <hr class="qntm-menu-separator">
                 <% if (me) { %>
@@ -137,9 +135,6 @@
                     </li>
                     <li class="qntm-navbar-list-item">
                         <a href="/account" class="qntm-navbar-link font-special-text">Profile</a>
-                    </li>
-                    <li class="qntm-navbar-list-item">
-                        <a href="/documentation" class="qntm-navbar-link font-special-text">Documentation</a>
                     </li>
                     <hr class="qntm-menu-separator">
 
