@@ -98,6 +98,7 @@ module.exports.routes = {
 
   // api/groups
   'GET /api/groups/find': {action: 'api/groups/find'},
+  'GET /api/groups/leave': {action: 'api/groups/leave'},
   'GET /api/groups/findusers': {action: 'api/groups/findusers'},
   'GET /api/groups/checkadmin': {action: 'api/groups/checkadmin'},
   'GET /api/groups/description': {action: 'api/groups/description'},
@@ -112,8 +113,6 @@ module.exports.routes = {
   'GET /groups/new': {action: 'groups/view-new-group'},
 
   'GET /groups': {action: 'groups/find'},
-
-  'GET /groups/leave': {action: 'groups/leave'},
 
   'POST /groups': {action: 'groups/create'},
 

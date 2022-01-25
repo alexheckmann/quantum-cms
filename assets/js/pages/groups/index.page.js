@@ -328,7 +328,7 @@ function editGrp() {
 // removes the current user from the selected group
 function leaveGrp() {
   let grpId = $('#grpSelect').find(':selected').val();
-  fetch(createFetchURL('/groups/leave', 'id', grpId))
+  fetch(createFetchURL('/api/groups/leave', 'id', grpId))
     .then(res => res.json())
     .then(data => {
       if (data) {

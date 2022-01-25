@@ -17,10 +17,6 @@ module.exports = {
 
 
   exits: {
-    /* success: {
-            responseType: 'view',
-            viewTemplatePath: 'pages/groups/index'
-        }, */
   },
 
 
@@ -37,17 +33,5 @@ module.exports = {
     }
 
     return true;
-    // the current user
-    // let user = await User.findOne({ id: this.req.me.id }).populate('workingGroups').populate('adminOf');
-
-    // if (!user) {throw 'notFound user: ' + this.req.me.id;}
-
-    // the groups of the user
-    // let grps = user.workingGroups;
-
-    /* return {
-            user: user,
-            grps: grps
-        }; */
   }
 };
