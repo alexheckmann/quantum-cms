@@ -48,8 +48,6 @@ module.exports = {
       await Organisation.destroyOne({id: inputs.id});
       // (6) destroy the subscription of the org
       await Subscription.destroyOne().where({id: org.subscription[0].id});
-
-      // TODO Delete content?
     }
     return '/organisation';
   }
