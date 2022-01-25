@@ -190,7 +190,7 @@ function appendToElement(element, type, dataField, value, i) {
 // creates a td element and appends it to a tr
 function appendTdToRow(row, value, i) {
   let id = `${value}${i}`;
-  row.append(`<td id='${id}'>${value}</td>`);
+  row.append(`<td class="qntm-table-text" id='${id}'>${value}</td>`);
 }
 
 // generates a list of the ids of the selected tr elements to be deleted

@@ -17,7 +17,7 @@ module.exports = {
       required: true,
       unique: true,
       isEmail: true,
-      maxLength: 200,
+      maxLength: 40,
       example: 'mary.sue@example.com'
     },
 
@@ -52,7 +52,7 @@ email status until they click the link in the confirmation email.`
       type: 'string',
       required: true,
       description: 'Full representation of the user\'s name.',
-      maxLength: 120,
+      maxLength: 40,
       example: 'Mary Sue van der McHenst'
     },
 
