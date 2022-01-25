@@ -13,7 +13,7 @@
 }
 
 .font-headline-text {
-  font-size: clamp(1.5rem, 2rem, 3rem);
+  font-size: clamp(1.5rem, 2rem, 3rem) !important;
   color: #173361;
 }
 

@@ -35,7 +35,7 @@ module.exports = {
       inviteCode: newInviteCode
     };
     org = await Organisation.create(org).fetch();
-    console.log(org);
+
     // adds the user who created the organisation to it and gives him admin rights.
     let user = await User.updateOne({id: this.req.me.id}).set({
       organisation: org.id,

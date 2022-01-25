@@ -17,7 +17,7 @@ module.exports = {
 
     fn: async function (inputs) {
         // update users as admin
-        var user = await User.findOne({ id: this.req.session.userId }).populate('admin');
+        let user = await User.findOne({ id: this.req.session.userId }).populate('admin');
 
         // set the selected members as admin of the org from the current user
         await User.update({
