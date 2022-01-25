@@ -4,24 +4,30 @@
 
 ## Projektteilnehmer
 
-- Alexander Heckmann, MatNr. 298068 
+- Alexander Heckmann, MatNr. 298068
 - Alexander Aichholz, MatNr. 298158
 
 ## Purpose
 
 Problemstellung
-- Die Verantwortlichen für den Inhalt einer Website können diesen nicht einfach auf der Seite ändern, da dies im HTML geschehen muss.
+
+- Die Verantwortlichen für den Inhalt einer Website können diesen nicht einfach auf der Seite ändern, da dies im HTML
+  geschehen muss.
 - Zusätzlich muss im Zweifel durch die Änderung im HTML die Seite neu deployed werden.
 
 Lösung
-- Content Management System, mit dem man Website-/App-Inhalte an zentraler Stelle verwalten und per API in die Website einbinden kann.
+
+- Content Management System, mit dem man Website-/App-Inhalte an zentraler Stelle verwalten und per API in die Website
+  einbinden kann.
 
 Abheben von anderen CMS
+
 - intuitiv und leicht zu bedienen (leider auch weniger Features)
 
 ## Persona
 
 Pauline (27)
+
 - Arbeitet im Startup als Marketing-Experte und SEO.
 - Das Startup ist in der Modebranche und baut gerade seine Website auf.
 - Perfektionist
@@ -29,61 +35,77 @@ Pauline (27)
 - Verbringt ihre Zeit gerne mit Lesen und Poetry Slams
 - Sitzt in Cafés mit einem Chai Latte, Avocado-Toast und klassischer Musik
 - Fährt gerne im Sommer Rennrad um den Bodensee
-- Er möchte die Textinhalte auf der neuen Website perfekt passend haben, hat aber keinerlei Kenntnisse von HTML und braucht eine Möglichkeit, die Texte selbstständig ändern zu können.
+- Er möchte die Textinhalte auf der neuen Website perfekt passend haben, hat aber keinerlei Kenntnisse von HTML und
+  braucht eine Möglichkeit, die Texte selbstständig ändern zu können.
 
 Kevin (35)
-- Hat gerade seinen Bachelor in Informatik gemacht und hat als Frontend-Entwickler im Busreiseunternehmen seines kleinen Bruders angefangen
+
+- Hat gerade seinen Bachelor in Informatik gemacht und hat als Frontend-Entwickler im Busreiseunternehmen seines kleinen
+  Bruders angefangen
 - Nimmt sich gerne seine Zeit, liebt Pizza
 - Hat gerne seine Ruhe
-- Seinen Feierabend verbringt er gerne im Discord mit seinen Studienfreunden beim Zocken oder beim Diskutieren über Kryptowährungen
+- Seinen Feierabend verbringt er gerne im Discord mit seinen Studienfreunden beim Zocken oder beim Diskutieren über
+  Kryptowährungen
 - Am Wochenende geht er gerne in Bars zum Billard spielen
 - Seinen Urlaub verbringt er am liebsten in Berlin
-- Er ist genervt davon, ständig vom Marketing Vorschläge zu bekommen, was man denn auf der Website hinschreiben kann, nur weil sie selber keine Änderungen am Frontend machen können
+- Er ist genervt davon, ständig vom Marketing Vorschläge zu bekommen, was man denn auf der Website hinschreiben kann,
+  nur weil sie selber keine Änderungen am Frontend machen können
 
 Luigi (32)
-- Ist Besitzer eines Concept Restaurants, in dem jede Woche die Küche einer anderen Region gezeigt wird, um die Vielseitigkeit der italienische Kultur unter die Leute zu bringen
+
+- Ist Besitzer eines Concept Restaurants, in dem jede Woche die Küche einer anderen Region gezeigt wird, um die
+  Vielseitigkeit der italienische Kultur unter die Leute zu bringen
 - Kocht für sein Leben gerne
 - Ist charmant und gesellig
 - Sehr temperamentvoll
 - Könnte den ganzen Tag nur über Essen reden
 - Will seinen Besuchern das bestmögliche Erlebnis bieten
 - Findet Technologie unwichtig, nur Mittel zum Zweck, das Leben findet auf der Straße statt
-- Er würde am liebsten den gesamten Sommer in der Toskana bei seiner Familie verbringen, aber dann würde er gleichzeitig auch sein Restaurant vermissen
-- Eine Website hat er durch eine Agentur entwickelt bekommen, um die wechselnde Speisekarte anzupassen haben sie ihm der Einfachheit halber ein CMS empfohlen. Dadurch wirkt die Website eleganter als mit einer eingebetteten PDF.
+- Er würde am liebsten den gesamten Sommer in der Toskana bei seiner Familie verbringen, aber dann würde er gleichzeitig
+  auch sein Restaurant vermissen
+- Eine Website hat er durch eine Agentur entwickelt bekommen, um die wechselnde Speisekarte anzupassen haben sie ihm der
+  Einfachheit halber ein CMS empfohlen. Dadurch wirkt die Website eleganter als mit einer eingebetteten PDF.
 
 ## Product Overview & Main Features
 
 "Main"-features:
-- Als Content-Verantwortlicher benötige ich ein Interface zur Verwaltung von Text-Inhalten, sodass ich diese einfach ändern kann.
-- Als Frontend-Entwickler benötige ich einen Link zum Endpunkt, um Text-Inhalte über eine API in meine Website einbinden zu können
-- Als Content-Verantwortlicher benötige ich die Möglichkeit, die Einträge meiner Kollegen zu sehen, um gut mit ihnen zusammen arbeiten zu können.
-- Als Content-Verantwortlicher benötige ich eine Möglichkeit zur Registrierung, um persönliche Inhalte verwalten zu können.
+
+- Als Content-Verantwortlicher benötige ich ein Interface zur Verwaltung von Text-Inhalten, sodass ich diese einfach
+  ändern kann.
+- Als Frontend-Entwickler benötige ich einen Link zum Endpunkt, um Text-Inhalte über eine API in meine Website einbinden
+  zu können
+- Als Content-Verantwortlicher benötige ich die Möglichkeit, die Einträge meiner Kollegen zu sehen, um gut mit ihnen
+  zusammen arbeiten zu können.
+- Als Content-Verantwortlicher benötige ich eine Möglichkeit zur Registrierung, um persönliche Inhalte verwalten zu
+  können.
 
 "Nice 2 have"-features:
-- Als Content-Verantwortlicher benötige ich die Möglichkeit, Bilder verwalten zu können, um Bildinhalte auf meiner Website auch einfach ändern zu können.
-- Als Content-Verantwortlicher benötige ich die Möglichkeit, Videos verwalten zu können, um Bildinhalte auf meiner Website auch einfach ändern zu können.
-- Als Content-Verantwortlicher würde ich gerne verschiedene Versionen meines Texts verwalten können, um zur Not wieder auf eine ältere Version wechseln zu können.
+
+- Als Content-Verantwortlicher benötige ich die Möglichkeit, Bilder verwalten zu können, um Bildinhalte auf meiner
+  Website auch einfach ändern zu können.
+- Als Content-Verantwortlicher benötige ich die Möglichkeit, Videos verwalten zu können, um Bildinhalte auf meiner
+  Website auch einfach ändern zu können.
+- Als Content-Verantwortlicher würde ich gerne verschiedene Versionen meines Texts verwalten können, um zur Not wieder
+  auf eine ältere Version wechseln zu können.
 - Als Content-Verantwortlicher würde ich gerne nach Inhalten suchen können, um diese schnell zu finden.
 
 "Too hard"-features:
-- Als Content-Verantwortlicher würde ich gerne die Single-Sign-On-Lösung meines Unternehmens nutzen können, um das Einloggen simpler zu haben.
-- Als Content-Verantwortlicher hätte ich gerne Vorschläge zu Textinhalten basierend auf Keywords, um möglichst schnell mit den Inhalten fertig zu werden.
+
+- Als Content-Verantwortlicher würde ich gerne die Single-Sign-On-Lösung meines Unternehmens nutzen können, um das
+  Einloggen simpler zu haben.
+- Als Content-Verantwortlicher hätte ich gerne Vorschläge zu Textinhalten basierend auf Keywords, um möglichst schnell
+  mit den Inhalten fertig zu werden.
 
 ## Kreativ-Prozess
 
-### Moodboard
+### Farbgebung
 
-### Style Tile
+Als Farben wurden Blau /
 
-## Wireframes
+### Wireframes
 
-## User Stories
-
-<details>
-<summary><b>QTNM-2: Landing Page Content</b></summary>
-<br>
-This is how you dropdown.
-</details>
+Teile des Prototypings / Wireframes / Routing für Public Pages sind hier
+einzusehen: [Wireframes](https://www.figma.com/file/SZDct0TmvQygDVJyrwxgkn/Wireframe?node-id=0%3A1).
 
 ## User Groups
 
@@ -103,19 +125,20 @@ inhalt aus policies.js beschreiben
 #### Admin-Bereich
 
 Als Admin einer Organisation hat der Benutzer folgende Möglichkeiten:
-  `pages/organisation/index.ejs`
-  - Den Namen der Organisation editieren.
-  - Mitglieder der Organisation mit der Rolle 'Member' aus dieser entfernen.
-  - Mitglieder der Organisation mit der Rolle 'Member' als Admin ernennen.
-  - Das Abonnement (Premium, Enterprise, Standard) der Organisation ändern.
+`pages/organisation/index.ejs`
+
+- Den Namen der Organisation editieren.
+- Mitglieder der Organisation mit der Rolle 'Member' aus dieser entfernen.
+- Mitglieder der Organisation mit der Rolle 'Member' als Admin ernennen.
+- Das Abonnement (Premium, Enterprise, Standard) der Organisation ändern.
 
 Als Admin einer Arbeitsgruppe hat der Benutzer folgende Möglichkeiten:
-  `pages/groups/index.ejs`
-  - Den Namen und die Beschreibung einer bestehenden Gruppe verändern.
-  - Mitglieder der selben organisation, welche noch nicht in der Gruppe sind, zu dieser hinzufügen.
-  - Mitglieder der Gruppe mit der Rolle 'Member' aus dieser entfernen.
-  - Mitglieder der Gruppe mit der Rolle 'Member' als Admin der Gruppe ernennen.
+`pages/groups/index.ejs`
 
+- Den Namen und die Beschreibung einer bestehenden Gruppe verändern.
+- Mitglieder der selben organisation, welche noch nicht in der Gruppe sind, zu dieser hinzufügen.
+- Mitglieder der Gruppe mit der Rolle 'Member' aus dieser entfernen.
+- Mitglieder der Gruppe mit der Rolle 'Member' als Admin der Gruppe ernennen.
 
 ### Änderungen abhängig von Benutzergruppe
 
@@ -152,7 +175,7 @@ Standardmäßig wird der Inhalt so geladen, dass ein neuer Eintrag erstellt werd
 dieser zusätzlich in der Seitenleiste gehighlightet, um den Überblick zu bewahren. Zusätzlich werden alle
 Eintrag-spezifischen Daten geladen.
 
-##TODO
+## TODO
 
 #### Implementierung
 
@@ -279,15 +302,40 @@ Stylesheets statt Bootstrap sind alle Situationen, in denen `cursor: pointer`, i
 
 ### Pure CSS
 
+Das individuelle Styling befindet sich in _style.css_. CSS wurde an Stellen genutzt, an denen die Bootstrap Utilities
+nicht vorhanden oder nicht ausreichend waren. Zudem wurde es genutzt, um Bootstrap-Standards zu überschreiben, bspw. die
+Schrift
+_style.css_ wurde modular aufgebaut, anfangs findet man von uns verfasste Utility-Classes wie bspw. verschiedene Font
+Sizes, Hintergründe oder Klassen für `border-radius` & `box-shadow`, damit diese durch das gesamte Styling das gleiche
+Verhalten besitzen. Gerade die Font Sizes sind wichtige Utility Classes, da die Standard-Font Size von Bootstrap nicht
+per se responsiv ist, dies wird nur durch Media-Queries ermöglicht; durch die Verwendung der `clamp()`-Funktion wurde
+hier die Schriftgröße so gesetzt, dass sie mit der View Width skaliert, ganz ohne Media Queries und sprunghafte
+Änderungen der Schriftgröße. Dadurch ist zu jedem Zeitpunkt eine optimale Schriftgröße für den User gegeben.
+
+Nach den Utility Classes folgt `:root`, wo wir eigene Variablen zur Wiederverwendung innerhalb des Stylesheets
+eingebunden haben. Diese geben das Farbschema unseres Designs wider.
+
+Danach wird die Reihenfolge eines `html`-Dokuments durchgegangen. Im `body` gibt es eine wichtige Funktionalität, dort
+wird `display: flex, flex-direction-column, min-height: 100vh` gesetzt, damit auf Seiten, die nicht viel Inhalt haben,
+der Footer trotzdem immer am unteren Bildschirmrand sitzt. Um das zu machen, muss der oberste Tag einer `.ejs`
+ein `<div class="flex-fill ...">` sein. Beispiele hierfür sind _/organisation/new_, _/groups/new_.
+
+Um unserer Website den Look & Feel einer wirklichen Applikation zu geben, wurde (zumindest für die Browser, die auf
+Webkit aufbauen) die Scrollbar umgestylet. Dies wurde durch die `::-webkit-scrollbar-*`-Klassen erreicht.
+
 ### Bootstrap
 
 ## JavaScript
 
 - `assets/js/navbar-animation.js`: querySelector, EventListener and toggle für Menü- und burger animation.
-- `checkCookie()`, `getCookie()` und `setCookie()` Funktionen mit DOM Manipulation für den Cookie Banner in `views/partials/public/cookies.ejs`
-- function `ignoreKeys(e)` in `assets/js/pages/groups/index.page.js` um das wechseln der Gruppe mit der Tastatur zu deaktivieren, da bei zu schnellem Wechsel der Gruppe das HTML der vorherigen Gruppe ebenfalls angezeigt wird.
-- `copyURL: async function (mytext)` in `views/pages/textcontent/index.ejs` um ein Textelement zum Clipboard zu kopieren.
-- `assets/js/pages/subscription/select.page.js`: Hinzufügen und entfernen von Klassen mit document.getElementsByClassName, addEventListener und querySelector.
+- `checkCookie()`, `getCookie()` und `setCookie()` Funktionen mit DOM Manipulation für den Cookie Banner
+  in `views/partials/public/cookies.ejs`
+- function `ignoreKeys(e)` in `assets/js/pages/groups/index.page.js` um das wechseln der Gruppe mit der Tastatur zu
+  deaktivieren, da bei zu schnellem Wechsel der Gruppe das HTML der vorherigen Gruppe ebenfalls angezeigt wird.
+- `copyURL: async function (mytext)` in `views/pages/textcontent/index.ejs` um ein Textelement zum Clipboard zu
+  kopieren.
+- `assets/js/pages/subscription/select.page.js`: Hinzufügen und entfernen von Klassen mit
+  document.getElementsByClassName, addEventListener und querySelector.
 
 ### Vanilla JavaScript
 
@@ -298,50 +346,72 @@ assets/js/navbar-animation.js
 ### jQuery
 
 Organisation `assets/js/pages/organisation/index.page.js`:
+
 - `.show()` & `.hide()` von allen Toolbar Elementen in den Funktionen `showOrgAdminTools()` und `showOrgMemberTools()`.
-- function `createOrgTableChk(data)` erzeugt eine Tabelle mit Checkboxen, dabei werden die html-Elemente über `$('<element>')` generiert und mit `.append()` zur Tabelle hinzugefügt.
+- function `createOrgTableChk(data)` erzeugt eine Tabelle mit Checkboxen, dabei werden die html-Elemente
+  über `$('<element>')` generiert und mit `.append()` zur Tabelle hinzugefügt.
 - function `resetOrgMembersTable()` leert eine Tabelle über `$('#orgMembersTable').empty()`.
 - function `selectAllOrg()` setzt alle Checkboxen die nicht deaktiviert sind auf checked oder umgekehrt.
 - `window.onload = () => { fetchOrgData();}` in `pages/organisation/index.ejs` um die Daten der Organisation zu laden.
 
 Groups `assets/js/pages/groups/index.page.js`:
-- function `createOptions(data)` holt das Select Element `$('#selectGrp')` und fügt option-Elemente an -> `$('<option>').text(...)`.
-- function `appendTdToRow(row, value, i)` erzeugt ein neues `td` Element und fügt es an die übergebene `tr` an.
-- Document ready event -> `$('.membersTable').on('click', 'tr', function (event) { ...` setzt die Checkbox checked/unchecked bei einem Klick in die `tr`.
-- Wird eine Checkbox innerhalb einer `tr` verändert, wird die Class `highlight_row` zur `tr` hinzugefügt/entfernt.
-- function `editGrp()` sucht die ausgewählte Gruppe aus dem `Select` Element über -> `$('#grpSelect').find(':selected').val()`.
-- function `createMembersOptions(data)` holt das Select Element `$('#memberSelect')` und fügt option-Elemente an.
-- In function `addToGrp()` wird von jedem ausgewählten Mitglied die ID in ein Array gepusht -> `$('#memberSelect option:selected').each(function () { ...`.
 
+- function `createOptions(data)` holt das Select Element `$('#selectGrp')` und fügt option-Elemente an
+  -> `$('<option>').text(...)`.
+- function `appendTdToRow(row, value, i)` erzeugt ein neues `td` Element und fügt es an die übergebene `tr` an.
+- Document ready event -> `$('.membersTable').on('click', 'tr', function (event) { ...` setzt die Checkbox
+  checked/unchecked bei einem Klick in die `tr`.
+- Wird eine Checkbox innerhalb einer `tr` verändert, wird die Class `highlight_row` zur `tr` hinzugefügt/entfernt.
+- function `editGrp()` sucht die ausgewählte Gruppe aus dem `Select` Element über
+  -> `$('#grpSelect').find(':selected').val()`.
+- function `createMembersOptions(data)` holt das Select Element `$('#memberSelect')` und fügt option-Elemente an.
+- In function `addToGrp()` wird von jedem ausgewählten Mitglied die ID in ein Array gepusht
+  -> `$('#memberSelect option:selected').each(function () { ...`.
 
 ### Vue.js
 
 ### AJAX
 
 Organisation `assets/js/pages/organisation/index.page.js`:
+
 - function `findOrg()` ruft die Action `/api/organisation/findorg` auf und holt Namen und ID der Organisation.
-- function `checkOrgAdminUser()` ruft die Action `/api/organisation/checkadmin` auf und gibt zurück ob der aktuelle Benutzer Admin der Organisation ist.
-- function `fetchOrgMembers()`ruft die Action `/api/organisation/fetchorgmembers` auf und holt alle Mitglieder der Organisation.
-- function `appointAsOrgAdmin()` übergibt ein JSON File mit den Id's der Mitglieder, welche als Admin der Organisation ernennt werden, an die Action `/api/organisation/appointadmin`.
-- function `deleteFromOrg()` übergibt ein JSON File mit den Id's der Mitglieder, welche aus der Organisation entfernt werden, an die Action `/api/organisation/deletemembers`.
+- function `checkOrgAdminUser()` ruft die Action `/api/organisation/checkadmin` auf und gibt zurück ob der aktuelle
+  Benutzer Admin der Organisation ist.
+- function `fetchOrgMembers()`ruft die Action `/api/organisation/fetchorgmembers` auf und holt alle Mitglieder der
+  Organisation.
+- function `appointAsOrgAdmin()` übergibt ein JSON File mit den Id's der Mitglieder, welche als Admin der Organisation
+  ernennt werden, an die Action `/api/organisation/appointadmin`.
+- function `deleteFromOrg()` übergibt ein JSON File mit den Id's der Mitglieder, welche aus der Organisation entfernt
+  werden, an die Action `/api/organisation/deletemembers`.
 
 Groups `assets/js/pages/groups/index.page.js`:
-- function `createGrpDesc(grp)` ruft die Action `/api/groups/description` auf und holt die Beschreibung der ausgewählten Gruppe.
-- function `checkAdminCurrentUser(grp)` ruft die Action `/api/groups/checkadmin` auf und gibt zurück ob der aktuelle Benutzer Admin der ausgewählten Gruppe ist.
+
+- function `createGrpDesc(grp)` ruft die Action `/api/groups/description` auf und holt die Beschreibung der ausgewählten
+  Gruppe.
+- function `checkAdminCurrentUser(grp)` ruft die Action `/api/groups/checkadmin` auf und gibt zurück ob der aktuelle
+  Benutzer Admin der ausgewählten Gruppe ist.
 - function `findGrpMembers(grp)` ruft die Action `/api/groups/find` auf und holt die Mitglieder der ausgewählten Gruppe.
 - function `findGrps()` ruft die Action `/api/groups/findgrps` auf und holt alle Gruppen des aktuellen Benutzer.
-- function `appointAsAdmin(ids)` übergibt ein JSON File mit den Id's der Mitglieder, welche als Admin der Gruppe ernennt werden, an die Action `/api/groups/appointadmin`.
-- function `deleteFromGrp(ids)` übergibt ein JSON File mit den Id's der Mitglieder, welche aus der Gruppe entfernt werden, an die Action `/api/groups/deletemembers`.
+- function `appointAsAdmin(ids)` übergibt ein JSON File mit den Id's der Mitglieder, welche als Admin der Gruppe ernennt
+  werden, an die Action `/api/groups/appointadmin`.
+- function `deleteFromGrp(ids)` übergibt ein JSON File mit den Id's der Mitglieder, welche aus der Gruppe entfernt
+  werden, an die Action `/api/groups/deletemembers`.
 - function `leaveGrp()` ruft die Action `/groups/leave` auf und entfernt den aktuellen Benutzer aus der Gruppe.
-- function `findMembersToAdd(grp)` ruft die Action `/api/groups/findusers` auf und holt alle Mitglieder aus der Organisation, die derzeit nicht in der ausgewählten Gruppe sind.
-- function `addToGrp()` übergibt ein JSON File mit den ID's der Mitglieder, welche zur Gruppe hinzugefügt werden, an die Action `/api/groups/addtogroup`.
-
+- function `findMembersToAdd(grp)` ruft die Action `/api/groups/findusers` auf und holt alle Mitglieder aus der
+  Organisation, die derzeit nicht in der ausgewählten Gruppe sind.
+- function `addToGrp()` übergibt ein JSON File mit den ID's der Mitglieder, welche zur Gruppe hinzugefügt werden, an die
+  Action `/api/groups/addtogroup`.
 
 ## EJS
+
+- 3 unterschiedliche Layouts -> landing page für Homepage (SEO optimierung)
+- public für header und footer -> links
+- layout für dashboard, damit es nicht so überladen wirkt
 
 ### Layout
 
 Drei unterschiedliche Layouts:
+
 - `landingpage-layout.ejs` -> für die Homepage mit SEO Optimierung.
 - `layout.ejs` -> Optimiert für das Dashboard, mit weniger Links im Header, damit die Seite nicht überladen wirkt.
 - `public-layout.ejs` -> Beinhaltet Header und Footer mit allen Links für alle Public Views.
@@ -349,7 +419,8 @@ Drei unterschiedliche Layouts:
 ### Partials
 
 - `views/partials/public/cookies.ejs`: Banner für `Accept Essential Cookies`.
-- `views/partials/public/getting-started-partial.ejs`: Partial mit Motivationsspruch, welches den User dazu bewegen soll sich anzumelden.
+- `views/partials/public/getting-started-partial.ejs`: Partial mit Call to Action, welches den User dazu bewegen soll,
+  sich anzumelden.
 
 ## Daten
 
@@ -370,17 +441,22 @@ Drei unterschiedliche Layouts:
 ### Associations
 
 #### Many-to-Many
+
 (m <---> n)
+
 - `User/workingGroups` has and belongs to many `WorkingGroup/workers`
 - `User/adminOf` has and belongs to many `WorkingGroup/admins`
 - `TextContent/tags` has and belongs to many `Tag/textContentTag`
 - `ImageContent/tags` has and belongs to many `Tag/imageContentTag`
 
 #### One way assocations
+
 (n ---> 1)
 
 #### One-to-Many
+
 (1 <---> n)
+
 - `User/authorOfText` has many `TextContent/author`
 - `User/hasUpdatedText` has many `TextContent/updatedFrom`
 - `User/authorOfImage` has many `ImageContent/author`
@@ -397,6 +473,7 @@ Drei unterschiedliche Layouts:
 - `Subscription/invoices` has many `Invoice/subscription`
 
 #### One-to-One
+
 (1 <---> 0..1)
 
 ### CRUD
@@ -407,16 +484,18 @@ Drei unterschiedliche Layouts:
 
 ### Server-Side
 
-Auf der Serverseite haben wir Input-Validation zum einen bei den Controllern in den Inputs und zum anderen bei den Attributen in den Models.
-Beispiel für Controller:
+Auf der Serverseite haben wir Input-Validation zum einen bei den Controllern in den Inputs und zum anderen bei den
+Attributen in den Models. Beispiel für Controller:
+
 - `api/controllers/textcontent/create.js`
-Beispiel für Model:
+  Beispiel für Model:
 - `api/models/TextContent.js`
 
 ### Client-Side
 
-Validation in HTML Forms mit den Attributen minlength/maxlength/required und type text/number/email. 
-Beispiele sind hier zu finden:
+Validation in HTML Forms mit den Attributen minlength/maxlength/required und type text/number/email. Beispiele sind hier
+zu finden:
+
 - `views/pages/textcontent/index.ejs`
 - `views/pages/organisation/new.ejs`
 - `views/pages/organisation/edit.ejs`
@@ -425,18 +504,129 @@ Beispiele sind hier zu finden:
 
 ## Sessions
 
-Auf dem `pricing.ejs` View sind die drei unterschiedlichen SubType's beschrieben mit jeweils einem 'Subscribe' Button. Wird einer der Button's ausgelöst, wird die Vorauswahl des Benutzers über die Action `api/controllers/subscription/saveselection.js` in der Session gespeichert. Über einen Redirect wird die Action `getselection.js` aufgerufen, hier wird die in der Session gespeicherte SubType ID via Return an den View übergeben. Im View `pages/subscription/select.ejs` wird der vom Benutzer zuvor gewählte SubType gehighlightet. So kann der Benutzer seine Auswahl direkt bestätigen oder nochmals überdenken.
+Auf dem `pricing.ejs` View sind die drei unterschiedlichen SubType's beschrieben mit jeweils einem 'Subscribe' Button.
+Wird einer der Buttons ausgelöst, wird die Vorauswahl des Benutzers über die
+Action `api/controllers/subscription/saveselection.js` in der Session gespeichert. Über einen Redirect wird die
+Action `getselection.js` aufgerufen, hier wird die in der Session gespeicherte SubType ID via Return an den View
+übergeben. Im View `pages/subscription/select.ejs` wird der vom Benutzer zuvor gewählte SubType gehighlightet. So kann
+der Benutzer seine Auswahl direkt bestätigen oder nochmals überdenken.
 
 ## SEO & Performance
 
-SEO-Keywords: content, cms, content management system, qntm, quantum, digital experiences, managing website input, omnichannel, headless cms, cloud
+## PageSpeed Insights
+
+<details>
+<summary><i>Mobile</i></summary>
+
+**Leistung**: 85
+
+**First Contentful Paint**: 3,1s
+
+**Time to Interactive**: 3,1s
+
+**Speed Index**: 4,5s
+
+**Total Blocking Time**: 0ms
+
+**Largest Contentful Paint**: 3,1s
+
+**Cumulative Layout Shift**: 0,026
+</details>
+
+<details>
+<summary><i>Desktop</i></summary>
+
+**Leistung**: 97
+
+**First Contentful Paint**: 0,9s
+
+**Time to Interactive**: 0,9s
+
+**Speed Index**: 1,5s
+
+**Total Blocking Time**: 0ms
+
+**Largest Contentful Paint**: 0,9s
+
+**Cumulative Layout Shift**: 0,008
+</details>
+
+### Empfehlungen
+
+<details>
+<summary><i>Ressourcen beseitigen, die das Rendering blockieren</i></summary>
+
+> bootstrap-4.css & style.css
+
+Möglichkeit zur weiteren Optimierung wäre, sämtlichen Layout-spezifischen Styles inline anzugeben und alles andere erst
+später zu laden. Dadurch gäbe es aber auch nur eine Einsparung von insgesamt 140ms.
+</details>
+<details>
+<summary><i>Erstreaktion des Servers verringern</i></summary>
+
+Von unserer Seite aus lässt sich hieran nichts ändern, ohne für Heroku etwas zu zahlen.
+</details>
+
+## Lighthouse
+
+<details>
+<summary><i>Mobile</i></summary>
+
+**Performance**: 92
+
+**Accessibility**: 76
 
 ## Google PageInsights Analyse
 
-- Performace Desktop: 
+**Best Practices**: 100
 
-- Performace Mobile: 
+**SEO**: 100
 
-### On-Page SEO
+</details>
 
-### Technische SEO & Performance
+<details>
+<summary><i>Desktop</i></summary>
+
+**Performance**: 99
+
+**Accessibility**: 80
+
+**Best Practices**: 100
+
+**SEO**: 100
+
+</details>
+
+<details>
+
+<summary><b>Empfehlungen</b></summary>
+
+- Nutzung von HTTP/2
+- Ressourcen beseitigen, die das Rendering blockieren
+- Bildelemente haben keine explizite `width` und `height`
+-
+
+</details>
+
+</details>
+
+## On-Page SEO
+
+**Maßnahmen**:
+
+- SEO-Friendly URLs: kurze, human-friendly URLs
+- Content Mix aus Text, Diagrammen, Hintergrundgraphiken & interaktive Elemente (auf _/features_) für bessere Time-On-Site
+- Abwechslungsreiches Layout für höheres Interesse & bessere Dwell Time
+- Verwendnug eines `meta`-Tags: `<meta name="description"
+  content="A headless CMS in the cloud, used to provide omnichannel experiences for developers & online marketing.">`
+- Verwendung von Keywords & LSI Keywords auf der gesamten Landingpage
+- SEO-Keywords: content, cms, content management system, qntm, quantum, digital experiences, managing website input,
+  omnichannel, headless cms, cloud
+- Responsive Design
+- Interne Verlinkungen durch Call to Action
+- Site Speed-Optimierung durch Verwendung eines seperaten, optimierten Layouts nur für die Landingpage, welches nur
+  nötiges JavaScript für die Bedienung der Mobile Navbar beinhaltet
+- Site Speed-Optimierung durch die Verwendung von `svg` statt `png / jpeg`, Nutzung von `alt`-Tags für bessere
+  Accessibility & Einbettung von keywords in den Tag-Beschreibungen
+
+## Technische SEO & Performance
