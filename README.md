@@ -454,6 +454,11 @@ Drei unterschiedliche Layouts:
 - `views/partials/public/getting-started-partial.ejs`: Partial mit Call to Action, welches den User dazu bewegen soll,
   sich anzumelden.
 
+Bei `views/partials/group/index.ejs` bzw. `views/partials/organisation/index.ejs` für das Joinen von Organisationen oder
+bei den verschiedenen Navbars aus `public-layout / landingpage-layout / layout`  wurden explizit keine Partials
+verwendet, da sich hier das HTML / CSS / JS minimal unterschiedlich verhält und deswegen keine Wiederverwendbarkeit
+durch Partials genutzt werden könnte.
+
 ## Daten
 
 ### Datenmodell
