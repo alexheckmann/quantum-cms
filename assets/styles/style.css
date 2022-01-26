@@ -164,7 +164,7 @@ button {
   border: none !important;
 }
 
-button:focus {
+button:focus, .qntm-primary-button {
   outline: 0;
   box-shadow: var(--box-shadow-highlight);
 }
