@@ -144,6 +144,12 @@ Als Admin einer Arbeitsgruppe hat der Benutzer folgende Möglichkeiten:
 - Mitglieder der Gruppe mit der Rolle 'Member' aus dieser entfernen.
 - Mitglieder der Gruppe mit der Rolle 'Member' als Admin der Gruppe ernennen.
 
+Bei beiden Adminrollen wurde die Autorisierung nicht über zentrale Policies geprüft, sondern über dezentrale Abfragen in
+den jeweiligen Controllern geprüft. Dies wurde so gelöst, da Sails diese Lösung selbst als Best Practice in der
+Dokumentation beschrieben hat. Zudem wurde ausdrücklich davon abgesehen, andere Admins von ihrer Rolle entbinden zu
+können, da dadurch organisatorische Probleme entstehen können, Situationen, in denen es keinen Admin mehr geben könnte
+oder in denen diese Funktion für falsche Zwecke verwendet wird.
+
 ### Änderungen abhängig von Benutzergruppe
 
 # Der Editor
