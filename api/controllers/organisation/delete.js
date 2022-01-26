@@ -30,16 +30,30 @@ module.exports = {
       admin: null
     });
 
+    let userGroups = await User.findOne({
+      where: {
+        id: this.req.me.id
+      }
+    }).populate('workingGroups');
+
+    console.log(userGroups);
+
+    let userGroupIds = [];
+    userGroups.workingGroups.forEach(entry => {
+      userGroupIds.push(entry.id);
+    });
+
+    await User.removeFromCollection(this.req.me.id, 'workingGroups', userGroupIds);
+    await User.removeFromCollection(this.req.me.id, 'adminOf', userGroupIds);
+
     // (2) gets the org with empoyees and the subscription
     let org = await Organisation.findOne({id: inputs.id}).populate('employees').populate('subscription').populate('workingGroups');
-    console.log(org);
     // (3) checks whether the organisation still has employees
     if (org.employees.length === 0) {
       let groupIds = [];
       org.workingGroups.forEach(entry => {
         groupIds.push(entry.id);
       });
-      console.log(org.workingGroups);
       // (4) destroy all entries of related groups
       await TextContent.destroy({group: groupIds});
       // (4) destroy all workingGroups from the org
