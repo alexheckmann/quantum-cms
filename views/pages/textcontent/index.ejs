@@ -504,17 +504,16 @@
                 if (this.isNewEntry) {
                   this.isNewEntry = false;
                   this.loadSingleEntry(data.id);
-                  this.loadAllEntries();
                 } else {
                   this.originalTitle = this.title;
                   this.originalContent = this.content;
                   this.updatedAt = convertDate(data.updatedAt);
                   this.updatedFrom = data.updatedFrom;
                   this.oldVersions = [];
-
                   this.loadOldVersions();
                 }
 
+                this.loadAllEntries();
                 this.state = State.ACTIVE;
               });
           }
