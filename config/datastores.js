@@ -49,14 +49,9 @@ module.exports.datastores = {
     *    (See https://sailsjs.com/config/datastores for help.)                 *
     *                                                                          *
     ***************************************************************************/
-    // adapter: 'sails-mysql',
     // url: 'mysql://user:password@host:port/database',
-    adapter: 'sails-mysql',
-    host: '193.196.53.194',
-    port: 33061,
-    user: 'user3',
-    password: 'n115113',
-    database: 'qntmcms'
+    adapter: 'sails-mongo',
+    url: process.env.MONGODB_URI
   },
 
 
