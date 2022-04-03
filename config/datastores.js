@@ -33,7 +33,7 @@ module.exports.datastores = {
   ***************************************************************************/
 
   default: {
-    migration: 'alter', // 'drop' or 'safe'
+    migration: 'safe', // 'drop' or 'safe'
 
     /***************************************************************************
     *                                                                          *
@@ -49,7 +49,6 @@ module.exports.datastores = {
     *    (See https://sailsjs.com/config/datastores for help.)                 *
     *                                                                          *
     ***************************************************************************/
-    // url: 'mysql://user:password@host:port/database',
     adapter: 'sails-mongo',
     url: process.env.MONGODB_URI
   },
