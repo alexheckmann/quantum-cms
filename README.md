@@ -1,5 +1,14 @@
 # quantum-cms
 
+A self-written headless content management system written with Sails.js and Vue.js.
+
+This project was carried out as the main project for the Web Technologies course at HTWG Konstanz.
+The tasks included the following:
+
+- Come up with an idea and business model for a web-based start-up.
+- Come up with personas, use cases, a brand identity, and wireframes / UI designs.
+- Implement the business idea weekly, adjusting / adding implementation details based on each weeks lecture topic. This exposed us to the whole process of implementing a static HTML to making it dynamic via JavaScript, add DOM manipulation with jQuery, adding the MVC framework, and in the end refactor the heart of the application, the editor, to use Vue.js instead to give it a Single Page Application feel.  
+
 ## Project Participants
 
 - Alexander Heckmann
@@ -97,14 +106,23 @@ Parts of the prototyping, wireframes, and routing for public pages can be viewed
 - Organization Admin
 - Working Group Admin
 
-## Tech Stack
+## Tech Stack & Tools
 
+### Tech Stack
 The tech stack was given by the professor.
 
 - Sails.js for a MVC framework
 - Vue.js for client-side rendering
 - Heroku for deployment
 - Bootstrap for utilities
+
+### Tools
+
+For carrying out this project, multiple tools were used:
+
+- Miro for collaboration and ideation
+- Jira for project management
+- Figma for wireframes & UI design
 
 ## Functional Areas & Authorization
 
