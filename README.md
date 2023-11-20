@@ -1,375 +1,290 @@
 # quantum-cms
 
-[Quantum CMS](https://qntm-cms.heroku-app.com) application
+## Project Participants
 
-## Projektteilnehmer
-
-- Alexander Heckmann, MatNr. 298068
-- Alexander Aichholz, MatNr. 298158
+- Alexander Heckmann
+- Alexander Aichholz
 
 ## Purpose
 
-Problemstellung
+Problem Statement
 
-- Die Verantwortlichen für den Inhalt einer Website können diesen nicht einfach auf der Seite ändern, da dies im HTML
-  geschehen muss.
-- Zusätzlich muss im Zweifel durch die Änderung im HTML die Seite neu deployed werden.
+The individuals responsible for the content of a website cannot simply change it on the page, as this needs to be done in HTML.
+Additionally, in case of doubt, changing the HTML may require redeploying the page.
+Solution
 
-Lösung
+A Content Management System that allows managing website/app content from a central location and integrating it into the website via an API.
 
-- Content Management System, mit dem man Website-/App-Inhalte an zentraler Stelle verwalten und per API in die Website
-  einbinden kann.
+Standing Out from Other CMS:
 
-Abheben von anderen CMS
-
-- intuitiv und leicht zu bedienen (leider auch weniger Features)
+- Intuitive and easy to use (unfortunately, this means fewer features).
 
 ## Persona
 
 Pauline (27)
 
-- Arbeitet im Startup als Marketing-Experte und SEO.
-- Das Startup ist in der Modebranche und baut gerade seine Website auf.
-- Perfektionist
-- Wortgewandt
-- Verbringt ihre Zeit gerne mit Lesen und Poetry Slams
-- Sitzt in Cafés mit einem Chai Latte, Avocado-Toast und klassischer Musik
-- Fährt gerne im Sommer Rennrad um den Bodensee
-- Er möchte die Textinhalte auf der neuen Website perfekt passend haben, hat aber keinerlei Kenntnisse von HTML und
-  braucht eine Möglichkeit, die Texte selbstständig ändern zu können.
+- Works at a startup as a marketing expert and SEO.
+- The startup is in the fashion industry and is currently building its website.
+- Perfectionist
+- Eloquent
+- Enjoys spending time reading and attending poetry slams
+- Likes to sit in cafes with a chai latte, avocado toast, and classical music
+- Enjoys cycling around Lake Constance in the summer
+- Wants the text content on the new website to be perfect, but has no knowledge of HTML and needs a way to change the texts independently.
 
 Kevin (35)
 
-- Hat gerade seinen Bachelor in Informatik gemacht und hat als Frontend-Entwickler im Busreiseunternehmen seines kleinen
-  Bruders angefangen
-- Nimmt sich gerne seine Zeit, liebt Pizza
-- Hat gerne seine Ruhe
-- Seinen Feierabend verbringt er gerne im Discord mit seinen Studienfreunden beim Zocken oder beim Diskutieren über
-  Kryptowährungen
-- Am Wochenende geht er gerne in Bars zum Billard spielen
-- Seinen Urlaub verbringt er am liebsten in Berlin
-- Er ist genervt davon, ständig vom Marketing Vorschläge zu bekommen, was man denn auf der Website hinschreiben kann,
-  nur weil sie selber keine Änderungen am Frontend machen können
+- Just completed his Bachelor's degree in Computer Science and started as a frontend developer in his younger brother's bus travel company
+- Takes his time, loves pizza
+- Enjoys peace
+- Spends his evenings on Discord with college friends, gaming, or discussing cryptocurrencies
+- Likes to play pool in bars on weekends
+- Prefers to spend his vacations in Berlin
+- Annoyed by constant suggestions from marketing about what to write on the website, just because they can't make changes to the frontend themselves
 
 Luigi (32)
 
-- Ist Besitzer eines Concept Restaurants, in dem jede Woche die Küche einer anderen Region gezeigt wird, um die
-  Vielseitigkeit der italienische Kultur unter die Leute zu bringen
-- Kocht für sein Leben gerne
-- Ist charmant und gesellig
-- Sehr temperamentvoll
-- Könnte den ganzen Tag nur über Essen reden
-- Will seinen Besuchern das bestmögliche Erlebnis bieten
-- Findet Technologie unwichtig, nur Mittel zum Zweck, das Leben findet auf der Straße statt
-- Er würde am liebsten den gesamten Sommer in der Toskana bei seiner Familie verbringen, aber dann würde er gleichzeitig
-  auch sein Restaurant vermissen
-- Eine Website hat er durch eine Agentur entwickelt bekommen, um die wechselnde Speisekarte anzupassen haben sie ihm der
-  Einfachheit halber ein CMS empfohlen. Dadurch wirkt die Website eleganter als mit einer eingebetteten PDF.
+- Owner of a concept restaurant that showcases the cuisine of a different region each week to bring the diversity of Italian culture to the public
+- Loves cooking
+- Charming and sociable
+- Very temperamental
+- Could talk about food all day
+- Aims to provide the best possible experience for his visitors
+- Finds technology unimportant, just a means to an end; believes real life happens on the street
+- Would love to spend the entire summer in Tuscany with his family, but would miss his restaurant
+- Had a website developed by an agency; for simplicity in updating the ever-changing menu, they recommended a CMS, making the website look more elegant than with an embedded PDF.
 
 ## Product Overview & Main Features
 
-"Main"-features:
+### Main features:
 
-- Als Content-Verantwortlicher benötige ich ein Interface zur Verwaltung von Text-Inhalten, sodass ich diese einfach
-  ändern kann.
-- Als Frontend-Entwickler benötige ich einen Link zum Endpunkt, um Text-Inhalte über eine API in meine Website einbinden
-  zu können
-- Als Content-Verantwortlicher benötige ich die Möglichkeit, die Einträge meiner Kollegen zu sehen, um gut mit ihnen
-  zusammen arbeiten zu können.
-- Als Content-Verantwortlicher benötige ich eine Möglichkeit zur Registrierung, um persönliche Inhalte verwalten zu
-  können.
+- As a content manager, I need an interface for managing text content so that I can easily modify it.
+- As a frontend developer, I need a link to the endpoint so that I can integrate text content into my website via an API.
+- As a content manager, I need the ability to view my colleagues' entries so that I can collaborate effectively with them.
+- As a content manager, I need a registration option so that I can manage personal content.
 
-"Nice 2 have"-features:
+### Nice to have features:
 
-- Als Content-Verantwortlicher benötige ich die Möglichkeit, Bilder verwalten zu können, um Bildinhalte auf meiner
-  Website auch einfach ändern zu können.
-- Als Content-Verantwortlicher benötige ich die Möglichkeit, Videos verwalten zu können, um Bildinhalte auf meiner
-  Website auch einfach ändern zu können.
-- Als Content-Verantwortlicher würde ich gerne verschiedene Versionen meines Texts verwalten können, um zur Not wieder
-  auf eine ältere Version wechseln zu können.
-- Als Content-Verantwortlicher würde ich gerne nach Inhalten suchen können, um diese schnell zu finden.
+- As a content manager, I need the ability to manage images so that I can easily change image content on my website.
+- As a content manager, I need the ability to manage videos so that I can easily modify video content on my website.
+- As a content manager, I would like to manage different versions of my text so that I can revert to an older version if necessary.
+- As a content manager, I would like to be able to search for content so that I can find it quickly.
 
-"Too hard"-features:
+### Too hard features:
 
-- Als Content-Verantwortlicher würde ich gerne die Single-Sign-On-Lösung meines Unternehmens nutzen können, um das
-  Einloggen simpler zu haben.
-- Als Content-Verantwortlicher hätte ich gerne Vorschläge zu Textinhalten basierend auf Keywords, um möglichst schnell
-  mit den Inhalten fertig zu werden.
+- As a content manager, I would like to be able to use my company's single sign-on solution to simplify the login process.
+- As a content manager, I would like to have suggestions for text content based on keywords to expedite content completion.
 
-## Kreativ-Prozess
+## Creative Process
 
-### Farbgebung
+### Color Scheme
 
-Als Farben wurden Blautöne sowie leichte Grautöne genutzt, um Professionalität und Intuitivität rüberzubringen.
+Blue tones along with light gray tones were used to convey professionalism and intuitiveness.
 
 ### Wireframes
 
-Teile des Prototypings / Wireframes / Routing für Public Pages sind hier
-einzusehen: [Wireframes](https://www.figma.com/file/SZDct0TmvQygDVJyrwxgkn/Wireframe?node-id=0%3A1).
+Parts of the prototyping, wireframes, and routing for public pages can be viewed here:  [Wireframes](https://www.figma.com/file/SZDct0TmvQygDVJyrwxgkn/Wireframe?node-id=0%3A1).
+
+#### Inspiration
+
+- [Confluent](https://www.confluent.io/)
+- [MongoDB](https://www.mongodb.com/)
 
 ## User Groups
 
-1. Besucher
-2. Registrierter Benutzer
-3. Admin der Organisation
-4. Admin einer Arbeitsgruppe
+- Visitor
+- Registered User
+- Organization Admin
+- Working Group Admin
 
-## Funktionsbereiche & Autorisierung
+## Tech Stack
 
-#### Public
+The tech stack was given by the professor.
 
-Uneingeloggte User können nur auf views in _pages/public/_ & _pages/entrance/_ zugreifen. Dies hat den Hintergrund, dass
-User auf diesen Seiten nur Informationen sammeln können sollen. Der Zugriff auf _entrance/_ ist nötig, um den
-priviligierten Bereich betreten zu können.
+- Sails.js for a MVC framework
+- Vue.js for client-side rendering
+- Heroku for deployment
+- Bootstrap for utilities
 
-#### Privilegierter Bereich
+## Functional Areas & Authorization
 
-Im eingeloggten Bereich können die Funktionen der Web-Applikation genutzt werden (siehe Editor).
+### Public
 
-#### Admin-Bereich
+Unlogged users can only access views in pages/public/ and pages/entrance/. This is intended so that users on these pages can only gather information. Access to entrance/ is necessary to enter the privileged area.
 
-Als Admin einer Organisation hat der Benutzer folgende Möglichkeiten:
-`pages/organisation/index.ejs`
+### Privileged Area
 
-- Den Namen der Organisation editieren.
-- Mitglieder der Organisation mit der Rolle 'Member' aus dieser entfernen.
-- Mitglieder der Organisation mit der Rolle 'Member' als Admin ernennen.
-- Das Abonnement (Premium, Enterprise, Standard) der Organisation ändern.
+In the logged-in area, users can use the functions of the web application (see Editor).
 
-Als Admin einer Arbeitsgruppe hat der Benutzer folgende Möglichkeiten:
-`pages/groups/index.ejs`
+### Admin Area
+As an Organization Admin, the user has the following options (pages/organisation/index.ejs):
 
-- Den Namen und die Beschreibung einer bestehenden Gruppe verändern.
-- Mitglieder der selben organisation, welche noch nicht in der Gruppe sind, zu dieser hinzufügen.
-- Mitglieder der Gruppe mit der Rolle 'Member' aus dieser entfernen.
-- Mitglieder der Gruppe mit der Rolle 'Member' als Admin der Gruppe ernennen.
+- Edit the name of the organization.
+- Remove members with the role 'Member' from the organization.
+- Appoint members with the role 'Member' as Admin.
+- Change the subscription (Premium, Enterprise, Standard) of the organization.
 
-Bei beiden Adminrollen wurde die Autorisierung nicht über zentrale Policies geprüft, sondern über dezentrale Abfragen in
-den jeweiligen Controllern geprüft. Dies wurde so gelöst, da Sails diese Lösung selbst als Best Practice in der
-Dokumentation beschrieben hat. Zudem wurde ausdrücklich davon abgesehen, andere Admins von ihrer Rolle entbinden zu
-können, da dadurch organisatorische Probleme entstehen können, Situationen, in denen es keinen Admin mehr geben könnte
-oder in denen diese Funktion für falsche Zwecke verwendet wird.
+As a Working Group Admin, the user has the following options (pages/groups/index.ejs):
 
-### Änderungen abhängig von Benutzergruppe
+- Change the name and description of an existing group.
+- Add members of the same organization who are not yet in the group.
+- Remove members with the role 'Member' from the group.
+- Appoint members with the role 'Member' as the Admin of the group.
+- For both admin roles, authorization was not checked through central policies but through decentralized queries in the respective controllers. This was resolved as such because Sails described this solution as Best Practice in the documentation. It was also expressly avoided to be able to relieve other admins of their role, as this could lead to organizational problems, situations where there could be no admin, or where this function could be used for the wrong purposes.
 
-# Der Editor
+### Changes depending on the user group
 
-Der Editor ist das Herzstück der Web-App. Durch dessen Komplexität wird hier deshalb ein extra Kapitel hierfür
-verwendet. Für den Editor wurde ausschließlich Client-Side Rendering genutzt, die Daten kommen per API Calls als JSON
-vom Server. Diese werden dann durch Vue.js verarbeitet. Eine genauere Beschreibung kommt in den folgenden Unterkapiteln.
+# The Editor
 
-Der Editor wird über _/dashboard_ aufgerufen.
+The editor is the core of the web app. Due to its complexity, a separate chapter is dedicated to it here. The editor exclusively uses client-side rendering, with data coming from the server as JSON via API calls. These are then processed by Vue.js. A more detailed description follows in the subsequent subsections.
 
-Zur Vereinfachung der Dokumentation und Nachvollziehbarkeit, wird in diesem Kapitel eine verkürzte Schreibweise der
-Pfade verwendet:
+The editor is accessed through /dashboard.
+
+For simplification of documentation and traceability, a shortened notation of the paths is used in this chapter:
 
 _**index.ejs**: views/pages/textcontent/index.ejs_
 
 _**api/x.js**: api/controllers/api/textcontent/x.js_
 
-## Funktionen
+## Features
 
-Der Editor ist in erster Linie natürlich nur ein Formular zum Ausfüllen.
+At its core, the editor is essentially just a form for filling out. This basic functionality underpins its role as the central feature of the web application, where users input and manage content. The simplicity of a form is key to ensuring that users of various technical backgrounds can effectively interact with the editor. The processing and rendering of the content, however, are handled more complexly in the background, utilizing client-side technologies like Vue.js.
 
 ### Starten
 
-Beim Starten des Editors werden erstmal aus verschiedenen Quellen alle nötigen Daten gesammelt und alles initialisiert.
-Da Inhalte nur verfasst werden können, wenn eine Gruppe ausgewählt wurde, werden alle Gruppen, denen der User angehört,
-geladen. Eine Auswahl findet der User in der linken unteren Ecke, am Fuße der Seitenleiste. Sollte er keiner Gruppe
-angehören, bekommt er einen Button angezeigt, der ihn dazu auffordert, sich einer Gruppe anzuschließen oder eine zu
-gründen.
+When the editor starts, it first collects all necessary data from various sources and initializes everything. Since content can only be composed if a group has been selected, all groups the user belongs to are loaded. The user finds a selection in the lower left corner, at the base of the sidebar. If they are not part of any group, a button is displayed prompting them to join or create a group.
 
-Sobald mind. eine Gruppe vorhanden ist, wird eine Liste aller Einträge für die derzeitige Gruppe geladen. Nun kann der
-User auswählen, ob er an einem bestehenden Eintrag arbeiten möchte, oder ob er einen neuen Eintrag erstellen will.
-Standardmäßig wird der Inhalt so geladen, dass ein neuer Eintrag erstellt werden kann. Wird ein Eintrag ausgewählt, wird
-dieser zusätzlich in der Seitenleiste gehighlightet, um den Überblick zu bewahren. Zusätzlich werden alle
-Eintrag-spezifischen Daten geladen.
+As soon as at least one group is available, a list of all entries for the current group is loaded. The user can then choose whether to work on an existing entry or create a new one. By default, the content is loaded in a way that allows for the creation of a new entry. When an entry is selected, it is also highlighted in the sidebar to maintain an overview. In addition, all entry-specific data are loaded.
 
-#### Implementierung
+#### Implementation
 
-Initial wird überprüft, ob eine Organisation vorhanden ist. Wenn ja, können Gruppen geladen werden. Der Methodenaufruf
-findet im `created()`-Lifecycle-Hook von Vue (_siehe index.ejs:Vue:created()_) statt, der ausgeführt wird, sobald Vue
-fertig geladen ist. Die Gruppen werden via AJAX Call in `loadAllGroups()`(_siehe index.ejs:Vue:methods:loadAllGroups()_)
-geladen. Zusätzlich wird der erste Eintrag, der geladen wird, als `currentGroup` gesetzt, um die UX zu verbessern.
-Dadurch muss der User nicht immer aufwendig erst eine Gruppe auswählen, sobald er die Seite neu lädt. Die Gruppenauswahl
-wird durch einen Klick auf den **Select a group**-Button (_
-siehe index.ejs:#app-dropdown-button && index.ejs:Vue:methods:
-listAllGroups()_) angezeigt. Dadurch wird ein boolean gesetzt, der durch `v-if` die Anzeige togglet. Der Button zeigt,
-je nachdem, ob eine Gruppe ausgewählt ist (`currentGroup !== null)` oder nicht, den Namen der derzeitigen Gruppe bzw.
-_Select a group_ an.
+Initially, it is checked if an organization exists. If so, groups can be loaded. The method call occurs in the created() lifecycle hook of Vue (see index.ejs:Vue:created()), which is executed as soon as Vue is fully loaded. Groups are loaded via an AJAX call in loadAllGroups() (see index.ejs:Vue:methods:loadAllGroups()). Additionally, the first loaded entry is set as currentGroup to improve the user experience. This way, the user doesn't always have to go through the trouble of selecting a group every time they reload the page. The group selection is displayed by clicking on the Select a group button (see `index.ejs:#app-dropdown-button` && `index.ejs:Vue:methods:listAllGroups()`). This sets a boolean that toggles the display through v-if. The button shows the name of the current group (`currentGroup !== null`) or **Select a group**, depending on whether a group is selected.
 
-Für die Liste gibt es drei Fälle, die berücksichtigt werden:
+For the list, there are three cases to consider:
 
-- `allGroups.length === 0`: _Create or join a group!_ als Text mit Link auf die Gruppenerstellung.
-- `allGroups.length === 1 && currentGroup !== null`: _Create or join a group!_ als Text mit Link auf die
-  Gruppenerstellung.
-- `allGroups.length > 1`: 'v-for'-Direktive, die über alle Einträge von `allGroups` iteriert mit
-  zusätzlichem `v-if="grp !== currentGroup"`, damit eine Übersicht aller anderen Gruppen gewährleistet ist.
+- `allGroups.length === 0`: Create or join a group! as text with a link to group creation.
+- `allGroups.length === 1 && currentGroup !== null`: **Create or join a group!** as text with a link to group creation.
+- `allGroups.length > 1`: A 'v-for' directive iterating over all entries of `allGroups`, with an additional `v-if="grp !== currentGroup"` to ensure an overview of all other groups.
 
-Den **Join or create group**-Button bekommt der User über die `v-if`-Direktive von Vue angezeigt,
-wenn `allGroups.length === 0`, also wenn er keiner Gruppe angehört.
+The Join or create group button is shown to the user via Vue's v-if directive when `allGroups.length === 0`, meaning they belong to no group.
 
-Sobald eine Gruppe ausgewählt ist, also `currentGroup !== null`, wird der Eintrag in der Seitenleiste
-durch `:class="{'app-active-nav-link': entry.id === id}"` umgestylet.
+As soon as a group is selected, i.e., `currentGroup !== null`, the entry in the sidebar is restyled with `:class="{'app-active-nav-link': entry.id === id}"`.
 
-### Funktionen für Editing-Zwecke
+### Editing functions
 
-Hier können Inhalte geschrieben und Titel vergeben werden, die die Inhalte prägnant beschreiben sollen. Der Titel ändert
-sich dynamisch, sobald eine Eingabe erfolgt.
+Here, users can write content and assign titles that are meant to succinctly describe the contents. The title changes dynamically as soon as an input is made.
 
-Des Weiteren wird angezeigt, wann ein Eintrag verfasst wurde, wer der Autor ist und - falls passiert - wer zu welchem
-Zeitpunkt ein Update durchgeführt hat, indem er Titel und / oder Inhalt geändert hat.
+Furthermore, it displays when an entry was written, who the author is, and - if it has occurred - who has made an update and at what time, by changing the title and/or content.
 
-Sobald der User zufrieden mit dem Eingetippten ist, kann er den **Save**-Button nutzen, um einen neuen Inhalt oder ein
-Update zu speichern.
+As soon as the user is satisfied with what they have entered, they can use the Save button to save a new content or an update. This feature ensures that the editing process is streamlined and efficient, allowing for easy management and modification of content within the web application.
 
-#### Implementierung
+#### Implementation
 
-Nutzung von `v-models` für Titel & Content zur dynamischen Anpassung der Einträge.
+Using `v-models` for title and content to dynamically change entries.
 
-### Versionierung
+### Versioning
 
-Sobald ein User einen Inhalt abspeichert, wird auch automatisch ein Archiveintrag für die überschriebene Version
-erstellt. Alle bisherigen Versionen eines Eintrags können durch Klicken auf den **Retrieve older versions**-Button
-aufgelistet werden. Durch das Klicken auf einen der Einträge wird die jeweilige Version geladen.
+As soon as a user saves content, an archive entry is automatically created for the overwritten version. All previous versions of an entry can be listed by clicking on the **Retrieve older versions** button. Clicking on one of the entries loads the respective version.
 
-#### Implementierung
+This feature is essential for content management, as it allows users to track changes and revert to previous versions if needed. It ensures that the editing process is not only about creating and updating content but also about maintaining a comprehensive history of revisions, which can be crucial for tracking changes over time and reverting to older versions when necessary.
 
-In _api/update.js_ wird bei jedem Speichern zusätzlich eine Version im Archiv erstellt.
+#### Implementation
 
-Alle alten Versionen werden geladen, sobald der User im Editor einen spezifischen Eintrag auswählt (Methodenaufruf
-loadOldVersions() siehe _index.ejs:Vue:methods:loadSingleEntry()_. In der Methodendeklaration (siehe _index.ejs:Vue:
-methods:loadOldVersions_) wird ein AJAX Call gemacht auf _api/findoldversions.js_, der alle älteren Versionen des
-derzeitigen Eintrags zurückgibt.
+In _api/update.js_, each time content is saved, an additional version is created in the archive.
+
+All old versions are loaded as soon as the user selects a specific entry in the editor (method call `loadOldVersions()` see `index.ejs:Vue:methods:loadSingleEntry()`). In the method declaration (see `index.ejs:Vue:methods:loadOldVersions`), an AJAX call is made to _api/findoldversions.js_, which returns all older versions of the current entry.
 
 ### Revert
 
-Sollte der User jedoch unzufrieden sein, kann er den **Revert**-Button nutzen, um den Inhalt auf die Ausgangssituation
-zurückzusetzen - leer bei neuen Einträgen, die letzte angefragte Version bei bereits vorhandenen Einträgen. Auch beim
-Wechsel zwischen Versionen ist immer die ursprünglich geladene Version als Ausgangssituation gesetzt. Dadurch kann der
-User ohne Probleme zwischen alten Versionen und der aktuellsten wechseln.
+If the user is not satisfied with the changes, they can use the **Revert** button to reset the content to its original state - empty for new entries, and the last requested version for existing entries. Also, when switching between versions, the originally loaded version is always set as the starting point. This feature allows the user to switch between old versions and the most recent one without any issues.
+
+#### Implementation
+
+
+When loading an entry, `title` and `content` are set to the contents of the API response. To enable resetting, `originalTitle` and `originalContent` were additionally introduced. These hold an exact copy of the response contents but, unlike `title` and `content`, they are never changed.
+
+Upon the `@click` event of the **Revert** button, `title` and `content` are overwritten with `originalTitle` and `originalContent`.
+
+### Status flag
+
+The status flag informs the user about the state of the displayed content. There are four different states: NEW, ACTIVE, UNPUBLISHED, and OLD_VERSION.
+
+- NEW is displayed when new content is being created.
+- ACTIVE is shown when content is loaded and remains unchanged.
+- If the content is modified, the status changes to UNPUBLISHED.
+- When an old version from the archive is loaded, the status changes to OLD_VERSION.
 
 #### Implementierung
 
-Beim Laden eines Inhalts werden `title` & `content` auf die Inhalte der API-Response gesetzt. Um ein Zurücksetzen zu
-ermöglichen, wurden zusätzlich noch `originalTitle` & `originalContent` eingeführt, die eine exakte Kopie der
-Response-Inhalte darstellen, im Gegensetz zu `title` & `content` allerdings nie geändert werden.
+For the status, an enum with `Object.freeze()` was used. This enum contains an entry for each of the states with text to be displayed and a corresponding CSS class (see `index.ejs:State`). The status is changed through an @input attribute with the method `changeStatus()` (see `index.ejs:Vue:methods:changeStatus()`) for the title and content.
 
-Beim `@click` des Revert-Buttons werden dann `title` & `content` mit dem `orginalTitle` & `originalContent`
-überschrieben.
-
-### Status-Flag
-
-Das Status-Flag gibt dem User an, in welchem Zustand sich der angezeigte Inhalt befindet. Hierbei gibt es 4 verschiedene
-Zustände: `NEW`, `ACTIVE`,`UNPUBLISHED` & `OLD_VERSION`. `NEW` wird angezeigt, wenn ein neuer Inhalt erstellt wird.
-`ACTIVE` wird angezeigt, wenn ein Inhalt geladen wird und unverändert ist. Wird dieser verändert, wird der Status
-auf `UNPUBLISHED` gesetzt. Wenn eine alte Version aus dem Archiv geladen wird, ändert sich der Status auf `OLD_VERSION`.
-
-#### Implementierung
-
-Für den Status wurde ein enum mit `Object.freeze()` genutzt. In diesem enum ist ein Eintrag für einen der Einträge mit
-Text, der angezeigt werden soll, und einer entsprechenden CSS-Klasse (siehe _index.ejs:State_). Der Status wird durch
-ein `@input`-Attribut mit der Methode `changeStatus()`(_siehe index.ejs:Vue:methods:changeStatus()_) bei Titel & Content
-geändert. Beim Drücken des **New**-Buttons, also bei Aufruf der Methode `createNewEntry()`, wird der Status `NEW`
-gesetzt. Beim Drücken des **Revert**-Buttons und beim Laden eines neuen Inhalts wird der Status auf `ACTIVE` gesetzt.
+- When the New button is pressed, i.e., on the call of the createNewEntry() method, the status is set to NEW.
+- When the Revert button is pressed and when loading new content, the status is set to ACTIVE.
 
 ## Styling
 
-Für das Styling werden verschiedene Möglichkeiten genutzt. Es wurden die Bootstrap Utilities genutzt, wo es möglich ist.
-Für den Rest des Stylings wurde ein Mix aus styles.css und Inline-CSS genutzt.
+Several methods have been used for styling. Bootstrap Utilities were used wherever possible. In all other cases, we used a mix of self-written CSS (_styles.css_) and Inline CSS.
 
 ### Inline CSS
 
-Inline-CSS wurde an allen Stellen aus technischen Gründen genutzt, um Layoutverschiebungen zu vermeiden. Bei Vue.js gibt
-es die Möglichkeit, das `v-cloak`-Attribut bei Tags zu setzen. Dieses wird dann entfernt, sobald die Vue-Instanz
-vollständig geladen wurde. In unserer Applikation wurde das dann so genutzt, dass Elemente, die durch Vue verarbeitet
-werden, ein `display: none` bekommen (siehe _style.css:171_). Dies soll die User Experience erhöhen, damit die
-technischen Aspekte komplett transparent sind für den User. Dadurch kommt es natürlich zu Verschiebungen des Layouts,
-die durch diese Inline-Styles umgangen wurden.
+Inline CSS was used throughout the application for technical reasons to prevent layout shifts. In Vue.js, there's an option to use the v-cloak attribute on tags. This attribute is then removed when the Vue instance has fully loaded. In our application, this was used so that elements processed by Vue are given a display: none style (see `style.css:171`). This is intended to enhance the user experience by making the technical aspects completely transparent to the user. However, this naturally leads to shifts in the layout, which are circumvented by these inline styles.
 
-Beispiele für `v-cloak`: views/pages/textcontent/index.ejs
+Examples of v-cloak in _views/pages/textcontent/index.ejs_:
 
-1. Zeile 29: Ausblenden des Renderns aller Einträge in der Seitenleiste
-2. Zeile 43: Ausblenden von `{{ currentGroup.name }}`
-3. Zeile 70: Ausblenden von `{{ title }}` => würde in Layoutverschiebung resultieren, präventiert durch Inline-CSS in
-   Zeile 69 im nächsthöheren `div`
-4. Zeile 78: Ausblenden vom Status-Flag
+- Line 29: Hides the rendering of all entries in the sidebar.
+- Line 43: Hides the display of {{ currentGroup.name }}.
+- Line 70: Hides the display of {{ title }} => this would result in a layout shift, which is prevented by inline CSS in line 69 in the parent div.
+- Line 78: Hides the display of the status flag.
 
-### Nutzung des Stylesheets
+### Using a stylesheet
 
-`styles.css` wurde nur an Stellen genutzt, an denen es mit ausschließlicher Nutzung von Bootstrap nicht möglich gewesen
-wäre, ein responsives & ansprechendes UI zu stylen. Dies liegt zum Einen an der Unvollständigkeit der Utility Classes,
-andererseits natürlich an der Individualität unseres UIs sowie dessen Breakpoints. Beispiele für die Nutzung des
-Stylesheets statt Bootstrap sind alle Situationen, in denen `cursor: pointer`, individuelle `height` / `width`
-/ `max-width`
+The use of a custom styles.css alongside Bootstrap in your application underscores the need for additional styling capabilities that Bootstrap's utility classes and default styles may not fully address. This approach is particularly relevant when dealing with unique aspects of your user interface (UI), including specific breakpoints, and when you require more customized styles that Bootstrap does not inherently provide.
 
-# Themen
+Key areas where styles.css was utilized instead of Bootstrap include situations where:
+
+- Custom cursor styles were needed (e.g., cursor: pointer).
+- Specific height, width, or max-width properties were required to achieve a desired layout or responsiveness that couldn't be achieved with Bootstrap's built-in classes.
+
+# Topics covered in the course
 
 ## MVC
 
-Es wurden Models für die Erstellung von Datenentitäten genutzt, Controller basierend auf Sails.js-Actions zur
-Interaktion mit den Models sowie Views basierend auf EJS-Templates zur
+Models were used for creating data entities, Controllers were implemented using Sails.js Actions, and Views based on EJS templates were created to enable the user to interact with the models.
 
 ## Styling
 
 ### Pure CSS
 
-Das individuelle Styling befindet sich in _style.css_. CSS wurde an Stellen genutzt, an denen die Bootstrap Utilities
-nicht vorhanden oder nicht ausreichend waren. Zudem wurde es genutzt, um Bootstrap-Standards zu überschreiben, bspw. die
-Schrift
-_style.css_ wurde modular aufgebaut, anfangs findet man von uns verfasste Utility-Classes wie bspw. verschiedene Font
-Sizes, Hintergründe oder Klassen für `border-radius` & `box-shadow`, damit diese durch das gesamte Styling das gleiche
-Verhalten besitzen. Gerade die Font Sizes sind wichtige Utility Classes, da die Standard-Font Size von Bootstrap nicht
-per se responsiv ist, dies wird nur durch Media-Queries ermöglicht; durch die Verwendung der `clamp()`-Funktion wurde
-hier die Schriftgröße so gesetzt, dass sie mit der View Width skaliert, ganz ohne Media Queries und sprunghafte
-Änderungen der Schriftgröße. Dadurch ist zu jedem Zeitpunkt eine optimale Schriftgröße für den User gegeben.
+The individual styling is located in _style.css_. CSS was used where Bootstrap utilities were either not available or insufficient. Additionally, it was used to override Bootstrap defaults, such as the font.
 
-Nach den Utility Classes folgt `:root`, wo wir eigene Variablen zur Wiederverwendung innerhalb des Stylesheets
-eingebunden haben. Diese geben das Farbschema unseres Designs wider.
+_style.css_ was built modularly, starting with utility classes we authored, such as various font sizes, backgrounds, or classes for `border-radius` & `box-shadow`, ensuring they behave consistently throughout the styling. Particularly, the font sizes are important utility classes, as Bootstrap's standard font size is not inherently responsive; this is only enabled through media queries. By using the `clamp()` function, the font size was set to scale with the View Width, eliminating the need for media queries and abrupt changes in font size, thus providing an optimal font size for the user at all times.
 
-Danach wird die Reihenfolge eines `html`-Dokuments durchgegangen. Im `body` gibt es eine wichtige Funktionalität, dort
-wird `display: flex, flex-direction-column, min-height: 100vh` gesetzt, damit auf Seiten, die nicht viel Inhalt haben,
-der Footer trotzdem immer am unteren Bildschirmrand sitzt. Um das zu machen, muss der oberste Tag einer `.ejs`
-ein `<div class="flex-fill ...">` sein. Beispiele hierfür sind _/organisation/new_, _/groups/new_.
+Following the utility classes, `:root` is where we included our own variables for reuse within the stylesheet. These variables reflect the color scheme of our design.
 
-Um unserer Website den Look & Feel einer wirklichen Applikation zu geben, wurde (zumindest für die Browser, die auf
-Webkit aufbauen) die Scrollbar umgestylet. Dies wurde durch die `::-webkit-scrollbar-*`-Klassen erreicht.
+The order of an `html` document is then followed. In the `body`, there is a critical functionality, where `display: flex, flex-direction-column, min-height: 100vh` is set, ensuring that on pages with less content, the footer still sits at the bottom of the screen. To do this, the top tag of a `.ejs` must be a `<div class="flex-fill ...">`. Examples of this are _/organisation/new_, _/groups/new_.
 
-Durch die Verwendung von mehreren Pseudo-Klassen wurde ein Toggle-Switch designt, der an Material Design angelehnt ist.
+To give our website the look and feel of a real application, the scrollbar was restyled (at least for browsers based on Webkit). This was achieved through the `::-webkit-scrollbar-*` classes.
 
-Weitere Beispiele für komplexere CSS-Konstrukte ist das Styling des **delete**-Buttons im Dashboard, der je nach Status
-disabled oder nicht ein komplett anderes Styling erhält. Dadurch entstehen lange Selektoren
-wie `#app-delete-button:not(:disabled):hover`.
+By using multiple pseudo-classes, a toggle switch was designed, inspired by Material Design.
 
-CSS-Transitions & Animationen werden sinnvoll verwendet, um dem User eine hochwertigere Bedienung der Applikation zu
-bieten, bspw. beim Ausklappen der Mobile Navbar, dem Burger Menu oder auf dem Dashboard beim hover über die Tags.
-Hierfür wurde auch ein eigener Keyframe `fadeIn` definiert.
+Further examples of complex CSS constructs include the styling of the **delete** button in the dashboard, which receives a completely different styling depending on whether it's disabled or not, resulting in long selectors like `#app-delete-button:not(:disabled):hover`.
 
-Breakpoints für media-queries wurden nicht von Bootstrap übernommen, sondern anhand eigener Erfahrungen mit unserem
-Layout gesetzt und konsequent optimiert.
+CSS transitions & animations are used sensibly to provide the user with a higher quality operation of the application, such as unfolding the Mobile Navbar, the Burger Menu, or on the Dashboard when hovering over the tags. A custom keyframe `fadeIn` was also defined for this purpose.
+
+Breakpoints for media queries were not adopted from Bootstrap, but were set based on our own experiences with our layout and consistently optimized.
 
 ### Bootstrap
 
-Von Bootstrap wurden größtenteils nur Utility Classes verwendet, da der Rest den Anforderungen an die Applikation nicht
-gerecht wurde. An mehreren Stellen wurde zwar probiert, Bootstrap-Komponenten zu nutzen, allerdings ist dies immer an
-technischen Hürden gescheitert. Ein Beispiel ist die Verwendung von Bootstrap-Dropdown für das Laden alter Versionen im
-Editor; dies ist daran gescheitert, dass das von Bootstrap hinterlegte JS schneller ausgeführt wurde als der AJAX Call
-zum Bekommen der Daten, weswegen es zu einem Client Side Error kommt. Aufgrund solcher Errors wurde entschieden,
-Bootstrap nur für dekorative Zwecke zu nutzen und solche Funktionalitäten selber zu implementieren.
+Primarily, only utility classes from Bootstrap were used, as the rest did not meet the requirements of the application. Although attempts were made to use Bootstrap components in several places, these attempts consistently faced technical challenges. An example is the use of Bootstrap's dropdown for loading old versions in the editor; this failed because the JavaScript provided by Bootstrap executed faster than the AJAX call to retrieve the data, leading to a client-side error. Due to such errors, it was decided to use Bootstrap only for decorative purposes and to implement such functionalities ourselves.
 
 ## JavaScript
 
-- `assets/js/navbar-animation.js`: querySelector, EventListener and toggle für Menü- und burger animation.
-- `checkCookie()`, `getCookie()` und `setCookie()` Funktionen mit DOM Manipulation für den Cookie Banner
-  in `views/partials/public/cookies.ejs`
-- function `ignoreKeys(e)` in `assets/js/pages/groups/index.page.js` um das wechseln der Gruppe mit der Tastatur zu
-  deaktivieren, da bei zu schnellem Wechsel der Gruppe das HTML der vorherigen Gruppe ebenfalls angezeigt wird.
-- `copyURL: async function (mytext)` in `views/pages/textcontent/index.ejs` um ein Textelement zum Clipboard zu
-  kopieren.
-- `assets/js/pages/subscription/select.page.js`: Hinzufügen und entfernen von Klassen mit
-  document.getElementsByClassName, addEventListener und querySelector.
-- Nutzung von eingebauter JS-Funktion `history.back()` zum Zurückspringen auf die davorliegende Seite auf _
-  /organisation/new_ & _/groups/new_.
+- `assets/js/navbar-animation.js`: Uses `querySelector`, `EventListener`, and `toggle` for menu and burger animation.
+- Functions `checkCookie()`, `getCookie()`, and `setCookie()` with DOM manipulation for the cookie banner in `views/partials/public/cookies.ejs`.
+- Function `ignoreKeys(e)` in `assets/js/pages/groups/index.page.js` to disable switching groups with the keyboard, as rapid group switching causes the HTML of the previous group to be displayed as well.
+- `copyURL: async function (mytext)` in `views/pages/textcontent/index.ejs` to copy a text element to the clipboard.
+- `assets/js/pages/subscription/select.page.js`: Adding and removing classes with `document.getElementsByClassName`, `addEventListener`, and `querySelector`.
+- Use of the built-in JS function `history.back()` to navigate back to the previous page on _/organisation/new_ & _/groups/new_.
 
 ### Vanilla JavaScript
 
@@ -379,89 +294,71 @@ assets/js/navbar-animation.js
 
 ### jQuery
 
-Organisation `assets/js/pages/organisation/index.page.js`:
+#### Organisation `assets/js/pages/organisation/index.page.js`:
 
-- `.show()` & `.hide()` von allen Toolbar Elementen in den Funktionen `showOrgAdminTools()` und `showOrgMemberTools()`.
-- function `createOrgTableChk(data)` erzeugt eine Tabelle mit Checkboxen, dabei werden die html-Elemente
-  über `$('<element>')` generiert und mit `.append()` zur Tabelle hinzugefügt.
-- function `resetOrgMembersTable()` leert eine Tabelle über `$('#orgMembersTable').empty()`.
-- function `selectAllOrg()` setzt alle Checkboxen die nicht deaktiviert sind auf checked oder umgekehrt.
-- `window.onload = () => { fetchOrgData();}` in `pages/organisation/index.ejs` um die Daten der Organisation zu laden.
+- Functions `showOrgAdminTools()` and `showOrgMemberTools()` use `.show()` & `.hide()` to toggle visibility of all toolbar elements.
+- Function `createOrgTableChk(data)` creates a table with checkboxes. HTML elements are generated using `$('<element>')` and added to the table with `.append()`.
+- Function `resetOrgMembersTable()` empties a table using `$('#orgMembersTable').empty()`.
+- Function `selectAllOrg()` sets all checkboxes that are not disabled to checked, or vice versa.
+- `window.onload = () => { fetchOrgData();}` in `pages/organisation/index.ejs` to load the organization data.
 
-Groups `assets/js/pages/groups/index.page.js`:
+#### Groups `assets/js/pages/groups/index.page.js`:
 
-- function `createOptions(data)` holt das Select Element `$('#selectGrp')` und fügt option-Elemente an
-  -> `$('<option>').text(...)`.
-- function `appendTdToRow(row, value, i)` erzeugt ein neues `td` Element und fügt es an die übergebene `tr` an.
-- Document ready event -> `$('.membersTable').on('click', 'tr', function (event) { ...` setzt die Checkbox
-  checked/unchecked bei einem Klick in die `tr`.
-- Wird eine Checkbox innerhalb einer `tr` verändert, wird die Class `highlight_row` zur `tr` hinzugefügt/entfernt.
-- function `editGrp()` sucht die ausgewählte Gruppe aus dem `Select` Element über
-  -> `$('#grpSelect').find(':selected').val()`.
-- function `createMembersOptions(data)` holt das Select Element `$('#memberSelect')` und fügt option-Elemente an.
-- In function `addToGrp()` wird von jedem ausgewählten Mitglied die ID in ein Array gepusht
-  -> `$('#memberSelect option:selected').each(function () { ...`.
+- Function `createOptions(data)` retrieves the Select element `$('#selectGrp')` and appends option elements using `$('<option>').text(...)`.
+- Function `appendTdToRow(row, value, i)` creates a new `td` element and appends it to the given `tr`.
+- Document ready event -> `$('.membersTable').on('click', 'tr', function (event) { ...` toggles the checkbox checked/unchecked when clicking into the `tr`.
+- When a checkbox within a `tr` is changed, the class `highlight_row` is added/removed to/from the `tr`.
+- Function `editGrp()` retrieves the selected group from the `Select` element using `$('#grpSelect').find(':selected').val()`.
+- Function `createMembersOptions(data)` retrieves the Select element `$('#memberSelect')` and appends option elements.
+- In function `addToGrp()`, the ID of each selected member is pushed into an array using `$('#memberSelect option:selected').each(function () { ...`.
+
 
 ### Vue.js
 
-Für die Implementierungen mit Vue, bitte Abschnitt "Der Editor" lesen.
+For all Vue implementations, please read the "Editor" section
 
 ### AJAX
 
-Organisation `assets/js/pages/organisation/index.page.js`:
+#### Organisation `assets/js/pages/organisation/index.page.js`:
 
-- function `findOrg()` ruft die Action `/api/organisation/findorg` auf und holt Namen und ID der Organisation.
-- function `checkOrgAdminUser()` ruft die Action `/api/organisation/checkadmin` auf und gibt zurück ob der aktuelle
-  Benutzer Admin der Organisation ist.
-- function `fetchOrgMembers()`ruft die Action `/api/organisation/fetchorgmembers` auf und holt alle Mitglieder der
-  Organisation.
-- function `appointAsOrgAdmin()` übergibt ein JSON File mit den Id's der Mitglieder, welche als Admin der Organisation
-  ernennt werden, an die Action `/api/organisation/appointadmin`.
-- function `deleteFromOrg()` übergibt ein JSON File mit den Id's der Mitglieder, welche aus der Organisation entfernt
-  werden, an die Action `/api/organisation/deletemembers`.
+- Function `findOrg()` calls the action `/api/organisation/findorg` to retrieve the name and ID of the organization.
+- Function `checkOrgAdminUser()` calls the action `/api/organisation/checkadmin` to check if the current user is an admin of the organization.
+- Function `fetchOrgMembers()` calls the action `/api/organisation/fetchorgmembers` to fetch all members of the organization.
+- Function `appointAsOrgAdmin()` sends a JSON file with the IDs of members to be appointed as organization admins to the action `/api/organisation/appointadmin`.
+- Function `deleteFromOrg()` sends a JSON file with the IDs of members to be removed from the organization to the action `/api/organisation/deletemembers`.
 
-Groups `assets/js/pages/groups/index.page.js`:
+#### Groups `assets/js/pages/groups/index.page.js`:
 
-- function `createGrpDesc(grp)` ruft die Action `/api/groups/description` auf und holt die Beschreibung der ausgewählten
-  Gruppe.
-- function `checkAdminCurrentUser(grp)` ruft die Action `/api/groups/checkadmin` auf und gibt zurück ob der aktuelle
-  Benutzer Admin der ausgewählten Gruppe ist.
-- function `findGrpMembers(grp)` ruft die Action `/api/groups/find` auf und holt die Mitglieder der ausgewählten Gruppe.
-- function `findGrps()` ruft die Action `/api/groups/findgrps` auf und holt alle Gruppen des aktuellen Benutzer.
-- function `appointAsAdmin(ids)` übergibt ein JSON File mit den Id's der Mitglieder, welche als Admin der Gruppe ernennt
-  werden, an die Action `/api/groups/appointadmin`.
-- function `deleteFromGrp(ids)` übergibt ein JSON File mit den Id's der Mitglieder, welche aus der Gruppe entfernt
-  werden, an die Action `/api/groups/deletemembers`.
-- function `leaveGrp()` ruft die Action `/groups/leave` auf und entfernt den aktuellen Benutzer aus der Gruppe.
-- function `findMembersToAdd(grp)` ruft die Action `/api/groups/findusers` auf und holt alle Mitglieder aus der
-  Organisation, die derzeit nicht in der ausgewählten Gruppe sind.
-- function `addToGrp()` übergibt ein JSON File mit den ID's der Mitglieder, welche zur Gruppe hinzugefügt werden, an die
-  Action `/api/groups/addtogroup`.
+- Function `createGrpDesc(grp)` calls the action `/api/groups/description` to fetch the description of the selected group.
+- Function `checkAdminCurrentUser(grp)` calls the action `/api/groups/checkadmin` to check if the current user is an admin of the selected group.
+- Function `findGrpMembers(grp)` calls the action `/api/groups/find` to fetch the members of the selected group.
+- Function `findGrps()` calls the action `/api/groups/findgrps` to fetch all groups of the current user.
+- Function `appointAsAdmin(ids)` sends a JSON file with the IDs of members to be appointed as group admins to the action `/api/groups/appointadmin`.
+- Function `deleteFromGrp(ids)` sends a JSON file with the IDs of members to be removed from the group to the action `/api/groups/deletemembers`.
+- Function `leaveGrp()` calls the action `/groups/leave` to remove the current user from the group.
+- Function `findMembersToAdd(grp)` calls the action `/api/groups/findusers` to fetch all members of the organization who are currently not in the selected group.
+- Function `addToGrp()` sends a JSON file with the IDs of members to be added to the group to the action `/api/groups/addtogroup`.
 
 ## EJS
 
 ### Layout
 
-Drei unterschiedliche Layouts:
+Three different layouts:
 
-- `landingpage-layout.ejs` -> für die Homepage mit SEO Optimierung.
-- `layout.ejs` -> Optimiert für das Dashboard, mit weniger Links im Header, damit die Seite nicht überladen wirkt.
-- `public-layout.ejs` -> Beinhaltet Header und Footer mit allen Links für alle Public Views.
+- `landingpage-layout.ejs` -> For the homepage with SEO optimization.
+- `layout.ejs` -> Optimized for the dashboard, with fewer links in the header to avoid cluttering the page.
+- `public-layout.ejs` -> Includes header and footer with all links for all public views.
 
 ### Partials
 
-- `views/partials/public/cookies.ejs`: Banner für `Accept Essential Cookies`.
-- `views/partials/public/getting-started-partial.ejs`: Partial mit Call to Action, welches den User dazu bewegen soll,
-  sich anzumelden.
+- `views/partials/public/cookies.ejs`: Banner for `Accept Essential Cookies`.
+- `views/partials/public/getting-started-partial.ejs`: Partial with a call to action, intended to encourage users to sign up.
 
-Bei `views/partials/group/index.ejs` bzw. `views/partials/organisation/index.ejs` für das Joinen von Organisationen oder
-bei den verschiedenen Navbars aus `public-layout / landingpage-layout / layout`  wurden explizit keine Partials
-verwendet, da sich hier das HTML / CSS / JS minimal unterschiedlich verhält und deswegen keine Wiederverwendbarkeit
-durch Partials genutzt werden könnte.
+For `views/partials/group/index.ejs` and `views/partials/organisation/index.ejs` regarding joining organizations, or the different navbars from `public-layout / landingpage-layout / layout`, no partials were explicitly used. This is because the HTML / CSS / JS behave slightly differently in these sections, making the reuse of partials impractical.
 
-## Daten
+## Data
 
-### Datenmodell
+### Data model
 
 - User
 - Organisation
@@ -515,23 +412,23 @@ durch Partials genutzt werden könnte.
 
 ### CRUD
 
-- Textcontent, Gruppen, Organisation
+- Textcontent, Groups, Organisations
 
 ## Input Validation
 
 ### Server-Side
 
-Auf der Serverseite haben wir Input-Validation zum einen bei den Controllern in den Inputs und zum anderen bei den
-Attributen in den Models. Beispiel für Controller:
+We validate data server-side using two approaches, in the controllers annd in the data model itself. 
 
+An example for controller-based validation:
 - `api/controllers/textcontent/create.js`
-  Beispiel für Model:
+
+An example for model-based validation:
 - `api/models/TextContent.js`
 
 ### Client-Side
 
-Validation in HTML Forms mit den Attributen minlength/maxlength/required und type text/number/email. Beispiele sind hier
-zu finden:
+Validation in HTML forms is implemented using attributes such as `minlength`, `maxlength`, `required`, and types like `text`, `number`, `email`. Examples can be found in:
 
 - `views/pages/textcontent/index.ejs`
 - `views/pages/organisation/new.ejs`
@@ -539,76 +436,69 @@ zu finden:
 - `views/pages/groups/new.ejs`
 - `views/pages/groups/edit.ejs`
 
-Im `views/pages/textcontent/index.ejs` gibt es durch die Nutzung von Vue.js zusätzliche Validierung, dass weder
-unveränderte Inhalte geupdatet (um unnötige Requests und damit Ressourcenverschwendung zu vermeiden) noch leere Strings
-verschickt werden können.
+In `views/pages/textcontent/index.ejs`, additional validation is performed using Vue.js to ensure that neither unchanged content is updated (to avoid unnecessary requests and resource waste) nor empty strings are sent.
 
 ## Sessions
 
-Auf dem `pricing.ejs` View sind die drei unterschiedlichen SubType's beschrieben mit jeweils einem 'Subscribe' Button.
-Wird einer der Buttons ausgelöst, wird die Vorauswahl des Benutzers über die
-Action `api/controllers/subscription/saveselection.js` in der Session gespeichert. Über einen Redirect wird die
-Action `getselection.js` aufgerufen, hier wird die in der Session gespeicherte SubType ID via Return an den View
-übergeben. Im View `pages/subscription/select.ejs` wird der vom Benutzer zuvor gewählte SubType gehighlightet. So kann
-der Benutzer seine Auswahl direkt bestätigen oder nochmals überdenken.
+On the `pricing.ejs` view, the three different subscription types are described, each with a 'Subscribe' button. When one of the buttons is clicked, the user's preliminary selection is saved in the session through the action `api/controllers/subscription/saveselection.js`. A redirect then invokes the action `getselection.js`, where the subscription type ID stored in the session is returned to the view. In the view `pages/subscription/select.ejs`, the subscription type previously chosen by the user is highlighted. This allows the user to either confirm their choice directly or reconsider it.
 
 ## SEO & Performance
 
-## PageSpeed Insights
+### PageSpeed Insights
 
 <details>
 <summary><i>Mobile</i></summary>
 
-**Leistung**: 85
+**Performance**: 85
 
-**First Contentful Paint**: 3,1s
+**First Contentful Paint**: 3.1s
 
-**Time to Interactive**: 3,1s
+**Time to Interactive**: 3.1s
 
-**Speed Index**: 4,5s
+**Speed Index**: 4.5s
 
 **Total Blocking Time**: 0ms
 
-**Largest Contentful Paint**: 3,1s
+**Largest Contentful Paint**: 3.1s
 
-**Cumulative Layout Shift**: 0,026
+**Cumulative Layout Shift**: 0.026
 </details>
 
 <details>
 <summary><i>Desktop</i></summary>
 
-**Leistung**: 97
+**Performance**: 97
 
-**First Contentful Paint**: 0,9s
+**First Contentful Paint**: 0.9s
 
-**Time to Interactive**: 0,9s
+**Time to Interactive**: 0.9s
 
-**Speed Index**: 1,5s
+**Speed Index**: 1.5s
 
 **Total Blocking Time**: 0ms
 
-**Largest Contentful Paint**: 0,9s
+**Largest Contentful Paint**: 0.9s
 
-**Cumulative Layout Shift**: 0,008
+**Cumulative Layout Shift**: 0.008
 </details>
 
-### Empfehlungen
+### Recommendations
 
 <details>
-<summary><i>Ressourcen beseitigen, die das Rendering blockieren</i></summary>
+<summary><i>Eliminate render-blocking resources</i></summary>
 
 > bootstrap-4.css & style.css
 
-Möglichkeit zur weiteren Optimierung wäre, sämtlichen Layout-spezifischen Styles inline anzugeben und alles andere erst
-später zu laden. Dadurch gäbe es aber auch nur eine Einsparung von insgesamt 140ms.
+A potential optimization could be to inline all layout-specific styles and load everything else later. However, this would only save a total of 140ms.
 </details>
+
 <details>
-<summary><i>Erstreaktion des Servers verringern</i></summary>
+<summary><i>Reduce initial server response time</i></summary>
 
-Von unserer Seite aus lässt sich hieran nichts ändern, ohne für Heroku etwas zu zahlen.
+There's nothing that can be changed on our end without paying for Heroku.
 </details>
 
-## Lighthouse
+### Lighthouse
 
 <details>
 <summary><i>Mobile</i></summary>
@@ -617,12 +507,9 @@ Von unserer Seite aus lässt sich hieran nichts ändern, ohne für Heroku etwas 
 
 **Accessibility**: 76
 
-## Google PageInsights Analyse
-
 **Best Practices**: 100
 
 **SEO**: 100
-
 </details>
 
 <details>
@@ -635,36 +522,28 @@ Von unserer Seite aus lässt sich hieran nichts ändern, ohne für Heroku etwas 
 **Best Practices**: 100
 
 **SEO**: 100
-
 </details>
 
 <details>
+<summary><b>Recommendations</b></summary>
 
-<summary><b>Empfehlungen</b></summary>
-
-- Nutzung von HTTP/2
-- Ressourcen beseitigen, die das Rendering blockieren
-- Bildelemente haben keine explizite `width` und `height`
+- Use of HTTP/2
+- Eliminate render-blocking resources
+- Image elements do not have explicit `width` and `height`
 
 </details>
 
 ## SEO
 
-**Maßnahmen**:
+### Measures taken:
 
-- SEO-Friendly URLs: kurze, human-friendly URLs
-- Content Mix aus Text, Diagrammen, Hintergrundgraphiken & interaktive Elemente (auf _/features_) für bessere
-  Time-On-Site
-- Abwechslungsreiches Layout für höheres Interesse & bessere Dwell Time
-- Verwendung eines `meta`-Tags: `<meta name="description"
-  content="A headless CMS in the cloud, used to provide omnichannel experiences for developers & online marketing.">`
-- Verwendung von Keywords & LSI Keywords auf der gesamten Landingpage
-- SEO-Keywords: content, cms, content management system, qntm, quantum, digital experiences, marketing, omnichannel,
-  headless cms, cloud
-- Responsive Design
-- Interne Verlinkungen durch Call to Action
-- Site Speed-Optimierung durch Verwendung eines seperaten, optimierten Layouts nur für die Landingpage, welches nur
-  nötiges JavaScript für die Bedienung der Mobile Navbar beinhaltet
-- Site Speed-Optimierung durch die Verwendung von `svg` statt `png / jpeg`, Nutzung von `alt`-Tags für bessere
-  Accessibility & Einbettung von keywords in den Tag-Beschreibungen
-
+- SEO-Friendly URLs: Short, human-friendly URLs.
+- Content mix of text, diagrams, background graphics, and interactive elements (on _/features_) for improved time-on-site.
+- Varied layout for heightened interest and better dwell time.
+- Use of a `meta` tag: `<meta name="description" content="A headless CMS in the cloud, used to provide omnichannel experiences for developers & online marketing.">`
+- Utilization of keywords and LSI keywords throughout the landing page.
+- SEO Keywords: content, cms, content management system, qntm, quantum, digital experiences, marketing, omnichannel, headless cms, cloud.
+- Responsive design.
+- Internal linking through call-to-action.
+- Site speed optimization by using a separate, optimized layout only for the landing page, which includes only necessary JavaScript for the operation of the mobile navbar.
+- Site speed optimization through the use of `svg` instead of `png / jpeg`, use of `alt` tags for better accessibility, and embedding keywords in tag descriptions.
